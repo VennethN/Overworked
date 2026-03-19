@@ -25,7 +25,12 @@
     cursor: link;
     background-color: transparent;
     color: var(--color-text-secondary);
-    transition: background-color 150ms ease, border-color 150ms ease, color 150ms ease;
+    scale: 1 1;
+    transition: background-color 150ms ease, border-color 150ms ease, color 150ms ease, scale 80ms ease-out;
+}
+
+.toolbar-btn:active {
+    scale: 0.94 0.94;
 }
 
 .toolbar-btn:hover {
@@ -228,7 +233,12 @@
     cursor: link;
     margin-right: 10px;
     -unity-font-style: bold;
-    transition: background-color 150ms ease, border-color 150ms ease, color 150ms ease;
+    scale: 1 1;
+    transition: background-color 150ms ease, border-color 150ms ease, color 150ms ease, scale 80ms ease-out;
+}
+
+.action-btn:active {
+    scale: 0.94 0.94;
 }
 
 .action-btn--reply {
@@ -286,7 +296,12 @@
     -unity-text-align: middle-left;
     cursor: link;
     white-space: normal;
-    transition: background-color 120ms ease, border-color 120ms ease, color 120ms ease;
+    scale: 1 1;
+    transition: background-color 120ms ease, border-color 120ms ease, color 120ms ease, scale 80ms ease-out;
+}
+
+.inline-reply-slot .reply-option-btn:active {
+    scale: 0.97 0.97;
 }
 
 .inline-reply-slot .reply-option-btn:hover {

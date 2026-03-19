@@ -198,8 +198,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Overworked.Core.GameManager
   dayLengthSeconds: 300
-  emailSpawner: {fileID: 0}
-  uiManager: {fileID: 0}
+  emailSpawner: {fileID: 1341008653}
+  uiManager: {fileID: 85161972}
 --- !u!4 &414000158
 Transform:
   m_ObjectHideFlags: 0

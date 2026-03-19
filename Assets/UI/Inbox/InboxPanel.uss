@@ -45,7 +45,14 @@
     cursor: link;
     border-left-width: 3px;
     border-left-color: transparent;
-    transition: background-color 120ms ease, border-left-color 200ms ease, opacity 250ms ease;
+    scale: 1 1;
+    translate: 0 0;
+    opacity: 1;
+    transition: background-color 120ms ease, border-left-color 200ms ease, opacity 250ms ease, scale 100ms ease-out, translate 200ms ease-out;
+}
+
+.email-item:active {
+    scale: 0.985 0.985;
 }
 
 .email-item:hover {

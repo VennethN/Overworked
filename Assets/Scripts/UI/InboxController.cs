@@ -203,6 +203,9 @@ namespace Overworked.UI
                     VisualElement item = CreateEmailItem(email);
                     _emailList.Add(item);
                     _itemElements[email.InstanceId] = item;
+
+                    // Slide-in animation for new emails
+                    UIEffects.SlideIn(item, 30f, 200);
                 }
                 else
                 {

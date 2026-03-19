@@ -43,6 +43,9 @@ namespace Overworked.UI
         private IMinigame _activeMinigame;
         private string _minigameEmailInstanceId;
 
+        // Stress vignette overlay
+        private VisualElement _stressVignette;
+
         // Story data loaded once for day selection + StoryManager
         private StoryCollection _storyData;
         public StoryCollection StoryData => _storyData;
@@ -62,6 +65,25 @@ namespace Overworked.UI
             _minigameSlot = root.Q("minigame-slot");
             _sidebar = root.Q("sidebar");
             _mainContent = root.Q("main-content");
+
+            // Create persistent stress vignette overlay
+            _stressVignette = new VisualElement();
+            _stressVignette.name = "stress-vignette";
+            _stressVignette.pickingMode = PickingMode.Ignore;
+            _stressVignette.style.position = Position.Absolute;
+            _stressVignette.style.left = 0;
+            _stressVignette.style.top = 0;
+            _stressVignette.style.right = 0;
+            _stressVignette.style.bottom = 0;
+            _stressVignette.style.borderTopWidth = 0;
+            _stressVignette.style.borderBottomWidth = 0;
+            _stressVignette.style.borderLeftWidth = 0;
+            _stressVignette.style.borderRightWidth = 0;
+            _stressVignette.style.borderTopColor = new Color(0.94f, 0.2f, 0.2f, 0f);
+            _stressVignette.style.borderBottomColor = new Color(0.94f, 0.2f, 0.2f, 0f);
+            _stressVignette.style.borderLeftColor = new Color(0.94f, 0.2f, 0.2f, 0f);
+            _stressVignette.style.borderRightColor = new Color(0.94f, 0.2f, 0.2f, 0f);
+            _uiRoot.Add(_stressVignette);
 
             // Load story data
             var storyAsset = Resources.Load<TextAsset>("Data/Story/story_data");
@@ -89,12 +111,12 @@ namespace Overworked.UI
             _hud.UpdateThemeButtonLabel(_isLightMode);
 
             // Subscribe to events
-            GameEvents.OnEmailReceived += _ => RefreshInbox();
-            GameEvents.OnEmailExpired += _ => RefreshInbox();
+            GameEvents.OnEmailReceived += OnEmailReceivedJuice;
+            GameEvents.OnEmailExpired += OnEmailExpiredJuice;
             GameEvents.OnEmailDeleted += _ => RefreshInbox();
-            GameEvents.OnEmailReplied += (_, _) => RefreshHUD();
-            GameEvents.OnTaskCompleted += _ => RefreshHUD();
-            GameEvents.OnTaskFailed += _ => RefreshHUD();
+            GameEvents.OnEmailReplied += OnEmailRepliedJuice;
+            GameEvents.OnTaskCompleted += OnTaskCompletedJuice;
+            GameEvents.OnTaskFailed += OnTaskFailedJuice;
         }
 
         private void Update()
@@ -114,7 +136,10 @@ namespace Overworked.UI
 
             // Update HUD timer
             if (GameManager.Instance != null)
+            {
                 _hud?.UpdateTimer(GameManager.Instance.TimeRemaining);
+                UpdateStressVignette(GameManager.Instance.TimeRemaining, GameManager.Instance.DayLength);
+            }
 
             _hud?.UpdateEmailCount(EmailManager.Instance.ActiveCount);
         }
@@ -396,6 +421,87 @@ namespace Overworked.UI
         {
             if (ScoreManager.Instance != null)
                 _hud?.UpdateScore(ScoreManager.Instance.CurrentScore, ScoreManager.Instance.CurrentStreak);
+        }
+
+        // --- Stress Vignette ---
+
+        private void UpdateStressVignette(float timeRemaining, float dayLength)
+        {
+            if (_stressVignette == null || dayLength <= 0f) return;
+
+            float ratio = timeRemaining / dayLength;
+            // Start showing at 30% time remaining, max intensity at 0%
+            float intensity = Mathf.Clamp01(1f - ratio / 0.3f);
+
+            if (intensity <= 0f)
+            {
+                _stressVignette.style.borderTopWidth = 0;
+                _stressVignette.style.borderBottomWidth = 0;
+                _stressVignette.style.borderLeftWidth = 0;
+                _stressVignette.style.borderRightWidth = 0;
+                return;
+            }
+
+            // Border width and alpha scale with stress
+            float borderWidth = Mathf.Lerp(0f, 8f, intensity);
+            float alpha = Mathf.Lerp(0f, 0.5f, intensity);
+            var color = new Color(0.94f, 0.2f, 0.2f, alpha);
+
+            _stressVignette.style.borderTopWidth = borderWidth;
+            _stressVignette.style.borderBottomWidth = borderWidth;
+            _stressVignette.style.borderLeftWidth = borderWidth;
+            _stressVignette.style.borderRightWidth = borderWidth;
+            _stressVignette.style.borderTopColor = color;
+            _stressVignette.style.borderBottomColor = color;
+            _stressVignette.style.borderLeftColor = color;
+            _stressVignette.style.borderRightColor = color;
+        }
+
+        // --- Juice Effects ---
+
+        private void OnEmailReceivedJuice(EmailInstance _)
+        {
+            RefreshInbox();
+            UIEffects.Pop(_hudSlot);
+        }
+
+        private void OnEmailExpiredJuice(EmailInstance _)
+        {
+            RefreshInbox();
+            UIEffects.Shake(_uiRoot, 4f, 4);
+            UIEffects.VignetteFlash(_uiRoot, new Color(0.97f, 0.27f, 0.27f, 0.6f), 300);
+        }
+
+        private void OnEmailRepliedJuice(EmailInstance _, ReplyResult result)
+        {
+            RefreshHUD();
+            if (result.ScoreChange > 0)
+            {
+                UIEffects.VignetteFlash(_uiRoot, new Color(0.29f, 0.87f, 0.5f, 0.4f), 250);
+                UIEffects.FloatingText(_uiRoot, $"+{result.ScoreChange}", new Color(0.29f, 0.87f, 0.5f, 1f),
+                    new Vector2(_uiRoot.resolvedStyle.width / 2f, _uiRoot.resolvedStyle.height / 2f));
+            }
+            else if (result.ScoreChange < 0)
+            {
+                UIEffects.Shake(_uiRoot, 5f, 5);
+                UIEffects.VignetteFlash(_uiRoot, new Color(0.97f, 0.27f, 0.27f, 0.5f), 300);
+                UIEffects.FloatingText(_uiRoot, $"{result.ScoreChange}", new Color(0.97f, 0.44f, 0.44f, 1f),
+                    new Vector2(_uiRoot.resolvedStyle.width / 2f, _uiRoot.resolvedStyle.height / 2f));
+            }
+        }
+
+        private void OnTaskCompletedJuice(EmailInstance _)
+        {
+            RefreshHUD();
+            UIEffects.VignetteFlash(_uiRoot, new Color(0.29f, 0.87f, 0.5f, 0.4f), 250);
+            UIEffects.Pop(_hudSlot, 1.05f);
+        }
+
+        private void OnTaskFailedJuice(EmailInstance _)
+        {
+            RefreshHUD();
+            UIEffects.Shake(_uiRoot, 6f, 5);
+            UIEffects.VignetteFlash(_uiRoot, new Color(0.97f, 0.27f, 0.27f, 0.6f), 400);
         }
 
         // --- Callbacks ---

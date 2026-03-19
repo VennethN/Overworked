@@ -223,3 +223,42 @@
     padding: 8px 18px;
     transition: color 350ms ease;
 }
+
+/* ── Juice: Button Press ── */
+.sidebar-item {
+    scale: 1 1;
+    transition: background-color 120ms ease, color 120ms ease, scale 80ms ease-out;
+}
+
+.sidebar-item:active {
+    scale: 0.96 0.96;
+}
+
+/* ── Juice: Score Pop ── */
+.hud-score-pop {
+    scale: 1.15 1.15;
+    color: var(--color-success);
+}
+
+.hud-score-drop {
+    scale: 1.15 1.15;
+    color: var(--color-danger);
+}
+
+/* ── Juice: Timer Danger Pulse ── */
+.hud-timer-danger {
+    color: var(--color-danger);
+    -unity-font-style: bold;
+}
+
+/* ── Juice: New Email Bounce ── */
+.email-item--new {
+    translate: 30px 0;
+    opacity: 0;
+}
+
+/* ── Juice: Streak Glow ── */
+.hud-streak-active {
+    color: var(--color-warning);
+    -unity-font-style: bold;
+}
