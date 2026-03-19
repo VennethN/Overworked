@@ -1,0 +1,296 @@
+.detail-root {
+    flex-grow: 1;
+    background-color: var(--color-bg-surface);
+    border-right-width: 1px;
+    border-right-color: var(--color-border);
+    transition: background-color 350ms ease, border-color 350ms ease;
+}
+
+/* ── Toolbar ── */
+.detail-toolbar {
+    flex-direction: row;
+    align-items: center;
+    padding: 10px 20px;
+    border-bottom-width: 1px;
+    border-bottom-color: var(--color-border);
+    transition: border-color 350ms ease;
+}
+
+.toolbar-btn {
+    padding: 8px 16px;
+    border-radius: var(--radius-md);
+    border-width: 1px;
+    border-color: transparent;
+    font-size: var(--font-size-sm);
+    cursor: link;
+    background-color: transparent;
+    color: var(--color-text-secondary);
+    transition: background-color 150ms ease, border-color 150ms ease, color 150ms ease;
+}
+
+.toolbar-btn:hover {
+    background-color: var(--color-bg-raised);
+    border-color: var(--color-border);
+}
+
+.toolbar-btn--back {
+    color: var(--color-accent);
+    -unity-font-style: bold;
+}
+
+.toolbar-btn--back:hover {
+    background-color: var(--color-accent-dim);
+    border-color: rgba(96,165,250,0.2);
+}
+
+.toolbar-btn--delete {
+    color: var(--color-danger);
+}
+
+.toolbar-btn--delete:hover {
+    background-color: rgba(248,113,113,0.1);
+    border-color: rgba(248,113,113,0.2);
+}
+
+/* ── Header ── */
+.detail-header {
+    flex-direction: row;
+    padding: 24px 28px 18px 28px;
+    align-items: flex-start;
+}
+
+.detail-avatar {
+    width: 44px;
+    height: 44px;
+    border-radius: var(--radius-md);
+    background-color: var(--color-accent);
+    align-items: center;
+    justify-content: center;
+    margin-right: 18px;
+    flex-shrink: 0;
+    transition: background-color 350ms ease;
+}
+
+.avatar-letter {
+    font-size: 20px;
+    color: var(--color-text-on-accent);
+    -unity-font-style: bold;
+}
+
+.detail-header-text {
+    flex-grow: 1;
+}
+
+.detail-sender-row {
+    flex-direction: row;
+    align-items: center;
+    margin-bottom: 6px;
+}
+
+.detail-sender {
+    font-size: var(--font-size-lg);
+    color: var(--color-text-primary);
+    -unity-font-style: bold;
+    margin-right: 10px;
+    transition: color 350ms ease;
+}
+
+.detail-address {
+    font-size: var(--font-size-sm);
+    color: var(--color-text-muted);
+    transition: color 350ms ease;
+}
+
+.detail-subject {
+    font-size: var(--font-size-xl);
+    color: var(--color-text-primary);
+    transition: color 350ms ease;
+}
+
+/* ── Status Banner ── */
+.detail-status-banner {
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    margin: 0 28px;
+    padding: 8px 16px;
+    border-radius: var(--radius-md);
+}
+
+.detail-status-banner--done {
+    background-color: rgba(74,222,128,0.12);
+    border-width: 1px;
+    border-color: rgba(74,222,128,0.3);
+}
+
+.detail-status-banner--expired {
+    background-color: rgba(248,113,113,0.12);
+    border-width: 1px;
+    border-color: rgba(248,113,113,0.3);
+}
+
+.detail-status-text {
+    font-size: var(--font-size-sm);
+    -unity-font-style: bold;
+    letter-spacing: 0.5px;
+}
+
+.detail-status-banner--done .detail-status-text {
+    color: var(--color-success);
+}
+
+.detail-status-banner--expired .detail-status-text {
+    color: var(--color-danger);
+}
+
+/* ── Expiry ── */
+.expiry-bar {
+    height: 4px;
+    margin: 0 28px;
+}
+
+.expiry-bar .unity-progress-bar__background {
+    background-color: var(--color-border-strong);
+    border-radius: 2px;
+    height: 4px;
+    overflow: hidden;
+}
+
+.expiry-bar .unity-progress-bar__progress {
+    background-color: var(--color-warning);
+    border-radius: 2px;
+    height: 4px;
+}
+
+.expiry-bar .unity-progress-bar__title {
+    display: none;
+}
+
+/* ── Scrollable Content Area ── */
+.detail-scroll {
+    flex-grow: 1;
+}
+
+/* Hide scrollbar track/buttons for a clean look */
+.detail-scroll .unity-scroller--vertical {
+    width: 6px;
+}
+
+.detail-scroll .unity-scroller--vertical .unity-base-slider__tracker {
+    background-color: transparent;
+    border-width: 0;
+}
+
+.detail-scroll .unity-scroller--vertical .unity-base-slider__dragger {
+    background-color: var(--color-text-muted);
+    border-radius: 3px;
+    width: 6px;
+    border-width: 0;
+    opacity: 0.4;
+}
+
+.detail-scroll .unity-scroller--vertical .unity-repeat-button {
+    display: none;
+}
+
+/* ── Body ── */
+.detail-body-container {
+    padding: 24px 28px;
+    margin: 16px 28px 8px 28px;
+    background-color: var(--color-body-bg);
+    border-radius: var(--radius-md);
+    border-width: 1px;
+    border-color: var(--color-border);
+    transition: background-color 350ms ease, border-color 350ms ease;
+}
+
+.detail-body {
+    font-size: var(--font-size-md);
+    color: var(--color-text-primary);
+    white-space: normal;
+    transition: color 350ms ease;
+}
+
+/* ── Action Bar ── */
+.detail-action-bar {
+    flex-direction: row;
+    padding: 14px 28px;
+    border-top-width: 1px;
+    border-top-color: var(--color-border);
+    transition: border-color 350ms ease;
+}
+
+.action-btn {
+    padding: 10px 28px;
+    border-radius: var(--radius-md);
+    border-width: 1px;
+    font-size: var(--font-size-md);
+    cursor: link;
+    margin-right: 10px;
+    -unity-font-style: bold;
+    transition: background-color 150ms ease, border-color 150ms ease, color 150ms ease;
+}
+
+.action-btn--reply {
+    background-color: var(--color-accent);
+    border-color: var(--color-accent);
+    color: var(--color-text-on-accent);
+}
+
+.action-btn--reply:hover {
+    background-color: var(--color-accent-hover);
+    border-color: var(--color-accent-hover);
+}
+
+.action-btn--task {
+    background-color: transparent;
+    border-color: var(--color-border-strong);
+    color: var(--color-text-primary);
+    display: none;
+}
+
+.action-btn--task:hover {
+    background-color: var(--color-accent-dim);
+    border-color: var(--color-accent);
+    color: var(--color-accent);
+}
+
+/* ── Inline Reply ── */
+/* Base styles only — transition classes are in Common.uss */
+.inline-reply-slot {
+    margin: 8px 28px 18px 28px;
+    padding: 18px;
+    background-color: var(--color-body-bg);
+    border-radius: var(--radius-md);
+    border-width: 1px;
+    border-color: var(--color-accent);
+}
+
+.inline-reply-slot .reply-prompt {
+    font-size: var(--font-size-sm);
+    color: var(--color-accent);
+    -unity-font-style: bold;
+    margin-bottom: 12px;
+    letter-spacing: 0.5px;
+}
+
+.inline-reply-slot .reply-option-btn {
+    padding: 12px 18px;
+    margin-bottom: 8px;
+    background-color: var(--color-bg-surface);
+    border-radius: var(--radius-md);
+    border-width: 1px;
+    border-color: var(--color-border-strong);
+    color: var(--color-text-primary);
+    font-size: var(--font-size-md);
+    -unity-text-align: middle-left;
+    cursor: link;
+    white-space: normal;
+    transition: background-color 120ms ease, border-color 120ms ease, color 120ms ease;
+}
+
+.inline-reply-slot .reply-option-btn:hover {
+    background-color: var(--color-accent-dim);
+    border-color: var(--color-accent);
+    color: var(--color-accent);
+}

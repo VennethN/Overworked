@@ -1,0 +1,223 @@
+{
+  "emails": [
+    {
+      "id": "hr_vacation_request",
+      "sender": "Sandra Permata",
+      "senderAddress": "s.permata@globodyne.com",
+      "department": "HR",
+      "subject": "Pengajuan Cuti - Tomi Baskara (2 minggu)",
+      "body": "Halo,\n\nTomi Baskara telah mengajukan cuti untuk tanggal 24 Maret - 4 April. Team lead-nya sudah menyetujui. Tinggal butuh tanda tangan kamu.\n\nTolong diproses ya.\n\nSandra",
+      "type": "task",
+      "priority": "medium",
+      "category": "pekerjaan",
+      "expirationSeconds": 65.0,
+      "tags": ["hr", "vacation"],
+      "replyOptions": null,
+      "taskTrigger": {
+        "taskId": "approve_vacation",
+        "description": "Setujui pengajuan cuti Tomi Baskara",
+        "autoCompleteOnOpen": false,
+        "timeoutSeconds": 40.0,
+        "followUp": {
+          "emailId": "hr_vacation_thanks",
+          "delaySeconds": 10.0
+        }
+      }
+    },
+    {
+      "id": "hr_vacation_thanks",
+      "sender": "Tomi Baskara",
+      "senderAddress": "t.baskara@globodyne.com",
+      "department": "Engineering",
+      "subject": "Makasih approval cutinya!",
+      "body": "Halo Pak,\n\nMakasih sudah approve cuti saya. Saya sudah buat handover document dan akan briefing Andi sebelum saya pergi.\n\nSalam,\nTomi",
+      "type": "info",
+      "priority": "low",
+      "category": "sosial",
+      "expirationSeconds": 0,
+      "tags": ["hr"],
+      "replyOptions": null,
+      "taskTrigger": null
+    },
+    {
+      "id": "hr_complaint",
+      "sender": "Sandra Permata",
+      "senderAddress": "s.permata@globodyne.com",
+      "department": "HR",
+      "subject": "RE: Keluhan di Tempat Kerja - Rahasia",
+      "body": "Kami menerima keluhan di tempat kerja yang perlu diteruskan ke kepala departemen yang tepat. Bisa tolong diteruskan ke orang yang benar?\n\nDetail ada di formulir terlampir.",
+      "type": "task",
+      "priority": "high",
+      "category": "utama",
+      "expirationSeconds": 40.0,
+      "tags": ["hr", "urgent", "confidential"],
+      "replyOptions": null,
+      "taskTrigger": {
+        "taskId": "forward_complaint",
+        "description": "Teruskan keluhan ke departemen yang tepat",
+        "autoCompleteOnOpen": false,
+        "timeoutSeconds": 30.0
+      },
+      "expiredFollowUp": {
+        "emailId": "hr_complaint_escalation",
+        "delaySeconds": 6.0
+      }
+    },
+    {
+      "id": "hr_complaint_escalation",
+      "sender": "Sandra Permata",
+      "senderAddress": "s.permata@globodyne.com",
+      "department": "HR",
+      "subject": "RE: Keluhan - BELUM DITERUSKAN",
+      "body": "Keluhan ini sensitif dan sudah melewati SLA 24 jam. Saya terpaksa escalate ke manajemen jika belum ditindaklanjuti hari ini.\n\nTolong segera diproses.",
+      "type": "task",
+      "priority": "critical",
+      "category": "utama",
+      "expirationSeconds": 25.0,
+      "tags": ["hr", "urgent", "critical"],
+      "replyOptions": null,
+      "taskTrigger": {
+        "taskId": "forward_complaint",
+        "description": "Segera teruskan keluhan ke departemen yang tepat",
+        "autoCompleteOnOpen": false,
+        "timeoutSeconds": 20.0
+      }
+    },
+    {
+      "id": "hr_training",
+      "sender": "Departemen HR",
+      "senderAddress": "hr@globodyne.com",
+      "department": "HR",
+      "subject": "Pelatihan Kepatuhan Wajib Deadline Jumat",
+      "body": "Ini pengingat bahwa semua karyawan wajib menyelesaikan pelatihan kepatuhan tahunan sebelum hari Jumat. Apakah kamu sudah menyelesaikannya?",
+      "type": "reply",
+      "priority": "medium",
+      "category": "pekerjaan",
+      "expirationSeconds": 75.0,
+      "tags": ["hr", "training"],
+      "replyOptions": [
+        { "text": "Sudah, saya selesaikan minggu lalu.", "isCorrect": true, "scoreModifier": 10 },
+        {
+          "text": "Nanti aja deh, sempat-sempat.",
+          "isCorrect": false,
+          "scoreModifier": -5,
+          "followUp": {
+            "emailId": "hr_training_reminder",
+            "delaySeconds": 15.0
+          }
+        },
+        { "text": "Kepatuhan itu apa ya?", "isCorrect": false, "scoreModifier": -10 }
+      ],
+      "taskTrigger": null
+    },
+    {
+      "id": "hr_training_reminder",
+      "sender": "Departemen HR",
+      "senderAddress": "hr@globodyne.com",
+      "department": "HR",
+      "subject": "PENGINGAT TERAKHIR: Pelatihan Kepatuhan",
+      "body": "Catatan kami menunjukkan kamu BELUM menyelesaikan pelatihan kepatuhan. Deadline besok. Jika tidak selesai, akan dilaporkan ke manajemen.\n\nLink pelatihan: training.globodyne.com",
+      "type": "task",
+      "priority": "high",
+      "category": "pekerjaan",
+      "expirationSeconds": 40.0,
+      "tags": ["hr", "training", "urgent"],
+      "replyOptions": null,
+      "taskTrigger": {
+        "taskId": "complete_training",
+        "description": "Selesaikan pelatihan kepatuhan",
+        "autoCompleteOnOpen": false,
+        "timeoutSeconds": 30.0
+      }
+    },
+    {
+      "id": "hr_birthday",
+      "sender": "Panitia Sosial Kantor",
+      "senderAddress": "sosial@globodyne.com",
+      "department": "HR",
+      "subject": "Perayaan ulang tahun Janet - tanda tangan kartu!",
+      "body": "Hari Kamis ulang tahun Janet! Kami sedang mengumpulkan tanda tangan untuk kartu ucapan. Balas untuk konfirmasi ya.\n\nKue di ruang istirahat jam 3 sore!",
+      "type": "info",
+      "priority": "low",
+      "category": "sosial",
+      "expirationSeconds": 0,
+      "tags": ["social", "info"],
+      "replyOptions": null,
+      "taskTrigger": null
+    },
+    {
+      "id": "hr_overtime_claim",
+      "sender": "Sandra Permata",
+      "senderAddress": "s.permata@globodyne.com",
+      "department": "HR",
+      "subject": "Klaim Lembur - Rina Dewi (Bulan Maret)",
+      "body": "Halo,\n\nRina Dewi dari tim Marketing mengajukan klaim lembur untuk bulan Maret. Total 12 jam. Sudah diverifikasi oleh manajernya.\n\nTolong disetujui agar bisa diproses di gaji.\n\nSandra",
+      "type": "task",
+      "priority": "medium",
+      "category": "pekerjaan",
+      "expirationSeconds": 55.0,
+      "tags": ["hr", "overtime", "payroll"],
+      "replyOptions": null,
+      "taskTrigger": {
+        "taskId": "approve_overtime",
+        "description": "Setujui klaim lembur Rina Dewi",
+        "autoCompleteOnOpen": false,
+        "timeoutSeconds": 35.0
+      }
+    },
+    {
+      "id": "hr_medical_leave",
+      "sender": "Departemen HR",
+      "senderAddress": "hr@globodyne.com",
+      "department": "HR",
+      "subject": "Sakit - Dokumen dokter butuh persetujuan",
+      "body": "Budi Santoso mengirim surat keterangan dokter untuk 3 hari izin sakit. Perlu persetujuan atasan sebelum dicatat di sistem.\n\nLampiran: surat_keterangan_sakit.pdf",
+      "type": "task",
+      "priority": "medium",
+      "category": "pekerjaan",
+      "expirationSeconds": 60.0,
+      "tags": ["hr", "sick leave", "medical"],
+      "replyOptions": null,
+      "taskTrigger": {
+        "taskId": "approve_sick_leave",
+        "description": "Setujui izin sakit Budi Santoso",
+        "autoCompleteOnOpen": false,
+        "timeoutSeconds": 40.0
+      }
+    },
+    {
+      "id": "hr_policy_update",
+      "sender": "Panitia Kebijakan Perusahaan",
+      "senderAddress": "kebijakan@globodyne.com",
+      "department": "HR",
+      "subject": "Update Kebijakan WFH - Konfirmasi Pemahaman",
+      "body": "Kebijakan Work From Home telah diperbarui mulai bulan depan. Silakan baca dokumen terlampir dan balas dengan konfirmasi bahwa kamu sudah memahami perubahan tersebut.\n\nDeadline: Jumat ini.",
+      "type": "reply",
+      "priority": "medium",
+      "category": "pekerjaan",
+      "expirationSeconds": 80.0,
+      "tags": ["hr", "policy", "wfh"],
+      "replyOptions": [
+        { "text": "Sudah dibaca dan dipahami. Konfirmasi diterima.", "isCorrect": true, "scoreModifier": 10 },
+        { "text": "Terlalu panjang, nanti aja dibaca.", "isCorrect": false, "scoreModifier": -10 },
+        { "text": "Forward ke semua tim.", "isCorrect": false, "scoreModifier": -5 }
+      ],
+      "taskTrigger": null
+    },
+    {
+      "id": "hr_team_building",
+      "sender": "Departemen HR",
+      "senderAddress": "hr@globodyne.com",
+      "department": "HR",
+      "subject": "Pendaftaran Team Building - Sabtu 28 Maret",
+      "body": "Acara team building outdoor akan diadakan Sabtu 28 Maret. Daftar sekarang jika berminat! Tempat terbatas untuk 50 orang.\n\nBiaya ditanggung perusahaan. Tolong konfirmasi kehadiran.",
+      "type": "info",
+      "priority": "low",
+      "category": "sosial",
+      "expirationSeconds": 0,
+      "tags": ["hr", "social", "team building"],
+      "replyOptions": null,
+      "taskTrigger": null
+    }
+  ]
+}

@@ -1,0 +1,28 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements">
+    <Style src="../Shared/Common.uss" />
+    <Style src="HUD.uss" />
+    <ui:VisualElement name="hud-container" class="hud-bar">
+        <ui:VisualElement class="hud-brand">
+            <ui:Label text="MAIL" class="hud-logo" />
+        </ui:VisualElement>
+        <ui:VisualElement class="hud-stats">
+            <ui:VisualElement class="hud-stat-chip hud-stat-chip--score">
+                <ui:Label name="score-label" text="0" class="hud-stat-value" />
+                <ui:Label text="SKOR" class="hud-stat-label" />
+            </ui:VisualElement>
+            <ui:VisualElement class="hud-stat-chip hud-stat-chip--streak">
+                <ui:Label name="streak-label" text="" class="hud-streak-value" />
+            </ui:VisualElement>
+        </ui:VisualElement>
+        <ui:VisualElement class="hud-timer-group">
+            <ui:Label name="day-timer" text="5:00" class="hud-timer" />
+        </ui:VisualElement>
+        <ui:VisualElement class="hud-right-group">
+            <ui:VisualElement class="hud-stat-chip">
+                <ui:Label name="email-count" text="0" class="hud-stat-value" />
+                <ui:Label text="EMAIL" class="hud-stat-label" />
+            </ui:VisualElement>
+            <ui:Button name="theme-toggle-btn" text="Light" class="theme-toggle-btn" />
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>

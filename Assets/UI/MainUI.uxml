@@ -1,0 +1,33 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements">
+    <Style src="Shared/Common.uss" />
+
+    <ui:VisualElement name="root" class="full-screen">
+        <!-- HUD at top -->
+        <ui:VisualElement name="hud-slot" />
+
+        <!-- Main content area: sidebar + content -->
+        <ui:VisualElement name="main-content" style="flex-grow: 1; flex-direction: row;">
+            <!-- Sidebar -->
+            <ui:VisualElement name="sidebar" class="sidebar">
+                <ui:TextField name="search-field" class="sidebar-search" />
+                <ui:VisualElement class="sidebar-divider" />
+                <ui:Button name="tab-all" class="sidebar-item sidebar-item--active" />
+                <ui:Button name="tab-utama" class="sidebar-item" />
+                <ui:Button name="tab-pekerjaan" class="sidebar-item" />
+                <ui:Button name="tab-sosial" class="sidebar-item" />
+                <ui:Button name="tab-promosi" class="sidebar-item" />
+                <ui:VisualElement style="flex-grow: 1;" />
+                <ui:Label name="email-count" text="" class="sidebar-email-count" />
+            </ui:VisualElement>
+
+            <!-- Content panels -->
+            <ui:VisualElement name="content-area" style="flex-grow: 1;">
+                <ui:VisualElement name="inbox-slot" style="flex-grow: 1;" />
+                <ui:VisualElement name="detail-slot" style="flex-grow: 1; display: none;" />
+            </ui:VisualElement>
+        </ui:VisualElement>
+
+        <!-- Game over overlay -->
+        <ui:VisualElement name="gameover-slot" style="display: none; position: absolute; left: 0; top: 0; right: 0; bottom: 0;" />
+    </ui:VisualElement>
+</ui:UXML>

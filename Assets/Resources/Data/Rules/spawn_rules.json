@@ -1,0 +1,60 @@
+{
+  "rules": [
+    {
+      "id": "base_trickle",
+      "type": "interval",
+      "intervalSecondsMin": 8.0,
+      "intervalSecondsMax": 15.0,
+      "emailPool": ["reply", "task", "info"],
+      "emailTags": null,
+      "weight": 1.0,
+      "burstCount": 1,
+      "burstIntervalSeconds": 0,
+      "triggerEvent": null,
+      "activeAfterSeconds": 0,
+      "activeUntilSeconds": -1
+    },
+    {
+      "id": "spam_wave",
+      "type": "interval",
+      "intervalSecondsMin": 20.0,
+      "intervalSecondsMax": 40.0,
+      "emailPool": ["spam"],
+      "emailTags": null,
+      "weight": 0.5,
+      "burstCount": 1,
+      "burstIntervalSeconds": 0,
+      "triggerEvent": null,
+      "activeAfterSeconds": 30,
+      "activeUntilSeconds": -1
+    },
+    {
+      "id": "urgent_pulse",
+      "type": "interval",
+      "intervalSecondsMin": 25.0,
+      "intervalSecondsMax": 45.0,
+      "emailPool": ["task"],
+      "emailTags": ["urgent"],
+      "weight": 0.8,
+      "burstCount": 1,
+      "burstIntervalSeconds": 0,
+      "triggerEvent": null,
+      "activeAfterSeconds": 60,
+      "activeUntilSeconds": -1
+    },
+    {
+      "id": "crisis_burst",
+      "type": "event",
+      "intervalSecondsMin": 0,
+      "intervalSecondsMax": 0,
+      "emailPool": ["task"],
+      "emailTags": ["urgent", "critical"],
+      "weight": 1.0,
+      "burstCount": 5,
+      "burstIntervalSeconds": 2.0,
+      "triggerEvent": "crisis_mode",
+      "activeAfterSeconds": 0,
+      "activeUntilSeconds": -1
+    }
+  ]
+}
