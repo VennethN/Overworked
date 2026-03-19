@@ -5,6 +5,7 @@ using UnityEngine;
 using Overworked.Actions;
 using Overworked.Core;
 using Overworked.Email.Data;
+using Overworked.Minigames;
 
 namespace Overworked.Email
 {
@@ -16,13 +17,15 @@ namespace Overworked.Email
         [SerializeField] private string[] emailJsonPaths = {
             "Data/Emails/emails_general",
             "Data/Emails/emails_hr",
-            "Data/Emails/emails_spam"
+            "Data/Emails/emails_spam",
+            "Data/Emails/emails_responses"
         };
 
         private readonly List<EmailInstance> _inbox = new();
         private EmailDatabase _database;
         private EmailActionHandler _actionHandler;
         private TaskRegistry _taskRegistry;
+        private MinigameRegistry _minigameRegistry;
 
         public IReadOnlyList<EmailInstance> Inbox => _inbox;
         public EmailDatabase Database => _database;
@@ -43,6 +46,7 @@ namespace Overworked.Email
 
             _taskRegistry = new TaskRegistry();
             _actionHandler = new EmailActionHandler(_taskRegistry);
+            _minigameRegistry = new MinigameRegistry();
         }
 
         private void Update()
@@ -143,6 +147,20 @@ namespace Overworked.Email
             {
                 ScheduleFollowUp(email.Definition.taskTrigger.followUp);
             }
+        }
+
+        public IMinigame GetMinigame(string instanceId)
+        {
+            EmailInstance email = FindEmail(instanceId);
+            if (email?.Definition.taskTrigger?.minigameId == null) return null;
+
+            var trigger = email.Definition.taskTrigger;
+            return _minigameRegistry.Create(trigger.minigameId, trigger.minigameDifficulty);
+        }
+
+        public void LoadAdditionalEmails(string[] paths)
+        {
+            _database.LoadFromResources(paths);
         }
 
         public void ClearInbox()

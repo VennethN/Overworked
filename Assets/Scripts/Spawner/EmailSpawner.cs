@@ -18,26 +18,30 @@ namespace Overworked.Spawner
         private float _gameTime;
         private bool _isSpawning;
 
+        // Active email pools for the current session
+        private string[] _activePools;
+
+        // Default pools for arcade mode
+        private static readonly string[] DefaultPools = { "general", "hr", "spam" };
+
         private void Start()
         {
-            LoadRules();
+            LoadRulesFromPath(rulesJsonPath);
 
             GameEvents.OnGameEvent += HandleGameEvent;
-            GameEvents.OnGameStarted += StartSpawning;
         }
 
         private void OnDestroy()
         {
             GameEvents.OnGameEvent -= HandleGameEvent;
-            GameEvents.OnGameStarted -= StartSpawning;
         }
 
-        private void LoadRules()
+        private void LoadRulesFromPath(string path)
         {
-            TextAsset asset = Resources.Load<TextAsset>(rulesJsonPath);
+            TextAsset asset = Resources.Load<TextAsset>(path);
             if (asset == null)
             {
-                Debug.LogWarning($"EmailSpawner: Could not load rules at Resources/{rulesJsonPath}");
+                Debug.LogWarning($"EmailSpawner: Could not load rules at Resources/{path}");
                 return;
             }
 
@@ -54,13 +58,41 @@ namespace Overworked.Spawner
                 }
             }
 
-            Debug.Log($"EmailSpawner: Loaded {_rules.Count} spawn rules.");
+            Debug.Log($"EmailSpawner: Loaded {_rules.Count} spawn rules from {path}.");
+        }
+
+        public void LoadRulesOverride(string path)
+        {
+            _rules.Clear();
+            _ruleNextFireTime.Clear();
+            LoadRulesFromPath(path);
+        }
+
+        public void ResetToDefaultRules()
+        {
+            _rules.Clear();
+            _ruleNextFireTime.Clear();
+            LoadRulesFromPath(rulesJsonPath);
+        }
+
+        /// <summary>
+        /// Set which email pools the spawner draws from.
+        /// Pool names correspond to JSON file names: "general", "hr", "spam", etc.
+        /// </summary>
+        public void SetActivePools(string[] pools)
+        {
+            _activePools = pools;
+            Debug.Log($"EmailSpawner: Active pools set to [{string.Join(", ", pools)}]");
         }
 
         public void StartSpawning()
         {
             _isSpawning = true;
             _gameTime = 0f;
+
+            // Default to all pools if not explicitly set
+            if (_activePools == null)
+                _activePools = DefaultPools;
         }
 
         public void StopSpawning()
@@ -116,19 +148,10 @@ namespace Overworked.Spawner
         {
             if (EmailManager.Instance == null) return;
 
-            EmailDefinition def = EmailManager.Instance.Database.GetRandomFromPool(rule.emailPool, rule.emailTags);
-            if (def == null)
-            {
-                Debug.LogWarning($"EmailSpawner: No emails found for rule '{rule.id}'");
-                return;
-            }
+            EmailDefinition def = EmailManager.Instance.Database.GetRandomFromPools(
+                _activePools, rule.emailPool, rule.emailTags);
 
-            // Apply difficulty scaling to expiration
-            if (difficultyController != null && def.expirationSeconds > 0)
-            {
-                // Create a modified copy so we don't alter the database entry
-                // For now we apply difficulty at the EmailInstance level instead
-            }
+            if (def == null) return; // No matching emails in active pools — silently skip
 
             EmailManager.Instance.ReceiveEmail(def);
         }

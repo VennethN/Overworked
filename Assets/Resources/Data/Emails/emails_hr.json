@@ -25,21 +25,6 @@
       }
     },
     {
-      "id": "hr_vacation_thanks",
-      "sender": "Tomi Baskara",
-      "senderAddress": "t.baskara@globodyne.com",
-      "department": "Engineering",
-      "subject": "Makasih approval cutinya!",
-      "body": "Halo Pak,\n\nMakasih sudah approve cuti saya. Saya sudah buat handover document dan akan briefing Andi sebelum saya pergi.\n\nSalam,\nTomi",
-      "type": "info",
-      "priority": "low",
-      "category": "sosial",
-      "expirationSeconds": 0,
-      "tags": ["hr"],
-      "replyOptions": null,
-      "taskTrigger": null
-    },
-    {
       "id": "hr_complaint",
       "sender": "Sandra Permata",
       "senderAddress": "s.permata@globodyne.com",
@@ -56,31 +41,13 @@
         "taskId": "forward_complaint",
         "description": "Teruskan keluhan ke departemen yang tepat",
         "autoCompleteOnOpen": false,
-        "timeoutSeconds": 30.0
+        "timeoutSeconds": 30.0,
+        "minigameId": "inbox_sort",
+        "minigameDifficulty": "medium"
       },
       "expiredFollowUp": {
         "emailId": "hr_complaint_escalation",
         "delaySeconds": 6.0
-      }
-    },
-    {
-      "id": "hr_complaint_escalation",
-      "sender": "Sandra Permata",
-      "senderAddress": "s.permata@globodyne.com",
-      "department": "HR",
-      "subject": "RE: Keluhan - BELUM DITERUSKAN",
-      "body": "Keluhan ini sensitif dan sudah melewati SLA 24 jam. Saya terpaksa escalate ke manajemen jika belum ditindaklanjuti hari ini.\n\nTolong segera diproses.",
-      "type": "task",
-      "priority": "critical",
-      "category": "utama",
-      "expirationSeconds": 25.0,
-      "tags": ["hr", "urgent", "critical"],
-      "replyOptions": null,
-      "taskTrigger": {
-        "taskId": "forward_complaint",
-        "description": "Segera teruskan keluhan ke departemen yang tepat",
-        "autoCompleteOnOpen": false,
-        "timeoutSeconds": 20.0
       }
     },
     {
@@ -109,26 +76,6 @@
         { "text": "Kepatuhan itu apa ya?", "isCorrect": false, "scoreModifier": -10 }
       ],
       "taskTrigger": null
-    },
-    {
-      "id": "hr_training_reminder",
-      "sender": "Departemen HR",
-      "senderAddress": "hr@globodyne.com",
-      "department": "HR",
-      "subject": "PENGINGAT TERAKHIR: Pelatihan Kepatuhan",
-      "body": "Catatan kami menunjukkan kamu BELUM menyelesaikan pelatihan kepatuhan. Deadline besok. Jika tidak selesai, akan dilaporkan ke manajemen.\n\nLink pelatihan: training.globodyne.com",
-      "type": "task",
-      "priority": "high",
-      "category": "pekerjaan",
-      "expirationSeconds": 40.0,
-      "tags": ["hr", "training", "urgent"],
-      "replyOptions": null,
-      "taskTrigger": {
-        "taskId": "complete_training",
-        "description": "Selesaikan pelatihan kepatuhan",
-        "autoCompleteOnOpen": false,
-        "timeoutSeconds": 30.0
-      }
     },
     {
       "id": "hr_birthday",

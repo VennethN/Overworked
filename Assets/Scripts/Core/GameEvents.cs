@@ -27,6 +27,12 @@ namespace Overworked.Core
         // Spawner triggers
         public static event Action<string> OnGameEvent;
 
+        // Story mode
+        public static event Action<int> OnDayStarted;
+        public static event Action<int, bool> OnDayEnded;
+        public static event Action OnDialogueStarted;
+        public static event Action OnDialogueCompleted;
+
         // Fire methods
         public static void FireEmailReceived(EmailInstance e) => OnEmailReceived?.Invoke(e);
         public static void FireEmailOpened(EmailInstance e) => OnEmailOpened?.Invoke(e);
@@ -40,6 +46,10 @@ namespace Overworked.Core
         public static void FireGameResumed() => OnGameResumed?.Invoke();
         public static void FireGameOver(ScoreData data) => OnGameOver?.Invoke(data);
         public static void FireGameEvent(string eventId) => OnGameEvent?.Invoke(eventId);
+        public static void FireDayStarted(int day) => OnDayStarted?.Invoke(day);
+        public static void FireDayEnded(int day, bool passed) => OnDayEnded?.Invoke(day, passed);
+        public static void FireDialogueStarted() => OnDialogueStarted?.Invoke();
+        public static void FireDialogueCompleted() => OnDialogueCompleted?.Invoke();
 
         public static void ClearAll()
         {
@@ -55,6 +65,10 @@ namespace Overworked.Core
             OnGameResumed = null;
             OnGameOver = null;
             OnGameEvent = null;
+            OnDayStarted = null;
+            OnDayEnded = null;
+            OnDialogueStarted = null;
+            OnDialogueCompleted = null;
         }
     }
 }

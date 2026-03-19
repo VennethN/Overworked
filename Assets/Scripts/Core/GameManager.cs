@@ -7,6 +7,7 @@ using Overworked.UI;
 namespace Overworked.Core
 {
     public enum GameState { Menu, Playing, Paused, GameOver }
+    public enum GameMode { Arcade, Story }
 
     public class GameManager : MonoBehaviour
     {
@@ -20,11 +21,15 @@ namespace Overworked.Core
         [SerializeField] private UIManager uiManager;
 
         private GameState _state = GameState.Menu;
+        private GameMode _mode = GameMode.Arcade;
         private float _timeRemaining;
+        private float _currentDayLength;
 
         public GameState State => _state;
+        public GameMode CurrentMode => _mode;
         public float TimeRemaining => _timeRemaining;
-        public float DayLength => dayLengthSeconds;
+        public float DayLength => _currentDayLength;
+        public EmailSpawner Spawner => emailSpawner;
 
         private void Awake()
         {
@@ -34,12 +39,12 @@ namespace Overworked.Core
                 return;
             }
             Instance = this;
+            _currentDayLength = dayLengthSeconds;
         }
 
         private void Start()
         {
-            // Auto-start for now (replace with menu later)
-            StartGame();
+            uiManager?.ShowModeSelect();
         }
 
         private void Update()
@@ -55,21 +60,54 @@ namespace Overworked.Core
             }
         }
 
+        public void StartArcade()
+        {
+            _mode = GameMode.Arcade;
+            _currentDayLength = dayLengthSeconds;
+            emailSpawner?.ResetToDefaultRules();
+            emailSpawner?.SetActivePools(new[] { "general", "hr", "spam" });
+            StartGame();
+        }
+
+        public void StartStoryDay(float dayLength, float difficulty, string spawnRulesOverride, string[] emailPools)
+        {
+            _mode = GameMode.Story;
+            _currentDayLength = dayLength;
+
+            if (!string.IsNullOrEmpty(spawnRulesOverride))
+                emailSpawner?.LoadRulesOverride(spawnRulesOverride);
+            else
+                emailSpawner?.ResetToDefaultRules();
+
+            // Set active email pools for this day
+            if (emailPools != null && emailPools.Length > 0)
+                emailSpawner?.SetActivePools(emailPools);
+
+            var diff = emailSpawner?.GetComponent<DifficultyController>();
+            if (diff != null)
+                diff.SetDifficultyOverride(difficulty);
+
+            StartGame();
+        }
+
         public void StartGame()
         {
-            _timeRemaining = dayLengthSeconds;
+            _timeRemaining = _currentDayLength;
             _state = GameState.Playing;
 
             // Reset systems
             EmailManager.Instance?.ClearInbox();
             ScoreManager.Instance?.ResetScore();
 
+            var diff = emailSpawner?.GetComponent<DifficultyController>();
+            if (_mode == GameMode.Arcade)
+                diff?.ResetDifficulty();
+
             emailSpawner?.StartSpawning();
             uiManager?.HideGameOver();
             uiManager?.ShowInbox();
 
             GameEvents.FireGameStarted();
-            Debug.Log("Game Started!");
         }
 
         public void PauseGame()
@@ -98,9 +136,27 @@ namespace Overworked.Core
                 : default;
 
             GameEvents.FireGameOver(finalScore);
-            uiManager?.ShowGameOver(finalScore);
 
-            Debug.Log($"Game Over! Final Score: {finalScore.totalScore}");
+            if (_mode == GameMode.Arcade)
+            {
+                // Save arcade high score
+                var save = SaveManager.Load();
+                if (finalScore.totalScore > save.arcadeHighScore)
+                {
+                    save.arcadeHighScore = finalScore.totalScore;
+                    SaveManager.Save(save);
+                }
+                uiManager?.ShowGameOver(finalScore);
+            }
+            // Story mode end is handled by StoryManager via OnGameOver event
+        }
+
+        public void ReturnToMenu()
+        {
+            _state = GameState.Menu;
+            emailSpawner?.StopSpawning();
+            EmailManager.Instance?.ClearInbox();
+            uiManager?.ShowModeSelect();
         }
 
         private void OnDestroy()

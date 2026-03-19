@@ -1,0 +1,144 @@
+{
+  "days": [
+    {
+      "dayNumber": 1,
+      "title": "Hari Pertama Kerja",
+      "dayLengthSeconds": 180,
+      "scoreGoal": 50,
+      "difficulty": 0.2,
+      "preDialogue": [
+        {
+          "speaker": "Pak Michael",
+          "avatar": "michael",
+          "text": "Selamat datang di Globodyne! Hari ini kamu mulai sebagai admin email baru."
+        },
+        {
+          "speaker": "Pak Michael",
+          "avatar": "michael",
+          "text": "Tugasnya simpel: balas email penting, kerjakan tugas, dan hapus spam. Mudah kan?"
+        },
+        {
+          "speaker": "Kamu",
+          "avatar": "player",
+          "text": "Siap, Pak!"
+        }
+      ],
+      "postDialogue": {
+        "pass": [
+          {
+            "speaker": "Pak Michael",
+            "avatar": "michael",
+            "text": "Bagus! Hari pertama yang produktif. Besok kita lihat apakah kamu bisa handle lebih banyak."
+          }
+        ],
+        "fail": [
+          {
+            "speaker": "Pak Michael",
+            "avatar": "michael",
+            "text": "Hmm, hasilnya kurang memuaskan. Coba lagi besok ya."
+          }
+        ]
+      },
+      "spawnRulesOverride": null,
+      "scriptedEmails": [
+        {
+          "emailId": "story_d1_welcome",
+          "triggerAtSeconds": 3.0
+        }
+      ],
+      "specialEmailJsonPath": "Data/Emails/emails_story_day1",
+      "availableEmailPools": ["general"],
+      "unlockedAfterDay": 0
+    },
+    {
+      "dayNumber": 2,
+      "title": "Spam Mulai Masuk",
+      "dayLengthSeconds": 210,
+      "scoreGoal": 80,
+      "difficulty": 0.35,
+      "preDialogue": [
+        {
+          "speaker": "Pak Michael",
+          "avatar": "michael",
+          "text": "Hari ini kita mulai dapat banyak spam. Hati-hati, jangan sampai kamu balas spam!"
+        },
+        {
+          "speaker": "Pak Michael",
+          "avatar": "michael",
+          "text": "Hapus spam untuk bonus. Tapi kalau kamu balas, skormu turun."
+        },
+        {
+          "speaker": "Kamu",
+          "avatar": "player",
+          "text": "Oke, saya perhatikan baik-baik."
+        }
+      ],
+      "postDialogue": {
+        "pass": [
+          {
+            "speaker": "Pak Michael",
+            "avatar": "michael",
+            "text": "Hebat! Kamu berhasil membedakan email asli dan spam. Hari depan akan lebih menantang."
+          }
+        ],
+        "fail": [
+          {
+            "speaker": "Pak Michael",
+            "avatar": "michael",
+            "text": "Terlalu banyak spam yang lolos. Perhatikan lebih teliti lagi."
+          }
+        ]
+      },
+      "spawnRulesOverride": null,
+      "scriptedEmails": [],
+      "specialEmailJsonPath": null,
+      "availableEmailPools": ["general", "spam"],
+      "unlockedAfterDay": 1
+    },
+    {
+      "dayNumber": 3,
+      "title": "Deadline Ketat",
+      "dayLengthSeconds": 240,
+      "scoreGoal": 120,
+      "difficulty": 0.5,
+      "preDialogue": [
+        {
+          "speaker": "Pak Michael",
+          "avatar": "michael",
+          "text": "Ada deadline besar hari ini. Email akan masuk lebih cepat dan batas waktunya lebih ketat."
+        },
+        {
+          "speaker": "Sandra Permata",
+          "avatar": "sandra",
+          "text": "Pak, email dari HR juga perlu diurus hari ini. Jangan sampai ada yang expired!"
+        },
+        {
+          "speaker": "Kamu",
+          "avatar": "player",
+          "text": "Baik, saya akan prioritaskan yang urgent."
+        }
+      ],
+      "postDialogue": {
+        "pass": [
+          {
+            "speaker": "Pak Michael",
+            "avatar": "michael",
+            "text": "Luar biasa! Kamu berhasil handle semua di bawah tekanan. Kamu mulai cocok di sini."
+          }
+        ],
+        "fail": [
+          {
+            "speaker": "Pak Michael",
+            "avatar": "michael",
+            "text": "Banyak email yang expired. Coba lebih cepat lagi, prioritaskan yang penting."
+          }
+        ]
+      },
+      "spawnRulesOverride": null,
+      "scriptedEmails": [],
+      "specialEmailJsonPath": null,
+      "availableEmailPools": ["general", "hr", "spam"],
+      "unlockedAfterDay": 2
+    }
+  ]
+}

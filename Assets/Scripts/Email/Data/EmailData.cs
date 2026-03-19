@@ -35,6 +35,8 @@ namespace Overworked.Email.Data
         public bool autoCompleteOnOpen;
         public float timeoutSeconds;
         public FollowUp followUp;
+        public string minigameId;
+        public string minigameDifficulty;
     }
 
     [Serializable]

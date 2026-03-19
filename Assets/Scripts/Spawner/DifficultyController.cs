@@ -33,5 +33,10 @@ namespace Overworked.Spawner
         {
             _elapsedGameTime = 0f;
         }
+
+        public void SetDifficultyOverride(float normalizedDifficulty)
+        {
+            _elapsedGameTime = Mathf.Clamp01(normalizedDifficulty) * difficultyPlateauSeconds;
+        }
     }
 }

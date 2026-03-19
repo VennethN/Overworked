@@ -18,6 +18,8 @@
         "description": "Setujui anggaran Q3",
         "autoCompleteOnOpen": false,
         "timeoutSeconds": 30.0,
+        "minigameId": "number_crunch",
+        "minigameDifficulty": "medium",
         "followUp": {
           "emailId": "gen_budget_thanks",
           "delaySeconds": 8.0
@@ -26,41 +28,6 @@
       "expiredFollowUp": {
         "emailId": "gen_budget_escalation",
         "delaySeconds": 5.0
-      }
-    },
-    {
-      "id": "gen_budget_thanks",
-      "sender": "Karen Wijaya",
-      "senderAddress": "k.wijaya@globodyne.com",
-      "department": "Keuangan",
-      "subject": "RE: Anggaran Q3 Perlu Persetujuan",
-      "body": "Terima kasih sudah approve anggarannya! Saya akan presentasikan di rapat besok.\n\nSalam,\nKaren",
-      "type": "info",
-      "priority": "low",
-      "category": "pekerjaan",
-      "expirationSeconds": 0,
-      "tags": ["finance"],
-      "replyOptions": null,
-      "taskTrigger": null
-    },
-    {
-      "id": "gen_budget_escalation",
-      "sender": "Michael Taufik",
-      "senderAddress": "m.taufik@globodyne.com",
-      "department": "Manajemen",
-      "subject": "FW: Anggaran Q3 - BELUM DISETUJUI",
-      "body": "Karen bilang anggaran Q3 belum di-approve. Rapat direksi besok pagi dan kita butuh ini segera. Tolong selesaikan SEKARANG.\n\n- Michael",
-      "type": "task",
-      "priority": "critical",
-      "category": "utama",
-      "expirationSeconds": 25.0,
-      "tags": ["finance", "urgent", "critical"],
-      "replyOptions": null,
-      "taskTrigger": {
-        "taskId": "approve_budget",
-        "description": "Segera setujui anggaran Q3",
-        "autoCompleteOnOpen": false,
-        "timeoutSeconds": 20.0
       }
     },
     {
@@ -112,57 +79,6 @@
       "taskTrigger": null
     },
     {
-      "id": "gen_standup_confirmed",
-      "sender": "Dimas Pratama",
-      "senderAddress": "d.pratama@globodyne.com",
-      "department": "Engineering",
-      "subject": "RE: RE: Standup pindah jam 2 siang?",
-      "body": "Mantap, sudah saya update di calendar. Thanks!",
-      "type": "info",
-      "priority": "low",
-      "category": "pekerjaan",
-      "expirationSeconds": 0,
-      "tags": ["scheduling"],
-      "replyOptions": null,
-      "taskTrigger": null
-    },
-    {
-      "id": "gen_standup_pushback",
-      "sender": "Dimas Pratama",
-      "senderAddress": "d.pratama@globodyne.com",
-      "department": "Engineering",
-      "subject": "RE: RE: Standup pindah jam 2 siang?",
-      "body": "Hmm, masalahnya saya memang benar-benar bentrok jam 10. Beberapa anggota tim lain juga. Bisa reconsider? Mungkin kita vote di grup?",
-      "type": "reply",
-      "priority": "medium",
-      "category": "pekerjaan",
-      "expirationSeconds": 45.0,
-      "tags": ["scheduling"],
-      "replyOptions": [
-        { "text": "Oke deh, jam 2 siang aja kalau gitu.", "isCorrect": true, "scoreModifier": 10 },
-        { "text": "Tetap jam 10. Final.", "isCorrect": false, "scoreModifier": -10 }
-      ],
-      "taskTrigger": null
-    },
-    {
-      "id": "gen_replyall_disaster",
-      "sender": "Michael Taufik",
-      "senderAddress": "m.taufik@globodyne.com",
-      "department": "Manajemen",
-      "subject": "RE: Standup pindah jam 2 siang? - TOLONG JANGAN REPLY ALL",
-      "body": "Email barusan terkirim ke seluruh divisi Engineering (50+ orang). Tolong lebih hati-hati lagi ya.\n\nSalam,\nMichael",
-      "type": "reply",
-      "priority": "high",
-      "category": "utama",
-      "expirationSeconds": 30.0,
-      "tags": ["management"],
-      "replyOptions": [
-        { "text": "Maaf Pak, tidak akan terulang.", "isCorrect": true, "scoreModifier": 5 },
-        { "text": "Reply All: Maaf semuanya!", "isCorrect": false, "scoreModifier": -20 }
-      ],
-      "taskTrigger": null
-    },
-    {
       "id": "gen_server_down",
       "sender": "Alex Chandra",
       "senderAddress": "a.chandra@globodyne.com",
@@ -188,41 +104,6 @@
       "expiredFollowUp": {
         "emailId": "gen_server_ceo_angry",
         "delaySeconds": 5.0
-      }
-    },
-    {
-      "id": "gen_server_restored",
-      "sender": "Alex Chandra",
-      "senderAddress": "a.chandra@globodyne.com",
-      "department": "IT",
-      "subject": "RE: Server produksi tidak merespons - RESOLVED",
-      "body": "Server sudah berhasil di-restart dan berjalan normal. Downtime total 8 menit. Terima kasih atas respon cepatnya!\n\nSaya akan kirim post-mortem report besok.",
-      "type": "info",
-      "priority": "low",
-      "category": "utama",
-      "expirationSeconds": 0,
-      "tags": ["it"],
-      "replyOptions": null,
-      "taskTrigger": null
-    },
-    {
-      "id": "gen_server_ceo_angry",
-      "sender": "Direktur Utama",
-      "senderAddress": "ceo@globodyne.com",
-      "department": "Eksekutif",
-      "subject": "RE: Server Down - Kenapa tidak ada yang approve restart?",
-      "body": "Saya baru dengar server produksi down lebih dari 15 menit karena tidak ada yang approve restart. Ini mengakibatkan kerugian signifikan.\n\nSaya minta penjelasan tertulis hari ini.",
-      "type": "task",
-      "priority": "critical",
-      "category": "utama",
-      "expirationSeconds": 20.0,
-      "tags": ["management", "critical"],
-      "replyOptions": null,
-      "taskTrigger": {
-        "taskId": "write_explanation",
-        "description": "Tulis penjelasan ke CEO tentang server downtime",
-        "autoCompleteOnOpen": false,
-        "timeoutSeconds": 15.0
       }
     },
     {
@@ -261,7 +142,9 @@
         "taskId": "file_report",
         "description": "Submit laporan progres bulanan",
         "autoCompleteOnOpen": false,
-        "timeoutSeconds": 40.0
+        "timeoutSeconds": 40.0,
+        "minigameId": "typing_test",
+        "minigameDifficulty": "medium"
       }
     },
     {
@@ -292,21 +175,6 @@
       "taskTrigger": null
     },
     {
-      "id": "gen_password_done",
-      "sender": "IT Helpdesk",
-      "senderAddress": "helpdesk@globodyne.com",
-      "department": "IT",
-      "subject": "RE: Permintaan Reset Password dari J. Wibowo - Selesai",
-      "body": "Password sudah di-reset dan temporary password sudah dikirim ke J. Wibowo. Terima kasih atas approval-nya.",
-      "type": "info",
-      "priority": "low",
-      "category": "pekerjaan",
-      "expirationSeconds": 0,
-      "tags": ["it"],
-      "replyOptions": null,
-      "taskTrigger": null
-    },
-    {
       "id": "gen_new_hire",
       "sender": "Lisa Anggraini",
       "senderAddress": "l.anggraini@globodyne.com",
@@ -324,29 +192,13 @@
         "description": "Setujui permintaan peralatan karyawan baru",
         "autoCompleteOnOpen": false,
         "timeoutSeconds": 45.0,
+        "minigameId": "inbox_sort",
+        "minigameDifficulty": "easy",
         "followUp": {
           "emailId": "gen_new_hire_intro",
           "delaySeconds": 15.0
         }
       }
-    },
-    {
-      "id": "gen_new_hire_intro",
-      "sender": "Lisa Anggraini",
-      "senderAddress": "l.anggraini@globodyne.com",
-      "department": "HR",
-      "subject": "RE: Karyawan baru - Perkenalan Senin pagi",
-      "body": "Peralatannya sudah di-order! Btw, bisa kamu luangkan 15 menit Senin pagi untuk welcome session dengan developer baru? Dia akan di tim kamu.\n\nTerima kasih!",
-      "type": "reply",
-      "priority": "low",
-      "category": "pekerjaan",
-      "expirationSeconds": 60.0,
-      "tags": ["hr", "onboarding"],
-      "replyOptions": [
-        { "text": "Tentu, saya siapkan welcome session.", "isCorrect": true, "scoreModifier": 10 },
-        { "text": "Sibuk, minta orang lain aja.", "isCorrect": false, "scoreModifier": -5 }
-      ],
-      "taskTrigger": null
     },
     {
       "id": "gen_vendor_contract",
@@ -392,24 +244,6 @@
           }
         },
         { "text": "Batal aja meeting-nya.", "isCorrect": false, "scoreModifier": -15 }
-      ],
-      "taskTrigger": null
-    },
-    {
-      "id": "gen_meeting_room_conflict",
-      "sender": "Head of Sales",
-      "senderAddress": "sales.head@globodyne.com",
-      "department": "Sales",
-      "subject": "RE: Ruang A - Kami yang duluan booking",
-      "body": "Sebenarnya tim kami yang booking duluan minggu lalu. Bisa dicek lagi? Kalau memang kamu perlu, kami bisa pindah tapi tolong konfirmasi secepatnya.",
-      "type": "reply",
-      "priority": "high",
-      "category": "pekerjaan",
-      "expirationSeconds": 35.0,
-      "tags": ["scheduling"],
-      "replyOptions": [
-        { "text": "Maaf, kami yang pindah saja.", "isCorrect": true, "scoreModifier": 10 },
-        { "text": "Oke, silakan pakai Ruang A.", "isCorrect": true, "scoreModifier": 5 }
       ],
       "taskTrigger": null
     },
@@ -468,7 +302,9 @@
         "taskId": "complete_expense_report",
         "description": "Lengkapi laporan pengeluaran dengan bukti kwitansi",
         "autoCompleteOnOpen": false,
-        "timeoutSeconds": 55.0
+        "timeoutSeconds": 55.0,
+        "minigameId": "number_crunch",
+        "minigameDifficulty": "hard"
       }
     },
     {

@@ -3,7 +3,10 @@ using UnityEngine.UIElements;
 using Overworked.Actions;
 using Overworked.Core;
 using Overworked.Email;
+using Overworked.Minigames;
+using Overworked.Email.Data;
 using Overworked.Scoring;
+using Overworked.Story.Data;
 
 namespace Overworked.UI
 {
@@ -19,11 +22,17 @@ namespace Overworked.UI
         private VisualElement _detailSlot;
         private VisualElement _hudSlot;
         private VisualElement _gameoverSlot;
+        private VisualElement _modeselectSlot;
+        private VisualElement _dialogueSlot;
+        private VisualElement _daysummarySlot;
+        private VisualElement _minigameSlot;
         private VisualElement _sidebar;
+        private VisualElement _mainContent;
 
         private InboxController _inbox;
         private EmailDetailController _detail;
         private HUDController _hud;
+        private ModeSelectController _modeSelect;
 
         private VisualElement _uiRoot;
         private bool _isLightMode;
@@ -31,6 +40,12 @@ namespace Overworked.UI
         private float _timerUpdateAccumulator;
         private const float TIMER_UPDATE_INTERVAL = 0.25f;
 
+        private IMinigame _activeMinigame;
+        private string _minigameEmailInstanceId;
+
+        // Story data loaded once for day selection + StoryManager
+        private StoryCollection _storyData;
+        public StoryCollection StoryData => _storyData;
 
         private void OnEnable()
         {
@@ -41,7 +56,17 @@ namespace Overworked.UI
             _detailSlot = root.Q("detail-slot");
             _hudSlot = root.Q("hud-slot");
             _gameoverSlot = root.Q("gameover-slot");
+            _modeselectSlot = root.Q("modeselect-slot");
+            _dialogueSlot = root.Q("dialogue-slot");
+            _daysummarySlot = root.Q("daysummary-slot");
+            _minigameSlot = root.Q("minigame-slot");
             _sidebar = root.Q("sidebar");
+            _mainContent = root.Q("main-content");
+
+            // Load story data
+            var storyAsset = Resources.Load<TextAsset>("Data/Story/story_data");
+            if (storyAsset != null)
+                _storyData = JsonUtility.FromJson<StoryCollection>(storyAsset.text);
 
             // Instantiate templates into slots
             if (inboxPanelTemplate != null)
@@ -70,8 +95,6 @@ namespace Overworked.UI
             GameEvents.OnEmailReplied += (_, _) => RefreshHUD();
             GameEvents.OnTaskCompleted += _ => RefreshHUD();
             GameEvents.OnTaskFailed += _ => RefreshHUD();
-
-            ShowInbox();
         }
 
         private void Update()
@@ -86,11 +109,123 @@ namespace Overworked.UI
                 _detail?.UpdateExpiryBar();
             }
 
+            // Tick active minigame
+            _activeMinigame?.Tick(Time.deltaTime);
+
             // Update HUD timer
             if (GameManager.Instance != null)
                 _hud?.UpdateTimer(GameManager.Instance.TimeRemaining);
 
             _hud?.UpdateEmailCount(EmailManager.Instance.ActiveCount);
+        }
+
+        public void ShowModeSelect()
+        {
+            // Hide game UI
+            _mainContent.style.display = DisplayStyle.None;
+            _hudSlot.style.display = DisplayStyle.None;
+            HideGameOver();
+
+            // Show mode select overlay
+            _modeselectSlot.style.display = DisplayStyle.Flex;
+            _modeSelect = new ModeSelectController(_modeselectSlot, OnArcadeSelected, OnStoryDaySelected);
+        }
+
+        public void HideModeSelect()
+        {
+            _modeselectSlot.Clear();
+            _modeselectSlot.style.display = DisplayStyle.None;
+
+            // Show game UI
+            _mainContent.style.display = DisplayStyle.Flex;
+            _hudSlot.style.display = DisplayStyle.Flex;
+        }
+
+        private void OnArcadeSelected()
+        {
+            HideModeSelect();
+            GameManager.Instance?.StartArcade();
+        }
+
+        private DayDefinition _pendingDay;
+
+        private void OnStoryDaySelected(int dayNumber)
+        {
+            if (_storyData?.days == null) return;
+
+            DayDefinition day = null;
+            foreach (var d in _storyData.days)
+            {
+                if (d.dayNumber == dayNumber) { day = d; break; }
+            }
+            if (day == null) return;
+
+            _pendingDay = day;
+            HideModeSelect();
+
+            // Show pre-day dialogue if available
+            if (day.preDialogue != null && day.preDialogue.Length > 0)
+            {
+                ShowDialogue(day.preDialogue, OnPreDialogueComplete);
+            }
+            else
+            {
+                StartPendingDay();
+            }
+        }
+
+        private void OnPreDialogueComplete()
+        {
+            HideDialogue();
+            StartPendingDay();
+        }
+
+        private void StartPendingDay()
+        {
+            if (_pendingDay == null) return;
+
+            // Load day-specific emails if defined
+            if (!string.IsNullOrEmpty(_pendingDay.specialEmailJsonPath))
+                EmailManager.Instance?.LoadAdditionalEmails(new[] { _pendingDay.specialEmailJsonPath });
+
+            // Start the day first (this clears inbox + coroutines)
+            GameManager.Instance?.StartStoryDay(
+                _pendingDay.dayLengthSeconds,
+                _pendingDay.difficulty,
+                _pendingDay.spawnRulesOverride,
+                _pendingDay.availableEmailPools);
+
+            // Schedule scripted emails AFTER StartGame so ClearInbox doesn't kill them
+            if (_pendingDay.scriptedEmails != null)
+            {
+                foreach (var scripted in _pendingDay.scriptedEmails)
+                {
+                    EmailManager.Instance?.ScheduleFollowUp(new FollowUp
+                    {
+                        emailId = scripted.emailId,
+                        delaySeconds = scripted.triggerAtSeconds
+                    });
+                }
+            }
+        }
+
+        public void ShowDialogue(DialogueLine[] lines, System.Action onComplete)
+        {
+            // Hide game UI during dialogue
+            _mainContent.style.display = DisplayStyle.None;
+            _hudSlot.style.display = DisplayStyle.None;
+
+            _dialogueSlot.style.display = DisplayStyle.Flex;
+            new DialogueController(_dialogueSlot, lines, onComplete);
+        }
+
+        public void HideDialogue()
+        {
+            _dialogueSlot.Clear();
+            _dialogueSlot.style.display = DisplayStyle.None;
+
+            _mainContent.style.display = DisplayStyle.Flex;
+            _hudSlot.style.display = DisplayStyle.Flex;
         }
 
         public void ShowInbox()
@@ -153,25 +288,23 @@ namespace Overworked.UI
             AddStatLine(container, "Spam Replied To", score.spamReplied.ToString());
             AddStatLine(container, "Highest Streak", score.highestStreak.ToString());
 
-            var restartBtn = new Button(() => GameManager.Instance?.StartGame());
-            restartBtn.text = "Play Again";
-            restartBtn.style.marginTop = 24;
-            restartBtn.style.paddingTop = 10;
-            restartBtn.style.paddingBottom = 10;
-            restartBtn.style.paddingLeft = 32;
-            restartBtn.style.paddingRight = 32;
-            restartBtn.style.fontSize = 16;
-            restartBtn.style.backgroundColor = new Color(0.91f, 0.27f, 0.38f, 1f);
-            restartBtn.style.color = Color.white;
-            restartBtn.style.borderTopWidth = 0;
-            restartBtn.style.borderBottomWidth = 0;
-            restartBtn.style.borderLeftWidth = 0;
-            restartBtn.style.borderRightWidth = 0;
-            restartBtn.style.borderTopLeftRadius = 6;
-            restartBtn.style.borderTopRightRadius = 6;
-            restartBtn.style.borderBottomLeftRadius = 6;
-            restartBtn.style.borderBottomRightRadius = 6;
-            container.Add(restartBtn);
+            var btnRow = new VisualElement();
+            btnRow.style.flexDirection = FlexDirection.Row;
+            btnRow.style.marginTop = 24;
+
+            var restartBtn = CreateOverlayButton("Main Lagi", new Color(0.91f, 0.27f, 0.38f, 1f),
+                () => GameManager.Instance?.StartArcade());
+            btnRow.Add(restartBtn);
+
+            var spacer = new VisualElement();
+            spacer.style.width = 12;
+            btnRow.Add(spacer);
+
+            var menuBtn = CreateOverlayButton("Menu", new Color(0.235f, 0.306f, 0.416f, 1f),
+                () => GameManager.Instance?.ReturnToMenu());
+            btnRow.Add(menuBtn);
+
+            container.Add(btnRow);
 
             overlay.Add(container);
             overlay.style.alignItems = Align.Center;
@@ -199,6 +332,28 @@ namespace Overworked.UI
                 _gameoverSlot.Clear();
                 _gameoverSlot.style.display = DisplayStyle.None;
             }
+        }
+
+        private Button CreateOverlayButton(string text, Color bgColor, System.Action onClick)
+        {
+            var btn = new Button(() => onClick?.Invoke());
+            btn.text = text;
+            btn.style.paddingTop = 10;
+            btn.style.paddingBottom = 10;
+            btn.style.paddingLeft = 32;
+            btn.style.paddingRight = 32;
+            btn.style.fontSize = 16;
+            btn.style.backgroundColor = bgColor;
+            btn.style.color = Color.white;
+            btn.style.borderTopWidth = 0;
+            btn.style.borderBottomWidth = 0;
+            btn.style.borderLeftWidth = 0;
+            btn.style.borderRightWidth = 0;
+            btn.style.borderTopLeftRadius = 6;
+            btn.style.borderTopRightRadius = 6;
+            btn.style.borderBottomLeftRadius = 6;
+            btn.style.borderBottomRightRadius = 6;
+            return btn;
         }
 
         private void AddStatLine(VisualElement parent, string label, string value)
@@ -263,8 +418,56 @@ namespace Overworked.UI
         private void OnTaskClicked()
         {
             if (_detail?.CurrentEmail == null) return;
-            EmailManager.Instance?.CompleteTask(_detail.CurrentEmail.InstanceId);
-            ShowInbox();
+
+            string instanceId = _detail.CurrentEmail.InstanceId;
+
+            // Check if this task requires a minigame
+            IMinigame minigame = EmailManager.Instance?.GetMinigame(instanceId);
+            if (minigame != null)
+            {
+                ShowMinigame(minigame, instanceId);
+            }
+            else
+            {
+                EmailManager.Instance?.CompleteTask(instanceId);
+                ShowInbox();
+            }
+        }
+
+        private void ShowMinigame(IMinigame minigame, string emailInstanceId)
+        {
+            _activeMinigame = minigame;
+            _minigameEmailInstanceId = emailInstanceId;
+
+            _minigameSlot.Clear();
+            _minigameSlot.style.display = DisplayStyle.Flex;
+
+            minigame.BuildUI(_minigameSlot);
+            minigame.OnCompleted += OnMinigameCompleted;
+            minigame.Start();
+        }
+
+        private void OnMinigameCompleted(MinigameResult result)
+        {
+            if (_activeMinigame != null)
+            {
+                _activeMinigame.OnCompleted -= OnMinigameCompleted;
+                // Delay cleanup so player can see the result
+                _minigameSlot.schedule.Execute(() =>
+                {
+                    _activeMinigame?.Cleanup();
+                    _activeMinigame = null;
+                    _minigameSlot.Clear();
+                    _minigameSlot.style.display = DisplayStyle.None;
+
+                    if (result.Success)
+                    {
+                        EmailManager.Instance?.CompleteTask(_minigameEmailInstanceId);
+                    }
+                    _minigameEmailInstanceId = null;
+                    ShowInbox();
+                }).ExecuteLater(1500);
+            }
         }
 
         private void OnDeleteClicked()

@@ -7,8 +7,7 @@ namespace Overworked.Email
     public class EmailDatabase
     {
         private readonly Dictionary<string, EmailDefinition> _emailsById = new();
-        private readonly Dictionary<string, List<EmailDefinition>> _emailsByTag = new();
-        private readonly Dictionary<EmailType, List<EmailDefinition>> _emailsByType = new();
+        private readonly Dictionary<string, List<EmailDefinition>> _emailsByPool = new();
 
         public int Count => _emailsById.Count;
 
@@ -23,44 +22,40 @@ namespace Overworked.Email
                     continue;
                 }
 
+                // Derive pool name from file path: "Data/Emails/emails_general" -> "general"
+                string poolName = ExtractPoolName(path);
+
                 EmailCollection collection = JsonUtility.FromJson<EmailCollection>(asset.text);
                 if (collection?.emails == null) continue;
 
                 foreach (EmailDefinition def in collection.emails)
                 {
                     def.ParseEnums();
-                    RegisterEmail(def);
+                    _emailsById[def.id] = def;
+
+                    // Index by pool
+                    if (!_emailsByPool.ContainsKey(poolName))
+                        _emailsByPool[poolName] = new List<EmailDefinition>();
+                    _emailsByPool[poolName].Add(def);
                 }
             }
 
-            Debug.Log($"EmailDatabase: Loaded {_emailsById.Count} emails.");
+            Debug.Log($"EmailDatabase: Loaded {_emailsById.Count} emails across {_emailsByPool.Count} pools.");
         }
 
-        private void RegisterEmail(EmailDefinition def)
+        private string ExtractPoolName(string resourcePath)
         {
-            if (string.IsNullOrEmpty(def.id))
-            {
-                Debug.LogWarning("EmailDatabase: Skipping email with no id.");
-                return;
-            }
+            // "Data/Emails/emails_general" -> "general"
+            // "Data/Emails/emails_story_day1" -> "story_day1"
+            string fileName = resourcePath;
+            int lastSlash = fileName.LastIndexOf('/');
+            if (lastSlash >= 0)
+                fileName = fileName.Substring(lastSlash + 1);
 
-            _emailsById[def.id] = def;
+            if (fileName.StartsWith("emails_"))
+                fileName = fileName.Substring("emails_".Length);
 
-            // Index by type
-            if (!_emailsByType.ContainsKey(def.parsedType))
-                _emailsByType[def.parsedType] = new List<EmailDefinition>();
-            _emailsByType[def.parsedType].Add(def);
-
-            // Index by tags
-            if (def.tags != null)
-            {
-                foreach (string tag in def.tags)
-                {
-                    if (!_emailsByTag.ContainsKey(tag))
-                        _emailsByTag[tag] = new List<EmailDefinition>();
-                    _emailsByTag[tag].Add(def);
-                }
-            }
+            return fileName;
         }
 
         public EmailDefinition GetById(string id)
@@ -68,71 +63,75 @@ namespace Overworked.Email
             return _emailsById.GetValueOrDefault(id);
         }
 
-        public List<EmailDefinition> GetByTag(string tag)
+        /// <summary>
+        /// Pick a random email from the specified pools, optionally filtered by type and tags.
+        /// Only emails belonging to the listed pools are candidates.
+        /// </summary>
+        public EmailDefinition GetRandomFromPools(string[] poolNames, string[] typeFilter, string[] tagFilter)
         {
-            return _emailsByTag.GetValueOrDefault(tag, new List<EmailDefinition>());
-        }
+            if (poolNames == null || poolNames.Length == 0) return null;
 
-        public List<EmailDefinition> GetByType(EmailType type)
-        {
-            return _emailsByType.GetValueOrDefault(type, new List<EmailDefinition>());
-        }
-
-        public EmailDefinition GetRandom(EmailType type)
-        {
-            List<EmailDefinition> pool = GetByType(type);
-            if (pool.Count == 0) return null;
-            return pool[Random.Range(0, pool.Count)];
-        }
-
-        public EmailDefinition GetRandomWithTag(string tag)
-        {
-            List<EmailDefinition> pool = GetByTag(tag);
-            if (pool.Count == 0) return null;
-            return pool[Random.Range(0, pool.Count)];
-        }
-
-        public EmailDefinition GetRandomFromPool(string[] typeNames, string[] tags)
-        {
             List<EmailDefinition> candidates = new();
 
-            if (typeNames != null)
+            foreach (string pool in poolNames)
             {
-                foreach (string typeName in typeNames)
-                {
-                    EmailType type = typeName.ToLower() switch
-                    {
-                        "reply" => EmailType.Reply,
-                        "task" => EmailType.Task,
-                        "spam" => EmailType.Spam,
-                        "info" => EmailType.Info,
-                        _ => EmailType.Info
-                    };
-                    candidates.AddRange(GetByType(type));
-                }
+                if (_emailsByPool.TryGetValue(pool, out var list))
+                    candidates.AddRange(list);
             }
 
-            // Filter by tags if specified
-            if (tags != null && tags.Length > 0)
+            // Filter by type if specified
+            if (typeFilter != null && typeFilter.Length > 0)
             {
-                candidates = candidates.FindAll(def =>
+                candidates.RemoveAll(def =>
                 {
-                    if (def.tags == null) return false;
-                    foreach (string requiredTag in tags)
+                    foreach (string typeName in typeFilter)
                     {
-                        bool found = false;
+                        EmailType type = typeName.ToLower() switch
+                        {
+                            "reply" => EmailType.Reply,
+                            "task" => EmailType.Task,
+                            "spam" => EmailType.Spam,
+                            "info" => EmailType.Info,
+                            _ => EmailType.Info
+                        };
+                        if (def.parsedType == type) return false;
+                    }
+                    return true;
+                });
+            }
+
+            // Filter by tags if specified (email must have at least one matching tag)
+            if (tagFilter != null && tagFilter.Length > 0)
+            {
+                candidates.RemoveAll(def =>
+                {
+                    if (def.tags == null) return true;
+                    foreach (string requiredTag in tagFilter)
+                    {
                         foreach (string emailTag in def.tags)
                         {
-                            if (emailTag == requiredTag) { found = true; break; }
+                            if (emailTag == requiredTag) return false;
                         }
-                        if (found) return true;
                     }
-                    return false;
+                    return true;
                 });
             }
 
             if (candidates.Count == 0) return null;
             return candidates[Random.Range(0, candidates.Count)];
+        }
+
+        // Keep old method signature for backward compatibility with spawner
+        public EmailDefinition GetRandomFromPool(string[] typeNames, string[] tags)
+        {
+            // Use all pools except "responses"
+            List<string> pools = new();
+            foreach (var key in _emailsByPool.Keys)
+            {
+                if (key != "responses")
+                    pools.Add(key);
+            }
+            return GetRandomFromPools(pools.ToArray(), typeNames, tags);
         }
     }
 }
