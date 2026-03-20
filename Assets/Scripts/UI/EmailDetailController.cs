@@ -140,11 +140,20 @@ namespace Overworked.UI
             var options = _currentEmail.Definition.replyOptions;
             if (options == null) return;
 
-            for (int i = 0; i < options.Length; i++)
+            // Build shuffled index array so correct answer isn't always first
+            int[] order = new int[options.Length];
+            for (int i = 0; i < order.Length; i++) order[i] = i;
+            for (int i = order.Length - 1; i > 0; i--)
             {
-                int index = i;
-                var btn = new Button(() => _onReplyChosen?.Invoke(_currentEmail, index));
-                btn.text = options[i].text;
+                int j = UnityEngine.Random.Range(0, i + 1);
+                (order[i], order[j]) = (order[j], order[i]);
+            }
+
+            for (int i = 0; i < order.Length; i++)
+            {
+                int originalIndex = order[i];
+                var btn = new Button(() => _onReplyChosen?.Invoke(_currentEmail, originalIndex));
+                btn.text = options[originalIndex].text;
                 btn.AddToClassList("reply-option-btn");
                 _inlineReplySlot.Add(btn);
             }

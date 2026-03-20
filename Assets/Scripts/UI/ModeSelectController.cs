@@ -12,17 +12,19 @@ namespace Overworked.UI
         private readonly VisualElement _root;
         private readonly Action _onArcade;
         private readonly Action<int> _onStoryDay;
+        private readonly Action _onSettings;
 
         private VisualElement _nameInputView;
         private VisualElement _mainView;
         private VisualElement _daySelectView;
         private StoryCollection _storyData;
 
-        public ModeSelectController(VisualElement root, Action onArcade, Action<int> onStoryDay)
+        public ModeSelectController(VisualElement root, Action onArcade, Action<int> onStoryDay, Action onSettings = null)
         {
             _root = root;
             _onArcade = onArcade;
             _onStoryDay = onStoryDay;
+            _onSettings = onSettings;
 
             LoadStoryData();
             BuildUI();
@@ -215,6 +217,34 @@ namespace Overworked.UI
                 highScore.style.color = new Color(0.392f, 0.455f, 0.545f, 1f);
                 highScore.style.marginTop = 24;
                 container.Add(highScore);
+            }
+
+            // Settings button
+            if (_onSettings != null)
+            {
+                var settingsBtn = new Button(() => _onSettings.Invoke());
+                settingsBtn.text = "Settings";
+                settingsBtn.style.marginTop = 20;
+                settingsBtn.style.paddingTop = 8;
+                settingsBtn.style.paddingBottom = 8;
+                settingsBtn.style.paddingLeft = 20;
+                settingsBtn.style.paddingRight = 20;
+                settingsBtn.style.fontSize = 12;
+                settingsBtn.style.backgroundColor = new Color(0.118f, 0.161f, 0.212f, 1f);
+                settingsBtn.style.color = new Color(0.58f, 0.639f, 0.722f, 1f);
+                settingsBtn.style.borderTopWidth = 1;
+                settingsBtn.style.borderBottomWidth = 1;
+                settingsBtn.style.borderLeftWidth = 1;
+                settingsBtn.style.borderRightWidth = 1;
+                settingsBtn.style.borderTopColor = new Color(0.235f, 0.306f, 0.416f, 1f);
+                settingsBtn.style.borderBottomColor = new Color(0.235f, 0.306f, 0.416f, 1f);
+                settingsBtn.style.borderLeftColor = new Color(0.235f, 0.306f, 0.416f, 1f);
+                settingsBtn.style.borderRightColor = new Color(0.235f, 0.306f, 0.416f, 1f);
+                settingsBtn.style.borderTopLeftRadius = 5;
+                settingsBtn.style.borderTopRightRadius = 5;
+                settingsBtn.style.borderBottomLeftRadius = 5;
+                settingsBtn.style.borderBottomRightRadius = 5;
+                container.Add(settingsBtn);
             }
         }
 

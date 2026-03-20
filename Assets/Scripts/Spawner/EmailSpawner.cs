@@ -21,6 +21,9 @@ namespace Overworked.Spawner
         // Active email pools for the current session
         private string[] _activePools;
 
+        // When set, interval/event spawns pick only from these ids (still filtered by rule type/tags)
+        private string[] _spawnEmailIdWhitelist;
+
         // Default pools for arcade mode
         private static readonly string[] DefaultPools = { "general", "hr", "spam" };
 
@@ -83,6 +86,22 @@ namespace Overworked.Spawner
         {
             _activePools = pools;
             Debug.Log($"EmailSpawner: Active pools set to [{string.Join(", ", pools)}]");
+        }
+
+        /// <summary>
+        /// Restrict random spawns to these email ids (null or empty = use active pools only).
+        /// </summary>
+        public void SetSpawnEmailIdWhitelist(string[] emailIds)
+        {
+            if (emailIds == null || emailIds.Length == 0)
+            {
+                _spawnEmailIdWhitelist = null;
+                Debug.Log("EmailSpawner: Spawn whitelist cleared (pool-based spawning).");
+                return;
+            }
+
+            _spawnEmailIdWhitelist = (string[])emailIds.Clone();
+            Debug.Log($"EmailSpawner: Spawn whitelist active ({_spawnEmailIdWhitelist.Length} ids).");
         }
 
         public void StartSpawning()
@@ -148,10 +167,19 @@ namespace Overworked.Spawner
         {
             if (EmailManager.Instance == null) return;
 
-            EmailDefinition def = EmailManager.Instance.Database.GetRandomFromPools(
-                _activePools, rule.emailPool, rule.emailTags);
+            EmailDefinition def;
+            if (_spawnEmailIdWhitelist != null && _spawnEmailIdWhitelist.Length > 0)
+            {
+                def = EmailManager.Instance.Database.GetRandomFromIdList(
+                    _spawnEmailIdWhitelist, rule.emailPool, rule.emailTags);
+            }
+            else
+            {
+                def = EmailManager.Instance.Database.GetRandomFromPools(
+                    _activePools, rule.emailPool, rule.emailTags);
+            }
 
-            if (def == null) return; // No matching emails in active pools — silently skip
+            if (def == null) return; // No matching emails — silently skip
 
             EmailManager.Instance.ReceiveEmail(def);
         }

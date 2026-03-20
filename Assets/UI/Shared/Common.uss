@@ -32,12 +32,12 @@
     --color-row-border-left: transparent;
     --color-shadow: rgba(0,0,0,0.08);
 
-    --font-size-xs: 7px;
-    --font-size-sm: 9px;
-    --font-size-md: 10px;
-    --font-size-lg: 12px;
-    --font-size-xl: 14px;
-    --font-size-title: 16px;
+    --font-size-xs: 11px;
+    --font-size-sm: 13px;
+    --font-size-md: 15px;
+    --font-size-lg: 18px;
+    --font-size-xl: 22px;
+    --font-size-title: 28px;
 
     --radius-sm: 3px;
     --radius-md: 6px;

@@ -22,6 +22,11 @@ namespace Overworked.Story.Data
         public ScriptedEmail[] scriptedEmails;
         public string specialEmailJsonPath;
         public string[] availableEmailPools;
+        /// <summary>
+        /// When non-empty, random spawns (spawn_rules intervals/events) pick only from these email ids,
+        /// still filtered by each rule's type and tags. Omitted or empty = use availableEmailPools as before.
+        /// </summary>
+        public string[] spawnEmailIds;
         public int unlockedAfterDay;
     }
 

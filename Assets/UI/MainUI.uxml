@@ -33,5 +33,6 @@
         <ui:VisualElement name="dialogue-slot" style="display: none; position: absolute; left: 0; top: 0; right: 0; bottom: 0;" />
         <ui:VisualElement name="daysummary-slot" style="display: none; position: absolute; left: 0; top: 0; right: 0; bottom: 0;" />
         <ui:VisualElement name="minigame-slot" style="display: none; position: absolute; left: 0; top: 0; right: 0; bottom: 0;" />
+        <ui:VisualElement name="settings-slot" style="display: none; position: absolute; left: 0; top: 0; right: 0; bottom: 0;" />
     </ui:VisualElement>
 </ui:UXML>

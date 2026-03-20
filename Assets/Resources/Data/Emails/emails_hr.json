@@ -11,7 +11,10 @@
       "priority": "medium",
       "category": "pekerjaan",
       "expirationSeconds": 65.0,
-      "tags": ["hr", "vacation"],
+      "tags": [
+        "hr",
+        "vacation"
+      ],
       "replyOptions": null,
       "taskTrigger": {
         "taskId": "approve_vacation",
@@ -35,7 +38,11 @@
       "priority": "high",
       "category": "utama",
       "expirationSeconds": 40.0,
-      "tags": ["hr", "urgent", "confidential"],
+      "tags": [
+        "hr",
+        "urgent",
+        "confidential"
+      ],
       "replyOptions": null,
       "taskTrigger": {
         "taskId": "forward_complaint",
@@ -61,9 +68,16 @@
       "priority": "medium",
       "category": "pekerjaan",
       "expirationSeconds": 75.0,
-      "tags": ["hr", "training"],
+      "tags": [
+        "hr",
+        "training"
+      ],
       "replyOptions": [
-        { "text": "Sudah, saya selesaikan minggu lalu.", "isCorrect": true, "scoreModifier": 10 },
+        {
+          "text": "Sudah, saya selesaikan minggu lalu.",
+          "isCorrect": true,
+          "scoreModifier": 10
+        },
         {
           "text": "Nanti aja deh, sempat-sempat.",
           "isCorrect": false,
@@ -73,7 +87,11 @@
             "delaySeconds": 15.0
           }
         },
-        { "text": "Kepatuhan itu apa ya?", "isCorrect": false, "scoreModifier": -10 }
+        {
+          "text": "Kepatuhan itu apa ya?",
+          "isCorrect": false,
+          "scoreModifier": -10
+        }
       ],
       "taskTrigger": null
     },
@@ -88,7 +106,10 @@
       "priority": "low",
       "category": "sosial",
       "expirationSeconds": 0,
-      "tags": ["social", "info"],
+      "tags": [
+        "social",
+        "info"
+      ],
       "replyOptions": null,
       "taskTrigger": null
     },
@@ -103,7 +124,11 @@
       "priority": "medium",
       "category": "pekerjaan",
       "expirationSeconds": 55.0,
-      "tags": ["hr", "overtime", "payroll"],
+      "tags": [
+        "hr",
+        "overtime",
+        "payroll"
+      ],
       "replyOptions": null,
       "taskTrigger": {
         "taskId": "approve_overtime",
@@ -123,7 +148,11 @@
       "priority": "medium",
       "category": "pekerjaan",
       "expirationSeconds": 60.0,
-      "tags": ["hr", "sick leave", "medical"],
+      "tags": [
+        "hr",
+        "sick leave",
+        "medical"
+      ],
       "replyOptions": null,
       "taskTrigger": {
         "taskId": "approve_sick_leave",
@@ -143,11 +172,27 @@
       "priority": "medium",
       "category": "pekerjaan",
       "expirationSeconds": 80.0,
-      "tags": ["hr", "policy", "wfh"],
+      "tags": [
+        "hr",
+        "policy",
+        "wfh"
+      ],
       "replyOptions": [
-        { "text": "Sudah dibaca dan dipahami. Konfirmasi diterima.", "isCorrect": true, "scoreModifier": 10 },
-        { "text": "Terlalu panjang, nanti aja dibaca.", "isCorrect": false, "scoreModifier": -10 },
-        { "text": "Forward ke semua tim.", "isCorrect": false, "scoreModifier": -5 }
+        {
+          "text": "Sudah dibaca dan dipahami. Konfirmasi diterima.",
+          "isCorrect": true,
+          "scoreModifier": 10
+        },
+        {
+          "text": "Terlalu panjang, nanti aja dibaca.",
+          "isCorrect": false,
+          "scoreModifier": -10
+        },
+        {
+          "text": "Forward ke semua tim.",
+          "isCorrect": false,
+          "scoreModifier": -5
+        }
       ],
       "taskTrigger": null
     },
@@ -162,8 +207,1004 @@
       "priority": "low",
       "category": "sosial",
       "expirationSeconds": 0,
-      "tags": ["hr", "social", "team building"],
+      "tags": [
+        "hr",
+        "social",
+        "team building"
+      ],
       "replyOptions": null,
+      "taskTrigger": null
+    },
+    {
+      "id": "hr_dental_enrollment",
+      "sender": "Benefit Center",
+      "senderAddress": "benefit@globodyne.com",
+      "department": "HR",
+      "subject": "Jendela pendaftaran tambahan asuransi gigi",
+      "body": "Halo,\n\nProvider asuransi gigi membuka periode pendaftaran tambahan 15-31 Maret. Jika sebelumnya kamu melewatkan enroll, bisa daftar lewat portal benefit.\n\nDetail paket terlampir.",
+      "type": "info",
+      "priority": "low",
+      "category": "promosi",
+      "expirationSeconds": 0,
+      "tags": [
+        "hr",
+        "benefits",
+        "info"
+      ],
+      "replyOptions": null,
+      "taskTrigger": null
+    },
+    {
+      "id": "hr_timesheet_correction",
+      "sender": "Payroll",
+      "senderAddress": "payroll@globodyne.com",
+      "department": "HR",
+      "subject": "Timesheet Maret - jam lembur tidak cocok dengan absensi",
+      "body": "Sistem menandai selisih antara klaim lembur dan log akses kantor untuk minggu 10-14 Maret. Tolong perbaiki entri timesheet atau lampirkan penjelasan singkat agar gaji bisa diproses tepat waktu.",
+      "type": "task",
+      "priority": "high",
+      "category": "pekerjaan",
+      "expirationSeconds": 58.0,
+      "tags": [
+        "hr",
+        "payroll",
+        "deadline"
+      ],
+      "replyOptions": null,
+      "taskTrigger": {
+        "taskId": "file_report",
+        "description": "Perbaiki timesheet atau lampirkan penjelasan selisih lembur",
+        "autoCompleteOnOpen": false,
+        "timeoutSeconds": 40.0,
+        "minigameId": "number_crunch",
+        "minigameDifficulty": "easy"
+      }
+    },
+    {
+      "id": "hr_id_card_retake",
+      "sender": "HR Admin",
+      "senderAddress": "hr-admin@globodyne.com",
+      "department": "HR",
+      "subject": "Foto ID card buram - perlu foto ulang",
+      "body": "Hasil cetak kartu akses kamu ditolak vendor karena foto terlalu gelap. Bisa datang ke ruang HR jam kerja untuk foto ulang?\n\nBalas ya supaya kami booking slot.",
+      "type": "reply",
+      "priority": "low",
+      "category": "pekerjaan",
+      "expirationSeconds": 95.0,
+      "tags": [
+        "hr",
+        "admin"
+      ],
+      "replyOptions": [
+        {
+          "text": "Besok jam 11 saya bisa ke HR.",
+          "isCorrect": true,
+          "scoreModifier": 8
+        },
+        {
+          "text": "Lusa jam 3 sore, apakah masih buka?",
+          "isCorrect": true,
+          "scoreModifier": 8
+        },
+        {
+          "text": "Pakai foto selfie dari HP saya aja, kirim lewat WA.",
+          "isCorrect": false,
+          "scoreModifier": -10
+        }
+      ],
+      "taskTrigger": null
+    },
+    {
+      "id": "hr_referral_bonus",
+      "sender": "Talent Acquisition",
+      "senderAddress": "talent@globodyne.com",
+      "department": "HR",
+      "subject": "Program bonus rujukan engineer - konfirmasi minat",
+      "body": "Kami sedang buka banyak posisi engineer. Kalau kamu punya kandidat yang cocok, ajak apply lewat link rujukan internal. Bonus tetap berlaku sesuai kebijakan terbaru.\n\nBalas \"minat\" jika mau kami kirimkan template pesan untuk dibagikan.",
+      "type": "reply",
+      "priority": "low",
+      "category": "pekerjaan",
+      "expirationSeconds": 100.0,
+      "tags": [
+        "hr",
+        "recruiting"
+      ],
+      "replyOptions": [
+        {
+          "text": "Minat, kirimkan template dan link rujukan.",
+          "isCorrect": true,
+          "scoreModifier": 5
+        },
+        {
+          "text": "Tidak minat saat ini.",
+          "isCorrect": true,
+          "scoreModifier": 3
+        },
+        {
+          "text": "Rekrut semua teman saya tanpa screening, cepat saja.",
+          "isCorrect": false,
+          "scoreModifier": -15
+        }
+      ],
+      "taskTrigger": null
+    },
+    {
+      "id": "hr_whistleblower_route",
+      "sender": "Sandra Permata",
+      "senderAddress": "s.permata@globodyne.com",
+      "department": "HR",
+      "subject": "Kotak saran anonim - eskalasi ke unit yang tepat",
+      "body": "Kami menerima masukan anonim terkait prosedur pengadaan. Perlu dirutekan ke unit audit internal vs legal. Bisa tolong proses routing sesuai alur whistleblower?\n\nDetail ringkas terlampir (tanpa nama pengirim).",
+      "type": "task",
+      "priority": "high",
+      "category": "utama",
+      "expirationSeconds": 45.0,
+      "tags": [
+        "hr",
+        "confidential",
+        "urgent"
+      ],
+      "replyOptions": null,
+      "taskTrigger": {
+        "taskId": "forward_complaint",
+        "description": "Rutekan masukan anonim ke unit sesuai prosedur",
+        "autoCompleteOnOpen": false,
+        "timeoutSeconds": 32.0,
+        "minigameId": "inbox_sort",
+        "minigameDifficulty": "medium"
+      }
+    },
+    {
+      "id": "hr_blk_01",
+      "sender": "Sandra Permata",
+      "senderAddress": "s.permata@globodyne.com",
+      "department": "HR",
+      "subject": "Cuti tahunan Budi Santoso (10 hari kerja)",
+      "body": "Halo,\n\nBudi Santoso mengajukan cuti 7–18 April. Manajer langsung sudah setuju.\n\nMohon otorisasi akhir dari HR.\n\nTerima kasih,\nSandra",
+      "type": "task",
+      "priority": "medium",
+      "category": "pekerjaan",
+      "expirationSeconds": 60.0,
+      "tags": [
+        "hr",
+        "deadline"
+      ],
+      "replyOptions": null,
+      "taskTrigger": {
+        "taskId": "approve_vacation",
+        "description": "Setujui cuti Budi Santoso",
+        "autoCompleteOnOpen": false,
+        "timeoutSeconds": 35.0
+      }
+    },
+    {
+      "id": "hr_blk_02",
+      "sender": "Departemen HR",
+      "senderAddress": "hr@globodyne.com",
+      "department": "HR",
+      "subject": "Pengingat: modul anti-pelecehan harus selesai minggu ini",
+      "body": "Karyawan Globodyne wajib menyelesaikan modul pelatihan anti-pelecehan sebelum Jumat.\n\nSudah kamu kerjakan?",
+      "type": "reply",
+      "priority": "high",
+      "category": "pekerjaan",
+      "expirationSeconds": 50.0,
+      "tags": [
+        "hr",
+        "training",
+        "deadline",
+        "urgent"
+      ],
+      "replyOptions": [
+        {
+          "text": "Sudah selesai semua modulnya.",
+          "isCorrect": true,
+          "scoreModifier": 8
+        },
+        {
+          "text": "Nanti malam saya kerjakan.",
+          "isCorrect": false,
+          "scoreModifier": -4
+        },
+        {
+          "text": "Saya skip dulu, deadline kan masih lama.",
+          "isCorrect": false,
+          "scoreModifier": -10
+        }
+      ],
+      "taskTrigger": null
+    },
+    {
+      "id": "hr_blk_03",
+      "sender": "Rizki Ananda",
+      "senderAddress": "r.ananda@globodyne.com",
+      "department": "HR",
+      "subject": "INFO: jam konsultasi benefit kesehatan",
+      "body": "Hai tim,\n\nBesok jam 10–12 ada konsultan asuransi kesehatan di ruang meeting 3B. Silakan datang jika ada pertanyaan tentang paket benefit.\n\nRizki",
+      "type": "info",
+      "priority": "low",
+      "category": "sosial",
+      "expirationSeconds": 0,
+      "tags": [
+        "hr",
+        "benefits",
+        "info"
+      ],
+      "replyOptions": null,
+      "taskTrigger": null
+    },
+    {
+      "id": "hr_blk_04",
+      "sender": "Sandra Permata",
+      "senderAddress": "s.permata@globodyne.com",
+      "department": "HR",
+      "subject": "Keluhan anonim — perlu routing ke atasan",
+      "body": "Kami menerima keluhan kerja yang harus diteruskan ke pihak yang berwenang.\n\nMohon pilih jalur eskalasi yang tepat sesuai SOP.",
+      "type": "task",
+      "priority": "high",
+      "category": "utama",
+      "expirationSeconds": 45.0,
+      "tags": [
+        "hr",
+        "urgent"
+      ],
+      "replyOptions": null,
+      "taskTrigger": {
+        "taskId": "forward_complaint",
+        "description": "Teruskan keluhan ke jalur yang benar",
+        "autoCompleteOnOpen": false,
+        "timeoutSeconds": 28.0,
+        "minigameId": "inbox_sort",
+        "minigameDifficulty": "medium"
+      }
+    },
+    {
+      "id": "hr_blk_05",
+      "sender": "Departemen HR",
+      "senderAddress": "hr@globodyne.com",
+      "department": "HR",
+      "subject": "Laporan insiden kecil di pantry — butuh dokumentasi",
+      "body": "Ada laporan tumpahan dan kerusakan ringan di pantry lantai 5.\n\nHR meminta laporan formal singkat untuk asuransi gedung.",
+      "type": "task",
+      "priority": "medium",
+      "category": "pekerjaan",
+      "expirationSeconds": 55.0,
+      "tags": [
+        "hr",
+        "deadline"
+      ],
+      "replyOptions": null,
+      "taskTrigger": {
+        "taskId": "file_report",
+        "description": "Kirim laporan insiden pantry lantai 5",
+        "autoCompleteOnOpen": false,
+        "timeoutSeconds": 32.0
+      }
+    },
+    {
+      "id": "hr_blk_06",
+      "sender": "Maya Kusuma",
+      "senderAddress": "m.kusuma@globodyne.com",
+      "department": "HR",
+      "subject": "Undangan wawancara internal — posisi analis data",
+      "body": "Kami membuka posisi analis data untuk proyek Jakarta.\n\nApakah kamu punya rekan di tim yang layak direkomendasikan?",
+      "type": "reply",
+      "priority": "medium",
+      "category": "pekerjaan",
+      "expirationSeconds": 70.0,
+      "tags": [
+        "hr",
+        "recruiting"
+      ],
+      "replyOptions": [
+        {
+          "text": "Saya akan cek dan kirim CV jika ada yang cocok.",
+          "isCorrect": true,
+          "scoreModifier": 6
+        },
+        {
+          "text": "Tidak kenal siapa pun untuk posisi itu.",
+          "isCorrect": true,
+          "scoreModifier": 2
+        },
+        {
+          "text": "Saya forward ke grup tanpa izin mereka.",
+          "isCorrect": false,
+          "scoreModifier": -8
+        }
+      ],
+      "taskTrigger": null
+    },
+    {
+      "id": "hr_blk_07",
+      "sender": "Sandra Permata",
+      "senderAddress": "s.permata@globodyne.com",
+      "department": "HR",
+      "subject": "Persetujuan laptop baru — Divisi Operasional",
+      "body": "Permintaan laptop pengganti untuk staf lapangan sudah diverifikasi IT.\n\nButuh cap digital HR sebelum pembelian.",
+      "type": "task",
+      "priority": "medium",
+      "category": "pekerjaan",
+      "expirationSeconds": 48.0,
+      "tags": [
+        "hr",
+        "benefits"
+      ],
+      "replyOptions": null,
+      "taskTrigger": {
+        "taskId": "approve_equipment",
+        "description": "Setujui pengadaan laptop operasional",
+        "autoCompleteOnOpen": false,
+        "timeoutSeconds": 30.0
+      }
+    },
+    {
+      "id": "hr_blk_08",
+      "sender": "Departemen HR",
+      "senderAddress": "hr@globodyne.com",
+      "department": "HR",
+      "subject": "Pembaruan kebijakan cuti sakit tanpa surat (ringan)",
+      "body": "Mulai bulan depan, cuti sakit 1 hari tanpa surat dokter tetap dihitung sebagai cuti tahunan jika melebihi 2 kali per kuartal.\n\nIni hanya pengumuman; tidak perlu balasan wajib.",
+      "type": "info",
+      "priority": "low",
+      "category": "utama",
+      "expirationSeconds": 0,
+      "tags": [
+        "hr",
+        "deadline"
+      ],
+      "replyOptions": null,
+      "taskTrigger": null
+    },
+    {
+      "id": "hr_blk_09",
+      "sender": "Rizki Ananda",
+      "senderAddress": "r.ananda@globodyne.com",
+      "department": "HR",
+      "subject": "Budget pelatihan leadership Q2 — butuh otorisasi",
+      "body": "Rencana pelatihan leadership Q2 sudah disusun Finance.\n\nHR membutuhkan persetujuan akhir sebelum PO dikeluarkan.",
+      "type": "task",
+      "priority": "high",
+      "category": "utama",
+      "expirationSeconds": 40.0,
+      "tags": [
+        "hr",
+        "training",
+        "urgent"
+      ],
+      "replyOptions": null,
+      "taskTrigger": {
+        "taskId": "approve_budget",
+        "description": "Setujui budget pelatihan leadership Q2",
+        "autoCompleteOnOpen": false,
+        "timeoutSeconds": 25.0
+      }
+    },
+    {
+      "id": "hr_blk_10",
+      "sender": "Sandra Permata",
+      "senderAddress": "s.permata@globodyne.com",
+      "department": "HR",
+      "subject": "Cuti melahirkan — revisi tanggal mulai",
+      "body": "Karyawan mengajukan perubahan tanggal mulai cuti melahirkan sesuai rekomendasi dokter.\n\nMohon verifikasi dan setujui jika sesuai kebijakan.",
+      "type": "task",
+      "priority": "high",
+      "category": "pekerjaan",
+      "expirationSeconds": 52.0,
+      "tags": [
+        "hr",
+        "benefits",
+        "urgent"
+      ],
+      "replyOptions": null,
+      "taskTrigger": {
+        "taskId": "approve_vacation",
+        "description": "Setujui revisi cuti melahirkan",
+        "autoCompleteOnOpen": false,
+        "timeoutSeconds": 34.0
+      }
+    },
+    {
+      "id": "hr_blk_11",
+      "sender": "Departemen HR",
+      "senderAddress": "hr@globodyne.com",
+      "department": "HR",
+      "subject": "Survey kepuasan karyawan — 3 menit saja",
+      "body": "Globodyne membuka survey kepuasan singkat.\n\nPartisipasi kamu membantu kami memperbaiki fasilitas dan benefit.",
+      "type": "reply",
+      "priority": "low",
+      "category": "sosial",
+      "expirationSeconds": 90.0,
+      "tags": [
+        "hr",
+        "benefits"
+      ],
+      "replyOptions": [
+        {
+          "text": "Saya isi survey sekarang.",
+          "isCorrect": true,
+          "scoreModifier": 5
+        },
+        {
+          "text": "Nanti saja kalau sempat.",
+          "isCorrect": false,
+          "scoreModifier": -3
+        },
+        {
+          "text": "Saya isi asal-asalan biar cepat.",
+          "isCorrect": false,
+          "scoreModifier": -12
+        }
+      ],
+      "taskTrigger": null
+    },
+    {
+      "id": "hr_blk_12",
+      "sender": "Maya Kusuma",
+      "senderAddress": "m.kusuma@globodyne.com",
+      "department": "HR",
+      "subject": "Keluhan interpersonal — eskalasi ke People Partner",
+      "body": "Ada keluhan terkait komunikasi antar-tim yang perlu diarahkan ke People Partner zona kamu.\n\nMohon proses sesuai diagram eskalasi.",
+      "type": "task",
+      "priority": "high",
+      "category": "utama",
+      "expirationSeconds": 38.0,
+      "tags": [
+        "hr",
+        "urgent"
+      ],
+      "replyOptions": null,
+      "taskTrigger": {
+        "taskId": "forward_complaint",
+        "description": "Teruskan keluhan ke People Partner",
+        "autoCompleteOnOpen": false,
+        "timeoutSeconds": 24.0
+      }
+    },
+    {
+      "id": "hr_blk_13",
+      "sender": "Rizki Ananda",
+      "senderAddress": "r.ananda@globodyne.com",
+      "department": "HR",
+      "subject": "Laporan kecelakaan kerja ringan (tertusuk kertas)",
+      "body": "Insiden ringan di ruang arsip perlu dicatat untuk OSHA internal.\n\nMohon lengkapi formulir ringkas.",
+      "type": "task",
+      "priority": "medium",
+      "category": "pekerjaan",
+      "expirationSeconds": 58.0,
+      "tags": [
+        "hr",
+        "deadline"
+      ],
+      "replyOptions": null,
+      "taskTrigger": {
+        "taskId": "file_report",
+        "description": "Laporkan insiden ruang arsip",
+        "autoCompleteOnOpen": false,
+        "timeoutSeconds": 36.0
+      }
+    },
+    {
+      "id": "hr_blk_14",
+      "sender": "Departemen HR",
+      "senderAddress": "hr@globodyne.com",
+      "department": "HR",
+      "subject": "Bootcamp onboarding batch Maret — konfirmasi kehadiran fasilitator",
+      "body": "Kamu terdaftar sebagai fasilitator sesi ke-2.\n\nKonfirmasi apakah slot jam 14.00 masih bisa kamu penuhi.",
+      "type": "reply",
+      "priority": "medium",
+      "category": "pekerjaan",
+      "expirationSeconds": 65.0,
+      "tags": [
+        "hr",
+        "training",
+        "recruiting"
+      ],
+      "replyOptions": [
+        {
+          "text": "Ya, saya hadir sesuai jadwal.",
+          "isCorrect": true,
+          "scoreModifier": 7
+        },
+        {
+          "text": "Saya minta tukar jadwal dengan rekan.",
+          "isCorrect": false,
+          "scoreModifier": -2
+        },
+        {
+          "text": "Saya batal tanpa mengganti.",
+          "isCorrect": false,
+          "scoreModifier": -15
+        }
+      ],
+      "taskTrigger": null
+    },
+    {
+      "id": "hr_blk_15",
+      "sender": "Sandra Permata",
+      "senderAddress": "s.permata@globodyne.com",
+      "department": "HR",
+      "subject": "Monitor ergonomis & keyboard — penggantian benefit",
+      "body": "Permintaan perangkat ergonomis sudah direview tim kesehatan kerja.\n\nSetujui jika memenuhi kriteria budget benefit.",
+      "type": "task",
+      "priority": "medium",
+      "category": "pekerjaan",
+      "expirationSeconds": 50.0,
+      "tags": [
+        "hr",
+        "benefits"
+      ],
+      "replyOptions": null,
+      "taskTrigger": {
+        "taskId": "approve_equipment",
+        "description": "Setujui paket ergonomis karyawan",
+        "autoCompleteOnOpen": false,
+        "timeoutSeconds": 31.0
+      }
+    },
+    {
+      "id": "hr_blk_16",
+      "sender": "Finance Payroll",
+      "senderAddress": "payroll@globodyne.com",
+      "department": "HR",
+      "subject": "Otorisasi payroll — batch tambahan kontraktor",
+      "body": "Ada batch pembayaran kontraktor yang harus disetujui HR sebelum rilis.\n\nIni terkait penyesuaian sistem payroll pasca-audit.",
+      "type": "task",
+      "priority": "high",
+      "category": "utama",
+      "expirationSeconds": 35.0,
+      "tags": [
+        "hr",
+        "urgent",
+        "deadline"
+      ],
+      "replyOptions": null,
+      "taskTrigger": {
+        "taskId": "approve_budget",
+        "description": "Otorisasi batch payroll kontraktor",
+        "autoCompleteOnOpen": false,
+        "timeoutSeconds": 22.0
+      }
+    },
+    {
+      "id": "hr_blk_17",
+      "sender": "Departemen HR",
+      "senderAddress": "hr@globodyne.com",
+      "department": "HR",
+      "subject": "INFO: kantin akan tutup lebih awal hari Jumat",
+      "body": "Kantin lantai dasar tutup jam 15.00 hari Jumat untuk inventaris.\n\nSilakan rencanakan makan siang atau snack.",
+      "type": "info",
+      "priority": "low",
+      "category": "sosial",
+      "expirationSeconds": 0,
+      "tags": [
+        "hr"
+      ],
+      "replyOptions": null,
+      "taskTrigger": null
+    },
+    {
+      "id": "hr_blk_18",
+      "sender": "Maya Kusuma",
+      "senderAddress": "m.kusuma@globodyne.com",
+      "department": "HR",
+      "subject": "Cuti bersama — penggantian shift customer support",
+      "body": "Tim support meminta cuti bersama di luar kalender resmi untuk event internal.\n\nButuh persetujuan HR untuk mengurangi risiko SLA.",
+      "type": "task",
+      "priority": "medium",
+      "category": "pekerjaan",
+      "expirationSeconds": 62.0,
+      "tags": [
+        "hr",
+        "deadline"
+      ],
+      "replyOptions": null,
+      "taskTrigger": {
+        "taskId": "approve_vacation",
+        "description": "Setujui penggantian shift & cuti bersama",
+        "autoCompleteOnOpen": false,
+        "timeoutSeconds": 38.0
+      }
+    },
+    {
+      "id": "hr_blk_19",
+      "sender": "Rizki Ananda",
+      "senderAddress": "r.ananda@globodyne.com",
+      "department": "HR",
+      "subject": "Keluhan fasilitas — AC bising di zona open office",
+      "body": "Beberapa tiket keluhan AC dikumpulkan menjadi satu eskalasi.\n\nMohon teruskan ke Facilities dengan prioritas medium.",
+      "type": "task",
+      "priority": "medium",
+      "category": "pekerjaan",
+      "expirationSeconds": 44.0,
+      "tags": [
+        "hr"
+      ],
+      "replyOptions": null,
+      "taskTrigger": {
+        "taskId": "forward_complaint",
+        "description": "Teruskan keluhan AC ke Facilities",
+        "autoCompleteOnOpen": false,
+        "timeoutSeconds": 27.0
+      }
+    },
+    {
+      "id": "hr_blk_20",
+      "sender": "Sandra Permata",
+      "senderAddress": "s.permata@globodyne.com",
+      "department": "HR",
+      "subject": "INFO: tiket informal “kue meeting” ditutup",
+      "body": "Untuk transparansi: insiden snack meeting minggu lalu sudah diselesaikan secara internal.\n\nTidak ada tindakan disiplin; ini sekadar penutupan catatan sosial kantor.",
+      "type": "info",
+      "priority": "low",
+      "category": "sosial",
+      "expirationSeconds": 0,
+      "tags": [
+        "hr"
+      ],
+      "replyOptions": null,
+      "taskTrigger": null
+    },
+    {
+      "id": "hr_blk_21",
+      "sender": "Departemen HR",
+      "senderAddress": "hr@globodyne.com",
+      "department": "HR",
+      "subject": "Program referral hiring — bonus berlaku sampai akhir bulan",
+      "body": "Globodyne menaikkan bonus referral untuk posisi teknis tertentu.\n\nApakah kamu akan membagikan lowongan ke jaringan profesionalmu?",
+      "type": "reply",
+      "priority": "medium",
+      "category": "pekerjaan",
+      "expirationSeconds": 72.0,
+      "tags": [
+        "hr",
+        "recruiting",
+        "benefits",
+        "deadline"
+      ],
+      "replyOptions": [
+        {
+          "text": "Saya bagikan ke LinkedIn dengan bijak.",
+          "isCorrect": true,
+          "scoreModifier": 6
+        },
+        {
+          "text": "Saya spam semua grup tanpa konteks.",
+          "isCorrect": false,
+          "scoreModifier": -10
+        },
+        {
+          "text": "Tidak tertarik sama sekali.",
+          "isCorrect": true,
+          "scoreModifier": 0
+        }
+      ],
+      "taskTrigger": null
+    },
+    {
+      "id": "hr_blk_22",
+      "sender": "Sandra Permata",
+      "senderAddress": "s.permata@globodyne.com",
+      "department": "HR",
+      "subject": "Headset noise-cancelling — persetujuan akhir",
+      "body": "Permintaan headset untuk role call center hybrid sudah lolos uji kebutuhan.\n\nMohon setujui agar procurement bisa jalan.",
+      "type": "task",
+      "priority": "medium",
+      "category": "pekerjaan",
+      "expirationSeconds": 46.0,
+      "tags": [
+        "hr",
+        "benefits"
+      ],
+      "replyOptions": null,
+      "taskTrigger": {
+        "taskId": "approve_equipment",
+        "description": "Setujui pengadaan headset call center",
+        "autoCompleteOnOpen": false,
+        "timeoutSeconds": 29.0
+      }
+    },
+    {
+      "id": "hr_blk_23",
+      "sender": "Departemen HR",
+      "senderAddress": "hr@globodyne.com",
+      "department": "HR",
+      "subject": "Pelatihan phishing awareness — klik link simulasi?",
+      "body": "Tim keamanan mengirim simulasi phishing minggu depan.\n\nJika kamu klik link “salah”, kamu akan dapat modul tambahan otomatis.",
+      "type": "reply",
+      "priority": "medium",
+      "category": "pekerjaan",
+      "expirationSeconds": 68.0,
+      "tags": [
+        "hr",
+        "training",
+        "urgent"
+      ],
+      "replyOptions": [
+        {
+          "text": "Saya akan cek header email dan laporkan yang mencurigakan.",
+          "isCorrect": true,
+          "scoreModifier": 9
+        },
+        {
+          "text": "Saya klik dulu, nanti baru dicek.",
+          "isCorrect": false,
+          "scoreModifier": -7
+        },
+        {
+          "text": "Saya abaikan semua email dari HR.",
+          "isCorrect": false,
+          "scoreModifier": -12
+        }
+      ],
+      "taskTrigger": null
+    },
+    {
+      "id": "hr_blk_24",
+      "sender": "Maya Kusuma",
+      "senderAddress": "m.kusuma@globodyne.com",
+      "department": "HR",
+      "subject": "INFO: foto ID karyawan akan diperbarui",
+      "body": "Minggu depan ada sesi foto ID di lobi.\n\nBawa kartu lama; dress code bisnis kasual.",
+      "type": "info",
+      "priority": "low",
+      "category": "utama",
+      "expirationSeconds": 0,
+      "tags": [
+        "hr",
+        "recruiting"
+      ],
+      "replyOptions": null,
+      "taskTrigger": null
+    },
+    {
+      "id": "hr_blk_25",
+      "sender": "Rizki Ananda",
+      "senderAddress": "r.ananda@globodyne.com",
+      "department": "HR",
+      "subject": "Cuti darurat keluarga — Dina Lestari (3 hari)",
+      "body": "Dina mengajukan cuti darurat dengan lampiran surat dari keluarga.\n\nManajer setuju; mohon konfirmasi HR.",
+      "type": "task",
+      "priority": "high",
+      "category": "utama",
+      "expirationSeconds": 42.0,
+      "tags": [
+        "hr",
+        "urgent"
+      ],
+      "replyOptions": null,
+      "taskTrigger": {
+        "taskId": "approve_vacation",
+        "description": "Setujui cuti darurat Dina Lestari",
+        "autoCompleteOnOpen": false,
+        "timeoutSeconds": 26.0
+      }
+    },
+    {
+      "id": "hr_blk_26",
+      "sender": "Sandra Permata",
+      "senderAddress": "s.permata@globodyne.com",
+      "department": "HR",
+      "subject": "Laporan sensitif — protokol penanganan",
+      "body": "Kami menerima narasi sensitif terkait perlakuan di tempat kerja.\n\nSebagai karyawan, langkah mana yang paling sesuai protokol Globodyne?",
+      "type": "reply",
+      "priority": "high",
+      "category": "utama",
+      "expirationSeconds": 55.0,
+      "tags": [
+        "hr",
+        "urgent",
+        "deadline"
+      ],
+      "replyOptions": [
+        {
+          "text": "Saya tidak meneruskan isi detail ke grup chat umum; ikuti jalur resmi HR.",
+          "isCorrect": true,
+          "scoreModifier": 10
+        },
+        {
+          "text": "Saya screenshot dan sebar ke teman kantor biar ramai.",
+          "isCorrect": false,
+          "scoreModifier": -20
+        },
+        {
+          "text": "Saya balas langsung menuduh tanpa investigasi.",
+          "isCorrect": false,
+          "scoreModifier": -18
+        }
+      ],
+      "taskTrigger": null
+    },
+    {
+      "id": "hr_blk_27",
+      "sender": "Departemen HR",
+      "senderAddress": "hr@globodyne.com",
+      "department": "HR",
+      "subject": "Tindak lanjut audit kontrak magang",
+      "body": "Audit menemukan beberapa kontrak magang belum ditandatangani digital.\n\nBagaimana respons kamu sebagai PIC koordinasi?",
+      "type": "reply",
+      "priority": "medium",
+      "category": "pekerjaan",
+      "expirationSeconds": 60.0,
+      "tags": [
+        "hr",
+        "deadline",
+        "recruiting"
+      ],
+      "replyOptions": [
+        {
+          "text": "Saya koordinasikan penandatanganan dan update status ke direktori audit.",
+          "isCorrect": true,
+          "scoreModifier": 8
+        },
+        {
+          "text": "Saya tunggu saja sampai ada yang ingat.",
+          "isCorrect": false,
+          "scoreModifier": -8
+        },
+        {
+          "text": "Saya hapus email ini dan anggap selesai.",
+          "isCorrect": false,
+          "scoreModifier": -15
+        }
+      ],
+      "taskTrigger": null
+    },
+    {
+      "id": "hr_blk_28",
+      "sender": "Finance Payroll",
+      "senderAddress": "payroll@globodyne.com",
+      "department": "HR",
+      "subject": "Memo deploy payroll — tunjangan transport",
+      "body": "Perubahan formula tunjangan transport akan di-deploy akhir pekan.\n\nKonfirmasi pemahaman singkatmu terhadap poin utama memo.",
+      "type": "reply",
+      "priority": "high",
+      "category": "utama",
+      "expirationSeconds": 48.0,
+      "tags": [
+        "hr",
+        "benefits",
+        "urgent"
+      ],
+      "replyOptions": [
+        {
+          "text": "Saya baca memo dan paham dampaknya ke slip gaji serta cut-off.",
+          "isCorrect": true,
+          "scoreModifier": 7
+        },
+        {
+          "text": "Saya tidak baca; asal centang setuju.",
+          "isCorrect": false,
+          "scoreModifier": -6
+        },
+        {
+          "text": "Saya bagikan memo ke pihak eksternal.",
+          "isCorrect": false,
+          "scoreModifier": -20
+        }
+      ],
+      "taskTrigger": null
+    },
+    {
+      "id": "hr_blk_29",
+      "sender": "Maya Kusuma",
+      "senderAddress": "m.kusuma@globodyne.com",
+      "department": "HR",
+      "subject": "Workshop manajemen stres — daftar peserta",
+      "body": "Kami membuka 20 slot untuk workshop manajemen stres.\n\nApakah kamu mendaftar?",
+      "type": "reply",
+      "priority": "low",
+      "category": "sosial",
+      "expirationSeconds": 85.0,
+      "tags": [
+        "hr",
+        "training",
+        "benefits"
+      ],
+      "replyOptions": [
+        {
+          "text": "Ya, saya daftar jika masih ada slot.",
+          "isCorrect": true,
+          "scoreModifier": 5
+        },
+        {
+          "text": "Tidak, saya anggap ini tidak penting.",
+          "isCorrect": false,
+          "scoreModifier": -4
+        },
+        {
+          "text": "Saya daftar lalu tidak pernah hadir.",
+          "isCorrect": false,
+          "scoreModifier": -9
+        }
+      ],
+      "taskTrigger": null
+    },
+    {
+      "id": "hr_blk_30",
+      "sender": "Departemen HR",
+      "senderAddress": "hr@globodyne.com",
+      "department": "HR",
+      "subject": "INFO: libur perusahaan — sinkronisasi kalender",
+      "body": "Globodyne menambahkan satu hari libur perusahaan lokal.\n\nSinkronkan kalender kamu agar meeting tidak bentrok.",
+      "type": "info",
+      "priority": "low",
+      "category": "utama",
+      "expirationSeconds": 0,
+      "tags": [
+        "hr",
+        "deadline"
+      ],
+      "replyOptions": null,
+      "taskTrigger": null
+    },
+    {
+      "id": "hr_blk_31",
+      "sender": "Rizki Ananda",
+      "senderAddress": "r.ananda@globodyne.com",
+      "department": "HR",
+      "subject": "Permintaan tablet lapangan — butuh konfirmasi cepat",
+      "body": "Tim riset meminta konfirmasi apakah HR masih mendukung pengadaan tablet tambahan minggu ini.\n\nBalas agar procurement tidak menunda PO.",
+      "type": "reply",
+      "priority": "medium",
+      "category": "pekerjaan",
+      "expirationSeconds": 58.0,
+      "tags": [
+        "hr",
+        "benefits",
+        "deadline"
+      ],
+      "replyOptions": [
+        {
+          "text": "Saya konfirmasi dukungan HR sesuai kebijakan dan minta jalur formal ke procurement.",
+          "isCorrect": true,
+          "scoreModifier": 6
+        },
+        {
+          "text": "Saya janji tanpa cek budget.",
+          "isCorrect": false,
+          "scoreModifier": -10
+        },
+        {
+          "text": "Saya abaikan sampai deadline lewat.",
+          "isCorrect": false,
+          "scoreModifier": -12
+        }
+      ],
+      "taskTrigger": null
+    },
+    {
+      "id": "hr_blk_32",
+      "sender": "Sandra Permata",
+      "senderAddress": "s.permata@globodyne.com",
+      "department": "HR",
+      "subject": "Kebijakan remote work hybrid — konfirmasi pemahamanmu",
+      "body": "Ringkasan kebijakan: 3 hari onsite, 2 hari remote kecuali kebutuhan proyek.\n\nKonfirmasi bahwa kamu memahami dan akan patuh.",
+      "type": "reply",
+      "priority": "medium",
+      "category": "pekerjaan",
+      "expirationSeconds": 76.0,
+      "tags": [
+        "hr",
+        "training",
+        "deadline"
+      ],
+      "replyOptions": [
+        {
+          "text": "Saya baca dan akan ikuti kebijakan hybrid.",
+          "isCorrect": true,
+          "scoreModifier": 8
+        },
+        {
+          "text": "Saya remote full tanpa izin.",
+          "isCorrect": false,
+          "scoreModifier": -14
+        },
+        {
+          "text": "Saya tidak baca, asal setuju saja.",
+          "isCorrect": false,
+          "scoreModifier": -6
+        }
+      ],
       "taskTrigger": null
     }
   ]

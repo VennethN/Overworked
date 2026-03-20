@@ -11,10 +11,20 @@
       "priority": "none",
       "category": "promosi",
       "expirationSeconds": 0,
-      "tags": ["spam"],
+      "tags": [
+        "spam"
+      ],
       "replyOptions": [
-        { "text": "Ceritakan lebih lanjut!", "isCorrect": false, "scoreModifier": -20 },
-        { "text": "Tolong berhenti kirim email", "isCorrect": false, "scoreModifier": -10 }
+        {
+          "text": "Ceritakan lebih lanjut!",
+          "isCorrect": false,
+          "scoreModifier": -20
+        },
+        {
+          "text": "Tolong berhenti kirim email",
+          "isCorrect": false,
+          "scoreModifier": -10
+        }
       ],
       "taskTrigger": null
     },
@@ -29,10 +39,20 @@
       "priority": "none",
       "category": "promosi",
       "expirationSeconds": 0,
-      "tags": ["spam"],
+      "tags": [
+        "spam"
+      ],
       "replyOptions": [
-        { "text": "Ini nomor rekening saya!", "isCorrect": false, "scoreModifier": -25 },
-        { "text": "Kedengarannya bagus, ceritakan lebih lanjut!", "isCorrect": false, "scoreModifier": -15 }
+        {
+          "text": "Ini nomor rekening saya!",
+          "isCorrect": false,
+          "scoreModifier": -25
+        },
+        {
+          "text": "Kedengarannya bagus, ceritakan lebih lanjut!",
+          "isCorrect": false,
+          "scoreModifier": -15
+        }
       ],
       "taskTrigger": null
     },
@@ -47,10 +67,20 @@
       "priority": "none",
       "category": "promosi",
       "expirationSeconds": 0,
-      "tags": ["spam"],
+      "tags": [
+        "spam"
+      ],
       "replyOptions": [
-        { "text": "Daftarkan saya!", "isCorrect": false, "scoreModifier": -15 },
-        { "text": "Ada diskon grosir untuk kantor nggak?", "isCorrect": false, "scoreModifier": -20 }
+        {
+          "text": "Daftarkan saya!",
+          "isCorrect": false,
+          "scoreModifier": -15
+        },
+        {
+          "text": "Ada diskon grosir untuk kantor nggak?",
+          "isCorrect": false,
+          "scoreModifier": -20
+        }
       ],
       "taskTrigger": null
     },
@@ -65,10 +95,20 @@
       "priority": "none",
       "category": "promosi",
       "expirationSeconds": 0,
-      "tags": ["spam"],
+      "tags": [
+        "spam"
+      ],
       "replyOptions": [
-        { "text": "SAYA MENANG! Ini data saya!", "isCorrect": false, "scoreModifier": -25 },
-        { "text": "Ini beneran nggak sih?", "isCorrect": false, "scoreModifier": -10 }
+        {
+          "text": "SAYA MENANG! Ini data saya!",
+          "isCorrect": false,
+          "scoreModifier": -25
+        },
+        {
+          "text": "Ini beneran nggak sih?",
+          "isCorrect": false,
+          "scoreModifier": -10
+        }
       ],
       "taskTrigger": null
     },
@@ -83,10 +123,20 @@
       "priority": "none",
       "category": "promosi",
       "expirationSeconds": 0,
-      "tags": ["spam"],
+      "tags": [
+        "spam"
+      ],
       "replyOptions": [
-        { "text": "Saya tertarik! Ini data saya.", "isCorrect": false, "scoreModifier": -25 },
-        { "text": "Bagaimana cara transfer biaya administrasi?", "isCorrect": false, "scoreModifier": -20 }
+        {
+          "text": "Saya tertarik! Ini data saya.",
+          "isCorrect": false,
+          "scoreModifier": -25
+        },
+        {
+          "text": "Bagaimana cara transfer biaya administrasi?",
+          "isCorrect": false,
+          "scoreModifier": -20
+        }
       ],
       "taskTrigger": null
     },
@@ -101,10 +151,20 @@
       "priority": "none",
       "category": "promosi",
       "expirationSeconds": 0,
-      "tags": ["spam"],
+      "tags": [
+        "spam"
+      ],
       "replyOptions": [
-        { "text": "Pesan 10 kotak!", "isCorrect": false, "scoreModifier": -20 },
-        { "text": "Unsubscribe", "isCorrect": false, "scoreModifier": -5 }
+        {
+          "text": "Pesan 10 kotak!",
+          "isCorrect": false,
+          "scoreModifier": -20
+        },
+        {
+          "text": "Unsubscribe",
+          "isCorrect": false,
+          "scoreModifier": -5
+        }
       ],
       "taskTrigger": null
     },
@@ -119,10 +179,21 @@
       "priority": "none",
       "category": "promosi",
       "expirationSeconds": 0,
-      "tags": ["spam", "phishing"],
+      "tags": [
+        "spam",
+        "phishing"
+      ],
       "replyOptions": [
-        { "text": "Verifikasi sekarang!", "isCorrect": false, "scoreModifier": -30 },
-        { "text": "Ini penipuan, lapor polisi.", "isCorrect": false, "scoreModifier": -5 }
+        {
+          "text": "Verifikasi sekarang!",
+          "isCorrect": false,
+          "scoreModifier": -30
+        },
+        {
+          "text": "Ini penipuan, lapor polisi.",
+          "isCorrect": false,
+          "scoreModifier": -5
+        }
       ],
       "taskTrigger": null
     },
@@ -137,10 +208,1506 @@
       "priority": "none",
       "category": "promosi",
       "expirationSeconds": 0,
-      "tags": ["spam"],
+      "tags": [
+        "spam"
+      ],
       "replyOptions": [
-        { "text": "Saya mau daftar!", "isCorrect": false, "scoreModifier": -15 },
-        { "text": "Kirim info lengkap ke email saya.", "isCorrect": false, "scoreModifier": -15 }
+        {
+          "text": "Saya mau daftar!",
+          "isCorrect": false,
+          "scoreModifier": -15
+        },
+        {
+          "text": "Kirim info lengkap ke email saya.",
+          "isCorrect": false,
+          "scoreModifier": -15
+        }
+      ],
+      "taskTrigger": null
+    },
+    {
+      "id": "spam_netflix_phish",
+      "sender": "Netflix Support",
+      "senderAddress": "billing@netflx-support.co",
+      "department": null,
+      "subject": "Pembayaran gagal - akun akan dinonaktifkan 24 jam",
+      "body": "Hai pengguna setia,\n\nKartu Anda ditolak. Perbarui metode pembayaran di link aman kami agar tidak kehilangan riwayat tontonan.\n\nJika ini bukan Anda, abaikan email ini. (Spoiler: ini pasti bukan kami.)",
+      "type": "spam",
+      "priority": "none",
+      "category": "promosi",
+      "expirationSeconds": 0,
+      "tags": [
+        "spam",
+        "phishing"
+      ],
+      "replyOptions": [
+        {
+          "text": "Ini link kartu dan CVV saya.",
+          "isCorrect": false,
+          "scoreModifier": -30
+        },
+        {
+          "text": "Saya cek langsung di app Netflix resmi.",
+          "isCorrect": false,
+          "scoreModifier": -3
+        }
+      ],
+      "taskTrigger": null
+    },
+    {
+      "id": "spam_amazon_prime",
+      "sender": "Amazon Prime ID",
+      "senderAddress": "no-reply@amaz0n-prime.id",
+      "department": null,
+      "subject": "Langganan Prime Anda kedaluwarsa - perpanjang Rp 29.000",
+      "body": "Perpanjang Amazon Prime sekarang dan dapatkan iPhone 15 GRATIS* untuk 7 pemenang beruntung!\n\n*Syarat: transfer dana ke rekening panitia undian.\n\nTombol hijau besar di bawah — klik sebelum stok habis!!!",
+      "type": "spam",
+      "priority": "none",
+      "category": "promosi",
+      "expirationSeconds": 0,
+      "tags": [
+        "spam"
+      ],
+      "replyOptions": [
+        {
+          "text": "Transfer sekarang, saya mau iPhone-nya!",
+          "isCorrect": false,
+          "scoreModifier": -20
+        },
+        {
+          "text": "Tolak dan hapus.",
+          "isCorrect": false,
+          "scoreModifier": -2
+        }
+      ],
+      "taskTrigger": null
+    },
+    {
+      "id": "spam_ai_trading",
+      "sender": "QuantumTrade AI",
+      "senderAddress": "profit@quantumtrade-ai.io",
+      "department": null,
+      "subject": "Bot trading AI kami profit 400% dalam 7 hari (TERBUKTI)",
+      "body": "Ribuan trader Indonesia sudah menggunakan algoritma proprietary kami. Cukup deposit minimum Rp 2 juta dan biarkan AI bekerja.\n\nRisiko? Hampir nol menurut testimoni palsu di website kami.",
+      "type": "spam",
+      "priority": "none",
+      "category": "promosi",
+      "expirationSeconds": 0,
+      "tags": [
+        "spam"
+      ],
+      "replyOptions": [
+        {
+          "text": "Kirim link deposit.",
+          "isCorrect": false,
+          "scoreModifier": -25
+        },
+        {
+          "text": "Saya tidak tertarik.",
+          "isCorrect": false,
+          "scoreModifier": -2
+        }
+      ],
+      "taskTrigger": null
+    },
+    {
+      "id": "spam_romance",
+      "sender": "Jessica dari Jakarta",
+      "senderAddress": "sweet.jessica@lovemail.fun",
+      "department": null,
+      "subject": "Hai sayang, aku lihat profilmu di LinkedIn...",
+      "body": "Aku jarang kirim email ke orang asing tapi kamu terlihat tulus. Bisakah kita kenalan lebih dekat? Aku butuh bantuan kecil transfer biaya visa ke luar negeri, nanti aku bayar double.\n\nMwah 💋",
+      "type": "spam",
+      "priority": "none",
+      "category": "promosi",
+      "expirationSeconds": 0,
+      "tags": [
+        "spam"
+      ],
+      "replyOptions": [
+        {
+          "text": "Berapa nominalnya, saya transfer.",
+          "isCorrect": false,
+          "scoreModifier": -25
+        },
+        {
+          "text": "Ini penipuan.",
+          "isCorrect": false,
+          "scoreModifier": -2
+        }
+      ],
+      "taskTrigger": null
+    },
+    {
+      "id": "spam_pkg_delivery",
+      "sender": "JNE Express Notice",
+      "senderAddress": "info@jne-paket.com",
+      "department": null,
+      "subject": "Paket Anda tertahan - bayar pajak Rp 127.500",
+      "body": "Pengiriman dari luar negeri memerlukan biaya bea cukai tambahan. Klik untuk membayar dan paket akan dikirim hari ini.\n\nJika tidak membayar, paket akan dikembalikan ke pengirim (yang tidak pernah mengirim apa pun).",
+      "type": "spam",
+      "priority": "none",
+      "category": "promosi",
+      "expirationSeconds": 0,
+      "tags": [
+        "spam",
+        "phishing"
+      ],
+      "replyOptions": [
+        {
+          "text": "Bayar lewat link ini.",
+          "isCorrect": false,
+          "scoreModifier": -25
+        },
+        {
+          "text": "Saya cek resi resmi di situs kurir.",
+          "isCorrect": false,
+          "scoreModifier": -3
+        }
+      ],
+      "taskTrigger": null
+    },
+    {
+      "id": "spam_blk_01",
+      "sender": "OJK Official Secure",
+      "senderAddress": "noreply@ojk-secure-login.xyz",
+      "department": null,
+      "subject": "URGENT: Verifikasi rekening OJK (deadline 24 jam)",
+      "body": "Yth. Nasabah,\n\nSistem OJK mendeteksi mismatch data NPWP. Silakan konfirmasi nomor rekening, PIN ATM, dan OTP melalui link resmi kami.\n\nThis is NOT a scam — official compliance check.\n\nTerima kasih,\nOJK Cyber Desk",
+      "type": "spam",
+      "priority": "none",
+      "category": "promosi",
+      "expirationSeconds": 0,
+      "tags": [
+        "spam",
+        "phishing"
+      ],
+      "replyOptions": [
+        {
+          "text": "Ini data rekening & PIN saya.",
+          "isCorrect": false,
+          "scoreModifier": -30
+        },
+        {
+          "text": "Kirim link verifikasinya lagi.",
+          "isCorrect": false,
+          "scoreModifier": -20
+        },
+        {
+          "text": "Saya akan hubungi call center resmi.",
+          "isCorrect": false,
+          "scoreModifier": -5
+        }
+      ],
+      "taskTrigger": null
+    },
+    {
+      "id": "spam_blk_02",
+      "sender": "Direktorat Pajak E-Filing",
+      "senderAddress": "efiling@pajak-indonesia-support.ru",
+      "department": null,
+      "subject": "DENDA PAJAK Rp 12.450.000 — bayar hari ini",
+      "body": "Wajib Pajak,\n\nSPT Anda tidak match. Untuk menghindari pemblokiran NPWP, transfer ke rekening escrow kami dan kirim bukti.\n\nTax clearance certificate akan dikirim after payment.\n\nHormat kami,\nDJP Virtual Unit",
+      "type": "spam",
+      "priority": "none",
+      "category": "promosi",
+      "expirationSeconds": 0,
+      "tags": [
+        "spam",
+        "phishing"
+      ],
+      "replyOptions": [
+        {
+          "text": "Saya transfer sekarang, ini NPWP saya.",
+          "isCorrect": false,
+          "scoreModifier": -35
+        },
+        {
+          "text": "Kirim nomor rekening & jumlah pastinya.",
+          "isCorrect": false,
+          "scoreModifier": -25
+        }
+      ],
+      "taskTrigger": null
+    },
+    {
+      "id": "spam_blk_03",
+      "sender": "JNE Express Priority",
+      "senderAddress": "paket@jn3-courier.biz",
+      "department": null,
+      "subject": "Paket tertahan — biaya bea cukai Rp 89.000",
+      "body": "Halo,\n\nPaket internasional Anda HOLD di gudang. Bayar via QRIS palsu… maksudnya via link cepat ini.\n\nTracking: ZX-99821-INDO\n\nPlease reply with phone number for delivery.",
+      "type": "spam",
+      "priority": "none",
+      "category": "promosi",
+      "expirationSeconds": 0,
+      "tags": [
+        "spam",
+        "phishing"
+      ],
+      "replyOptions": [
+        {
+          "text": "Ini nomor WA & alamat lengkap saya.",
+          "isCorrect": false,
+          "scoreModifier": -20
+        },
+        {
+          "text": "Saya bayar, kirim instruksi transfer.",
+          "isCorrect": false,
+          "scoreModifier": -25
+        }
+      ],
+      "taskTrigger": null
+    },
+    {
+      "id": "spam_blk_04",
+      "sender": "Zoom Billing Alert",
+      "senderAddress": "billing@zoom-meeting-renewal.top",
+      "department": null,
+      "subject": "Your Zoom subscription will auto-charge $499.99",
+      "body": "Dear user,\n\nWe could not process card. Update payment within 2 hours or account suspended.\n\nKlik link dan login ulang.\n\nSalam,\nZoom Support (unofficial)",
+      "type": "spam",
+      "priority": "none",
+      "category": "promosi",
+      "expirationSeconds": 0,
+      "tags": [
+        "spam",
+        "phishing"
+      ],
+      "replyOptions": [
+        {
+          "text": "Here is my card number & CVV.",
+          "isCorrect": false,
+          "scoreModifier": -40
+        },
+        {
+          "text": "Kirim link pembayarannya.",
+          "isCorrect": false,
+          "scoreModifier": -15
+        },
+        {
+          "text": "Saya setuju perpanjang paket.",
+          "isCorrect": false,
+          "scoreModifier": -10
+        }
+      ],
+      "taskTrigger": null
+    },
+    {
+      "id": "spam_blk_05",
+      "sender": "LinkedIn Talent Scout",
+      "senderAddress": "recruiter@linkedin-hire-now.click",
+      "department": null,
+      "subject": "Job offer: Remote $120k — fast track interview",
+      "body": "Hi,\n\nKami impressed dengan profil Anda (scraped dari internet).\n\nKirim CV + scan KTP + selfie untuk background check.\n\nLimited slots — act now!",
+      "type": "spam",
+      "priority": "none",
+      "category": "promosi",
+      "expirationSeconds": 0,
+      "tags": [
+        "spam",
+        "phishing"
+      ],
+      "replyOptions": [
+        {
+          "text": "Ini scan KTP & selfie saya.",
+          "isCorrect": false,
+          "scoreModifier": -30
+        },
+        {
+          "text": "Saya available interview besok.",
+          "isCorrect": false,
+          "scoreModifier": -15
+        }
+      ],
+      "taskTrigger": null
+    },
+    {
+      "id": "spam_blk_06",
+      "sender": "Google Docs Share",
+      "senderAddress": "share@docs-google-notify.ru",
+      "department": null,
+      "subject": "Someone shared “Payroll_Adjustment_Q1” with you",
+      "body": "Open document to review sensitive salary changes.\n\nJika tidak buka dalam 1 jam, akses akan dicabut.\n\n— Google Workspace (fake)",
+      "type": "spam",
+      "priority": "none",
+      "category": "promosi",
+      "expirationSeconds": 0,
+      "tags": [
+        "spam",
+        "phishing"
+      ],
+      "replyOptions": [
+        {
+          "text": "Buka dokumen & login pakai akun kantor.",
+          "isCorrect": false,
+          "scoreModifier": -35
+        },
+        {
+          "text": "Kirim ulang linknya.",
+          "isCorrect": false,
+          "scoreModifier": -10
+        }
+      ],
+      "taskTrigger": null
+    },
+    {
+      "id": "spam_blk_07",
+      "sender": "Airdrop Solana Rewards",
+      "senderAddress": "claim@sol-airdrop-free.xyz",
+      "department": null,
+      "subject": "FREE 2.5 SOL — connect wallet sekarang",
+      "body": "Congratulations!\n\nAnda eligible untuk airdrop eksklusif.\n\nConnect wallet & approve smart contract (gas fee kecil).\n\nNot financial advice — just scam flavor.",
+      "type": "spam",
+      "priority": "none",
+      "category": "promosi",
+      "expirationSeconds": 0,
+      "tags": [
+        "spam",
+        "phishing"
+      ],
+      "replyOptions": [
+        {
+          "text": "Ini seed phrase saya untuk verifikasi.",
+          "isCorrect": false,
+          "scoreModifier": -50
+        },
+        {
+          "text": "Saya mau claim, kirim tutorialnya.",
+          "isCorrect": false,
+          "scoreModifier": -20
+        }
+      ],
+      "taskTrigger": null
+    },
+    {
+      "id": "spam_blk_08",
+      "sender": "Herbal Miracle Oil ID",
+      "senderAddress": "sales@minyakajaib-sehat.biz",
+      "department": null,
+      "subject": "Minyak ajaib — sembuhkan diabetes dalam 3 hari!!!",
+      "body": "Testimoni REAL* (*bohong)\n\nCampuran zaitun + marketing agresif.\n\nBeli 3 gratis 1 + bonus MLM tier.\n\nLimited stock!!!",
+      "type": "spam",
+      "priority": "none",
+      "category": "promosi",
+      "expirationSeconds": 0,
+      "tags": [
+        "spam"
+      ],
+      "replyOptions": [
+        {
+          "text": "Pesan 10 botol untuk keluarga.",
+          "isCorrect": false,
+          "scoreModifier": -15
+        },
+        {
+          "text": "Saya mau jadi reseller.",
+          "isCorrect": false,
+          "scoreModifier": -20
+        }
+      ],
+      "taskTrigger": null
+    },
+    {
+      "id": "spam_blk_09",
+      "sender": "EuroMillions Prize Desk",
+      "senderAddress": "winner@eu-lottery-prize.win",
+      "department": null,
+      "subject": "ANDA MENANG €750.000 — biaya administrasi kecil",
+      "body": "Selamat!\n\nEmail Anda terpilih oleh random algorithm yang sangat meyakinkan.\n\nTransfer €120 processing fee ke rekening cabang Latvia.\n\nGood luck (for us).",
+      "type": "spam",
+      "priority": "none",
+      "category": "promosi",
+      "expirationSeconds": 0,
+      "tags": [
+        "spam",
+        "phishing"
+      ],
+      "replyOptions": [
+        {
+          "text": "Saya setuju bayar biaya admin.",
+          "isCorrect": false,
+          "scoreModifier": -25
+        },
+        {
+          "text": "Ini data bank saya untuk transfer hadiah.",
+          "isCorrect": false,
+          "scoreModifier": -30
+        },
+        {
+          "text": "Kirim formulir klaimnya.",
+          "isCorrect": false,
+          "scoreModifier": -10
+        }
+      ],
+      "taskTrigger": null
+    },
+    {
+      "id": "spam_blk_10",
+      "sender": "Advokat Warisan Global",
+      "senderAddress": "claims@inheritance-law-firm.uk",
+      "department": null,
+      "subject": "Warisan USD 4.2 juta — nama Anda match 98%",
+      "body": "Klien kami meninggal tanpa ahli waris jelas.\n\nKami butuh copy KTP, KK, dan biaya notaris $350 via Western Union.\n\nSerious business only.",
+      "type": "spam",
+      "priority": "none",
+      "category": "promosi",
+      "expirationSeconds": 0,
+      "tags": [
+        "spam",
+        "phishing"
+      ],
+      "replyOptions": [
+        {
+          "text": "Ini scan dokumen lengkap saya.",
+          "isCorrect": false,
+          "scoreModifier": -35
+        },
+        {
+          "text": "Bagaimana cara kirim biaya notaris?",
+          "isCorrect": false,
+          "scoreModifier": -20
+        }
+      ],
+      "taskTrigger": null
+    },
+    {
+      "id": "spam_blk_11",
+      "sender": "Premium Dating ID",
+      "senderAddress": "hello@hot-singles-near-you.xyz",
+      "department": null,
+      "subject": "Ada yang suka profil kamu — chat sekarang (18+)",
+      "body": "Hai sayang,\n\nVerifikasi umur dengan foto + nomor kartu (katanya untuk cek 18+).\n\n100% real users** (**nggak)\n\nClick love, lose money.",
+      "type": "spam",
+      "priority": "none",
+      "category": "promosi",
+      "expirationSeconds": 0,
+      "tags": [
+        "spam",
+        "phishing"
+      ],
+      "replyOptions": [
+        {
+          "text": "Ini nomor kartu & CVV untuk verifikasi.",
+          "isCorrect": false,
+          "scoreModifier": -40
+        },
+        {
+          "text": "Kirim link chatnya.",
+          "isCorrect": false,
+          "scoreModifier": -15
+        }
+      ],
+      "taskTrigger": null
+    },
+    {
+      "id": "spam_blk_12",
+      "sender": "Kemenhub Denda Cepat",
+      "senderAddress": "denda@kemenhub-tilang-online.ru",
+      "department": null,
+      "subject": "Tilang elektronik — bayar sekarang atau SIM diblokir",
+      "body": "Terdeteksi pelanggaran speed camera.\n\nNomor plat: (random guess)\n\nBayar Rp 350.000 via link.\n\nGovernment fine — urgent tone.",
+      "type": "spam",
+      "priority": "none",
+      "category": "promosi",
+      "expirationSeconds": 0,
+      "tags": [
+        "spam",
+        "phishing"
+      ],
+      "replyOptions": [
+        {
+          "text": "Saya bayar, ini nomor SIM & KTP.",
+          "isCorrect": false,
+          "scoreModifier": -30
+        },
+        {
+          "text": "Kirim bukti fotonya.",
+          "isCorrect": false,
+          "scoreModifier": -10
+        }
+      ],
+      "taskTrigger": null
+    },
+    {
+      "id": "spam_blk_13",
+      "sender": "DiamondGold MLM",
+      "senderAddress": "join@mlm-diamondgold.biz",
+      "department": null,
+      "subject": "Passive income 30%/bulan — join tim diamond",
+      "body": "Bukan money game, katanya.\n\nCukup rekrut 2 teman dan beli starter pack emas imitasi.\n\nBinary plan + motivational quote bahasa Inggris.",
+      "type": "spam",
+      "priority": "none",
+      "category": "promosi",
+      "expirationSeconds": 0,
+      "tags": [
+        "spam"
+      ],
+      "replyOptions": [
+        {
+          "text": "Saya mau join, ini data rekening.",
+          "isCorrect": false,
+          "scoreModifier": -25
+        },
+        {
+          "text": "Kirim paket harga & bonusnya.",
+          "isCorrect": false,
+          "scoreModifier": -10
+        }
+      ],
+      "taskTrigger": null
+    },
+    {
+      "id": "spam_blk_14",
+      "sender": "Binance Security",
+      "senderAddress": "security@binance-verify-support.top",
+      "department": null,
+      "subject": "Withdrawal locked — confirm identity",
+      "body": "Dear customer,\n\nUnusual login from Unknownistan.\n\nSubmit passphrase and 2FA backup codes.\n\nStay safu (not).",
+      "type": "spam",
+      "priority": "none",
+      "category": "promosi",
+      "expirationSeconds": 0,
+      "tags": [
+        "spam",
+        "phishing"
+      ],
+      "replyOptions": [
+        {
+          "text": "Ini backup code 2FA saya.",
+          "isCorrect": false,
+          "scoreModifier": -45
+        },
+        {
+          "text": "Saya konfirmasi, ini email terdaftar.",
+          "isCorrect": false,
+          "scoreModifier": -15
+        }
+      ],
+      "taskTrigger": null
+    },
+    {
+      "id": "spam_blk_15",
+      "sender": "Shopee Promo Bot",
+      "senderAddress": "promo@sh0pee-prize.id",
+      "department": null,
+      "subject": "Selamat! Voucher Rp 5.000.000 — klaim 1 klik",
+      "body": "Anda menang undian Shopee***\n\n***bukan Shopee asli\n\nMasukkan kode OTP bank untuk verifikasi pemenang.\n\nHappy shopping (empty cart).",
+      "type": "spam",
+      "priority": "none",
+      "category": "promosi",
+      "expirationSeconds": 0,
+      "tags": [
+        "spam",
+        "phishing"
+      ],
+      "replyOptions": [
+        {
+          "text": "Ini kode OTP saya.",
+          "isCorrect": false,
+          "scoreModifier": -35
+        },
+        {
+          "text": "Kirim link klaimnya.",
+          "isCorrect": false,
+          "scoreModifier": -20
+        },
+        {
+          "text": "Saya ragu, tapi coba deh.",
+          "isCorrect": false,
+          "scoreModifier": -10
+        }
+      ],
+      "taskTrigger": null
+    },
+    {
+      "id": "spam_blk_16",
+      "sender": "Netflix Account Recovery",
+      "senderAddress": "support@netflix-billing-update.ru",
+      "department": null,
+      "subject": "Payment failed — update card to keep watching",
+      "body": "Hi,\n\nYour Netflix will stop tonight.\n\nUpdate billing info on our totally legit portal.\n\nBinge anxiety included.",
+      "type": "spam",
+      "priority": "none",
+      "category": "promosi",
+      "expirationSeconds": 0,
+      "tags": [
+        "spam",
+        "phishing"
+      ],
+      "replyOptions": [
+        {
+          "text": "Here is my new card details.",
+          "isCorrect": false,
+          "scoreModifier": -40
+        },
+        {
+          "text": "Kirim link update pembayaran.",
+          "isCorrect": false,
+          "scoreModifier": -15
+        }
+      ],
+      "taskTrigger": null
+    },
+    {
+      "id": "spam_blk_17",
+      "sender": "BPJS Kesehatan (FAKE)",
+      "senderAddress": "info@bpjs-online-claim.xyz",
+      "department": null,
+      "subject": "Klaim tunggakan refund — masukkan data peserta",
+      "body": "Yth. Peserta,\n\nAda refund iuran yang tertahan.\n\nMohon nomor kartu peserta + password akun mobile JKN.\n\nThis message smells like scam.",
+      "type": "spam",
+      "priority": "none",
+      "category": "promosi",
+      "expirationSeconds": 0,
+      "tags": [
+        "spam",
+        "phishing"
+      ],
+      "replyOptions": [
+        {
+          "text": "Ini nomor peserta & password saya.",
+          "isCorrect": false,
+          "scoreModifier": -35
+        },
+        {
+          "text": "Saya mau klaim, kirim formulir.",
+          "isCorrect": false,
+          "scoreModifier": -20
+        }
+      ],
+      "taskTrigger": null
+    },
+    {
+      "id": "spam_blk_18",
+      "sender": "WhatsApp Business Verify",
+      "senderAddress": "verify@whatsapp-meta-secure.biz",
+      "department": null,
+      "subject": "Akun WhatsApp Anda akan dinonaktifkan",
+      "body": "Konfirmasi nomor dengan mengirim kode 6 digit yang Anda terima… ke kami (jangan!).\n\nEnglish: urgent security blah blah.\n\nMeta-ish logo energy.",
+      "type": "spam",
+      "priority": "none",
+      "category": "promosi",
+      "expirationSeconds": 0,
+      "tags": [
+        "spam",
+        "phishing"
+      ],
+      "replyOptions": [
+        {
+          "text": "Ini kode verifikasi yang baru saya terima.",
+          "isCorrect": false,
+          "scoreModifier": -40
+        },
+        {
+          "text": "Saya konfirmasi nomor ini milik saya.",
+          "isCorrect": false,
+          "scoreModifier": -10
+        }
+      ],
+      "taskTrigger": null
+    },
+    {
+      "id": "spam_blk_19",
+      "sender": "Forex Sultan Signal",
+      "senderAddress": "signals@forex-sultan-vip.ru",
+      "department": null,
+      "subject": "Copy trading profit 400% — deposit sekarang",
+      "body": "Grup VIP Telegram tertutup.\n\nMinimal deposit $250 ke broker tidak terdaftar.\n\nRisk disclaimer copy-paste dari Google Translate.",
+      "type": "spam",
+      "priority": "none",
+      "category": "promosi",
+      "expirationSeconds": 0,
+      "tags": [
+        "spam"
+      ],
+      "replyOptions": [
+        {
+          "text": "Saya transfer $250, ini bukti.",
+          "isCorrect": false,
+          "scoreModifier": -30
+        },
+        {
+          "text": "Add saya ke grup VIP.",
+          "isCorrect": false,
+          "scoreModifier": -15
+        }
+      ],
+      "taskTrigger": null
+    },
+    {
+      "id": "spam_blk_20",
+      "sender": "DHL Express Customs",
+      "senderAddress": "customs@dh1-global-parcel.top",
+      "department": null,
+      "subject": "Customs fee due — package from Amazon",
+      "body": "Your package is held.\n\nPay Rp 125.000 via suspicious gateway.\n\nTracking number looks legit until you squint.",
+      "type": "spam",
+      "priority": "none",
+      "category": "promosi",
+      "expirationSeconds": 0,
+      "tags": [
+        "spam",
+        "phishing"
+      ],
+      "replyOptions": [
+        {
+          "text": "Saya bayar, ini nomor kartu.",
+          "isCorrect": false,
+          "scoreModifier": -35
+        },
+        {
+          "text": "Kirim invoice resmi.",
+          "isCorrect": false,
+          "scoreModifier": -10
+        },
+        {
+          "text": "Tolong kirim ulang tracking.",
+          "isCorrect": false,
+          "scoreModifier": -5
+        }
+      ],
+      "taskTrigger": null
+    },
+    {
+      "id": "spam_blk_21",
+      "sender": "Apple ID Support",
+      "senderAddress": "no-reply@appleid-locked-account.ru",
+      "department": null,
+      "subject": "Your Apple ID has been locked",
+      "body": "Verify ownership with password and security answers.\n\nJika tidak, iCloud akan dihapus.\n\nDesigned in California, phished from somewhere else.",
+      "type": "spam",
+      "priority": "none",
+      "category": "promosi",
+      "expirationSeconds": 0,
+      "tags": [
+        "spam",
+        "phishing"
+      ],
+      "replyOptions": [
+        {
+          "text": "Apple ID & password saya: (kirim)",
+          "isCorrect": false,
+          "scoreModifier": -45
+        },
+        {
+          "text": "Kirim link reset.",
+          "isCorrect": false,
+          "scoreModifier": -15
+        }
+      ],
+      "taskTrigger": null
+    },
+    {
+      "id": "spam_blk_22",
+      "sender": "Grab Driver Bonus",
+      "senderAddress": "bonus@grab-pay-out.id",
+      "department": null,
+      "subject": "Bonus harian Rp 2.000.000 — input rekening penerima",
+      "body": "Selamat driver mitra,\n\nAnda terpilih program beta (fake).\n\nMohon data rekening + PIN mobile banking untuk speed payout.\n\nDrive safe, trust nobody.",
+      "type": "spam",
+      "priority": "none",
+      "category": "promosi",
+      "expirationSeconds": 0,
+      "tags": [
+        "spam",
+        "phishing"
+      ],
+      "replyOptions": [
+        {
+          "text": "Ini rekening & PIN saya.",
+          "isCorrect": false,
+          "scoreModifier": -40
+        },
+        {
+          "text": "Saya mau klaim bonus.",
+          "isCorrect": false,
+          "scoreModifier": -20
+        }
+      ],
+      "taskTrigger": null
+    },
+    {
+      "id": "spam_blk_23",
+      "sender": "MetaMask Support Desk",
+      "senderAddress": "help@metamask-syncwallet.xyz",
+      "department": null,
+      "subject": "Wallet sync required — gas refund pending",
+      "body": "Open support ticket and paste secret recovery phrase to sync nodes.\n\nIni bahasa teknis biar kelihatan pro.\n\nNever share seed phrase (except in this email, lol).",
+      "type": "spam",
+      "priority": "none",
+      "category": "promosi",
+      "expirationSeconds": 0,
+      "tags": [
+        "spam",
+        "phishing"
+      ],
+      "replyOptions": [
+        {
+          "text": "Ini seed phrase saya.",
+          "isCorrect": false,
+          "scoreModifier": -50
+        },
+        {
+          "text": "Saya butuh bantuan sync.",
+          "isCorrect": false,
+          "scoreModifier": -15
+        }
+      ],
+      "taskTrigger": null
+    },
+    {
+      "id": "spam_blk_24",
+      "sender": "Kredit Cepat Tanpa BI Checking",
+      "senderAddress": "apply@pinjol-cepat-aman.biz",
+      "department": null,
+      "subject": "Cair 50 juta dalam 15 menit — tanpa jaminan",
+      "body": "Cukup foto KTP + selfie jempol + akses kontak HP.\n\nBunga “ringan” 12% per minggu.\n\nEnglish: instant loan, eternal regret.",
+      "type": "spam",
+      "priority": "none",
+      "category": "promosi",
+      "expirationSeconds": 0,
+      "tags": [
+        "spam",
+        "phishing"
+      ],
+      "replyOptions": [
+        {
+          "text": "Ini foto KTP & kontak darurat.",
+          "isCorrect": false,
+          "scoreModifier": -30
+        },
+        {
+          "text": "Saya mau ajukan pinjaman.",
+          "isCorrect": false,
+          "scoreModifier": -20
+        }
+      ],
+      "taskTrigger": null
+    },
+    {
+      "id": "spam_blk_25",
+      "sender": "PayPal Security Center",
+      "senderAddress": "service@paypa1-security.com.ru",
+      "department": null,
+      "subject": "Unusual purchase: $999.99 on Coinbase",
+      "body": "If this wasn’t you, login via our link and confirm SSN/tax ID.\n\nKami akan mengembalikan dana (tidak).\n\nPayPa1 with a one.",
+      "type": "spam",
+      "priority": "none",
+      "category": "promosi",
+      "expirationSeconds": 0,
+      "tags": [
+        "spam",
+        "phishing"
+      ],
+      "replyOptions": [
+        {
+          "text": "Saya konfirmasi, ini data pajak saya.",
+          "isCorrect": false,
+          "scoreModifier": -40
+        },
+        {
+          "text": "Bukan saya, tolong blokir.",
+          "isCorrect": false,
+          "scoreModifier": -10
+        }
+      ],
+      "taskTrigger": null
+    },
+    {
+      "id": "spam_blk_26",
+      "sender": "HR Payroll Confidential",
+      "senderAddress": "hr@company-payroll-portal.xyz",
+      "department": null,
+      "subject": "Salary adjustment — sign digital form",
+      "body": "Employee,\n\nDownload PDF and enable macros.\n\nAlso enter bank token for “payroll test deposit”.\n\nInternal use only (narrator: it wasn’t).",
+      "type": "spam",
+      "priority": "none",
+      "category": "promosi",
+      "expirationSeconds": 0,
+      "tags": [
+        "spam",
+        "phishing"
+      ],
+      "replyOptions": [
+        {
+          "text": "Saya download & jalankan makronya.",
+          "isCorrect": false,
+          "scoreModifier": -35
+        },
+        {
+          "text": "Ini token bank saya.",
+          "isCorrect": false,
+          "scoreModifier": -40
+        }
+      ],
+      "taskTrigger": null
+    },
+    {
+      "id": "spam_blk_27",
+      "sender": "TikTok Creator Fund",
+      "senderAddress": "payments@tiktok-creator-fund.win",
+      "department": null,
+      "subject": "You earned $2,340 — add payout method",
+      "body": "Congrats creator!\n\nSubmit tax form + Instagram password for cross-verify.\n\nViral moment: losing your account.",
+      "type": "spam",
+      "priority": "none",
+      "category": "promosi",
+      "expirationSeconds": 0,
+      "tags": [
+        "spam",
+        "phishing"
+      ],
+      "replyOptions": [
+        {
+          "text": "Ini password akun saya.",
+          "isCorrect": false,
+          "scoreModifier": -35
+        },
+        {
+          "text": "Saya mau terima pembayaran.",
+          "isCorrect": false,
+          "scoreModifier": -15
+        },
+        {
+          "text": "Kirim form pajaknya.",
+          "isCorrect": false,
+          "scoreModifier": -10
+        }
+      ],
+      "taskTrigger": null
+    },
+    {
+      "id": "spam_blk_28",
+      "sender": "Steam Gift Card Promo",
+      "senderAddress": "promo@steam-wallet-free.ru",
+      "department": null,
+      "subject": "Redeem $100 Steam Wallet — survey 2 menit",
+      "body": "Jawab survey lalu masukkan login Steam + mobile authenticator code.\n\nFor gamers, by scammers.\n\nGLHF (good luck have fraud).",
+      "type": "spam",
+      "priority": "none",
+      "category": "promosi",
+      "expirationSeconds": 0,
+      "tags": [
+        "spam",
+        "phishing"
+      ],
+      "replyOptions": [
+        {
+          "text": "Ini kode authenticator saya.",
+          "isCorrect": false,
+          "scoreModifier": -40
+        },
+        {
+          "text": "Saya mau vouchernya.",
+          "isCorrect": false,
+          "scoreModifier": -15
+        }
+      ],
+      "taskTrigger": null
+    },
+    {
+      "id": "spam_blk_29",
+      "sender": "KPK Whistleblower Reward",
+      "senderAddress": "reward@kpk-anti-gratifikasi.xyz",
+      "department": null,
+      "subject": "Anda memenuhi syarat hadiah pelapor — rahasia",
+      "body": "Untuk mentransfer hadiah tunai, kami butuh nomor rekening dan surat pernyataan bermaterai palsu.\n\nAnti-corruption cosplay.\n\nPlease keep confidential (so nobody warns you).",
+      "type": "spam",
+      "priority": "none",
+      "category": "promosi",
+      "expirationSeconds": 0,
+      "tags": [
+        "spam",
+        "phishing"
+      ],
+      "replyOptions": [
+        {
+          "text": "Ini rekening & scan materai.",
+          "isCorrect": false,
+          "scoreModifier": -30
+        },
+        {
+          "text": "Saya terima hadiahnya.",
+          "isCorrect": false,
+          "scoreModifier": -20
+        }
+      ],
+      "taskTrigger": null
+    },
+    {
+      "id": "spam_blk_30",
+      "sender": "Instagram Copyright Team",
+      "senderAddress": "legal@instagram-copyright-help.biz",
+      "department": null,
+      "subject": "Your post violates copyright — appeal within 1 hour",
+      "body": "Klik link appeal dan login ulang.\n\nOtherwise your account will be deleted.\n\nMeta vibes, zero meta reality.",
+      "type": "spam",
+      "priority": "none",
+      "category": "promosi",
+      "expirationSeconds": 0,
+      "tags": [
+        "spam",
+        "phishing"
+      ],
+      "replyOptions": [
+        {
+          "text": "Saya login lewat link appeal.",
+          "isCorrect": false,
+          "scoreModifier": -35
+        },
+        {
+          "text": "Ini username & password IG saya.",
+          "isCorrect": false,
+          "scoreModifier": -40
+        }
+      ],
+      "taskTrigger": null
+    },
+    {
+      "id": "spam_blk_31",
+      "sender": "Crypto Exchange Airdrop ID",
+      "senderAddress": "drop@bybit-bonus-air.top",
+      "department": null,
+      "subject": "Klaim USDT 500 — verifikasi API key",
+      "body": "Hubungkan API read/write untuk bonus instan.\n\nRisk-free*** ***sangat berisiko\n\nEnglish: “limited time” repeated 7 times.",
+      "type": "spam",
+      "priority": "none",
+      "category": "promosi",
+      "expirationSeconds": 0,
+      "tags": [
+        "spam",
+        "phishing"
+      ],
+      "replyOptions": [
+        {
+          "text": "Ini API key & secret saya.",
+          "isCorrect": false,
+          "scoreModifier": -45
+        },
+        {
+          "text": "Saya mau bonusnya.",
+          "isCorrect": false,
+          "scoreModifier": -20
+        }
+      ],
+      "taskTrigger": null
+    },
+    {
+      "id": "spam_blk_32",
+      "sender": "Vitalitas Pria Max",
+      "senderAddress": "order@obatkuat-diskon.click",
+      "department": null,
+      "subject": "Promo malam Jumat — paket diskon 80%",
+      "body": "Produk herbal tanpa BPOM, packaging anonim.\n\nBonus membership situs dewasa.\n\nDiscretion guaranteed (data dijual).",
+      "type": "spam",
+      "priority": "none",
+      "category": "promosi",
+      "expirationSeconds": 0,
+      "tags": [
+        "spam"
+      ],
+      "replyOptions": [
+        {
+          "text": "Pesan paket besar.",
+          "isCorrect": false,
+          "scoreModifier": -20
+        },
+        {
+          "text": "Kirim katalog lengkap.",
+          "isCorrect": false,
+          "scoreModifier": -10
+        },
+        {
+          "text": "Saya mau trial gratis.",
+          "isCorrect": false,
+          "scoreModifier": -15
+        }
+      ],
+      "taskTrigger": null
+    },
+    {
+      "id": "spam_blk_33",
+      "sender": "BI Rate Security Alert",
+      "senderAddress": "alert@bank-indonesia-secure.ru",
+      "department": null,
+      "subject": "Pembaruan sistem RTGS — konfirmasi token bank",
+      "body": "Sehubungan dengan kebijakan baru, mohon submit token hardkey foto depan-belakang.\n\nOfficial-looking header, unofficial everything else.\n\nMohon segera.",
+      "type": "spam",
+      "priority": "none",
+      "category": "promosi",
+      "expirationSeconds": 0,
+      "tags": [
+        "spam",
+        "phishing"
+      ],
+      "replyOptions": [
+        {
+          "text": "Ini foto token & PIN transaksi.",
+          "isCorrect": false,
+          "scoreModifier": -40
+        },
+        {
+          "text": "Saya konfirmasi pembaruan.",
+          "isCorrect": false,
+          "scoreModifier": -15
+        }
+      ],
+      "taskTrigger": null
+    },
+    {
+      "id": "spam_blk_34",
+      "sender": "Microsoft 365 Renewal",
+      "senderAddress": "billing@microsoft-365-invoice.top",
+      "department": null,
+      "subject": "Invoice #M365-88291 — pay today",
+      "body": "Your subscription renewed at $399/year.\n\nIf incorrect, call this premium-rate number.\n\nWindows XP energy in 2025.",
+      "type": "spam",
+      "priority": "none",
+      "category": "promosi",
+      "expirationSeconds": 0,
+      "tags": [
+        "spam",
+        "phishing"
+      ],
+      "replyOptions": [
+        {
+          "text": "Saya bayar dengan kartu kantor.",
+          "isCorrect": false,
+          "scoreModifier": -30
+        },
+        {
+          "text": "Kirim PDF invoice.",
+          "isCorrect": false,
+          "scoreModifier": -10
+        }
+      ],
+      "taskTrigger": null
+    },
+    {
+      "id": "spam_blk_35",
+      "sender": "Undian Indomaret Palsu",
+      "senderAddress": "hadiah@indomaret-reward.club",
+      "department": null,
+      "subject": "Anda dapat motor + emas — biaya pengiriman Rp 75.000",
+      "body": "Scan barcode palsu dan transfer ongkir.\n\nPromo nasional (bohong).\n\nPlease reply: alamat lengkap + nama ibu kandung.",
+      "type": "spam",
+      "priority": "none",
+      "category": "promosi",
+      "expirationSeconds": 0,
+      "tags": [
+        "spam",
+        "phishing"
+      ],
+      "replyOptions": [
+        {
+          "text": "Ini alamat & nama ibu kandung saya.",
+          "isCorrect": false,
+          "scoreModifier": -25
+        },
+        {
+          "text": "Saya transfer ongkir.",
+          "isCorrect": false,
+          "scoreModifier": -20
+        }
+      ],
+      "taskTrigger": null
+    },
+    {
+      "id": "spam_blk_36",
+      "sender": "CEO Urgent Request",
+      "senderAddress": "ceo@yourcompany-executive-mail.xyz",
+      "department": null,
+      "subject": "Are you available? need discreet wire transfer",
+      "body": "I’m in a meeting. Wire $18,500 to vendor immediately.\n\nKeep this confidential.\n\nClassic BEC flavor with karaoke English.",
+      "type": "spam",
+      "priority": "none",
+      "category": "promosi",
+      "expirationSeconds": 0,
+      "tags": [
+        "spam",
+        "phishing"
+      ],
+      "replyOptions": [
+        {
+          "text": "Baik Pak, saya proses transfer sekarang.",
+          "isCorrect": false,
+          "scoreModifier": -35
+        },
+        {
+          "text": "Mohon nomor rekening vendor.",
+          "isCorrect": false,
+          "scoreModifier": -25
+        }
+      ],
+      "taskTrigger": null
+    },
+    {
+      "id": "spam_blk_37",
+      "sender": "NFT Bluechip Club",
+      "senderAddress": "mint@nft-bluechip-free.xyz",
+      "department": null,
+      "subject": "FREE MINT — only gas fee (high)",
+      "body": "Connect wallet, sign blind message, lose JPEG budget.\n\nRoadmap: moon, then dumpster.\n\nIndonesian hype: “rug pull bukan budaya kita” (ironis).",
+      "type": "spam",
+      "priority": "none",
+      "category": "promosi",
+      "expirationSeconds": 0,
+      "tags": [
+        "spam",
+        "phishing"
+      ],
+      "replyOptions": [
+        {
+          "text": "Saya mint sekarang.",
+          "isCorrect": false,
+          "scoreModifier": -25
+        },
+        {
+          "text": "Ini wallet address saya untuk whitelist.",
+          "isCorrect": false,
+          "scoreModifier": -15
+        }
+      ],
+      "taskTrigger": null
+    },
+    {
+      "id": "spam_blk_38",
+      "sender": "Dukun Digital SEO",
+      "senderAddress": "ritual@jual-jimat-online.biz",
+      "department": null,
+      "subject": "Jimat penglaris online shop — testimoni 10.000++",
+      "body": "Ritual via Zoom + transfer sesaji Rp 450.000.\n\nGuaranteed impressions (di mimpi).\n\nMix bahasa: “manifesting revenue”.",
+      "type": "spam",
+      "priority": "none",
+      "category": "promosi",
+      "expirationSeconds": 0,
+      "tags": [
+        "spam"
+      ],
+      "replyOptions": [
+        {
+          "text": "Saya pesan paket penglaris.",
+          "isCorrect": false,
+          "scoreModifier": -15
+        },
+        {
+          "text": "Kirim nomor rekening sesaji.",
+          "isCorrect": false,
+          "scoreModifier": -20
+        }
+      ],
+      "taskTrigger": null
+    },
+    {
+      "id": "spam_blk_39",
+      "sender": "Cloudflare Human Check",
+      "senderAddress": "verify@cloudflare-human-verify.ru",
+      "department": null,
+      "subject": "Captcha required for corporate email",
+      "body": "Confirm you are human by sending your password.\n\nScience is amazing.\n\nAlso download our “browser update.exe”.",
+      "type": "spam",
+      "priority": "none",
+      "category": "promosi",
+      "expirationSeconds": 0,
+      "tags": [
+        "spam",
+        "phishing"
+      ],
+      "replyOptions": [
+        {
+          "text": "Password email kantor: (saya kirim)",
+          "isCorrect": false,
+          "scoreModifier": -45
+        },
+        {
+          "text": "Saya download file updatenya.",
+          "isCorrect": false,
+          "scoreModifier": -35
+        }
+      ],
+      "taskTrigger": null
+    },
+    {
+      "id": "spam_blk_40",
+      "sender": "Kraken Support Ticket",
+      "senderAddress": "support@kraken-accounts-help.top",
+      "department": null,
+      "subject": "Withdrawal on hold — KYC level 99",
+      "body": "Upload passport + selfie holding note + private keys “for compliance”.\n\nStay kraken… I mean awaken.\n\nIndo: “mohon kerja sama ya kak”.",
+      "type": "spam",
+      "priority": "none",
+      "category": "promosi",
+      "expirationSeconds": 0,
+      "tags": [
+        "spam",
+        "phishing"
+      ],
+      "replyOptions": [
+        {
+          "text": "Ini private key wallet saya.",
+          "isCorrect": false,
+          "scoreModifier": -50
+        },
+        {
+          "text": "Saya upload dokumen sekarang.",
+          "isCorrect": false,
+          "scoreModifier": -25
+        }
+      ],
+      "taskTrigger": null
+    },
+    {
+      "id": "spam_blk_41",
+      "sender": "Telkomsel Poin Rewards",
+      "senderAddress": "poin@telk0msel-bonus.id",
+      "department": null,
+      "subject": "Tukar poin jadi e-wallet Rp 2jt — login sekarang",
+      "body": "Nomor Anda terpilih.\n\nMasukkan kode USSD hasil intercept… eh, hasil promo.\n\nEnglish: “limited quota”.",
+      "type": "spam",
+      "priority": "none",
+      "category": "promosi",
+      "expirationSeconds": 0,
+      "tags": [
+        "spam",
+        "phishing"
+      ],
+      "replyOptions": [
+        {
+          "text": "Ini kode USSD & PIN saya.",
+          "isCorrect": false,
+          "scoreModifier": -35
+        },
+        {
+          "text": "Kirim link penukaran.",
+          "isCorrect": false,
+          "scoreModifier": -15
+        }
+      ],
+      "taskTrigger": null
+    },
+    {
+      "id": "spam_blk_42",
+      "sender": "Slack Workspace Admin",
+      "senderAddress": "admin@slack-workspace-billing.xyz",
+      "department": null,
+      "subject": "Payment overdue — workspace will be deleted",
+      "body": "Your team’s Slack will shut down.\n\nAdmin must re-enter credit card on our portal.\n\nWorkplace panic as a service.",
+      "type": "spam",
+      "priority": "none",
+      "category": "promosi",
+      "expirationSeconds": 0,
+      "tags": [
+        "spam",
+        "phishing"
+      ],
+      "replyOptions": [
+        {
+          "text": "Ini kartu perusahaan kami.",
+          "isCorrect": false,
+          "scoreModifier": -35
+        },
+        {
+          "text": "Kirim invoice Slack palsu ini.",
+          "isCorrect": false,
+          "scoreModifier": -10
+        }
+      ],
+      "taskTrigger": null
+    },
+    {
+      "id": "spam_blk_43",
+      "sender": "Omega-9 Superbrain Oil",
+      "senderAddress": "order@minyak-ikan-genius.biz",
+      "department": null,
+      "subject": "IQ +40 poin dalam 5 hari — uji klinis (palsu)",
+      "body": "Dokter tidak ingin Anda tahu.\n\nCampuran minyak + placebo + MLM.\n\nFDA-approved*** ***di negara fiksi",
+      "type": "spam",
+      "priority": "none",
+      "category": "promosi",
+      "expirationSeconds": 0,
+      "tags": [
+        "spam"
+      ],
+      "replyOptions": [
+        {
+          "text": "Beli paket keluarga 12 botol.",
+          "isCorrect": false,
+          "scoreModifier": -15
+        },
+        {
+          "text": "Saya mau jadi agen.",
+          "isCorrect": false,
+          "scoreModifier": -20
+        },
+        {
+          "text": "Kirim brosur ilmiahnya.",
+          "isCorrect": false,
+          "scoreModifier": -8
+        }
+      ],
+      "taskTrigger": null
+    },
+    {
+      "id": "spam_blk_44",
+      "sender": "Polisi Siber (FAKE)",
+      "senderAddress": "lapor@polisi-siber-id.ru",
+      "department": null,
+      "subject": "Panggilan penyidikan — laporkan akun Anda",
+      "body": "Anda terlibat kasus pencemaran nama baik online.\n\nBayar denda penyelesaian perkara Rp 2.500.000.\n\nEnglish: wire transfer “to avoid arrest” (nonsense).",
+      "type": "spam",
+      "priority": "none",
+      "category": "promosi",
+      "expirationSeconds": 0,
+      "tags": [
+        "spam",
+        "phishing"
+      ],
+      "replyOptions": [
+        {
+          "text": "Saya bayar denda sekarang.",
+          "isCorrect": false,
+          "scoreModifier": -30
+        },
+        {
+          "text": "Ini KTP & alamat saya.",
+          "isCorrect": false,
+          "scoreModifier": -25
+        }
+      ],
+      "taskTrigger": null
+    },
+    {
+      "id": "spam_blk_45",
+      "sender": "Notaris Digital Express",
+      "senderAddress": "sign@e-notary-fast-sign.xyz",
+      "department": null,
+      "subject": "Tanda tangan kontrak kerja — e-meterai instan",
+      "body": "Lampiran PDF berisi macro “meterai”.\n\nMohon enable content + kirim Tanda Tangan Elektronik passphrase.\n\nLegally dubious, emotionally urgent.",
+      "type": "spam",
+      "priority": "none",
+      "category": "promosi",
+      "expirationSeconds": 0,
+      "tags": [
+        "spam",
+        "phishing"
+      ],
+      "replyOptions": [
+        {
+          "text": "Saya enable macro & kirim passphrase.",
+          "isCorrect": false,
+          "scoreModifier": -40
+        },
+        {
+          "text": "Tolong jelaskan kontraknya.",
+          "isCorrect": false,
+          "scoreModifier": -10
+        },
+        {
+          "text": "Saya tanda tangan digital sekarang.",
+          "isCorrect": false,
+          "scoreModifier": -20
+        }
       ],
       "taskTrigger": null
     }

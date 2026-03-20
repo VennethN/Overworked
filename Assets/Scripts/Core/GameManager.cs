@@ -66,10 +66,11 @@ namespace Overworked.Core
             _currentDayLength = dayLengthSeconds;
             emailSpawner?.ResetToDefaultRules();
             emailSpawner?.SetActivePools(new[] { "general", "hr", "spam" });
+            emailSpawner?.SetSpawnEmailIdWhitelist(null);
             StartGame();
         }
 
-        public void StartStoryDay(float dayLength, float difficulty, string spawnRulesOverride, string[] emailPools)
+        public void StartStoryDay(float dayLength, float difficulty, string spawnRulesOverride, string[] emailPools, string[] spawnEmailIds = null)
         {
             _mode = GameMode.Story;
             _currentDayLength = dayLength;
@@ -82,6 +83,8 @@ namespace Overworked.Core
             // Set active email pools for this day
             if (emailPools != null && emailPools.Length > 0)
                 emailSpawner?.SetActivePools(emailPools);
+
+            emailSpawner?.SetSpawnEmailIdWhitelist(spawnEmailIds);
 
             var diff = emailSpawner?.GetComponent<DifficultyController>();
             if (diff != null)
@@ -155,6 +158,7 @@ namespace Overworked.Core
         {
             _state = GameState.Menu;
             emailSpawner?.StopSpawning();
+            emailSpawner?.SetSpawnEmailIdWhitelist(null);
             EmailManager.Instance?.ClearInbox();
             uiManager?.ShowModeSelect();
         }

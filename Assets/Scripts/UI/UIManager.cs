@@ -17,6 +17,7 @@ namespace Overworked.UI
         [SerializeField] private VisualTreeAsset inboxPanelTemplate;
         [SerializeField] private VisualTreeAsset detailPanelTemplate;
         [SerializeField] private VisualTreeAsset hudTemplate;
+        [SerializeField] private UIScaleController uiScaleController;
 
         private VisualElement _inboxSlot;
         private VisualElement _detailSlot;
@@ -26,6 +27,7 @@ namespace Overworked.UI
         private VisualElement _dialogueSlot;
         private VisualElement _daysummarySlot;
         private VisualElement _minigameSlot;
+        private VisualElement _settingsSlot;
         private VisualElement _sidebar;
         private VisualElement _mainContent;
 
@@ -65,6 +67,7 @@ namespace Overworked.UI
             _dialogueSlot = root.Q("dialogue-slot");
             _daysummarySlot = root.Q("daysummary-slot");
             _minigameSlot = root.Q("minigame-slot");
+            _settingsSlot = root.Q("settings-slot");
             _sidebar = root.Q("sidebar");
             _mainContent = root.Q("main-content");
 
@@ -108,9 +111,10 @@ namespace Overworked.UI
             _detail.SetReplyCallback(OnReplyChosen);
             _hud = new HUDController(_hudSlot);
 
-            // Theme toggle — apply to document root so it overrides :root variables
+            // Theme toggle — dark-mode class is added when NOT in light mode
             _hud.OnThemeToggleClicked += ToggleTheme;
-            _docRoot?.EnableInClassList("light-mode", _isLightMode);
+            _hud.OnSettingsClicked += ToggleSettings;
+            _docRoot?.EnableInClassList("dark-mode", !_isLightMode);
             _hud.UpdateThemeButtonLabel(_isLightMode);
 
             // Subscribe to events
@@ -156,7 +160,7 @@ namespace Overworked.UI
 
             // Show mode select overlay
             _modeselectSlot.style.display = DisplayStyle.Flex;
-            _modeSelect = new ModeSelectController(_modeselectSlot, OnArcadeSelected, OnStoryDaySelected);
+            _modeSelect = new ModeSelectController(_modeselectSlot, OnArcadeSelected, OnStoryDaySelected, ShowSettings);
         }
 
         public void HideModeSelect()
@@ -221,7 +225,8 @@ namespace Overworked.UI
                 _pendingDay.dayLengthSeconds,
                 _pendingDay.difficulty,
                 _pendingDay.spawnRulesOverride,
-                _pendingDay.availableEmailPools);
+                _pendingDay.availableEmailPools,
+                _pendingDay.spawnEmailIds);
 
             // Schedule scripted emails AFTER StartGame so ClearInbox doesn't kill them
             if (_pendingDay.scriptedEmails != null)
@@ -409,8 +414,153 @@ namespace Overworked.UI
         public void ToggleTheme()
         {
             _isLightMode = !_isLightMode;
-            _docRoot?.EnableInClassList("light-mode", _isLightMode);
+            _docRoot?.EnableInClassList("dark-mode", !_isLightMode);
             _hud?.UpdateThemeButtonLabel(_isLightMode);
+        }
+
+        // --- Settings Panel ---
+
+        private bool _settingsOpen;
+
+        private void ToggleSettings()
+        {
+            if (_settingsOpen)
+                HideSettings();
+            else
+                ShowSettings();
+        }
+
+        private void ShowSettings()
+        {
+            _settingsOpen = true;
+            _settingsSlot.Clear();
+            _settingsSlot.style.display = DisplayStyle.Flex;
+
+            var overlay = new VisualElement();
+            overlay.AddToClassList("overlay");
+
+            var container = new VisualElement();
+            container.style.backgroundColor = new Color(0.086f, 0.13f, 0.24f, 1f);
+            container.style.borderTopLeftRadius = 8;
+            container.style.borderTopRightRadius = 8;
+            container.style.borderBottomLeftRadius = 8;
+            container.style.borderBottomRightRadius = 8;
+            container.style.paddingTop = 22;
+            container.style.paddingBottom = 22;
+            container.style.paddingLeft = 28;
+            container.style.paddingRight = 28;
+            container.style.alignItems = Align.Center;
+            container.style.width = 260;
+
+            var title = new Label("SETTINGS");
+            title.style.fontSize = 18;
+            title.style.color = new Color(0.376f, 0.647f, 0.98f, 1f);
+            title.style.unityFontStyleAndWeight = FontStyle.Bold;
+            title.style.marginBottom = 16;
+            container.Add(title);
+
+            // UI Scale row: [ - ]  1.0x  [ + ]
+            float currentScale = uiScaleController != null ? uiScaleController.CurrentScale : 1f;
+
+            var scaleLabel = new Label("UI Scale");
+            scaleLabel.style.fontSize = 11;
+            scaleLabel.style.color = new Color(0.63f, 0.63f, 0.69f, 1f);
+            scaleLabel.style.marginBottom = 8;
+            container.Add(scaleLabel);
+
+            var scaleRow = new VisualElement();
+            scaleRow.style.flexDirection = FlexDirection.Row;
+            scaleRow.style.alignItems = Align.Center;
+            scaleRow.style.justifyContent = Justify.Center;
+            scaleRow.style.width = Length.Percent(100);
+            scaleRow.style.marginBottom = 12;
+
+            var scaleValue = new Label($"{currentScale:F1}x");
+            scaleValue.style.fontSize = 14;
+            scaleValue.style.color = Color.white;
+            scaleValue.style.unityFontStyleAndWeight = FontStyle.Bold;
+            scaleValue.style.width = 48;
+            scaleValue.style.unityTextAlign = TextAnchor.MiddleCenter;
+
+            var minusBtn = CreateOverlayButton("-", new Color(0.235f, 0.306f, 0.416f, 1f), () =>
+            {
+                float step = uiScaleController != null ? uiScaleController.scaleStep : 0.1f;
+                uiScaleController?.SetScale(uiScaleController.CurrentScale - step);
+            });
+            minusBtn.style.width = 36;
+            minusBtn.style.paddingLeft = 0;
+            minusBtn.style.paddingRight = 0;
+            minusBtn.style.fontSize = 14;
+
+            var plusBtn = CreateOverlayButton("+", new Color(0.235f, 0.306f, 0.416f, 1f), () =>
+            {
+                float step = uiScaleController != null ? uiScaleController.scaleStep : 0.1f;
+                uiScaleController?.SetScale(uiScaleController.CurrentScale + step);
+            });
+            plusBtn.style.width = 36;
+            plusBtn.style.paddingLeft = 0;
+            plusBtn.style.paddingRight = 0;
+            plusBtn.style.fontSize = 14;
+
+            scaleRow.Add(minusBtn);
+            scaleRow.Add(scaleValue);
+            scaleRow.Add(plusBtn);
+
+            // Keep value label in sync with keyboard shortcuts
+            if (uiScaleController != null)
+            {
+                uiScaleController.OnScaleChanged += newScale =>
+                {
+                    if (_settingsOpen)
+                        scaleValue.text = $"{newScale:F1}x";
+                };
+            }
+
+            container.Add(scaleRow);
+
+            // Hint for keyboard shortcut
+            var hint = new Label("Ctrl +/- to adjust");
+            hint.style.fontSize = 9;
+            hint.style.color = new Color(0.4f, 0.4f, 0.47f, 1f);
+            hint.style.marginBottom = 12;
+            container.Add(hint);
+
+            // Close button
+            var closeBtn = CreateOverlayButton("Close", new Color(0.376f, 0.647f, 0.98f, 1f), HideSettings);
+            closeBtn.style.marginTop = 8;
+            container.Add(closeBtn);
+
+            overlay.Add(container);
+            overlay.style.alignItems = Align.Center;
+            overlay.style.justifyContent = Justify.Center;
+            _settingsSlot.Add(overlay);
+
+            overlay.schedule.Execute(() => overlay.AddToClassList("overlay--visible"));
+        }
+
+        private void HideSettings()
+        {
+            _settingsOpen = false;
+
+            // Clean up the callback
+            if (uiScaleController != null)
+                uiScaleController.OnScaleChanged = null;
+
+            var overlay = _settingsSlot.Q(className: "overlay");
+            if (overlay != null)
+            {
+                overlay.RemoveFromClassList("overlay--visible");
+                overlay.schedule.Execute(() =>
+                {
+                    _settingsSlot.Clear();
+                    _settingsSlot.style.display = DisplayStyle.None;
+                }).ExecuteLater(250);
+            }
+            else
+            {
+                _settingsSlot.Clear();
+                _settingsSlot.style.display = DisplayStyle.None;
+            }
         }
 
         private void RefreshInbox()
