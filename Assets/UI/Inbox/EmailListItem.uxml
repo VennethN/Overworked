@@ -1,0 +1,14 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements">
+    <Style src="InboxPanel.uss" />
+    <ui:VisualElement name="email-item" class="email-item">
+        <ui:VisualElement name="priority-dot" class="priority-indicator" />
+        <ui:VisualElement class="email-item-content">
+            <ui:Label name="sender" class="email-sender" text="Sender Name" />
+            <ui:Label name="subject" class="email-subject" text="Email Subject" />
+        </ui:VisualElement>
+        <ui:VisualElement class="email-item-meta">
+            <ui:Label name="timer" class="email-timer" text="" />
+            <ui:Label name="type-badge" class="type-badge" text="" />
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>

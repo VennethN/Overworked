@@ -1,0 +1,15 @@
+{
+  "maxInboxSize": 30,
+  "baseSpawnIntervalMultiplier": 1.0,
+  "dayLengthSeconds": 300,
+  "spamDeleteBonus": 5,
+  "expiredEmailPenalty": {
+    "none": 0,
+    "low": -5,
+    "medium": -10,
+    "high": -20,
+    "critical": -40
+  },
+  "streakBonusPerLevel": 0.1,
+  "maxStreakMultiplier": 3.0
+}

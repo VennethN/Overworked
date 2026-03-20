@@ -1,0 +1,148 @@
+{
+  "emails": [
+    {
+      "id": "spam_crypto",
+      "sender": "CryptoRaja2024",
+      "senderAddress": "totallylegit@mail.ru",
+      "department": null,
+      "subject": "URGENT: Gandakan gaji kamu HARI INI!!!",
+      "body": "Karyawan yang terhormat,\n\nAnda telah terpilih untuk kesempatan EKSKLUSIF menggandakan gaji Anda dengan berinvestasi di CryptoBux(tm)! Cukup balas dengan detail rekening bank Anda.\n\nIni BUKAN penipuan!",
+      "type": "spam",
+      "priority": "none",
+      "category": "promosi",
+      "expirationSeconds": 0,
+      "tags": ["spam"],
+      "replyOptions": [
+        { "text": "Ceritakan lebih lanjut!", "isCorrect": false, "scoreModifier": -20 },
+        { "text": "Tolong berhenti kirim email", "isCorrect": false, "scoreModifier": -10 }
+      ],
+      "taskTrigger": null
+    },
+    {
+      "id": "spam_prince",
+      "sender": "Pangeran Okafor",
+      "senderAddress": "prince.okafor@royalmail.ng",
+      "department": null,
+      "subject": "Saya Butuh Bantuan Anda Segera - $4.5 Juta",
+      "body": "Sahabat tercinta,\n\nSaya Pangeran Okafor dari Nigeria. Saya punya $4.5 juta USD yang perlu ditransfer keluar negeri. Saya hanya butuh nomor rekening bank Anda untuk menyelesaikan transfer ini. Anda akan menerima 30% sebagai komisi.\n\nTuhan memberkati,\nPangeran Okafor",
+      "type": "spam",
+      "priority": "none",
+      "category": "promosi",
+      "expirationSeconds": 0,
+      "tags": ["spam"],
+      "replyOptions": [
+        { "text": "Ini nomor rekening saya!", "isCorrect": false, "scoreModifier": -25 },
+        { "text": "Kedengarannya bagus, ceritakan lebih lanjut!", "isCorrect": false, "scoreModifier": -15 }
+      ],
+      "taskTrigger": null
+    },
+    {
+      "id": "spam_weight_loss",
+      "sender": "Dr. Langsing",
+      "senderAddress": "drlangsing@pilsehat.biz",
+      "department": null,
+      "subject": "Turun 20 kg dalam 1 MINGGU dengan SATU trik ini!!",
+      "body": "Para ilmuwan BENCI trik aneh yang satu ini!\n\nKlik di sini untuk mempelajari RAHASIA penurunan berat badan cepat yang tidak ingin Anda ketahui dari Big Pharma!\n\n*Hasil tidak umum. Tidak disetujui BPOM.",
+      "type": "spam",
+      "priority": "none",
+      "category": "promosi",
+      "expirationSeconds": 0,
+      "tags": ["spam"],
+      "replyOptions": [
+        { "text": "Daftarkan saya!", "isCorrect": false, "scoreModifier": -15 },
+        { "text": "Ada diskon grosir untuk kantor nggak?", "isCorrect": false, "scoreModifier": -20 }
+      ],
+      "taskTrigger": null
+    },
+    {
+      "id": "spam_lottery",
+      "sender": "Dewan Lotere Internasional",
+      "senderAddress": "pemenang@lottoprize.xyz",
+      "department": null,
+      "subject": "SELAMAT! Anda MENANG Rp 15.000.000.000!!!",
+      "body": "SELAMAT!!!\n\nAlamat email Anda terpilih secara acak sebagai pemenang Lotere Email Internasional kami! Untuk mengklaim hadiah LIMA BELAS MILIAR RUPIAH, cukup balas dengan nama lengkap, alamat, dan nomor KTP Anda.\n\nBertindak SEKARANG - penawaran ini berakhir dalam 24 jam!",
+      "type": "spam",
+      "priority": "none",
+      "category": "promosi",
+      "expirationSeconds": 0,
+      "tags": ["spam"],
+      "replyOptions": [
+        { "text": "SAYA MENANG! Ini data saya!", "isCorrect": false, "scoreModifier": -25 },
+        { "text": "Ini beneran nggak sih?", "isCorrect": false, "scoreModifier": -10 }
+      ],
+      "taskTrigger": null
+    },
+    {
+      "id": "spam_inheritance",
+      "sender": "Advokat Johnson & Associates",
+      "senderAddress": "legal@inheritance-claims.uk",
+      "department": null,
+      "subject": "PENTING: Anda Memiliki Warisan $2.8 Juta Menunggu",
+      "body": "Kami mewakili almarhum yang namanya mirip dengan Anda. Seorang kerabat jauh Anda meninggal tanpa ahli waris dan meninggalkan $2.8 juta USD. Untuk proses klaim, kami hanya butuh biaya administrasi kecil sebesar $500.\n\nHubungi segera - batas waktu 7 hari.",
+      "type": "spam",
+      "priority": "none",
+      "category": "promosi",
+      "expirationSeconds": 0,
+      "tags": ["spam"],
+      "replyOptions": [
+        { "text": "Saya tertarik! Ini data saya.", "isCorrect": false, "scoreModifier": -25 },
+        { "text": "Bagaimana cara transfer biaya administrasi?", "isCorrect": false, "scoreModifier": -20 }
+      ],
+      "taskTrigger": null
+    },
+    {
+      "id": "spam_viagra",
+      "sender": "Farmasi Online Terpercaya",
+      "senderAddress": "obat@apotek-murah.click",
+      "department": null,
+      "subject": "Obat asli tanpa resep - Harga spesial HARI INI",
+      "body": "Viagra, Cialis, dan obat-obatan lainnya. Tanpa resep dokter. Pengiriman diskret. Diskon 70% hanya untuk 50 pembeli pertama!\n\nJangan lewatkan - stok terbatas!!",
+      "type": "spam",
+      "priority": "none",
+      "category": "promosi",
+      "expirationSeconds": 0,
+      "tags": ["spam"],
+      "replyOptions": [
+        { "text": "Pesan 10 kotak!", "isCorrect": false, "scoreModifier": -20 },
+        { "text": "Unsubscribe", "isCorrect": false, "scoreModifier": -5 }
+      ],
+      "taskTrigger": null
+    },
+    {
+      "id": "spam_phishing_bank",
+      "sender": "BCA Security Team",
+      "senderAddress": "security@bca-verify.co.id",
+      "department": null,
+      "subject": "AKUN ANDA AKAN DIBEKUKAN - Verifikasi Segera",
+      "body": "Kami mendeteksi aktivitas mencurigakan. Verifikasi identitas Anda dalam 24 jam dengan klik link di bawah dan masukkan username serta PIN, atau akun akan dibekukan permanen.\n\nIni bukan phishing - ini layanan resmi BCA.",
+      "type": "spam",
+      "priority": "none",
+      "category": "promosi",
+      "expirationSeconds": 0,
+      "tags": ["spam", "phishing"],
+      "replyOptions": [
+        { "text": "Verifikasi sekarang!", "isCorrect": false, "scoreModifier": -30 },
+        { "text": "Ini penipuan, lapor polisi.", "isCorrect": false, "scoreModifier": -5 }
+      ],
+      "taskTrigger": null
+    },
+    {
+      "id": "spam_work_from_home",
+      "sender": "IncomePlus Indonesia",
+      "senderAddress": "kerja@income-plus.id",
+      "department": null,
+      "subject": "Dapatkan Rp 50 juta/bulan dari rumah!",
+      "body": "Bergabung dengan 10.000+ anggota kami yang sudah menghasilkan jutaan rupiah hanya dengan 2 jam kerja sehari! Tidak perlu skill khusus. Bayaran mingguan dijamin.\n\nDaftar gratis - klik sekarang!",
+      "type": "spam",
+      "priority": "none",
+      "category": "promosi",
+      "expirationSeconds": 0,
+      "tags": ["spam"],
+      "replyOptions": [
+        { "text": "Saya mau daftar!", "isCorrect": false, "scoreModifier": -15 },
+        { "text": "Kirim info lengkap ke email saya.", "isCorrect": false, "scoreModifier": -15 }
+      ],
+      "taskTrigger": null
+    }
+  ]
+}

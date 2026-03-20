@@ -1,0 +1,10 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements">
+    <Style src="../Shared/Common.uss" />
+    <Style src="ReplyPanel.uss" />
+    <ui:VisualElement name="reply-overlay" class="overlay">
+        <ui:VisualElement name="reply-container" class="reply-container">
+            <ui:Label name="reply-prompt" text="Choose your reply:" class="reply-prompt" />
+            <ui:VisualElement name="reply-options" class="reply-options" />
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>

@@ -1,0 +1,7 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements">
+    <Style src="../Shared/Common.uss" />
+    <Style src="InboxPanel.uss" />
+    <ui:VisualElement name="inbox-container" class="inbox-root">
+        <ui:ScrollView name="email-list" class="email-list" />
+    </ui:VisualElement>
+</ui:UXML>
