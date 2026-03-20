@@ -1,0 +1,142 @@
+{
+  "emails": [
+    {
+      "id": "story_d3_dika_msg",
+      "sender": "Dika",
+      "senderAddress": "d.prasetyo@sleepdep.co.id",
+      "department": null,
+      "subject": "(tanpa subjek)",
+      "body": "Hei {PlayerName}, ini Dika.\n\nLo baru kan? Gw mau kasih saran: jangan keliatan lemah. Mereka nggak suka itu.\n\nKalau lo mikir mau resign... haha. Coba aja. Gw udah liat 5 orang coba tahun ini. Semua gagal dapet kerja baru.\n\nSeriously, hati-hati di sini. Ada banyak hal yang nggak keliatan dari luar.\n\nGw nggak bisa ngomong banyak lewat email. Tapi... kalau lo mau tahu lebih, bales aja.\n\n— D",
+      "type": "reply",
+      "category": "utama",
+      "priority": "low",
+      "expirationSeconds": 80,
+      "tags": ["story", "story_d3", "dika"],
+      "replyOptions": [
+        {
+          "text": "Ada apa sebenarnya di perusahaan ini?",
+          "isCorrect": true,
+          "scoreModifier": 5,
+          "followUp": {
+            "emailId": "story_d3_dika_hint",
+            "delaySeconds": 15
+          },
+          "setFlag": "helped_dika_d3"
+        },
+        {
+          "text": "Gw nggak mau terlibat.",
+          "isCorrect": true,
+          "scoreModifier": 3,
+          "followUp": null,
+          "setFlag": "ignored_dika_d3"
+        },
+        {
+          "text": "Gw mau lapor ke Mahyu soal lo.",
+          "isCorrect": false,
+          "scoreModifier": -15,
+          "followUp": {
+            "emailId": "story_d3_dika_disappointed",
+            "delaySeconds": 10
+          },
+          "setFlag": null
+        }
+      ],
+      "taskTrigger": null,
+      "expiredFollowUp": null,
+      "setFlagOnRead": null
+    },
+    {
+      "id": "story_d3_dika_hint",
+      "sender": "Dika",
+      "senderAddress": "d.prasetyo@sleepdep.co.id",
+      "department": null,
+      "subject": "RE: (tanpa subjek)",
+      "body": "Oke, gw cerita dikit. Tapi jangan sebarin.\n\nGw kerja di sini udah 2 tahun. Dari awal gw ngerasa ada yang nggak beres. Data lembur karyawan — hilang. Setiap bulan. Gw cek sendiri log-nya, dan jam kerja yang dicatat sistem selalu lebih rendah dari kenyataan.\n\nKaryawan kerja 14 jam, yang tercatat cuma 8. Lo tahu artinya? Lembur nggak dibayar. Sistematis.\n\nDan ada satu lagi — data keuangan departemen yang nggak cocok. Budget \"kesejahteraan karyawan\" ada di laporan, tapi realitanya Rp 0. Duitnya ke mana?\n\nGw belum punya bukti lengkap. Tapi gw sedang kumpulkan.\n\nKalau lo mau bantu... nanti gw hubungi lagi.\n\n— D",
+      "type": "info",
+      "category": "utama",
+      "priority": "low",
+      "expirationSeconds": 0,
+      "tags": ["story", "story_d3", "dika"],
+      "replyOptions": null,
+      "taskTrigger": null,
+      "expiredFollowUp": null,
+      "setFlagOnRead": null
+    },
+    {
+      "id": "story_d3_dika_disappointed",
+      "sender": "Dika",
+      "senderAddress": "d.prasetyo@sleepdep.co.id",
+      "department": null,
+      "subject": "RE: (tanpa subjek)",
+      "body": "Lo serius? Gw cuma mau bantu lo.\n\nTerserah deh. Lo mau jadi penjilat Mahyu silakan. Gw nggak akan ganggu lo lagi.\n\nTapi inget — kalau nanti lo yang kena, jangan harap ada yang nolong.\n\n— D",
+      "type": "info",
+      "category": "utama",
+      "priority": "low",
+      "expirationSeconds": 0,
+      "tags": ["story", "story_d3", "dika"],
+      "replyOptions": null,
+      "taskTrigger": null,
+      "expiredFollowUp": null,
+      "setFlagOnRead": null
+    },
+    {
+      "id": "story_d3_hr_survey",
+      "sender": "Rina Hartati",
+      "senderAddress": "r.hartati@sleepdep.co.id",
+      "department": "HR",
+      "subject": "Survei Kesejahteraan Karyawan (Wajib)",
+      "body": "Kepada {PlayerName},\n\nSebagai bagian dari program kesejahteraan karyawan, kami melakukan survei rutin untuk memastikan lingkungan kerja yang sehat dan produktif.\n\nSurvei ini bersifat \"sukarela\" namun partisipasi sangat diharapkan dan akan dicatat dalam evaluasi Anda.\n\nPertanyaan: Bagaimana kondisi Anda saat bekerja di PT Sleep Deprivation Studio?\n\nSilakan pilih respons yang paling sesuai.\n\nSalam,\nRina Hartati\nHR Department\nPT Sleep Deprivation Studio",
+      "type": "reply",
+      "category": "utama",
+      "priority": "medium",
+      "expirationSeconds": 50,
+      "tags": ["story", "story_d3", "hr"],
+      "replyOptions": [
+        {
+          "text": "Saya merasa baik dan produktif.",
+          "isCorrect": true,
+          "scoreModifier": 8,
+          "followUp": null,
+          "setFlag": null
+        },
+        {
+          "text": "Jujur, saya kelelahan dan perlu istirahat.",
+          "isCorrect": false,
+          "scoreModifier": -5,
+          "followUp": {
+            "emailId": "story_d3_hr_noted",
+            "delaySeconds": 12
+          },
+          "setFlag": null
+        },
+        {
+          "text": "Ini survei atau interogasi?",
+          "isCorrect": false,
+          "scoreModifier": -10,
+          "followUp": null,
+          "setFlag": null
+        }
+      ],
+      "taskTrigger": null,
+      "expiredFollowUp": null,
+      "setFlagOnRead": null
+    },
+    {
+      "id": "story_d3_hr_noted",
+      "sender": "Rina Hartati",
+      "senderAddress": "r.hartati@sleepdep.co.id",
+      "department": "HR",
+      "subject": "RE: Survei Kesejahteraan Karyawan",
+      "body": "Kepada {PlayerName},\n\nTerima kasih atas kejujuran Anda. Respons Anda telah kami catat.\n\nPerlu kami informasikan bahwa karyawan yang menunjukkan tanda-tanda \"kelelahan berlebihan\" akan masuk dalam program evaluasi khusus untuk memastikan mereka masih memenuhi standar kinerja perusahaan.\n\nKami berharap Anda memahami bahwa \"istirahat\" bukan solusi yang kami rekomendasikan. Solusi kami adalah adaptasi.\n\nSalam,\nRina Hartati\nHR Department",
+      "type": "info",
+      "category": "utama",
+      "priority": "medium",
+      "expirationSeconds": 0,
+      "tags": ["story", "story_d3", "hr"],
+      "replyOptions": null,
+      "taskTrigger": null,
+      "expiredFollowUp": null,
+      "setFlagOnRead": null
+    }
+  ]
+}

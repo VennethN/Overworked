@@ -6,6 +6,7 @@ using Overworked.Email;
 using Overworked.Minigames;
 using Overworked.Email.Data;
 using Overworked.Scoring;
+using Overworked.Story;
 using Overworked.Story.Data;
 
 namespace Overworked.UI
@@ -42,6 +43,7 @@ namespace Overworked.UI
 
         private float _timerUpdateAccumulator;
         private const float TIMER_UPDATE_INTERVAL = 0.25f;
+
 
         private IMinigame _activeMinigame;
         private string _minigameEmailInstanceId;
@@ -124,6 +126,7 @@ namespace Overworked.UI
             GameEvents.OnEmailReplied += OnEmailRepliedJuice;
             GameEvents.OnTaskCompleted += OnTaskCompletedJuice;
             GameEvents.OnTaskFailed += OnTaskFailedJuice;
+            GameEvents.OnGameOver += OnGameOverHandler;
         }
 
         private void Update()
@@ -153,6 +156,9 @@ namespace Overworked.UI
 
         public void ShowModeSelect()
         {
+            // Discard any flags set during an incomplete day
+            SaveManager.DiscardPendingFlags();
+
             // Hide game UI
             _mainContent.style.display = DisplayStyle.None;
             _hudSlot.style.display = DisplayStyle.None;
@@ -216,6 +222,9 @@ namespace Overworked.UI
         {
             if (_pendingDay == null) return;
 
+            // Discard any leftover pending flags from a previous incomplete attempt
+            SaveManager.DiscardPendingFlags();
+
             // Load day-specific emails if defined
             if (!string.IsNullOrEmpty(_pendingDay.specialEmailJsonPath))
                 EmailManager.Instance?.LoadAdditionalEmails(new[] { _pendingDay.specialEmailJsonPath });
@@ -226,13 +235,21 @@ namespace Overworked.UI
                 _pendingDay.difficulty,
                 _pendingDay.spawnRulesOverride,
                 _pendingDay.availableEmailPools,
+                _pendingDay.spawnEmailTags,
                 _pendingDay.spawnEmailIds);
 
             // Schedule scripted emails AFTER StartGame so ClearInbox doesn't kill them
             if (_pendingDay.scriptedEmails != null)
             {
+                var save = SaveManager.Load();
                 foreach (var scripted in _pendingDay.scriptedEmails)
                 {
+                    // Check flag gates
+                    if (!string.IsNullOrEmpty(scripted.requireFlag) && !save.HasFlag(scripted.requireFlag))
+                        continue;
+                    if (!string.IsNullOrEmpty(scripted.excludeFlag) && save.HasFlag(scripted.excludeFlag))
+                        continue;
+
                     EmailManager.Instance?.ScheduleFollowUp(new FollowUp
                     {
                         emailId = scripted.emailId,
@@ -265,6 +282,7 @@ namespace Overworked.UI
         {
             _inboxSlot.style.display = DisplayStyle.Flex;
             _detailSlot.style.display = DisplayStyle.None;
+            _inbox?.ClearAll();
             RefreshInbox();
         }
 
@@ -325,13 +343,16 @@ namespace Overworked.UI
             btnRow.style.flexDirection = FlexDirection.Row;
             btnRow.style.marginTop = 16;
 
-            var restartBtn = CreateOverlayButton("Main Lagi", new Color(0.91f, 0.27f, 0.38f, 1f),
-                () => GameManager.Instance?.StartArcade());
-            btnRow.Add(restartBtn);
+            if (GameManager.Instance?.CurrentMode != GameMode.Story)
+            {
+                var restartBtn = CreateOverlayButton("Main Lagi", new Color(0.91f, 0.27f, 0.38f, 1f),
+                    () => GameManager.Instance?.StartArcade());
+                btnRow.Add(restartBtn);
 
-            var spacer = new VisualElement();
-            spacer.style.width = 8;
-            btnRow.Add(spacer);
+                var spacerBtn = new VisualElement();
+                spacerBtn.style.width = 8;
+                btnRow.Add(spacerBtn);
+            }
 
             var menuBtn = CreateOverlayButton("Menu", new Color(0.235f, 0.306f, 0.416f, 1f),
                 () => GameManager.Instance?.ReturnToMenu());
@@ -525,6 +546,23 @@ namespace Overworked.UI
             hint.style.marginBottom = 12;
             container.Add(hint);
 
+            // Reset save button
+            var resetBtn = CreateOverlayButton("Reset Semua", new Color(0.85f, 0.25f, 0.25f, 1f), () =>
+            {
+                SaveManager.ResetSave();
+                HideSettings();
+                GameManager.Instance?.ReturnToMenu();
+            });
+            resetBtn.style.marginTop = 16;
+            container.Add(resetBtn);
+
+            var resetHint = new Label("Hapus SEMUA data (cerita, skor, achievement)");
+            resetHint.style.fontSize = 9;
+            resetHint.style.color = new Color(0.4f, 0.4f, 0.47f, 1f);
+            resetHint.style.marginTop = 4;
+            resetHint.style.marginBottom = 12;
+            container.Add(resetHint);
+
             // Close button
             var closeBtn = CreateOverlayButton("Close", new Color(0.376f, 0.647f, 0.98f, 1f), HideSettings);
             closeBtn.style.marginTop = 8;
@@ -655,6 +693,83 @@ namespace Overworked.UI
             RefreshHUD();
             UIEffects.Shake(_uiRoot, 6f, 5);
             UIEffects.VignetteFlash(_uiRoot, new Color(0.97f, 0.27f, 0.27f, 0.6f), 400);
+        }
+
+        private void OnGameOverHandler(ScoreData finalScore)
+        {
+            if (GameManager.Instance == null) return;
+            if (GameManager.Instance.CurrentMode != GameMode.Story) return;
+            if (_pendingDay == null)
+            {
+                ShowGameOver(finalScore);
+                return;
+            }
+
+            // Flush buffered flags to disk — day completed
+            SaveManager.FlushPendingFlags();
+
+            // Save day score — always unlock next day so the story progresses
+            var save = SaveManager.Load();
+            bool passed = finalScore.totalScore >= _pendingDay.scoreGoal;
+            save.SetBestScore(_pendingDay.dayNumber, finalScore.totalScore);
+            if (_pendingDay.dayNumber > save.lastCompletedDay)
+                save.lastCompletedDay = _pendingDay.dayNumber;
+            SaveManager.Save(save);
+
+            // Check for special ending on day 6 (resign) or day 7 (all others)
+            if (_pendingDay.dayNumber == 6 && save.HasFlag("confirmed_resign_d6"))
+            {
+                ShowEndingDialogue(EndingResolver.Resolve(save, _storyData), finalScore);
+                return;
+            }
+
+            if (_pendingDay.dayNumber == 7)
+            {
+                // Count failed days for breakdown check
+                int failedDays = 0;
+                if (_storyData?.days != null)
+                {
+                    foreach (var d in _storyData.days)
+                    {
+                        if (d.dayNumber > 7) continue;
+                        if (save.GetBestScore(d.dayNumber) < d.scoreGoal) failedDays++;
+                    }
+                }
+
+                string ending = EndingResolver.Resolve(save, _storyData);
+                ShowEndingDialogue(ending, finalScore);
+                return;
+            }
+
+            // Normal day end: show pass/fail dialogue then results
+            DialogueLine[] lines = passed ? _pendingDay.postDialogue?.pass : _pendingDay.postDialogue?.fail;
+            if (lines != null && lines.Length > 0)
+            {
+                ShowDialogue(lines, () =>
+                {
+                    HideDialogue();
+                    ShowGameOver(finalScore);
+                });
+            }
+            else
+            {
+                ShowGameOver(finalScore);
+            }
+        }
+
+        private void ShowEndingDialogue(string endingType, ScoreData finalScore)
+        {
+            // Record ending as achievement
+            var save = SaveManager.Load();
+            save.UnlockEnding(endingType);
+            SaveManager.Save(save);
+
+            DialogueLine[] epilogue = EndingResolver.GetEpilogueDialogue(endingType);
+            ShowDialogue(epilogue, () =>
+            {
+                HideDialogue();
+                ShowGameOver(finalScore);
+            });
         }
 
         // --- Callbacks ---

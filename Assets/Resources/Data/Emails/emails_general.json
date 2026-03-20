@@ -1,90 +1,64 @@
 {
   "emails": [
     {
-      "id": "gen_budget_approval",
-      "sender": "Karen Wijaya",
-      "senderAddress": "k.wijaya@globodyne.com",
-      "department": "Keuangan",
-      "subject": "Anggaran Q3 Perlu Persetujuan",
-      "body": "Halo,\n\nTolong review dan setujui anggaran Q3 yang terlampir sebelum akhir hari ini. Rapat direksi besok pagi.\n\nTerima kasih,\nKaren",
+      "id": "gen_data_sort",
+      "sender": "Mahyu",
+      "senderAddress": "m.mahyu@sleepdep.co.id",
+      "department": "Supervisor",
+      "subject": "Sortir Data Klien - SEGERA",
+      "body": "{PlayerName},\n\nData klien berantakan. Sortir semuanya sebelum deadline. Aku tidak mau dengar alasan.\n\n— Mahyu",
       "type": "task",
       "priority": "high",
-      "category": "pekerjaan",
+      "category": "utama",
       "expirationSeconds": 45.0,
-      "tags": ["finance", "urgent"],
+      "tags": ["work", "urgent"],
       "replyOptions": null,
       "taskTrigger": {
         "taskId": "approve_budget",
-        "description": "Setujui anggaran Q3",
+        "description": "Sortir dan proses data klien",
         "autoCompleteOnOpen": false,
         "timeoutSeconds": 30.0,
         "minigameId": "number_crunch",
         "minigameDifficulty": "medium",
         "followUp": {
-          "emailId": "gen_budget_thanks",
+          "emailId": "gen_data_sort_done",
           "delaySeconds": 8.0
         }
       },
       "expiredFollowUp": {
-        "emailId": "gen_budget_escalation",
+        "emailId": "gen_data_sort_late",
         "delaySeconds": 5.0
       }
     },
     {
-      "id": "gen_standup_time",
-      "sender": "Dimas Pratama",
-      "senderAddress": "d.pratama@globodyne.com",
-      "department": "Engineering",
-      "subject": "RE: Standup pindah jam 2 siang?",
-      "body": "Hei, bisa nggak kita pindahkan daily standup ke jam 2 siang? Soalnya jam 10 pagi bentrok sama meeting lain. Kabarin ya.",
-      "type": "reply",
-      "priority": "medium",
-      "category": "pekerjaan",
-      "expirationSeconds": 60.0,
-      "tags": ["scheduling"],
-      "replyOptions": [
-        {
-          "text": "Oke, jam 2 siang bisa.",
-          "isCorrect": true,
-          "scoreModifier": 10,
-          "followUp": {
-            "emailId": "gen_standup_confirmed",
-            "delaySeconds": 6.0
-          }
-        },
-        {
-          "text": "Nggak, tetap jam 10 pagi aja.",
-          "isCorrect": false,
-          "scoreModifier": -5,
-          "followUp": {
-            "emailId": "gen_standup_pushback",
-            "delaySeconds": 10.0
-          }
-        },
-        {
-          "text": "Gimana kalau jam 4:30 sore?",
-          "isCorrect": false,
-          "scoreModifier": -5
-        },
-        {
-          "text": "Reply All: INI SIAPA YA?",
-          "isCorrect": false,
-          "scoreModifier": -15,
-          "followUp": {
-            "emailId": "gen_replyall_disaster",
-            "delaySeconds": 4.0
-          }
-        }
-      ],
-      "taskTrigger": null
+      "id": "gen_report_deadline",
+      "sender": "Mahyu",
+      "senderAddress": "m.mahyu@sleepdep.co.id",
+      "department": "Supervisor",
+      "subject": "Laporan Harian HARUS MASUK SEKARANG",
+      "body": "Laporan harian kamu belum masuk. Semua orang sudah submit kecuali kamu.\n\nSubmit sekarang atau aku laporkan ke HR.\n\n— Mahyu",
+      "type": "task",
+      "priority": "high",
+      "category": "utama",
+      "expirationSeconds": 50.0,
+      "tags": ["work", "deadline"],
+      "replyOptions": null,
+      "taskTrigger": {
+        "taskId": "file_report",
+        "description": "Submit laporan harian",
+        "autoCompleteOnOpen": false,
+        "timeoutSeconds": 40.0,
+        "minigameId": "typing_test",
+        "minigameDifficulty": "medium"
+      }
     },
     {
-      "id": "gen_server_down",
-      "sender": "Alex Chandra",
-      "senderAddress": "a.chandra@globodyne.com",
+      "id": "gen_system_crash",
+      "sender": "IT Department",
+      "senderAddress": "it@sleepdep.co.id",
       "department": "IT",
-      "subject": "URGENT: Server produksi tidak merespons",
-      "body": "Server produksi utama mati 5 menit yang lalu. Kami butuh otorisasi untuk restart darurat. Bisa tolong disetujui?",
+      "subject": "URGENT: Sistem Tidak Merespons",
+      "body": "Sistem utama crash. Kami butuh otorisasi restart darurat sekarang. Kalau tidak disetujui dalam 5 menit, semua data hari ini bisa hilang.\n\nCepat.",
       "type": "task",
       "priority": "critical",
       "category": "utama",
@@ -93,167 +67,70 @@
       "replyOptions": null,
       "taskTrigger": {
         "taskId": "approve_restart",
-        "description": "Otorisasi restart server darurat",
+        "description": "Otorisasi restart sistem darurat",
         "autoCompleteOnOpen": false,
         "timeoutSeconds": 20.0,
         "followUp": {
-          "emailId": "gen_server_restored",
+          "emailId": "gen_system_restored",
           "delaySeconds": 12.0
         }
       },
       "expiredFollowUp": {
-        "emailId": "gen_server_ceo_angry",
+        "emailId": "gen_system_mahyu_angry",
         "delaySeconds": 5.0
       }
     },
     {
-      "id": "gen_lunch_order",
-      "sender": "Priya Susanti",
-      "senderAddress": "p.susanti@globodyne.com",
+      "id": "gen_client_file",
+      "sender": "Admin",
+      "senderAddress": "admin@sleepdep.co.id",
       "department": "Admin",
-      "subject": "Pesan makan siang untuk acara tim Jumat",
-      "body": "Halo!\n\nKita mau pesan makan siang untuk acara tim hari Jumat. Kamu mau pesan apa?\n\nTolong balas secepatnya ya biar bisa langsung dipesan.",
-      "type": "reply",
-      "priority": "low",
-      "category": "sosial",
-      "expirationSeconds": 90.0,
-      "tags": ["social"],
-      "replyOptions": [
-        { "text": "Pizza dong!", "isCorrect": true, "scoreModifier": 5 },
-        { "text": "Aku skip makan siang aja, makasih.", "isCorrect": true, "scoreModifier": 5 },
-        { "text": "Bisa pesanin helikopter nggak?", "isCorrect": false, "scoreModifier": -10 }
-      ],
-      "taskTrigger": null
-    },
-    {
-      "id": "gen_report_deadline",
-      "sender": "Michael Taufik",
-      "senderAddress": "m.taufik@globodyne.com",
-      "department": "Manajemen",
-      "subject": "Laporan bulanan harus masuk HARI INI",
-      "body": "Pengingat: Laporan progres bulanan kamu harus diserahkan sebelum akhir hari ini. Tolong submit lewat sistem.\n\nSalam,\nMichael",
+      "subject": "File Klien Perlu Disortir - 20 Dokumen",
+      "body": "Ada 20 dokumen klien yang masuk tadi pagi. Semua harus disortir ke folder yang benar sebelum jam makan siang.\n\nJangan sampai ada yang salah folder. Mahyu akan cek.",
       "type": "task",
-      "priority": "high",
-      "category": "utama",
-      "expirationSeconds": 50.0,
-      "tags": ["management", "deadline"],
-      "replyOptions": null,
-      "taskTrigger": {
-        "taskId": "file_report",
-        "description": "Submit laporan progres bulanan",
-        "autoCompleteOnOpen": false,
-        "timeoutSeconds": 40.0,
-        "minigameId": "typing_test",
-        "minigameDifficulty": "medium"
-      }
-    },
-    {
-      "id": "gen_password_reset",
-      "sender": "IT Helpdesk",
-      "senderAddress": "helpdesk@globodyne.com",
-      "department": "IT",
-      "subject": "Permintaan Reset Password dari J. Wibowo",
-      "body": "Karyawan Joko Wibowo telah meminta reset password untuk akun workstation-nya. Mohon disetujui atau ditolak.",
-      "type": "reply",
       "priority": "medium",
       "category": "pekerjaan",
       "expirationSeconds": 55.0,
-      "tags": ["it", "security"],
-      "replyOptions": [
-        {
-          "text": "Disetujui. Tolong reset password-nya.",
-          "isCorrect": true,
-          "scoreModifier": 10,
-          "followUp": {
-            "emailId": "gen_password_done",
-            "delaySeconds": 7.0
-          }
-        },
-        { "text": "Ditolak. Suruh dia cari tahu sendiri.", "isCorrect": false, "scoreModifier": -10 },
-        { "text": "Teruskan ke bagian legal.", "isCorrect": false, "scoreModifier": -5 }
-      ],
-      "taskTrigger": null
-    },
-    {
-      "id": "gen_new_hire",
-      "sender": "Lisa Anggraini",
-      "senderAddress": "l.anggraini@globodyne.com",
-      "department": "HR",
-      "subject": "Karyawan baru mulai Senin - butuh peralatan",
-      "body": "Halo,\n\nAda developer baru yang mulai kerja hari Senin. Bisa tolong setujui permintaan peralatan untuk laptop dan monitor?\n\nTerima kasih,\nLisa",
-      "type": "task",
-      "priority": "medium",
-      "category": "pekerjaan",
-      "expirationSeconds": 70.0,
-      "tags": ["hr", "onboarding"],
+      "tags": ["work", "filing"],
       "replyOptions": null,
       "taskTrigger": {
         "taskId": "approve_equipment",
-        "description": "Setujui permintaan peralatan karyawan baru",
+        "description": "Sortir dokumen klien ke folder yang benar",
         "autoCompleteOnOpen": false,
         "timeoutSeconds": 45.0,
         "minigameId": "inbox_sort",
-        "minigameDifficulty": "easy",
-        "followUp": {
-          "emailId": "gen_new_hire_intro",
-          "delaySeconds": 15.0
-        }
+        "minigameDifficulty": "easy"
       }
     },
     {
-      "id": "gen_vendor_contract",
-      "sender": "Fajar Rizki",
-      "senderAddress": "f.rizki@globodyne.com",
-      "department": "Procurement",
-      "subject": "Kontrak Vendor Baru - Butuh Tanda Tangan",
-      "body": "Perjanjian kerjasama dengan PT SupplyJaya untuk pengadaan IT perlu ditandatangani sebelum Jumat. Nilai kontrak Rp 120 juta per tahun.\n\nDokumen sudah divalidasi legal.",
+      "id": "gen_expense_report",
+      "sender": "Keuangan",
+      "senderAddress": "keuangan@sleepdep.co.id",
+      "department": "Keuangan",
+      "subject": "Laporan Pengeluaran - Hari Ini Deadline",
+      "body": "Laporan pengeluaran belum lengkap. Semua bukti harus diinput sebelum sistem ditutup malam ini.\n\nKalau telat, gaji bulan ini bisa tertunda. Bukan tanggung jawab kami.\n\n— Departemen Keuangan",
       "type": "task",
       "priority": "high",
       "category": "pekerjaan",
-      "expirationSeconds": 65.0,
-      "tags": ["procurement", "contract", "vendor"],
+      "expirationSeconds": 72.0,
+      "tags": ["finance", "deadline"],
       "replyOptions": null,
       "taskTrigger": {
-        "taskId": "sign_vendor_contract",
-        "description": "Tandatangani kontrak vendor PT SupplyJaya",
+        "taskId": "complete_expense_report",
+        "description": "Lengkapi laporan pengeluaran",
         "autoCompleteOnOpen": false,
-        "timeoutSeconds": 50.0
+        "timeoutSeconds": 55.0,
+        "minigameId": "number_crunch",
+        "minigameDifficulty": "hard"
       }
     },
     {
-      "id": "gen_meeting_room",
-      "sender": "Admin Kantor",
-      "senderAddress": "admin@globodyne.com",
-      "department": "Admin",
-      "subject": "Konflik booking ruang rapat - Ruang A Lantai 3",
-      "body": "Kamu dan tim Sales memesan Ruang A jam 2-3 siang besok. Siapa yang mau pindah? Tolong koordinasi dan kabari saya.",
-      "type": "reply",
-      "priority": "medium",
-      "category": "pekerjaan",
-      "expirationSeconds": 50.0,
-      "tags": ["scheduling", "admin"],
-      "replyOptions": [
-        { "text": "Kami pindah ke Ruang B.", "isCorrect": true, "scoreModifier": 10 },
-        {
-          "text": "Suruh Sales pindah, kami duluan booking.",
-          "isCorrect": false,
-          "scoreModifier": -5,
-          "followUp": {
-            "emailId": "gen_meeting_room_conflict",
-            "delaySeconds": 8.0
-          }
-        },
-        { "text": "Batal aja meeting-nya.", "isCorrect": false, "scoreModifier": -15 }
-      ],
-      "taskTrigger": null
-    },
-    {
       "id": "gen_security_alert",
-      "sender": "Tim Keamanan IT",
-      "senderAddress": "security@globodyne.com",
+      "sender": "IT Security",
+      "senderAddress": "security@sleepdep.co.id",
       "department": "IT",
-      "subject": "ALERT: Aktivitas login mencurigakan terdeteksi",
-      "body": "Sistem mendeteksi login dari lokasi yang tidak biasa (IP dari luar negeri) untuk akun kamu 2 jam yang lalu. Apakah itu kamu?\n\nJika tidak, segera ganti password dan laporkan.",
+      "subject": "ALERT: Aktivitas Mencurigakan Terdeteksi",
+      "body": "Sistem mendeteksi login dari perangkat tidak dikenal di workstation area kamu. Verifikasi segera atau akun akan dikunci otomatis.\n\nJangan abaikan ini.",
       "type": "task",
       "priority": "critical",
       "category": "utama",
@@ -262,64 +139,1180 @@
       "replyOptions": null,
       "taskTrigger": {
         "taskId": "verify_security_alert",
-        "description": "Verifikasi dan tanggapi alert keamanan",
+        "description": "Verifikasi alert keamanan",
         "autoCompleteOnOpen": false,
         "timeoutSeconds": 20.0
       }
     },
     {
-      "id": "gen_parking_permit",
-      "sender": "Admin Fasilitas",
-      "senderAddress": "fasilitas@globodyne.com",
-      "department": "Admin",
-      "subject": "Permintaan kartu parkir tamu - Besok siang",
-      "body": "Ada tamu dari PT MitraBiz yang akan berkunjung besok jam 1 siang. Bisa tolong approve permintaan kartu parkir tamu untuk 1 mobil?\n\nTerima kasih.",
+      "id": "gen_schedule_change",
+      "sender": "Rekan Kerja",
+      "senderAddress": "staff@sleepdep.co.id",
+      "department": null,
+      "subject": "RE: Shift Besok",
+      "body": "Hei, bisa tukar shift besok? Aku harus overtime malam ini jadi besok pagi nggak bisa datang jam 7.\n\nKalau nggak bisa ya sudah, aku coba tahan aja.",
       "type": "reply",
-      "priority": "low",
+      "priority": "medium",
       "category": "pekerjaan",
-      "expirationSeconds": 85.0,
-      "tags": ["admin", "facilities"],
+      "expirationSeconds": 60.0,
+      "tags": ["scheduling"],
       "replyOptions": [
-        { "text": "Disetujui. Saya akan proses.", "isCorrect": true, "scoreModifier": 5 },
-        { "text": "Suruh mereka parkir di jalan aja.", "isCorrect": false, "scoreModifier": -10 }
+        { "text": "Oke, aku cover shift pagi besok.", "isCorrect": true, "scoreModifier": 10 },
+        { "text": "Maaf, aku juga lembur malam ini.", "isCorrect": false, "scoreModifier": -5 },
+        { "text": "Lapor ke Mahyu aja langsung.", "isCorrect": false, "scoreModifier": -10 }
       ],
       "taskTrigger": null
     },
     {
-      "id": "gen_expense_report",
-      "sender": "Keuangan",
-      "senderAddress": "keuangan@globodyne.com",
-      "department": "Keuangan",
-      "subject": "Laporan pengeluaran Q1 belum lengkap",
-      "body": "Beberapa item di laporan pengeluaran Q1 tim kamu belum ada bukti kwitansi. Tolong lengkapi sebelum akhir minggu agar bisa diproses reimbursemen.\n\nDetail terlampir.",
+      "id": "gen_password_reset",
+      "sender": "IT Helpdesk",
+      "senderAddress": "helpdesk@sleepdep.co.id",
+      "department": "IT",
+      "subject": "Permintaan Reset Password - Karyawan #47",
+      "body": "Karyawan #47 melaporkan password expired. Sistem auto-reset dimatikan karena kebijakan baru dari manajemen.\n\nMohon approval manual.",
+      "type": "reply",
+      "priority": "medium",
+      "category": "pekerjaan",
+      "expirationSeconds": 55.0,
+      "tags": ["it", "security"],
+      "replyOptions": [
+        {
+          "text": "Disetujui, reset password.",
+          "isCorrect": true,
+          "scoreModifier": 10,
+          "followUp": { "emailId": "gen_password_done", "delaySeconds": 7.0 }
+        },
+        { "text": "Tolak, suruh dia hubungi vendor IT.", "isCorrect": false, "scoreModifier": -10 },
+        { "text": "Ini bukan tanggung jawab saya.", "isCorrect": false, "scoreModifier": -5 }
+      ],
+      "taskTrigger": null
+    },
+    {
+      "id": "gen_overtime_notice",
+      "sender": "Mahyu",
+      "senderAddress": "m.mahyu@sleepdep.co.id",
+      "department": "Supervisor",
+      "subject": "Lembur Malam Ini - Wajib",
+      "body": "Semua karyawan wajib lembur malam ini sampai pekerjaan selesai. Tidak ada pengecualian.\n\nYang tidak hadir akan dicatat sebagai pelanggaran kedisiplinan.\n\n— Mahyu",
+      "type": "reply",
+      "priority": "high",
+      "category": "pekerjaan",
+      "expirationSeconds": 40.0,
+      "tags": ["work", "overtime", "urgent"],
+      "replyOptions": [
+        { "text": "Baik, saya akan lembur.", "isCorrect": true, "scoreModifier": 8 },
+        { "text": "Apakah ada kompensasi lembur?", "isCorrect": false, "scoreModifier": -15 },
+        { "text": "Saya ada urusan keluarga malam ini.", "isCorrect": false, "scoreModifier": -10 }
+      ],
+      "taskTrigger": null
+    },
+    {
+      "id": "gen_meeting_room",
+      "sender": "Admin Kantor",
+      "senderAddress": "admin@sleepdep.co.id",
+      "department": "Admin",
+      "subject": "Ruang Meeting Dijadwalkan Ulang",
+      "body": "Mahyu meminta ruang meeting A untuk rapat mendadak. Meeting kamu dipindah ke ruang B.\n\nKonfirmasi bahwa kamu sudah tahu.",
+      "type": "reply",
+      "priority": "medium",
+      "category": "pekerjaan",
+      "expirationSeconds": 50.0,
+      "tags": ["scheduling", "admin"],
+      "replyOptions": [
+        { "text": "Dipahami, saya pindah ke Ruang B.", "isCorrect": true, "scoreModifier": 10 },
+        { "text": "Kenapa selalu meeting saya yang dipindah?", "isCorrect": false, "scoreModifier": -15 },
+        { "text": "Batal aja meeting-nya.", "isCorrect": false, "scoreModifier": -10 }
+      ],
+      "taskTrigger": null
+    },
+    {
+      "id": "gen_break_request",
+      "sender": "Dika",
+      "senderAddress": "d.prasetyo@sleepdep.co.id",
+      "department": null,
+      "subject": "Pantry 5 menit?",
+      "body": "Gw ke pantry 5 menit nih. Lo mau ikut? Cepet aja sebelum Mahyu sadar.\n\n— D",
+      "type": "reply",
+      "priority": "low",
+      "category": "sosial",
+      "expirationSeconds": 90.0,
+      "tags": ["social"],
+      "replyOptions": [
+        { "text": "Oke, 5 menit aja.", "isCorrect": true, "scoreModifier": 5 },
+        { "text": "Nggak, takut ketahuan Mahyu.", "isCorrect": true, "scoreModifier": 5 },
+        { "text": "Reply All: SIAPA MAU KE PANTRY??", "isCorrect": false, "scoreModifier": -20 }
+      ],
+      "taskTrigger": null
+    },
+    {
+      "id": "gen_vendor_contract",
+      "sender": "Legal",
+      "senderAddress": "legal@sleepdep.co.id",
+      "department": "Legal",
+      "subject": "Kontrak Vendor - Tandatangan Hari Ini",
+      "body": "Kontrak dengan vendor outsourcing perlu ditandatangani hari ini. Nilainya sudah disetujui direksi.\n\nJangan tunda. Vendor sudah menunggu sejak minggu lalu.",
       "type": "task",
       "priority": "high",
       "category": "pekerjaan",
-      "expirationSeconds": 72.0,
-      "tags": ["finance", "expense", "deadline"],
+      "expirationSeconds": 65.0,
+      "tags": ["work", "contract"],
+      "replyOptions": null,
+      "taskTrigger": {
+        "taskId": "sign_vendor_contract",
+        "description": "Tandatangani kontrak vendor",
+        "autoCompleteOnOpen": false,
+        "timeoutSeconds": 50.0
+      }
+    },
+    {
+      "id": "gen_system_maintenance",
+      "sender": "IT Department",
+      "senderAddress": "it@sleepdep.co.id",
+      "department": "IT",
+      "subject": "INFO: Maintenance Sistem Malam Ini",
+      "body": "Sistem akan dimatikan untuk maintenance malam ini jam 23:00 - 05:00.\n\nPastikan semua pekerjaan sudah disimpan.\n\n(Catatan: lembur tetap berlaku meski sistem mati. Gunakan cara manual.)",
+      "type": "info",
+      "priority": "low",
+      "category": "pekerjaan",
+      "expirationSeconds": 0,
+      "tags": ["it", "info"],
+      "replyOptions": null,
+      "taskTrigger": null
+    },
+    {
+      "id": "gen_motivational",
+      "sender": "Manajemen",
+      "senderAddress": "management@sleepdep.co.id",
+      "department": "Manajemen",
+      "subject": "Kutipan Motivasi Hari Ini",
+      "body": "\"Karyawan yang baik tidak menghitung jam kerja.\"\n\n— Kutipan dari Pak Direktur\n\nMari kita semua bekerja lebih keras lagi hari ini!",
+      "type": "info",
+      "priority": "low",
+      "category": "sosial",
+      "expirationSeconds": 0,
+      "tags": ["social", "info"],
+      "replyOptions": null,
+      "taskTrigger": null
+    },
+    {
+      "id": "gen_blk_01",
+      "sender": "Mahyu",
+      "senderAddress": "m.mahyu@sleepdep.co.id",
+      "department": "Supervisor",
+      "subject": "Database Entry - 50 Record Hari Ini",
+      "body": "Masukkan 50 record data ke sistem sebelum jam pulang. Manual. Sistem auto-input error.\n\nJangan protes.\n\n— Mahyu",
+      "type": "task",
+      "priority": "medium",
+      "category": "pekerjaan",
+      "expirationSeconds": 58.0,
+      "tags": ["work", "deadline"],
+      "replyOptions": null,
+      "taskTrigger": {
+        "taskId": "file_report",
+        "description": "Input 50 record data ke sistem",
+        "autoCompleteOnOpen": false,
+        "timeoutSeconds": 40.0,
+        "minigameId": "typing_test",
+        "minigameDifficulty": "medium"
+      }
+    },
+    {
+      "id": "gen_blk_02",
+      "sender": "Keuangan",
+      "senderAddress": "keuangan@sleepdep.co.id",
+      "department": "Keuangan",
+      "subject": "Verifikasi Angka Keuangan Q2",
+      "body": "Data keuangan Q2 perlu diverifikasi. Ada selisih yang harus diidentifikasi dan diperbaiki.\n\nDeadline: hari ini. Tidak bisa ditunda.",
+      "type": "task",
+      "priority": "high",
+      "category": "pekerjaan",
+      "expirationSeconds": 48.0,
+      "tags": ["finance", "urgent"],
+      "replyOptions": null,
+      "taskTrigger": {
+        "taskId": "approve_budget",
+        "description": "Verifikasi data keuangan Q2",
+        "autoCompleteOnOpen": false,
+        "timeoutSeconds": 32.0,
+        "minigameId": "number_crunch",
+        "minigameDifficulty": "medium"
+      }
+    },
+    {
+      "id": "gen_blk_03",
+      "sender": "Admin",
+      "senderAddress": "admin@sleepdep.co.id",
+      "department": "Admin",
+      "subject": "Arsip Dokumen 3 Bulan Terakhir",
+      "body": "Gudang arsip berantakan. Sortir dokumen 3 bulan terakhir ke kategori yang benar.\n\nHarus selesai hari ini. Manager mau inspeksi besok.",
+      "type": "task",
+      "priority": "medium",
+      "category": "pekerjaan",
+      "expirationSeconds": 55.0,
+      "tags": ["work", "filing"],
+      "replyOptions": null,
+      "taskTrigger": {
+        "taskId": "approve_equipment",
+        "description": "Sortir arsip dokumen",
+        "autoCompleteOnOpen": false,
+        "timeoutSeconds": 40.0,
+        "minigameId": "inbox_sort",
+        "minigameDifficulty": "medium"
+      }
+    },
+    {
+      "id": "gen_blk_04",
+      "sender": "IT Department",
+      "senderAddress": "it@sleepdep.co.id",
+      "department": "IT",
+      "subject": "URGENT: Backup Server Gagal",
+      "body": "Backup otomatis gagal 3 kali berturut-turut. Butuh otorisasi untuk backup manual darurat.\n\nData berisiko hilang permanen.",
+      "type": "task",
+      "priority": "critical",
+      "category": "utama",
+      "expirationSeconds": 28.0,
+      "tags": ["it", "urgent", "critical"],
+      "replyOptions": null,
+      "taskTrigger": {
+        "taskId": "approve_restart",
+        "description": "Otorisasi backup manual darurat",
+        "autoCompleteOnOpen": false,
+        "timeoutSeconds": 18.0
+      }
+    },
+    {
+      "id": "gen_blk_05",
+      "sender": "Rekan Kerja",
+      "senderAddress": "staff02@sleepdep.co.id",
+      "department": null,
+      "subject": "Lo Pernah Nggak Sih Mikir...",
+      "body": "Pernah nggak sih mikir kalau tempat ini tuh nggak normal? Kemarin ada yang nangis di toilet. Lagi.\n\nJangan bilang siapa-siapa ya.",
+      "type": "reply",
+      "priority": "low",
+      "category": "sosial",
+      "expirationSeconds": 80.0,
+      "tags": ["social"],
+      "replyOptions": [
+        { "text": "Iya... tapi kita harus bertahan.", "isCorrect": true, "scoreModifier": 5 },
+        { "text": "Di mana-mana sama aja.", "isCorrect": true, "scoreModifier": 5 },
+        { "text": "Aku mau lapor ke Mahyu soal ini.", "isCorrect": false, "scoreModifier": -15 }
+      ],
+      "taskTrigger": null
+    },
+    {
+      "id": "gen_blk_06",
+      "sender": "Mahyu",
+      "senderAddress": "m.mahyu@sleepdep.co.id",
+      "department": "Supervisor",
+      "subject": "Kerjaan Kemarin Belum Selesai",
+      "body": "Aku cek, ada beberapa task kemarin yang belum tuntas. Selesaikan hari ini DI ATAS target harian biasa.\n\nJangan sampai ini menumpuk lagi.\n\n— Mahyu",
+      "type": "task",
+      "priority": "high",
+      "category": "utama",
+      "expirationSeconds": 45.0,
+      "tags": ["work", "deadline", "urgent"],
+      "replyOptions": null,
+      "taskTrigger": {
+        "taskId": "file_report",
+        "description": "Selesaikan task yang tertunda dari kemarin",
+        "autoCompleteOnOpen": false,
+        "timeoutSeconds": 35.0,
+        "minigameId": "typing_test",
+        "minigameDifficulty": "hard"
+      }
+    },
+    {
+      "id": "gen_blk_07",
+      "sender": "Admin Kantor",
+      "senderAddress": "admin@sleepdep.co.id",
+      "department": "Admin",
+      "subject": "Permintaan Alat Tulis - Butuh Approval",
+      "body": "Karyawan meminta pensil dan kertas. Budget alat tulis bulan ini hampir habis.\n\nApprove atau tolak?",
+      "type": "reply",
+      "priority": "low",
+      "category": "pekerjaan",
+      "expirationSeconds": 85.0,
+      "tags": ["admin"],
+      "replyOptions": [
+        { "text": "Disetujui. Sediakan dari stok cadangan.", "isCorrect": true, "scoreModifier": 5 },
+        { "text": "Tolak. Suruh bawa sendiri dari rumah.", "isCorrect": false, "scoreModifier": -10 }
+      ],
+      "taskTrigger": null
+    },
+    {
+      "id": "gen_blk_08",
+      "sender": "Legal",
+      "senderAddress": "legal@sleepdep.co.id",
+      "department": "Legal",
+      "subject": "Review Kontrak Klien Baru",
+      "body": "Kontrak dengan klien baru perlu di-review dan disetujui. Nilai kontrak signifikan.\n\nJangan sampai ada kesalahan. Tanggung jawab ada di kamu.",
+      "type": "task",
+      "priority": "high",
+      "category": "pekerjaan",
+      "expirationSeconds": 60.0,
+      "tags": ["work", "contract"],
+      "replyOptions": null,
+      "taskTrigger": {
+        "taskId": "sign_vendor_contract",
+        "description": "Review dan setujui kontrak klien",
+        "autoCompleteOnOpen": false,
+        "timeoutSeconds": 45.0
+      }
+    },
+    {
+      "id": "gen_blk_09",
+      "sender": "Dika",
+      "senderAddress": "d.prasetyo@sleepdep.co.id",
+      "department": null,
+      "subject": "Hati-hati Hari Ini",
+      "body": "Gw denger Mahyu lagi bad mood. Kemarin ada karyawan kena tegur keras di depan semua orang.\n\nFokus kerja aja, jangan cari masalah.\n\n— D",
+      "type": "info",
+      "priority": "low",
+      "category": "sosial",
+      "expirationSeconds": 0,
+      "tags": ["social", "info"],
+      "replyOptions": null,
+      "taskTrigger": null
+    },
+    {
+      "id": "gen_blk_10",
+      "sender": "IT Department",
+      "senderAddress": "it@sleepdep.co.id",
+      "department": "IT",
+      "subject": "Printer Error - Print Job Tertunda",
+      "body": "Printer lantai 2 error. Semua dokumen harus disubmit ulang ke queue baru.\n\nSelesaikan sebelum Mahyu tahu ada yang terganggu.",
+      "type": "task",
+      "priority": "medium",
+      "category": "pekerjaan",
+      "expirationSeconds": 52.0,
+      "tags": ["it"],
+      "replyOptions": null,
+      "taskTrigger": {
+        "taskId": "approve_equipment",
+        "description": "Submit ulang print job ke queue baru",
+        "autoCompleteOnOpen": false,
+        "timeoutSeconds": 38.0
+      }
+    },
+    {
+      "id": "gen_blk_11",
+      "sender": "Manajemen",
+      "senderAddress": "management@sleepdep.co.id",
+      "department": "Manajemen",
+      "subject": "Pengumuman: Target Bulanan Dinaikkan 30%",
+      "body": "Setelah evaluasi, manajemen memutuskan menaikkan target bulanan sebesar 30%.\n\nIni demi \"pertumbuhan perusahaan dan kesejahteraan bersama\".\n\nTerima kasih atas dedikasi kalian yang tak terbatas.",
+      "type": "info",
+      "priority": "medium",
+      "category": "utama",
+      "expirationSeconds": 0,
+      "tags": ["work", "info"],
+      "replyOptions": null,
+      "taskTrigger": null
+    },
+    {
+      "id": "gen_blk_12",
+      "sender": "Keuangan",
+      "senderAddress": "keuangan@sleepdep.co.id",
+      "department": "Keuangan",
+      "subject": "Koreksi Angka Payroll - Ada Selisih",
+      "body": "Payroll bulan ini menunjukkan selisih. Perbaiki entri sebelum gaji diproses.\n\nKalau telat, semua karyawan terdampak. Dan itu salahmu.",
+      "type": "task",
+      "priority": "high",
+      "category": "pekerjaan",
+      "expirationSeconds": 55.0,
+      "tags": ["finance", "deadline"],
       "replyOptions": null,
       "taskTrigger": {
         "taskId": "complete_expense_report",
-        "description": "Lengkapi laporan pengeluaran dengan bukti kwitansi",
+        "description": "Koreksi selisih payroll",
         "autoCompleteOnOpen": false,
-        "timeoutSeconds": 55.0,
+        "timeoutSeconds": 42.0,
+        "minigameId": "number_crunch",
+        "minigameDifficulty": "medium"
+      }
+    },
+    {
+      "id": "gen_blk_13",
+      "sender": "Rekan Kerja",
+      "senderAddress": "staff03@sleepdep.co.id",
+      "department": null,
+      "subject": "Kamu Masih Bertahan?",
+      "body": "Sudah beberapa hari kamu di sini. Itu rekor buat karyawan baru lho.\n\nKaryawan sebelumnya rata-rata cuma 3 hari sebelum resign.\n\nHati-hati sama dirimu ya.",
+      "type": "reply",
+      "priority": "low",
+      "category": "sosial",
+      "expirationSeconds": 85.0,
+      "tags": ["social"],
+      "replyOptions": [
+        { "text": "Masih bertahan. Harus bertahan.", "isCorrect": true, "scoreModifier": 5 },
+        { "text": "Memangnya separah itu ya di sini?", "isCorrect": true, "scoreModifier": 3 },
+        { "text": "Aku mau resign besok.", "isCorrect": false, "scoreModifier": -10 }
+      ],
+      "taskTrigger": null
+    },
+    {
+      "id": "gen_blk_14",
+      "sender": "Mahyu",
+      "senderAddress": "m.mahyu@sleepdep.co.id",
+      "department": "Supervisor",
+      "subject": "Laporan Insiden - Tulis Sekarang",
+      "body": "Ada insiden di lantai bawah. Aku nggak peduli detailnya, tulis laporan formal sekarang dan submit ke HR.\n\nJangan tanya apa insiden-nya. Tulis saja.\n\n— Mahyu",
+      "type": "task",
+      "priority": "medium",
+      "category": "pekerjaan",
+      "expirationSeconds": 50.0,
+      "tags": ["work"],
+      "replyOptions": null,
+      "taskTrigger": {
+        "taskId": "file_report",
+        "description": "Tulis laporan insiden formal",
+        "autoCompleteOnOpen": false,
+        "timeoutSeconds": 38.0,
+        "minigameId": "typing_test",
+        "minigameDifficulty": "easy"
+      }
+    },
+    {
+      "id": "gen_blk_15",
+      "sender": "IT Security",
+      "senderAddress": "security@sleepdep.co.id",
+      "department": "IT",
+      "subject": "ALERT: USB Tidak Dikenal Terdeteksi",
+      "body": "Sistem monitoring mendeteksi perangkat USB tidak dikenal di workstation area kamu.\n\nVerifikasi dan laporkan segera. Ini bisa jadi pelanggaran keamanan serius.",
+      "type": "task",
+      "priority": "high",
+      "category": "utama",
+      "expirationSeconds": 30.0,
+      "tags": ["it", "security", "urgent"],
+      "replyOptions": null,
+      "taskTrigger": {
+        "taskId": "verify_security_alert",
+        "description": "Verifikasi perangkat USB tidak dikenal",
+        "autoCompleteOnOpen": false,
+        "timeoutSeconds": 22.0
+      }
+    },
+
+    {
+      "id": "gen_invoice_client",
+      "sender": "Keuangan",
+      "senderAddress": "keuangan@sleepdep.co.id",
+      "department": "Keuangan",
+      "subject": "Invoice Klien #882 - Proses Sekarang",
+      "body": "Invoice dari klien #882 sudah jatuh tempo 3 hari lalu. Klien mulai komplain.\n\nProses pembayarannya sekarang sebelum klien kabur. Kalau sampai batal kontrak, kamu yang tanggung jawab.\n\n— Departemen Keuangan",
+      "type": "task",
+      "priority": "high",
+      "category": "pekerjaan",
+      "expirationSeconds": 50.0,
+      "tags": ["finance", "urgent"],
+      "replyOptions": null,
+      "taskTrigger": {
+        "taskId": "approve_budget",
+        "description": "Proses invoice klien #882",
+        "autoCompleteOnOpen": false,
+        "timeoutSeconds": 35.0,
         "minigameId": "number_crunch",
         "minigameDifficulty": "hard"
       }
     },
     {
-      "id": "gen_anniversary",
-      "sender": "Panitia Karyawan",
-      "senderAddress": "karyawan@globodyne.com",
+      "id": "gen_database_cleanup",
+      "sender": "IT Department",
+      "senderAddress": "it@sleepdep.co.id",
+      "department": "IT",
+      "subject": "DARURAT: Database Penuh 98% - Cleanup Sekarang",
+      "body": "Database utama sudah 98% kapasitas. Kalau sampai 100%, seluruh sistem perusahaan berhenti.\n\nHapus record duplikat dan data sampah SEKARANG. Tidak ada waktu untuk diskusi.\n\nIni darurat level 1.",
+      "type": "task",
+      "priority": "critical",
+      "category": "utama",
+      "expirationSeconds": 30.0,
+      "tags": ["it", "urgent", "critical"],
+      "replyOptions": null,
+      "taskTrigger": {
+        "taskId": "approve_restart",
+        "description": "Cleanup database darurat",
+        "autoCompleteOnOpen": false,
+        "timeoutSeconds": 22.0,
+        "minigameId": "inbox_sort",
+        "minigameDifficulty": "hard"
+      }
+    },
+    {
+      "id": "gen_inventory_audit",
+      "sender": "Admin",
+      "senderAddress": "admin@sleepdep.co.id",
+      "department": "Admin",
+      "subject": "Audit Inventaris - Hitung Ulang Semua",
+      "body": "Hasil audit inventaris tidak cocok dengan data sistem. Selisih 47 unit.\n\nHitung ulang semua item dan input angka yang benar. Mahyu mau laporan ini di mejanya sore ini.\n\nJangan sampai ada yang hilang. Atau setidaknya jangan sampai TERLIHAT ada yang hilang.",
+      "type": "task",
+      "priority": "medium",
+      "category": "pekerjaan",
+      "expirationSeconds": 60.0,
+      "tags": ["work", "audit"],
+      "replyOptions": null,
+      "taskTrigger": {
+        "taskId": "complete_expense_report",
+        "description": "Audit dan hitung ulang inventaris",
+        "autoCompleteOnOpen": false,
+        "timeoutSeconds": 45.0,
+        "minigameId": "number_crunch",
+        "minigameDifficulty": "medium"
+      }
+    },
+    {
+      "id": "gen_server_log",
+      "sender": "IT Security",
+      "senderAddress": "security@sleepdep.co.id",
+      "department": "IT",
+      "subject": "Analisis Log Server - Ada Anomali",
+      "body": "Log server menunjukkan pola akses aneh antara jam 02:00-04:00 tadi malam. Padahal tidak ada yang seharusnya kerja jam segitu.\n\n...Atau memang ada? Di perusahaan ini siapa tahu.\n\nAnalisis dan verifikasi log-nya segera.",
+      "type": "task",
+      "priority": "high",
+      "category": "utama",
+      "expirationSeconds": 40.0,
+      "tags": ["it", "security"],
+      "replyOptions": null,
+      "taskTrigger": {
+        "taskId": "verify_security_alert",
+        "description": "Analisis log server untuk anomali",
+        "autoCompleteOnOpen": false,
+        "timeoutSeconds": 30.0,
+        "minigameId": "number_crunch",
+        "minigameDifficulty": "hard"
+      }
+    },
+    {
+      "id": "gen_software_update",
+      "sender": "IT Department",
+      "senderAddress": "it@sleepdep.co.id",
+      "department": "IT",
+      "subject": "Approval Update Software - Mendesak",
+      "body": "Patch keamanan kritis perlu diinstall di semua workstation. Tanpa patch ini, sistem rentan terhadap serangan.\n\nButuh approval dari setiap departemen. Kamu belum approve.\n\nUpdate ini akan menyebabkan restart otomatis. Simpan semua pekerjaan sebelum approve.",
+      "type": "task",
+      "priority": "high",
+      "category": "pekerjaan",
+      "expirationSeconds": 45.0,
+      "tags": ["it", "security"],
+      "replyOptions": null,
+      "taskTrigger": {
+        "taskId": "approve_equipment",
+        "description": "Approve patch keamanan software",
+        "autoCompleteOnOpen": false,
+        "timeoutSeconds": 30.0
+      }
+    },
+    {
+      "id": "gen_doc_translate",
+      "sender": "Mahyu",
+      "senderAddress": "m.mahyu@sleepdep.co.id",
+      "department": "Supervisor",
+      "subject": "Terjemahkan Dokumen Klien Asing - Cepat",
+      "body": "Klien dari luar negeri kirim dokumen dalam bahasa Inggris. Terjemahkan ke Bahasa Indonesia SEKARANG.\n\nGunakan Google Translate kalau perlu, aku nggak peduli kualitasnya. Yang penting cepat.\n\nTidak, kita tidak punya budget untuk penerjemah profesional.\n\n— Mahyu",
+      "type": "task",
+      "priority": "medium",
+      "category": "pekerjaan",
+      "expirationSeconds": 55.0,
+      "tags": ["work", "deadline"],
+      "replyOptions": null,
+      "taskTrigger": {
+        "taskId": "file_report",
+        "description": "Terjemahkan dokumen klien",
+        "autoCompleteOnOpen": false,
+        "timeoutSeconds": 40.0,
+        "minigameId": "typing_test",
+        "minigameDifficulty": "hard"
+      }
+    },
+    {
+      "id": "gen_shipment_track",
+      "sender": "Admin",
+      "senderAddress": "admin@sleepdep.co.id",
+      "department": "Admin",
+      "subject": "Kiriman Hilang - Cari Tracking Number",
+      "body": "Kiriman peralatan kantor senilai Rp 15 juta hilang di perjalanan. Vendor bilang sudah dikirim, ekspedisi bilang belum terima.\n\nCari tracking number-nya di sistem dan sortir semua dokumen pengiriman bulan ini.\n\nKalau sampai hilang beneran, potong gaji siapa?",
+      "type": "task",
+      "priority": "medium",
+      "category": "pekerjaan",
+      "expirationSeconds": 55.0,
+      "tags": ["work", "admin"],
+      "replyOptions": null,
+      "taskTrigger": {
+        "taskId": "approve_equipment",
+        "description": "Cari tracking number kiriman hilang",
+        "autoCompleteOnOpen": false,
+        "timeoutSeconds": 40.0,
+        "minigameId": "inbox_sort",
+        "minigameDifficulty": "medium"
+      }
+    },
+    {
+      "id": "gen_tax_form",
+      "sender": "Keuangan",
+      "senderAddress": "keuangan@sleepdep.co.id",
+      "department": "Keuangan",
+      "subject": "Formulir Pajak - Input Manual",
+      "body": "Sistem e-Filing lagi down. Semua formulir pajak harus diinput manual ke spreadsheet.\n\n73 formulir. Deadline besok pagi.\n\nKalau telat, dendanya ditanggung perusahaan. Dan perusahaan akan menagih ke karyawan yang bertanggung jawab.\n\nYaitu kamu.",
+      "type": "task",
+      "priority": "high",
+      "category": "pekerjaan",
+      "expirationSeconds": 65.0,
+      "tags": ["finance", "deadline"],
+      "replyOptions": null,
+      "taskTrigger": {
+        "taskId": "complete_expense_report",
+        "description": "Input formulir pajak manual",
+        "autoCompleteOnOpen": false,
+        "timeoutSeconds": 48.0,
+        "minigameId": "number_crunch",
+        "minigameDifficulty": "hard"
+      }
+    },
+    {
+      "id": "gen_training_module",
+      "sender": "Rina Hartati",
+      "senderAddress": "r.hartati@sleepdep.co.id",
+      "department": "HR",
+      "subject": "Training Wajib: Kebahagiaan di Tempat Kerja",
+      "body": "Seluruh karyawan WAJIB menyelesaikan modul training online berjudul \"Menemukan Kebahagiaan di Tempat Kerja\".\n\nModul ini terdiri dari 47 slide dan quiz di akhir. Nilai minimum kelulusan: 100%.\n\nDeadline: hari ini.\n\nSalam hangat,\nRina Hartati\nHR Department",
+      "type": "task",
+      "priority": "medium",
+      "category": "pekerjaan",
+      "expirationSeconds": 50.0,
+      "tags": ["hr", "training"],
+      "replyOptions": null,
+      "taskTrigger": {
+        "taskId": "complete_training",
+        "description": "Selesaikan training wajib",
+        "autoCompleteOnOpen": false,
+        "timeoutSeconds": 35.0,
+        "minigameId": "typing_test",
+        "minigameDifficulty": "medium"
+      }
+    },
+    {
+      "id": "gen_vendor_sign_urgent",
+      "sender": "Legal",
+      "senderAddress": "legal@sleepdep.co.id",
+      "department": "Legal",
+      "subject": "URGENT: Kontrak Vendor Catering Baru",
+      "body": "Vendor catering lama kabur karena \"kondisi kerja tidak manusiawi\" (kata mereka, bukan kami).\n\nVendor baru sudah ditemukan. Kontrak harus ditandatangani HARI INI atau besok tidak ada makan siang.\n\nSebenarnya makan siang juga cuma 15 menit sih, tapi tetap wajib ada.",
+      "type": "task",
+      "priority": "high",
+      "category": "pekerjaan",
+      "expirationSeconds": 40.0,
+      "tags": ["work", "contract", "urgent"],
+      "replyOptions": null,
+      "taskTrigger": {
+        "taskId": "sign_vendor_contract",
+        "description": "Tandatangani kontrak vendor catering baru",
+        "autoCompleteOnOpen": false,
+        "timeoutSeconds": 28.0
+      }
+    },
+    {
+      "id": "gen_reply_personal",
+      "sender": "Dika",
+      "senderAddress": "d.prasetyo@sleepdep.co.id",
       "department": null,
-      "subject": "5 Tahun Globodyne! Perayaan Jumat depan",
-      "body": "Globodyne genap 5 tahun! Akan ada acara syukuran kecil di lobi Jumat jam 4 sore. Ada kue dan doorprize.\n\nSemua diundang!",
+      "subject": "Bro, Gw Butuh Bantuan...",
+      "body": "Gw lagi ada masalah pribadi. Nggak bisa fokus kerja. Pacar gw minta putus lewat email kantor tadi pagi.\n\nYa, dia juga kerja di sini. Lantai 3.\n\nBisa nggak lo cover kerjaan gw 1 jam aja? Gw butuh ke toilet dulu bentar... atau sejam.\n\n— D",
+      "type": "reply",
+      "priority": "low",
+      "category": "sosial",
+      "expirationSeconds": 80.0,
+      "tags": ["social"],
+      "replyOptions": [
+        { "text": "Oke bro, gw cover. Take your time.", "isCorrect": true, "scoreModifier": 8 },
+        { "text": "Sabar ya. Tapi gw juga kerjaan numpuk...", "isCorrect": false, "scoreModifier": -3 },
+        { "text": "Putus lewat email kantor? Itu bisa dilaporin ke HR lho.", "isCorrect": false, "scoreModifier": -12 }
+      ],
+      "taskTrigger": null
+    },
+    {
+      "id": "gen_reply_breakroom",
+      "sender": "Rekan Kerja",
+      "senderAddress": "staff04@sleepdep.co.id",
+      "department": null,
+      "subject": "LO LIHAT YANG TADI DI PANTRY NGGAK??",
+      "body": "Bro, tadi di pantry ada yang BANTING mug ke tembok. Mug-nya yang ada tulisan \"I Love My Job\".\n\nTerus orangnya langsung pergi tanpa bersihin. Sekarang ada pecahan di mana-mana.\n\nMenurut lo gimana?",
+      "type": "reply",
+      "priority": "low",
+      "category": "sosial",
+      "expirationSeconds": 70.0,
+      "tags": ["social"],
+      "replyOptions": [
+        { "text": "Waduh. Pura-pura nggak lihat aja deh.", "isCorrect": true, "scoreModifier": 5 },
+        { "text": "Siapa orangnya? Jangan-jangan butuh bantuan.", "isCorrect": true, "scoreModifier": 7 },
+        { "text": "Aku akan lapor ke Mahyu biar orangnya kena SP.", "isCorrect": false, "scoreModifier": -15 }
+      ],
+      "taskTrigger": null
+    },
+    {
+      "id": "gen_reply_food",
+      "sender": "Dika",
+      "senderAddress": "d.prasetyo@sleepdep.co.id",
+      "department": null,
+      "subject": "Gw Bawa Gorengan",
+      "body": "Psst. Gw bawa gorengan dari luar. Risoles sama tahu isi.\n\nMau nggak? Gw taruh di laci meja gw. Ambil diem-diem aja.\n\nJangan sampai Mahyu tahu, terakhir kali ada yang makan di meja kena warning karena \"menurunkan produktivitas\".\n\n— D",
+      "type": "reply",
+      "priority": "low",
+      "category": "sosial",
+      "expirationSeconds": 90.0,
+      "tags": ["social"],
+      "replyOptions": [
+        { "text": "Mau dong! Nanti gw ambil pas Mahyu nggak lihat.", "isCorrect": true, "scoreModifier": 5 },
+        { "text": "Nggak deh, takut ketahuan.", "isCorrect": true, "scoreModifier": 3 },
+        { "text": "Makan di jam kerja itu melanggar peraturan. Aku harus lapor.", "isCorrect": false, "scoreModifier": -18 }
+      ],
+      "taskTrigger": null
+    },
+    {
+      "id": "gen_reply_new_employee",
+      "sender": "Rekan Kerja",
+      "senderAddress": "staff05@sleepdep.co.id",
+      "department": null,
+      "subject": "Anak Baru Sudah Resign Lagi",
+      "body": "Lo tahu nggak, si anak baru yang masuk hari Senin? Yang duduk di pojok?\n\nDia resign tadi pagi. Baru 2 hari.\n\nKatanya dia kirim surat resign lewat email jam 3 pagi. Isinya cuma: \"Saya tidak kuat.\"\n\nAmpun deh.",
+      "type": "reply",
+      "priority": "low",
+      "category": "sosial",
+      "expirationSeconds": 75.0,
+      "tags": ["social"],
+      "replyOptions": [
+        { "text": "Kasihan... tapi nggak heran sih.", "isCorrect": true, "scoreModifier": 5 },
+        { "text": "2 hari? Itu masih mending. Ada yang cuma 4 jam.", "isCorrect": true, "scoreModifier": 5 },
+        { "text": "Bagus, berarti kursinya bisa aku pakai. Kursi aku sudah rusak.", "isCorrect": false, "scoreModifier": -8 }
+      ],
+      "taskTrigger": null
+    },
+    {
+      "id": "gen_reply_supply_drama",
+      "sender": "Admin Kantor",
+      "senderAddress": "admin@sleepdep.co.id",
+      "department": "Admin",
+      "subject": "RE: RE: RE: Stapler yang Hilang",
+      "body": "Ini sudah email ke-7 soal stapler yang hilang dari meja Pak Budi.\n\nPak Budi mengancam akan \"mengambil tindakan tegas\" kalau stapler-nya tidak dikembalikan.\n\nMahyu bilang kasus ini prioritas.\n\nAda yang tahu di mana stapler-nya?",
+      "type": "reply",
+      "priority": "medium",
+      "category": "pekerjaan",
+      "expirationSeconds": 60.0,
+      "tags": ["admin"],
+      "replyOptions": [
+        { "text": "Saya akan bantu cari. Cek lost and found.", "isCorrect": true, "scoreModifier": 8 },
+        { "text": "Beli aja stapler baru, harganya cuma Rp 15rb.", "isCorrect": false, "scoreModifier": -5 },
+        { "text": "Reply All: Siapa yang ambil stapler Pak Budi? NGAKU.", "isCorrect": false, "scoreModifier": -15 }
+      ],
+      "taskTrigger": null
+    },
+    {
+      "id": "gen_reply_ac",
+      "sender": "Rekan Kerja",
+      "senderAddress": "staff06@sleepdep.co.id",
+      "department": null,
+      "subject": "AC KANTOR MATI LAGI",
+      "body": "AC lantai 2 mati lagi. Ini sudah ke-3 kalinya minggu ini.\n\nSuhu di sini kayak di neraka. Atau mungkin memang ini neraka.\n\nAda yang mau ikut komplain ke building management? Atau kita diam aja seperti biasa?",
+      "type": "reply",
+      "priority": "low",
+      "category": "sosial",
+      "expirationSeconds": 65.0,
+      "tags": ["social"],
+      "replyOptions": [
+        { "text": "Aku ikut. Tapi lewat email resmi aja biar sopan.", "isCorrect": true, "scoreModifier": 7 },
+        { "text": "Bawa kipas sendiri aja. Di sini komplain nggak pernah digubris.", "isCorrect": true, "scoreModifier": 3 },
+        { "text": "Nggak usah komplain, nanti malah kena masalah sama Mahyu.", "isCorrect": false, "scoreModifier": -5 }
+      ],
+      "taskTrigger": null
+    },
+    {
+      "id": "gen_reply_weekend",
+      "sender": "Mahyu",
+      "senderAddress": "m.mahyu@sleepdep.co.id",
+      "department": "Supervisor",
+      "subject": "\"Undangan\" Kerja Sabtu-Minggu",
+      "body": "Akhir pekan ini ada proyek besar yang harus selesai. Aku \"mengundang\" kamu untuk hadir Sabtu dan Minggu.\n\nIni bukan perintah. Ini undangan. Tapi yang tidak hadir akan saya catat.\n\nOh, dan tidak ada uang lembur karena ini \"sukarela\".\n\n— Mahyu",
+      "type": "reply",
+      "priority": "high",
+      "category": "pekerjaan",
+      "expirationSeconds": 45.0,
+      "tags": ["work", "overtime"],
+      "replyOptions": [
+        { "text": "Terima kasih atas undangannya. Saya akan hadir.", "isCorrect": true, "scoreModifier": 8 },
+        { "text": "Apakah ini wajib? Karena ditulis \"undangan\".", "isCorrect": false, "scoreModifier": -12 },
+        { "text": "Saya sudah ada acara keluarga akhir pekan ini.", "isCorrect": false, "scoreModifier": -10 }
+      ],
+      "taskTrigger": null
+    },
+    {
+      "id": "gen_reply_latenight",
+      "sender": "Mahyu",
+      "senderAddress": "m.mahyu@sleepdep.co.id",
+      "department": "Supervisor",
+      "subject": "Kamu Masih Online?",
+      "body": "Sent at 23:47\n\nAku lihat status kamu masih online di sistem. Bagus.\n\nKarena kamu masih di sini, tolong review dokumen yang aku kirim tadi siang. Harusnya sudah selesai dari tadi sore sebenarnya.\n\nAku tunggu konfirmasi sebelum aku tidur.\n\n— Mahyu",
+      "type": "reply",
+      "priority": "high",
+      "category": "utama",
+      "expirationSeconds": 40.0,
+      "tags": ["work", "overtime", "urgent"],
+      "replyOptions": [
+        { "text": "Baik, sedang saya kerjakan sekarang.", "isCorrect": true, "scoreModifier": 8 },
+        { "text": "Maaf, saya lupa logout. Sebenarnya sudah pulang.", "isCorrect": false, "scoreModifier": -15 },
+        { "text": "Bukankah jam kerja sudah selesai 6 jam yang lalu?", "isCorrect": false, "scoreModifier": -20 }
+      ],
+      "taskTrigger": null
+    },
+    {
+      "id": "gen_info_motivasi2",
+      "sender": "Manajemen",
+      "senderAddress": "management@sleepdep.co.id",
+      "department": "Manajemen",
+      "subject": "Motivasi Pagi: Bersyukurlah!",
+      "body": "\"Bersyukurlah kamu punya pekerjaan. Di luar sana banyak yang tidak seberuntung kamu.\"\n\n— Pak Direktur, saat ditanya soal kenaikan gaji\n\nSelamat bekerja! Ingat, loyalitas adalah hadiah terbaik untuk perusahaan.",
       "type": "info",
       "priority": "low",
       "category": "sosial",
       "expirationSeconds": 0,
-      "tags": ["social", "anniversary", "info"],
+      "tags": ["social", "info"],
       "replyOptions": null,
+      "taskTrigger": null
+    },
+    {
+      "id": "gen_info_wifi",
+      "sender": "IT Department",
+      "senderAddress": "it@sleepdep.co.id",
+      "department": "IT",
+      "subject": "Password WiFi Berubah (Lagi)",
+      "body": "Password WiFi kantor diubah untuk ke-14 kalinya bulan ini.\n\nPassword baru: K3rj4T3ru5J4ng4nB3rh3nt1\n\nCatatan: WiFi hanya boleh digunakan untuk keperluan kerja. Browsing media sosial akan terdeteksi dan dilaporkan ke supervisor masing-masing.",
+      "type": "info",
+      "priority": "low",
+      "category": "pekerjaan",
+      "expirationSeconds": 0,
+      "tags": ["it", "info"],
+      "replyOptions": null,
+      "taskTrigger": null
+    },
+    {
+      "id": "gen_info_lift",
+      "sender": "Building Management",
+      "senderAddress": "gedung@sleepdep.co.id",
+      "department": null,
+      "subject": "Lift Dalam Perbaikan - Gunakan Tangga",
+      "body": "Lift gedung sedang dalam perbaikan untuk waktu yang tidak ditentukan.\n\nSilakan gunakan tangga. Kantor kita di lantai 12.\n\nAnggap saja ini program kesehatan gratis dari perusahaan.\n\nSalam,\nBuilding Management",
+      "type": "info",
+      "priority": "low",
+      "category": "pekerjaan",
+      "expirationSeconds": 0,
+      "tags": ["info"],
+      "replyOptions": null,
+      "taskTrigger": null
+    },
+    {
+      "id": "gen_info_fire_drill",
+      "sender": "Rina Hartati",
+      "senderAddress": "r.hartati@sleepdep.co.id",
+      "department": "HR",
+      "subject": "Jadwal Fire Drill - Wajib Hadir",
+      "body": "Fire drill dijadwalkan hari Jumat jam 14:00.\n\nSemua karyawan WAJIB berpartisipasi. Waktu evakuasi maksimal: 3 menit.\n\nKaryawan yang evakuasi lebih dari 3 menit akan diminta mengikuti \"sesi evaluasi kesiapan\" dengan Mahyu.\n\nCatatan: Pekerjaan yang tertunda selama fire drill tetap harus diselesaikan hari itu.\n\nSalam,\nRina Hartati\nHR",
+      "type": "info",
+      "priority": "low",
+      "category": "pekerjaan",
+      "expirationSeconds": 0,
+      "tags": ["hr", "info"],
+      "replyOptions": null,
+      "taskTrigger": null
+    },
+    {
+      "id": "gen_info_lostandfound",
+      "sender": "Admin Kantor",
+      "senderAddress": "admin@sleepdep.co.id",
+      "department": "Admin",
+      "subject": "Lost and Found: Ditemukan di Toilet",
+      "body": "Ditemukan di toilet lantai 2:\n- 1 buah harapan (sudah hancur)\n- 3 lembar surat resign yang belum jadi\n- 1 bungkus tisu basah (sudah habis)\n- Air mata (tidak bisa dikembalikan)\n\nYang merasa kehilangan, silakan klaim di meja admin. Atau jangan. Mungkin lebih baik move on.\n\n— Admin",
+      "type": "info",
+      "priority": "none",
+      "category": "sosial",
+      "expirationSeconds": 0,
+      "tags": ["social", "info"],
+      "replyOptions": null,
+      "taskTrigger": null
+    },
+    {
+      "id": "gen_info_vending",
+      "sender": "Building Management",
+      "senderAddress": "gedung@sleepdep.co.id",
+      "department": null,
+      "subject": "Vending Machine Rusak",
+      "body": "Vending machine di lantai 2 rusak setelah seseorang menendangnya berulang kali.\n\nPerbaikan dijadwalkan... entah kapan. Budget maintenance sudah dialokasikan untuk \"proyek prioritas lain\".\n\nSementara itu, air minum bisa diambil dari keran toilet. Ini bercanda. Atau tidak.\n\n— Building Management",
+      "type": "info",
+      "priority": "none",
+      "category": "sosial",
+      "expirationSeconds": 0,
+      "tags": ["info"],
+      "replyOptions": null,
+      "taskTrigger": null
+    },
+    {
+      "id": "gen_info_parking",
+      "sender": "Building Management",
+      "senderAddress": "gedung@sleepdep.co.id",
+      "department": null,
+      "subject": "Parkiran Dicat Ulang - Jangan Parkir Hari Ini",
+      "body": "Area parkir sedang dicat ulang hari ini. Semua kendaraan harus dipindahkan sebelum jam 07:00.\n\nBagi yang sudah terlanjur parkir: mobilnya akan digembok sampai cat kering. Estimasi: 2-3 hari.\n\nAlternatif parkir: di jalan, 800 meter dari kantor. Anggap olahraga pagi.\n\n— Building Management",
+      "type": "info",
+      "priority": "low",
+      "category": "pekerjaan",
+      "expirationSeconds": 0,
+      "tags": ["info"],
+      "replyOptions": null,
+      "taskTrigger": null
+    },
+    {
+      "id": "gen_info_coffee",
+      "sender": "Manajemen",
+      "senderAddress": "management@sleepdep.co.id",
+      "department": "Manajemen",
+      "subject": "Peraturan Baru: Mesin Kopi",
+      "body": "Mulai hari ini, mesin kopi baru di pantry hanya boleh digunakan oleh level manajer ke atas.\n\nKaryawan biasa tetap bisa menggunakan mesin kopi lama (yang tombol-nya sudah rusak 3 bulan dan hanya bisa membuat air panas).\n\nIni demi \"efisiensi penggunaan sumber daya perusahaan\".\n\nTerima kasih atas pengertiannya,\nManajemen",
+      "type": "info",
+      "priority": "low",
+      "category": "pekerjaan",
+      "expirationSeconds": 0,
+      "tags": ["info"],
+      "replyOptions": null,
+      "taskTrigger": null
+    },
+    {
+      "id": "gen_info_motivasi3",
+      "sender": "Manajemen",
+      "senderAddress": "management@sleepdep.co.id",
+      "department": "Manajemen",
+      "subject": "Kata Bijak Hari Ini",
+      "body": "\"Tidak ada kata 'aku' dalam kata 'tim'. Tapi ada kata 'mati' kalau dibolak-balik.\"\n\n— Anonim (ditempel di dinding toilet oleh karyawan yang sudah resign)\n\nManajemen tidak bertanggung jawab atas kutipan ini tapi setuju dengan semangatnya.",
+      "type": "info",
+      "priority": "none",
+      "category": "sosial",
+      "expirationSeconds": 0,
+      "tags": ["social", "info"],
+      "replyOptions": null,
+      "taskTrigger": null
+    },
+    {
+      "id": "gen_info_dress_code",
+      "sender": "Rina Hartati",
+      "senderAddress": "r.hartati@sleepdep.co.id",
+      "department": "HR",
+      "subject": "Pengingat: Dress Code Ketat",
+      "body": "Diingatkan kembali bahwa dress code perusahaan HARUS dipatuhi setiap hari.\n\nPelanggaran minggu ini:\n- 2 karyawan memakai kaos kaki yang tidak senada\n- 1 karyawan terlihat \"terlalu santai\" menurut Mahyu\n- 1 karyawan memakai sepatu yang \"terlihat terlalu nyaman\"\n\nSanksi: teguran tertulis.\n\nSalam,\nRina Hartati\nHR",
+      "type": "info",
+      "priority": "low",
+      "category": "pekerjaan",
+      "expirationSeconds": 0,
+      "tags": ["hr", "info"],
+      "replyOptions": null,
+      "taskTrigger": null
+    },
+    {
+      "id": "gen_budget_approval",
+      "sender": "Keuangan",
+      "senderAddress": "keuangan@sleepdep.co.id",
+      "department": "Keuangan",
+      "subject": "Approval Anggaran Operasional Q3",
+      "body": "Anggaran operasional Q3 perlu diverifikasi dan diapprove. Ada 28 line item yang harus dicek satu per satu.\n\nJangan tanda tangan kalau angkanya belum cocok. Kalau cocok juga double-check. Kalau masih ragu, cek tiga kali.\n\nTanggung jawab sepenuhnya ada di kamu.",
+      "type": "task",
+      "priority": "high",
+      "category": "pekerjaan",
+      "expirationSeconds": 55.0,
+      "tags": ["finance", "urgent"],
+      "replyOptions": null,
+      "taskTrigger": {
+        "taskId": "approve_budget",
+        "description": "Verifikasi dan approve anggaran Q3",
+        "autoCompleteOnOpen": false,
+        "timeoutSeconds": 40.0,
+        "minigameId": "number_crunch",
+        "minigameDifficulty": "hard"
+      }
+    },
+    {
+      "id": "gen_compliance_report",
+      "sender": "Mahyu",
+      "senderAddress": "m.mahyu@sleepdep.co.id",
+      "department": "Supervisor",
+      "subject": "Laporan Compliance - Deadline 1 Jam",
+      "body": "Auditor datang besok. Laporan compliance harus ready HARI INI.\n\nTulis lengkap, format standar, tidak ada typo. Kalau ada typo, ulangi dari awal.\n\nAku serius.\n\n— Mahyu",
+      "type": "task",
+      "priority": "high",
+      "category": "utama",
+      "expirationSeconds": 45.0,
+      "tags": ["work", "deadline", "urgent"],
+      "replyOptions": null,
+      "taskTrigger": {
+        "taskId": "file_report",
+        "description": "Tulis laporan compliance untuk auditor",
+        "autoCompleteOnOpen": false,
+        "timeoutSeconds": 32.0,
+        "minigameId": "typing_test",
+        "minigameDifficulty": "hard"
+      }
+    },
+    {
+      "id": "gen_info_toilet",
+      "sender": "Building Management",
+      "senderAddress": "gedung@sleepdep.co.id",
+      "department": null,
+      "subject": "Peraturan Baru Penggunaan Toilet",
+      "body": "Efektif mulai hari ini, penggunaan toilet dibatasi maksimal 2x per shift, masing-masing 3 menit.\n\nAbsensi toilet akan dicatat menggunakan sistem tap card baru di pintu toilet.\n\nKaryawan yang melebihi batas akan mendapat \"sesi konsultasi efisiensi waktu\" dengan supervisor.\n\nKebijakan ini bertujuan untuk meningkatkan produktivitas.\n\n— Building Management\n(Atas permintaan Manajemen)",
+      "type": "info",
+      "priority": "low",
+      "category": "pekerjaan",
+      "expirationSeconds": 0,
+      "tags": ["info"],
+      "replyOptions": null,
+      "taskTrigger": null
+    },
+
+    {
+      "id": "gen_memo_password",
+      "sender": "IT Department",
+      "senderAddress": "it@sleepdep.co.id",
+      "department": "IT",
+      "subject": "Password Server Baru - HAFALKAN",
+      "body": "Password server internal diganti hari ini.\n\nPassword baru: SDS-7742-KAPPA\n\nHAFALKAN. Jangan tulis di sticky note. Jangan screenshot. Jangan forward.\n\nKonfirmasi bahwa kamu sudah catat.",
+      "type": "reply",
+      "priority": "medium",
+      "category": "pekerjaan",
+      "expirationSeconds": 60.0,
+      "tags": ["it", "security"],
+      "replyOptions": [
+        { "text": "Dicatat.", "isCorrect": true, "scoreModifier": 3, "followUp": { "emailId": "gen_quiz_password", "delaySeconds": 25.0 } },
+        { "text": "Bisa kirim ulang nanti?", "isCorrect": false, "scoreModifier": -5 }
+      ],
+      "taskTrigger": null
+    },
+    {
+      "id": "gen_memo_meeting",
+      "sender": "Admin Kantor",
+      "senderAddress": "admin@sleepdep.co.id",
+      "department": "Admin",
+      "subject": "Rapat Klien Dipindah - Catat Lokasi Baru",
+      "body": "PERUBAHAN JADWAL\n\nRapat dengan klien PT Maju Jaya dipindah:\n- Lokasi: Ruang C, Lantai 5\n- Jam: 14:00\n\nPastikan semua yang terlibat tahu. Konfirmasi.",
+      "type": "reply",
+      "priority": "medium",
+      "category": "pekerjaan",
+      "expirationSeconds": 55.0,
+      "tags": ["scheduling", "admin"],
+      "replyOptions": [
+        { "text": "Dipahami, Ruang C Lantai 5 jam 14:00.", "isCorrect": true, "scoreModifier": 3, "followUp": { "emailId": "gen_quiz_meeting", "delaySeconds": 30.0 } },
+        { "text": "Oke.", "isCorrect": true, "scoreModifier": 1, "followUp": { "emailId": "gen_quiz_meeting", "delaySeconds": 30.0 } }
+      ],
+      "taskTrigger": null
+    },
+    {
+      "id": "gen_memo_budget",
+      "sender": "Keuangan",
+      "senderAddress": "keuangan@sleepdep.co.id",
+      "department": "Keuangan",
+      "subject": "RAHASIA: Anggaran Proyek Delta",
+      "body": "CONFIDENTIAL\n\nTotal anggaran proyek Delta: Rp 847.500.000\n\nAngka ini TIDAK BOLEH bocor ke divisi lain. Mahyu akan tanya nanti untuk verifikasi.\n\nCatat dan jangan salah.\n\n— Departemen Keuangan",
+      "type": "reply",
+      "priority": "high",
+      "category": "pekerjaan",
+      "expirationSeconds": 50.0,
+      "tags": ["finance"],
+      "replyOptions": [
+        { "text": "Sudah dicatat. Tidak akan bocor.", "isCorrect": true, "scoreModifier": 5, "followUp": { "emailId": "gen_quiz_budget", "delaySeconds": 35.0 } },
+        { "text": "Kenapa saya yang harus tahu angka ini?", "isCorrect": false, "scoreModifier": -5 }
+      ],
+      "taskTrigger": null
+    },
+    {
+      "id": "gen_memo_employee",
+      "sender": "Rina Hartati",
+      "senderAddress": "r.hartati@sleepdep.co.id",
+      "department": "HR",
+      "subject": "Karyawan Baru: Catat Data Ini",
+      "body": "Karyawan baru mulai hari ini:\n\nNama: Andi Firmansyah\nID: EMP-2847\nDivisi: Engineering\n\nPastikan data ini tercatat untuk onboarding.\n\nKonfirmasi penerimaan.",
+      "type": "reply",
+      "priority": "medium",
+      "category": "pekerjaan",
+      "expirationSeconds": 55.0,
+      "tags": ["hr", "recruiting"],
+      "replyOptions": [
+        { "text": "Data diterima dan dicatat.", "isCorrect": true, "scoreModifier": 3, "followUp": { "emailId": "gen_quiz_employee", "delaySeconds": 25.0 } },
+        { "text": "Nanti saja saya input.", "isCorrect": false, "scoreModifier": -5 }
+      ],
+      "taskTrigger": null
+    },
+    {
+      "id": "gen_memo_delivery",
+      "sender": "Admin",
+      "senderAddress": "admin@sleepdep.co.id",
+      "department": "Admin",
+      "subject": "Kiriman IT - Catat Nomor Resi",
+      "body": "Kiriman peralatan IT dalam perjalanan.\n\nNomor resi: JNE-88291-XK\nEstimasi tiba: jam 15:00\n\nKalau kurir telepon, kamu yang harus kasih info. Catat resinya.\n\nKonfirmasi.",
+      "type": "reply",
+      "priority": "low",
+      "category": "pekerjaan",
+      "expirationSeconds": 65.0,
+      "tags": ["admin"],
+      "replyOptions": [
+        { "text": "Dicatat: JNE-88291-XK.", "isCorrect": true, "scoreModifier": 3, "followUp": { "emailId": "gen_quiz_delivery", "delaySeconds": 30.0 } },
+        { "text": "Oke.", "isCorrect": true, "scoreModifier": 1, "followUp": { "emailId": "gen_quiz_delivery", "delaySeconds": 30.0 } }
+      ],
+      "taskTrigger": null
+    },
+    {
+      "id": "gen_memo_policy",
+      "sender": "Rina Hartati",
+      "senderAddress": "r.hartati@sleepdep.co.id",
+      "department": "HR",
+      "subject": "Surat Edaran Kebijakan Lembur Baru",
+      "body": "Kepada seluruh karyawan,\n\nKebijakan lembur baru telah diterbitkan:\nNomor: SE-034/HR/2026\n\nBerlaku mulai hari ini. Karyawan yang ditanya wajib tahu nomor surat edaran ini.\n\nKonfirmasi pemahaman.\n\nSalam,\nRina Hartati",
+      "type": "reply",
+      "priority": "medium",
+      "category": "pekerjaan",
+      "expirationSeconds": 60.0,
+      "tags": ["hr", "policy"],
+      "replyOptions": [
+        { "text": "Dipahami. SE-034/HR/2026.", "isCorrect": true, "scoreModifier": 5, "followUp": { "emailId": "gen_quiz_policy", "delaySeconds": 30.0 } },
+        { "text": "Saya baca nanti.", "isCorrect": false, "scoreModifier": -8 }
+      ],
+      "taskTrigger": null
+    },
+    {
+      "id": "gen_memo_insurance",
+      "sender": "Payroll",
+      "senderAddress": "payroll@sleepdep.co.id",
+      "department": "HR",
+      "subject": "Info Plafon Asuransi - Rina Kartika",
+      "body": "Data asuransi untuk referensi:\n\nKaryawan: Rina Kartika\nNomor polis: AX-5521\nSisa plafon rawat jalan: Rp 3.200.000\n\nDia mungkin akan tanya sisa plafonnya. Pastikan kamu ingat angkanya.\n\n— Payroll",
+      "type": "reply",
+      "priority": "low",
+      "category": "pekerjaan",
+      "expirationSeconds": 65.0,
+      "tags": ["hr", "benefits"],
+      "replyOptions": [
+        { "text": "Dicatat: Rp 3.200.000.", "isCorrect": true, "scoreModifier": 3, "followUp": { "emailId": "gen_quiz_insurance", "delaySeconds": 25.0 } },
+        { "text": "Kenapa saya yang harus ingat?", "isCorrect": false, "scoreModifier": -5 }
+      ],
+      "taskTrigger": null
+    },
+    {
+      "id": "gen_memo_leave",
+      "sender": "Rina Hartati",
+      "senderAddress": "r.hartati@sleepdep.co.id",
+      "department": "HR",
+      "subject": "Data Cuti - Budi Santoso",
+      "body": "Untuk referensi:\n\nKaryawan: Budi Santoso\nSisa cuti tahunan: 4 hari\nCuti sakit terpakai: 2 dari 12 hari\n\nDia akan tanya sisa cutinya. Jangan sampai salah jawab — Mahyu cek semua.\n\n— Rina",
+      "type": "reply",
+      "priority": "medium",
+      "category": "pekerjaan",
+      "expirationSeconds": 55.0,
+      "tags": ["hr", "vacation"],
+      "replyOptions": [
+        { "text": "Dicatat: 4 hari cuti tersisa.", "isCorrect": true, "scoreModifier": 3, "followUp": { "emailId": "gen_quiz_leave", "delaySeconds": 20.0 } },
+        { "text": "Oke.", "isCorrect": true, "scoreModifier": 1, "followUp": { "emailId": "gen_quiz_leave", "delaySeconds": 20.0 } }
+      ],
       "taskTrigger": null
     }
   ]

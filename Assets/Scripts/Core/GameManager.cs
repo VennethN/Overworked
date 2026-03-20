@@ -70,7 +70,7 @@ namespace Overworked.Core
             StartGame();
         }
 
-        public void StartStoryDay(float dayLength, float difficulty, string spawnRulesOverride, string[] emailPools, string[] spawnEmailIds = null)
+        public void StartStoryDay(float dayLength, float difficulty, string spawnRulesOverride, string[] emailPools, string[] spawnEmailTags = null, string[] spawnEmailIds = null)
         {
             _mode = GameMode.Story;
             _currentDayLength = dayLength;
@@ -84,6 +84,7 @@ namespace Overworked.Core
             if (emailPools != null && emailPools.Length > 0)
                 emailSpawner?.SetActivePools(emailPools);
 
+            emailSpawner?.SetSpawnEmailTagFilter(spawnEmailTags);
             emailSpawner?.SetSpawnEmailIdWhitelist(spawnEmailIds);
 
             var diff = emailSpawner?.GetComponent<DifficultyController>();

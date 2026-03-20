@@ -44,6 +44,11 @@ namespace Overworked.Actions
             Register("approve_equipment", () => new SimpleTaskHandler(15));
             Register("approve_vacation", () => new SimpleTaskHandler(10));
             Register("forward_complaint", () => new SimpleTaskHandler(20));
+            Register("complete_expense_report", () => new SimpleTaskHandler(20));
+            Register("complete_training", () => new SimpleTaskHandler(10));
+            Register("sign_vendor_contract", () => new SimpleTaskHandler(15));
+            Register("verify_security_alert", () => new SimpleTaskHandler(25));
+            Register("forward_evidence", () => new SimpleTaskHandler(30));
         }
 
         public void Register(string taskId, System.Func<ITaskHandler> handlerFactory)

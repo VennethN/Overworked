@@ -359,21 +359,124 @@ namespace Overworked.UI
             scrollView.style.width = 400;
             scrollView.style.maxHeight = 360;
 
+            // Campaign mode: find the next day the player should play
+            int nextPlayableDay = save.lastCompletedDay + 1;
+
             foreach (var day in _storyData.days)
             {
-                bool unlocked = save.IsDayUnlocked(day.dayNumber, day.unlockedAfterDay);
+                bool completed = save.lastCompletedDay >= day.dayNumber;
+                bool isNext = day.dayNumber == nextPlayableDay;
                 int bestScore = save.GetBestScore(day.dayNumber);
                 bool passed = bestScore >= day.scoreGoal;
 
-                var dayRow = CreateDayRow(day, unlocked, bestScore, passed);
+                var dayRow = CreateDayRow(day, completed, isNext, bestScore, passed);
                 scrollView.Add(dayRow);
             }
 
             container.Add(scrollView);
+
+            // Reset story button
+            var resetRow = new VisualElement();
+            resetRow.style.flexDirection = FlexDirection.Row;
+            resetRow.style.justifyContent = Justify.Center;
+            resetRow.style.marginTop = 16;
+            resetRow.style.width = 400;
+
+            // Declare ref first so lambda can capture it
+            Button resetBtnRef = null;
+
+            var resetBtn = new Button();
+            resetBtnRef = resetBtn;
+            resetBtn.text = "Reset Cerita";
+            resetBtn.RegisterCallback<ClickEvent>(_ =>
+            {
+                // Replace button with confirmation UI
+                resetRow.Clear();
+                resetRow.style.flexDirection = FlexDirection.Column;
+                resetRow.style.alignItems = Align.Center;
+
+                var confirmLabel = new Label("Yakin reset semua progress cerita?");
+                confirmLabel.style.fontSize = 11;
+                confirmLabel.style.color = new Color(0.973f, 0.443f, 0.443f, 1f);
+                confirmLabel.style.marginBottom = 8;
+                resetRow.Add(confirmLabel);
+
+                var btnGroup = new VisualElement();
+                btnGroup.style.flexDirection = FlexDirection.Row;
+
+                var confirmBtn = new Button(() =>
+                {
+                    var s = SaveManager.Load();
+                    s.ResetStory();
+                    SaveManager.Save(s);
+                    _daySelectView.Clear();
+                    BuildDaySelectView(_daySelectView);
+                });
+                confirmBtn.text = "Ya, Reset";
+                StyleResetButton(confirmBtn, new Color(0.85f, 0.25f, 0.25f, 1f), Color.white);
+                confirmBtn.style.marginRight = 8;
+                btnGroup.Add(confirmBtn);
+
+                var cancelBtn = new Button(() =>
+                {
+                    resetRow.Clear();
+                    resetRow.style.flexDirection = FlexDirection.Row;
+                    resetRow.Add(resetBtnRef);
+                });
+                cancelBtn.text = "Batal";
+                StyleResetButton(cancelBtn, new Color(0.235f, 0.306f, 0.416f, 1f), new Color(0.58f, 0.639f, 0.722f, 1f));
+                btnGroup.Add(cancelBtn);
+
+                resetRow.Add(btnGroup);
+            });
+            resetBtn.style.paddingTop = 7;
+            resetBtn.style.paddingBottom = 7;
+            resetBtn.style.paddingLeft = 16;
+            resetBtn.style.paddingRight = 16;
+            resetBtn.style.fontSize = 11;
+            resetBtn.style.backgroundColor = new Color(0.85f, 0.25f, 0.25f, 1f);
+            resetBtn.style.color = Color.white;
+            resetBtn.style.borderTopWidth = 0;
+            resetBtn.style.borderBottomWidth = 0;
+            resetBtn.style.borderLeftWidth = 0;
+            resetBtn.style.borderRightWidth = 0;
+            resetBtn.style.borderTopLeftRadius = 5;
+            resetBtn.style.borderTopRightRadius = 5;
+            resetBtn.style.borderBottomLeftRadius = 5;
+            resetBtn.style.borderBottomRightRadius = 5;
+            resetRow.Add(resetBtn);
+            container.Add(resetRow);
+
+            // Achievements section
+            if (save.endingsUnlocked.Count > 0)
+            {
+                var achieveTitle = new Label("ENDINGS");
+                achieveTitle.style.fontSize = 12;
+                achieveTitle.style.color = new Color(0.58f, 0.639f, 0.722f, 1f);
+                achieveTitle.style.marginTop = 20;
+                achieveTitle.style.marginBottom = 8;
+                achieveTitle.style.letterSpacing = 2;
+                container.Add(achieveTitle);
+
+                var achieveRow = new VisualElement();
+                achieveRow.style.flexDirection = FlexDirection.Row;
+                achieveRow.style.justifyContent = Justify.Center;
+                achieveRow.style.flexWrap = Wrap.Wrap;
+                achieveRow.style.width = 400;
+
+                AddEndingBadge(achieveRow, save, "survive", "Bertahan", new Color(0.376f, 0.647f, 0.98f, 1f));
+                AddEndingBadge(achieveRow, save, "breakdown", "Breakdown", new Color(0.973f, 0.443f, 0.443f, 1f));
+                AddEndingBadge(achieveRow, save, "resign", "Resign", new Color(0.973f, 0.682f, 0.275f, 1f));
+                AddEndingBadge(achieveRow, save, "secret", "Kebenaran", new Color(0.29f, 0.87f, 0.5f, 1f));
+
+                container.Add(achieveRow);
+            }
         }
 
-        private VisualElement CreateDayRow(DayDefinition day, bool unlocked, int bestScore, bool passed)
+        private VisualElement CreateDayRow(DayDefinition day, bool completed, bool isNext, int bestScore, bool passed)
         {
+            bool playable = isNext;
+
             var row = new Button();
             row.text = "";
             row.style.flexDirection = FlexDirection.Row;
@@ -387,22 +490,27 @@ namespace Overworked.UI
             row.style.borderTopRightRadius = 6;
             row.style.borderBottomLeftRadius = 6;
             row.style.borderBottomRightRadius = 6;
-            row.style.borderTopWidth = 0;
+            row.style.borderTopWidth = playable ? 1 : 0;
             row.style.borderBottomWidth = 0;
             row.style.borderLeftWidth = 0;
             row.style.borderRightWidth = 0;
-            row.style.backgroundColor = unlocked
-                ? new Color(0.118f, 0.161f, 0.212f, 1f)
-                : new Color(0.08f, 0.11f, 0.15f, 1f);
-            row.style.opacity = unlocked ? 1f : 0.5f;
+            row.style.borderTopColor = new Color(0.063f, 0.725f, 0.506f, 1f);
+            row.style.backgroundColor = playable
+                ? new Color(0.118f, 0.18f, 0.22f, 1f)
+                : completed
+                    ? new Color(0.1f, 0.14f, 0.18f, 1f)
+                    : new Color(0.08f, 0.11f, 0.15f, 1f);
+            row.style.opacity = (playable || completed) ? 1f : 0.4f;
 
             // Day number badge
             var dayBadge = new Label($"{day.dayNumber}");
             dayBadge.style.fontSize = 14;
             dayBadge.style.unityFontStyleAndWeight = FontStyle.Bold;
-            dayBadge.style.color = passed
+            dayBadge.style.color = completed
                 ? new Color(0.29f, 0.87f, 0.5f, 1f)
-                : new Color(0.945f, 0.96f, 0.976f, 1f);
+                : playable
+                    ? new Color(0.063f, 0.725f, 0.506f, 1f)
+                    : new Color(0.392f, 0.455f, 0.545f, 1f);
             dayBadge.style.width = 28;
             dayBadge.style.unityTextAlign = TextAnchor.MiddleCenter;
             dayBadge.style.marginRight = 12;
@@ -414,11 +522,18 @@ namespace Overworked.UI
 
             var titleLabel = new Label(day.title);
             titleLabel.style.fontSize = 13;
-            titleLabel.style.color = new Color(0.945f, 0.96f, 0.976f, 1f);
+            titleLabel.style.color = (playable || completed)
+                ? new Color(0.945f, 0.96f, 0.976f, 1f)
+                : new Color(0.392f, 0.455f, 0.545f, 1f);
             titleLabel.style.unityFontStyleAndWeight = FontStyle.Bold;
             info.Add(titleLabel);
 
-            var goalLabel = new Label($"Target: {day.scoreGoal} skor  \u2022  {day.dayLengthSeconds}s");
+            string statusText = completed
+                ? $"Selesai  \u2022  Skor: {bestScore}"
+                : playable
+                    ? $"Target: {day.scoreGoal} skor  \u2022  {day.dayLengthSeconds}s"
+                    : "Terkunci";
+            var goalLabel = new Label(statusText);
             goalLabel.style.fontSize = 11;
             goalLabel.style.color = new Color(0.392f, 0.455f, 0.545f, 1f);
             goalLabel.style.marginTop = 2;
@@ -426,34 +541,96 @@ namespace Overworked.UI
 
             row.Add(info);
 
-            // Score / lock status
-            if (!unlocked)
+            // Right side indicator
+            if (completed)
             {
-                var lockIcon = new Label("\ue897"); // Material Icons: lock
+                var checkLabel = new Label(passed ? "\u2713" : "\u2717");
+                checkLabel.style.fontSize = 16;
+                checkLabel.style.unityFontStyleAndWeight = FontStyle.Bold;
+                checkLabel.style.color = passed
+                    ? new Color(0.29f, 0.87f, 0.5f, 1f)
+                    : new Color(0.973f, 0.443f, 0.443f, 1f);
+                row.Add(checkLabel);
+            }
+            else if (!playable)
+            {
+                var lockIcon = new Label("\ue897");
                 lockIcon.AddToClassList("sidebar-icon");
                 lockIcon.style.fontSize = 16;
                 lockIcon.style.color = new Color(0.392f, 0.455f, 0.545f, 1f);
                 lockIcon.style.width = new StyleLength(StyleKeyword.Auto);
                 row.Add(lockIcon);
             }
-            else if (bestScore > 0)
+            else
             {
-                var scoreLabel = new Label($"{bestScore}");
-                scoreLabel.style.fontSize = 13;
-                scoreLabel.style.unityFontStyleAndWeight = FontStyle.Bold;
-                scoreLabel.style.color = passed
-                    ? new Color(0.29f, 0.87f, 0.5f, 1f)
-                    : new Color(0.973f, 0.443f, 0.443f, 1f);
-                row.Add(scoreLabel);
+                var playIcon = new Label("\u25B6");
+                playIcon.style.fontSize = 14;
+                playIcon.style.color = new Color(0.063f, 0.725f, 0.506f, 1f);
+                row.Add(playIcon);
             }
 
-            if (unlocked)
+            if (playable)
             {
                 int dayNum = day.dayNumber;
                 row.RegisterCallback<ClickEvent>(_ => _onStoryDay?.Invoke(dayNum));
             }
 
             return row;
+        }
+
+        private static void StyleResetButton(Button btn, Color bg, Color textColor)
+        {
+            btn.style.paddingTop = 6;
+            btn.style.paddingBottom = 6;
+            btn.style.paddingLeft = 14;
+            btn.style.paddingRight = 14;
+            btn.style.fontSize = 11;
+            btn.style.backgroundColor = bg;
+            btn.style.color = textColor;
+            btn.style.borderTopWidth = 0;
+            btn.style.borderBottomWidth = 0;
+            btn.style.borderLeftWidth = 0;
+            btn.style.borderRightWidth = 0;
+            btn.style.borderTopLeftRadius = 5;
+            btn.style.borderTopRightRadius = 5;
+            btn.style.borderBottomLeftRadius = 5;
+            btn.style.borderBottomRightRadius = 5;
+        }
+
+        private void AddEndingBadge(VisualElement parent, SaveData save, string endingId, string label, Color color)
+        {
+            bool unlocked = save.HasEnding(endingId);
+
+            var badge = new VisualElement();
+            badge.style.paddingTop = 6;
+            badge.style.paddingBottom = 6;
+            badge.style.paddingLeft = 12;
+            badge.style.paddingRight = 12;
+            badge.style.marginRight = 6;
+            badge.style.marginBottom = 6;
+            badge.style.borderTopLeftRadius = 4;
+            badge.style.borderTopRightRadius = 4;
+            badge.style.borderBottomLeftRadius = 4;
+            badge.style.borderBottomRightRadius = 4;
+            badge.style.backgroundColor = unlocked
+                ? new Color(color.r, color.g, color.b, 0.15f)
+                : new Color(0.08f, 0.11f, 0.15f, 1f);
+            badge.style.borderTopWidth = 1;
+            badge.style.borderBottomWidth = 1;
+            badge.style.borderLeftWidth = 1;
+            badge.style.borderRightWidth = 1;
+            badge.style.borderTopColor = unlocked ? color : new Color(0.2f, 0.25f, 0.3f, 1f);
+            badge.style.borderBottomColor = unlocked ? color : new Color(0.2f, 0.25f, 0.3f, 1f);
+            badge.style.borderLeftColor = unlocked ? color : new Color(0.2f, 0.25f, 0.3f, 1f);
+            badge.style.borderRightColor = unlocked ? color : new Color(0.2f, 0.25f, 0.3f, 1f);
+
+            var text = new Label(unlocked ? label : "???");
+            text.style.fontSize = 10;
+            text.style.color = unlocked ? color : new Color(0.3f, 0.35f, 0.4f, 1f);
+            text.style.unityFontStyleAndWeight = FontStyle.Bold;
+            badge.Add(text);
+
+            parent.Add(badge);
         }
     }
 }

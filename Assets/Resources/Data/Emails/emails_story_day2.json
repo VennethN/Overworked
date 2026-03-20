@@ -1,0 +1,56 @@
+{
+  "emails": [
+    {
+      "id": "story_d2_faster",
+      "sender": "Mahyu",
+      "senderAddress": "m.mahyu@sleepdep.co.id",
+      "department": "Supervisor",
+      "subject": "Lebih Cepat",
+      "body": "{PlayerName},\n\nHari ini targetnya naik. Kemarin kamu terlalu lambat untuk standar kami.\n\nDi sini tidak ada toleransi. Kamu pikir perusahaan bayar kamu untuk kerja setengah-setengah?\n\nKalau tidak bisa mengikuti tempo, kami akan evaluasi kontrakmu lebih awal. Dan percayalah — evaluasi dari kami tidak pernah bagus.\n\nJangan buang waktu.\n\n— Mahyu\nSupervisor, PT Sleep Deprivation Studio",
+      "type": "reply",
+      "category": "utama",
+      "priority": "high",
+      "expirationSeconds": 60,
+      "tags": ["story", "story_d2"],
+      "replyOptions": [
+        {
+          "text": "Saya akan lebih cepat, Pak.",
+          "isCorrect": true,
+          "scoreModifier": 5,
+          "followUp": null,
+          "setFlag": null
+        },
+        {
+          "text": "Ini sudah batas kemampuan saya.",
+          "isCorrect": false,
+          "scoreModifier": -5,
+          "followUp": {
+            "emailId": "story_d2_mahyu_angry",
+            "delaySeconds": 8
+          },
+          "setFlag": null
+        }
+      ],
+      "taskTrigger": null,
+      "expiredFollowUp": null,
+      "setFlagOnRead": null
+    },
+    {
+      "id": "story_d2_mahyu_angry",
+      "sender": "Mahyu",
+      "senderAddress": "m.mahyu@sleepdep.co.id",
+      "department": "Supervisor",
+      "subject": "RE: Lebih Cepat",
+      "body": "{PlayerName},\n\n\"Batas kemampuan\"? Kamu pikir aku peduli soal batasmu?\n\nDi perusahaan ini, batas kamu adalah batas yang KAMI tentukan. Bukan kamu.\n\nAku sudah catat responmu. Evaluasi berikutnya akan sangat menarik untukmu.\n\nJangan pernah bicara seperti itu lagi. Kerja.\n\n— Mahyu",
+      "type": "info",
+      "category": "utama",
+      "priority": "critical",
+      "expirationSeconds": 0,
+      "tags": ["story", "story_d2"],
+      "replyOptions": null,
+      "taskTrigger": null,
+      "expiredFollowUp": null,
+      "setFlagOnRead": null
+    }
+  ]
+}

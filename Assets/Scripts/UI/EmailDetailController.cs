@@ -65,10 +65,13 @@ namespace Overworked.UI
         {
             _currentEmail = email;
 
+            var save = Overworked.Core.SaveManager.Load();
+            string pName = string.IsNullOrEmpty(save.playerName) ? "Pegawai Baru" : save.playerName;
+
             if (_sender != null) _sender.text = email.Definition.sender;
             if (_address != null) _address.text = $"<{email.Definition.senderAddress}>";
-            if (_subject != null) _subject.text = email.Definition.subject;
-            if (_body != null) _body.text = email.Definition.body;
+            if (_subject != null) _subject.text = email.Definition.subject.Replace("{PlayerName}", pName);
+            if (_body != null) _body.text = email.Definition.body.Replace("{PlayerName}", pName);
             if (_avatarLetter != null && !string.IsNullOrEmpty(email.Definition.sender))
                 _avatarLetter.text = email.Definition.sender[0].ToString().ToUpper();
 
@@ -89,6 +92,12 @@ namespace Overworked.UI
             HideInlineReply(immediate: true);
             UpdateExpiryBar();
             UpdateStatusBanner();
+
+            // Auto-show reply options for reply/spam emails
+            if (canAct && isReply && email.Definition.replyOptions != null && email.Definition.replyOptions.Length > 0)
+            {
+                ToggleInlineReply();
+            }
         }
 
         private void UpdateStatusBanner()

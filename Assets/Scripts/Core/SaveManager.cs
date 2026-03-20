@@ -12,6 +12,23 @@ namespace Overworked.Core
         public int lastCompletedDay;
         public int arcadeHighScore;
         public List<DaySaveEntry> dayScores = new();
+        public List<string> storyFlags = new();
+        public List<string> endingsUnlocked = new();
+
+        public bool HasFlag(string flag) => storyFlags.Contains(flag);
+        public void SetFlag(string flag) { if (!storyFlags.Contains(flag)) storyFlags.Add(flag); }
+        public void RemoveFlag(string flag) => storyFlags.Remove(flag);
+
+        public bool HasEnding(string ending) => endingsUnlocked.Contains(ending);
+        public void UnlockEnding(string ending) { if (!endingsUnlocked.Contains(ending)) endingsUnlocked.Add(ending); }
+
+        public void ResetStory()
+        {
+            lastCompletedDay = 0;
+            dayScores.Clear();
+            storyFlags.Clear();
+            // endingsUnlocked intentionally kept — achievements are permanent
+        }
 
         public int GetBestScore(int dayNumber)
         {
@@ -53,10 +70,39 @@ namespace Overworked.Core
 
     public static class SaveManager
     {
-        private const byte SAVE_VERSION = 2;
+        private const byte SAVE_VERSION = 4;
         private static readonly string SavePath = Path.Combine(Application.persistentDataPath, "overworked.sav");
 
         private static SaveData _cached;
+
+        // Pending flags: buffered during gameplay, flushed to SaveData on day completion
+        private static readonly List<string> PendingFlags = new();
+
+        public static void AddPendingFlag(string flag)
+        {
+            if (!string.IsNullOrEmpty(flag) && !PendingFlags.Contains(flag))
+                PendingFlags.Add(flag);
+        }
+
+        public static bool HasPendingOrSavedFlag(string flag)
+        {
+            return PendingFlags.Contains(flag) || Load().HasFlag(flag);
+        }
+
+        public static void FlushPendingFlags()
+        {
+            if (PendingFlags.Count == 0) return;
+            var save = Load();
+            foreach (var flag in PendingFlags)
+                save.SetFlag(flag);
+            Save(save);
+            PendingFlags.Clear();
+        }
+
+        public static void DiscardPendingFlags()
+        {
+            PendingFlags.Clear();
+        }
 
         public static SaveData Load()
         {
@@ -74,7 +120,7 @@ namespace Overworked.Core
                 using var reader = new BinaryReader(stream);
 
                 byte version = reader.ReadByte();
-                if (version != 1 && version != 2)
+                if (version < 1 || version > 4)
                 {
                     Debug.LogWarning($"SaveManager: Unknown save version {version}, creating fresh save.");
                     _cached = new SaveData();
@@ -96,6 +142,20 @@ namespace Overworked.Core
                 if (version >= 2)
                 {
                     data.playerName = reader.ReadString();
+                }
+
+                if (version >= 3)
+                {
+                    int flagCount = reader.ReadInt32();
+                    for (int i = 0; i < flagCount; i++)
+                        data.storyFlags.Add(reader.ReadString());
+                }
+
+                if (version >= 4)
+                {
+                    int endingCount = reader.ReadInt32();
+                    for (int i = 0; i < endingCount; i++)
+                        data.endingsUnlocked.Add(reader.ReadString());
                 }
 
                 _cached = data;
@@ -130,6 +190,14 @@ namespace Overworked.Core
                 }
 
                 writer.Write(data.playerName);
+
+                writer.Write(data.storyFlags.Count);
+                for (int i = 0; i < data.storyFlags.Count; i++)
+                    writer.Write(data.storyFlags[i]);
+
+                writer.Write(data.endingsUnlocked.Count);
+                for (int i = 0; i < data.endingsUnlocked.Count; i++)
+                    writer.Write(data.endingsUnlocked[i]);
             }
             catch (Exception ex)
             {
@@ -140,6 +208,19 @@ namespace Overworked.Core
         public static void InvalidateCache()
         {
             _cached = null;
+        }
+
+        public static void ResetSave()
+        {
+            _cached = new SaveData();
+
+            if (File.Exists(SavePath))
+            {
+                try { File.Delete(SavePath); }
+                catch (Exception ex) { Debug.LogWarning($"SaveManager: Failed to delete save: {ex.Message}"); }
+            }
+
+            Debug.Log("SaveManager: Save data reset.");
         }
     }
 }

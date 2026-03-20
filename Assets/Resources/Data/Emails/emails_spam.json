@@ -1710,6 +1710,637 @@
         }
       ],
       "taskTrigger": null
+    },
+    {
+      "id": "spam_blk_46",
+      "sender": "Coach Motivasi Resign",
+      "senderAddress": "freedom@escape-toxic-job.biz",
+      "department": null,
+      "subject": "Buku: 'Kabur dari Kantor Toxic dalam 3 Langkah!' - BESTSELLER",
+      "body": "Apakah bos Anda menyuruh lembur sampai jam 3 pagi? Apakah HR membalas email dengan 'noted'?\n\nBuku digital kami sudah membantu 50.000+ korban corporate* menemukan jalan keluar!\n\nHarga SPESIAL Rp 299.000 (sebelum naik jadi Rp 2.999.000).\n\n*Disclaimer: langkah ke-3 adalah 'berdoa'.",
+      "type": "spam",
+      "priority": "none",
+      "category": "promosi",
+      "expirationSeconds": 0,
+      "tags": [
+        "spam"
+      ],
+      "replyOptions": [
+        {
+          "text": "Saya butuh buku ini SEKARANG.",
+          "isCorrect": false,
+          "scoreModifier": -15
+        },
+        {
+          "text": "Ada versi audiobook biar bisa dengerin pas lembur?",
+          "isCorrect": false,
+          "scoreModifier": -10
+        },
+        {
+          "text": "Kirim ke semua rekan kerja saya.",
+          "isCorrect": false,
+          "scoreModifier": -20
+        }
+      ],
+      "taskTrigger": null
+    },
+    {
+      "id": "spam_blk_47",
+      "sender": "Dr. Burnout Online Therapy",
+      "senderAddress": "healing@therapy-burnout-now.click",
+      "department": null,
+      "subject": "Terapi Online untuk Karyawan Burnout — Sesi Pertama GRATIS*",
+      "body": "Apakah Anda menangis di toilet kantor? Apakah Anda sudah lupa wajah keluarga sendiri?\n\nTerapis kami (lulusan YouTube University) siap membantu!\n\nSesi pertama gratis* — *setelah bayar biaya registrasi Rp 1.500.000.\n\nKami menerima air mata sebagai bukti pembayaran.",
+      "type": "spam",
+      "priority": "none",
+      "category": "promosi",
+      "expirationSeconds": 0,
+      "tags": [
+        "spam"
+      ],
+      "replyOptions": [
+        {
+          "text": "Saya sudah menangis 3x hari ini, daftar!",
+          "isCorrect": false,
+          "scoreModifier": -15
+        },
+        {
+          "text": "Bisa terapi via email biar bos nggak curiga?",
+          "isCorrect": false,
+          "scoreModifier": -10
+        }
+      ],
+      "taskTrigger": null
+    },
+    {
+      "id": "spam_blk_48",
+      "sender": "ResumeKilat Pro",
+      "senderAddress": "apply@resume-kilat-pro.xyz",
+      "department": null,
+      "subject": "Capek sama kerjaan? CV baru dalam 24 jam — dijamin interview!",
+      "body": "Kami tahu Anda sedang baca ini diam-diam saat jam kerja. Tidak apa-apa, kami nggak judge.\n\nLayanan penulisan CV premium — dijamin lolos ATS dan bikin HR mantan kantor Anda menyesal!\n\nPaket 'Revenge Resign': CV + surat resign savage = Rp 750.000\n\n*Kami juga jual template surat resign pasif-agresif.",
+      "type": "spam",
+      "priority": "none",
+      "category": "promosi",
+      "expirationSeconds": 0,
+      "tags": [
+        "spam"
+      ],
+      "replyOptions": [
+        {
+          "text": "Saya ambil paket Revenge Resign!",
+          "isCorrect": false,
+          "scoreModifier": -15
+        },
+        {
+          "text": "Ada diskon untuk resign massal satu tim?",
+          "isCorrect": false,
+          "scoreModifier": -20
+        },
+        {
+          "text": "Kirim contoh surat resign savage-nya.",
+          "isCorrect": false,
+          "scoreModifier": -10
+        }
+      ],
+      "taskTrigger": null
+    },
+    {
+      "id": "spam_blk_49",
+      "sender": "Advokat Hak Pekerja 24/7",
+      "senderAddress": "sue@labor-lawyer-instant.win",
+      "department": null,
+      "subject": "Bos Anda MELANGGAR HUKUM! Konsultasi GRATIS — Gugat Sekarang!",
+      "body": "Apakah Anda:\n- Lembur tanpa uang lembur? CHECK\n- Disuruh 'stand by' 24/7? CHECK\n- Dipanggil 'keluarga' tapi digaji UMR? CHECK\n\nAnda berhak menggugat! Tim pengacara kami (lulus dari Google Search) siap membantu.\n\nBiaya success fee 90% dari ganti rugi. Minimal retainer Rp 5.000.000.\n\nJustice is expensive, tapi revenge is priceless.",
+      "type": "spam",
+      "priority": "none",
+      "category": "promosi",
+      "expirationSeconds": 0,
+      "tags": [
+        "spam"
+      ],
+      "replyOptions": [
+        {
+          "text": "Saya mau gugat perusahaan ini!",
+          "isCorrect": false,
+          "scoreModifier": -20
+        },
+        {
+          "text": "Kirim formulir retainer-nya.",
+          "isCorrect": false,
+          "scoreModifier": -15
+        },
+        {
+          "text": "90% success fee? Tetap lebih baik daripada di sini.",
+          "isCorrect": false,
+          "scoreModifier": -10
+        }
+      ],
+      "taskTrigger": null
+    },
+    {
+      "id": "spam_blk_50",
+      "sender": "WorkLife Balance Summit",
+      "senderAddress": "register@worklife-summit-2026.top",
+      "department": null,
+      "subject": "Seminar 'Work-Life Balance' — Sabtu-Minggu, 14 jam/hari!",
+      "body": "Belajar work-life balance dari para ahli yang bekerja 80 jam/minggu!\n\nJadwal seminar: Sabtu 06:00-20:00, Minggu 06:00-20:00\nLokasi: Hotel bintang 2 di pinggir tol\nHTM: Rp 3.500.000 (lunch NOT included)\n\nSpeaker utama: CEO yang baru cerai karena terlalu sibuk kerja.\n\nIroni? Kami tidak kenal kata itu.",
+      "type": "spam",
+      "priority": "none",
+      "category": "promosi",
+      "expirationSeconds": 0,
+      "tags": [
+        "spam"
+      ],
+      "replyOptions": [
+        {
+          "text": "Daftar! Toh weekend saya juga dipakai kerja.",
+          "isCorrect": false,
+          "scoreModifier": -15
+        },
+        {
+          "text": "Ada sertifikat buat ditunjukin ke bos?",
+          "isCorrect": false,
+          "scoreModifier": -10
+        }
+      ],
+      "taskTrigger": null
+    },
+    {
+      "id": "spam_blk_51",
+      "sender": "TURBOCHARGE Energy Labs",
+      "senderAddress": "order@turbocharge-48hr.biz",
+      "department": null,
+      "subject": "ENERGY DRINK BARU: Terjaga 48 JAM Non-Stop!! Dijamin Legal*",
+      "body": "Introducing TURBOCHARGE ULTRA MAX EXTREME!\n\nKandungan: 800mg kafein + taurin + bahan rahasia yang tidak kami sebutkan.\n\nIdeal untuk: deadline jam 6 pagi, sprint review yang seharusnya async, dan menangis sambil coding.\n\nEfek samping: jantung berdebar, tangan gemetar, existential dread.\n\n*Legal di negara yang belum punya BPOM.",
+      "type": "spam",
+      "priority": "none",
+      "category": "promosi",
+      "expirationSeconds": 0,
+      "tags": [
+        "spam"
+      ],
+      "replyOptions": [
+        {
+          "text": "Pesan 1 kardus untuk tim!",
+          "isCorrect": false,
+          "scoreModifier": -15
+        },
+        {
+          "text": "Ada yang lebih kuat? 48 jam kurang.",
+          "isCorrect": false,
+          "scoreModifier": -20
+        },
+        {
+          "text": "Bisa langganan bulanan?",
+          "isCorrect": false,
+          "scoreModifier": -10
+        }
+      ],
+      "taskTrigger": null
+    },
+    {
+      "id": "spam_blk_52",
+      "sender": "ZenCalm MLM International",
+      "senderAddress": "join@zencalm-network.click",
+      "department": null,
+      "subject": "Suplemen Anti-Stress REVOLUSIONER — Jadi Reseller, Passive Income!",
+      "body": "ZenCalm(tm) — campuran herbal + vitamin + harapan palsu.\n\nJual ke rekan kerja yang sama stres-nya! Binary plan 7 level deep.\n\nStarter Kit: Rp 2.000.000 (isi: 10 botol + mimpi yang tidak akan terwujud)\n\nTestimoni: 'Setelah minum ZenCalm, saya tetap stres tapi sekarang juga miskin.' - Anonymous",
+      "type": "spam",
+      "priority": "none",
+      "category": "promosi",
+      "expirationSeconds": 0,
+      "tags": [
+        "spam"
+      ],
+      "replyOptions": [
+        {
+          "text": "Saya mau jadi reseller level diamond!",
+          "isCorrect": false,
+          "scoreModifier": -20
+        },
+        {
+          "text": "Kirim starter kit ke kantor.",
+          "isCorrect": false,
+          "scoreModifier": -15
+        }
+      ],
+      "taskTrigger": null
+    },
+    {
+      "id": "spam_blk_53",
+      "sender": "ProductivityMAX AI",
+      "senderAddress": "upgrade@productivity-max-ai.ru",
+      "department": null,
+      "subject": "Aplikasi AI yang Bikin Anda 10x Lebih Produktif!! Bos Anda Akan Terkejut!",
+      "body": "ProductivityMAX AI(tm) menggunakan 'machine learning' untuk:\n- Auto-reply email dengan 'noted, terima kasih'\n- Generate laporan dari angka random\n- Bikin Anda terlihat sibuk di Slack padahal tidur\n\nLangganan: $49.99/bulan (lebih mahal dari gaji Anda per jam)\n\nWARNING: Tidak bertanggung jawab jika Anda dipecat karena laporan random kami.",
+      "type": "spam",
+      "priority": "none",
+      "category": "promosi",
+      "expirationSeconds": 0,
+      "tags": [
+        "spam"
+      ],
+      "replyOptions": [
+        {
+          "text": "Subscribe! Saya butuh terlihat produktif.",
+          "isCorrect": false,
+          "scoreModifier": -15
+        },
+        {
+          "text": "Ada fitur auto-join meeting tapi tidur?",
+          "isCorrect": false,
+          "scoreModifier": -10
+        },
+        {
+          "text": "Kirim free trial ke email kantor.",
+          "isCorrect": false,
+          "scoreModifier": -20
+        }
+      ],
+      "taskTrigger": null
+    },
+    {
+      "id": "spam_blk_54",
+      "sender": "DreamCorp Hiring Team",
+      "senderAddress": "hr@dreamcorp-careers.xyz",
+      "department": null,
+      "subject": "LOWONGAN: Gaji 3x lipat, WFH permanen, Jumat libur, bos baik hati",
+      "body": "DreamCorp International sedang merekrut!\n\nBenefit:\n- Gaji 3x lipat dari sekarang (kami tahu gaji Anda, sedih ya)\n- WFH selamanya, kantor cuma buat pajangan\n- Jumat libur, Senin optional\n- Bos yang literally tidak pernah marah\n- Unlimited cuti (beneran unlimited, bukan 'unlimited tapi jangan ambil')\n\nKirim scan KTP + slip gaji terakhir + password email kantor untuk fast-track.\n\nToo good to be true? Ya memang.",
+      "type": "spam",
+      "priority": "none",
+      "category": "promosi",
+      "expirationSeconds": 0,
+      "tags": [
+        "spam",
+        "phishing"
+      ],
+      "replyOptions": [
+        {
+          "text": "INI IMPIAN SAYA. Kirim semua data!",
+          "isCorrect": false,
+          "scoreModifier": -30
+        },
+        {
+          "text": "Ini slip gaji & password email saya.",
+          "isCorrect": false,
+          "scoreModifier": -35
+        },
+        {
+          "text": "Saya apply, kapan bisa mulai? Besok?",
+          "isCorrect": false,
+          "scoreModifier": -15
+        }
+      ],
+      "taskTrigger": null
+    },
+    {
+      "id": "spam_blk_55",
+      "sender": "Newsletter Motivasi Harian",
+      "senderAddress": "inspire@your-boss-is-wrong.top",
+      "department": null,
+      "subject": "NEWSLETTER: 'Bos Kamu Salah' — Edisi Spesial PT Sleep Deprivation",
+      "body": "Tahukah Anda bahwa menurut riset (yang kami karang), 97% bos di Indonesia salah tentang segalanya?\n\nNewsletter mingguan kami berisi:\n- Cara membantah bos dengan elegan\n- Passive-aggressive email template\n- Kutipan motivasi yang bisa di-print dan tempel di meja\n\nLangganan PREMIUM: Rp 150.000/bulan\nBonus: Stiker 'I Survived Monday' edisi terbatas.",
+      "type": "spam",
+      "priority": "none",
+      "category": "promosi",
+      "expirationSeconds": 0,
+      "tags": [
+        "spam"
+      ],
+      "replyOptions": [
+        {
+          "text": "Subscribe! Bos saya memang selalu salah.",
+          "isCorrect": false,
+          "scoreModifier": -10
+        },
+        {
+          "text": "Kirim edisi gratis dulu biar saya forward ke bos.",
+          "isCorrect": false,
+          "scoreModifier": -20
+        }
+      ],
+      "taskTrigger": null
+    },
+    {
+      "id": "spam_blk_56",
+      "sender": "Dirjen Pajak Refund Center",
+      "senderAddress": "refund@pajak-refund-center.ru",
+      "department": null,
+      "subject": "REFUND PAJAK Rp 8.750.000 — Klaim Sebelum Hangus!",
+      "body": "Wajib Pajak Yth,\n\nSistem kami mendeteksi kelebihan bayar pajak sebesar Rp 8.750.000.\n\nUntuk proses refund, mohon kirimkan:\n- Nomor NPWP\n- Foto e-KTP depan-belakang\n- Nomor rekening + PIN internet banking\n- Nama ibu kandung\n- Golongan darah (untuk verifikasi tambahan)\n\nRefund akan cair dalam 1x24 jam*.\n*Narrator: tidak akan pernah cair.",
+      "type": "spam",
+      "priority": "none",
+      "category": "promosi",
+      "expirationSeconds": 0,
+      "tags": [
+        "spam",
+        "phishing"
+      ],
+      "replyOptions": [
+        {
+          "text": "REFUND?! Ini semua data saya!",
+          "isCorrect": false,
+          "scoreModifier": -35
+        },
+        {
+          "text": "Kenapa butuh golongan darah? Tapi ya sudah.",
+          "isCorrect": false,
+          "scoreModifier": -25
+        },
+        {
+          "text": "Kirim formulir klaimnya.",
+          "isCorrect": false,
+          "scoreModifier": -15
+        }
+      ],
+      "taskTrigger": null
+    },
+    {
+      "id": "spam_blk_57",
+      "sender": "SecretShopper Indonesia",
+      "senderAddress": "recruit@secret-shopper-vip.win",
+      "department": null,
+      "subject": "Anda Terpilih Jadi Mystery Shopper! Bayaran Rp 3jt/Assignment!",
+      "body": "Selamat! Email Anda dipilih secara 'acak' (kami spam semua orang).\n\nJadi mystery shopper dan dibayar untuk belanja!\n\nLangkah pertama: Transfer 'deposit evaluasi' Rp 500.000 untuk menerima assignment pertama.\n\nLangkah kedua: Tidak ada langkah kedua karena uang Anda sudah hilang.\n\nFormat profesional, niat kriminal.",
+      "type": "spam",
+      "priority": "none",
+      "category": "promosi",
+      "expirationSeconds": 0,
+      "tags": [
+        "spam",
+        "phishing"
+      ],
+      "replyOptions": [
+        {
+          "text": "Saya mau! Ini bukti transfer deposit.",
+          "isCorrect": false,
+          "scoreModifier": -25
+        },
+        {
+          "text": "Dibayar belanja? Daftar sekarang!",
+          "isCorrect": false,
+          "scoreModifier": -15
+        }
+      ],
+      "taskTrigger": null
+    },
+    {
+      "id": "spam_blk_58",
+      "sender": "GAINMAX Protein Lab",
+      "senderAddress": "bulk@gainmax-protein-lab.biz",
+      "department": null,
+      "subject": "Kurus karena Lembur? NAIK 15kg Otot dalam 2 Minggu — TANPA GYM!",
+      "body": "Kami tahu Anda kurus kering karena lembur tiap hari dan makan mi instan jam 2 pagi.\n\nGAINMAX ULTRA MASS(tm) — suplemen penambah berat badan khusus karyawan overworked!\n\nKandungan: whey protein + tepung terigu + optimisme berlebihan.\n\nPromo: Beli 2 gratis shaker bertulisan 'I Work Therefore I Suffer'.\n\n*Belum diuji pada manusia yang tidur cukup.",
+      "type": "spam",
+      "priority": "none",
+      "category": "promosi",
+      "expirationSeconds": 0,
+      "tags": [
+        "spam"
+      ],
+      "replyOptions": [
+        {
+          "text": "Pesan 3 bulan supply, saya memang kurus!",
+          "isCorrect": false,
+          "scoreModifier": -15
+        },
+        {
+          "text": "Ada rasa mi instan? Biar familiar.",
+          "isCorrect": false,
+          "scoreModifier": -10
+        },
+        {
+          "text": "Saya mau shakernya aja.",
+          "isCorrect": false,
+          "scoreModifier": -5
+        }
+      ],
+      "taskTrigger": null
+    },
+    {
+      "id": "spam_blk_59",
+      "sender": "Yayasan Anak Pekerja Burnout",
+      "senderAddress": "donate@charity-burnout-kids.xyz",
+      "department": null,
+      "subject": "Donasi untuk Anak-Anak yang Ortunya Kerja 24/7 — Mereka Butuh Kasih Sayang",
+      "body": "Jutaan anak Indonesia tidak mengenal wajah orang tuanya karena mereka selalu di kantor.\n\nDonasi Anda akan digunakan untuk:\n- Boneka berbentuk orang tua (untuk dipeluk)\n- Kartu ucapan bertulisan 'Papa/Mama pulang jam 11 malam'\n- Terapi seni bertema 'Gambar Keluarga Tanpa Salah Satu Orang Tua'\n\nTransfer ke rekening 'yayasan' (rekening pribadi).\n\nSedih? Ya. Scam? Juga ya.",
+      "type": "spam",
+      "priority": "none",
+      "category": "promosi",
+      "expirationSeconds": 0,
+      "tags": [
+        "spam",
+        "phishing"
+      ],
+      "replyOptions": [
+        {
+          "text": "Ini donasi saya... dan air mata saya.",
+          "isCorrect": false,
+          "scoreModifier": -20
+        },
+        {
+          "text": "Kirim nomor rekening yayasan.",
+          "isCorrect": false,
+          "scoreModifier": -15
+        },
+        {
+          "text": "Saya relate banget, saya ortunya.",
+          "isCorrect": false,
+          "scoreModifier": -10
+        }
+      ],
+      "taskTrigger": null
+    },
+    {
+      "id": "spam_blk_60",
+      "sender": "Paradise Timeshare Bali",
+      "senderAddress": "vacation@bali-timeshare-vip.club",
+      "department": null,
+      "subject": "LIBURAN MEWAH DI BALI — Villa Eksklusif Cuma Rp 500rb/tahun!!",
+      "body": "Anda terlihat seperti orang yang belum cuti sejak 2019.\n\nTimeshare villa premium di Bali — Anda 'memiliki' villa selama 2 minggu per tahun!\n\nBiaya: Rp 500.000/tahun* + Rp 25.000.000 biaya pendaftaran + Rp 3.000.000 maintenance tahunan + pajak misterius.\n\nKapan terakhir kali Anda lihat matahari terbenam? Bukan dari jendela kantor?\n\n*Villa mungkin tidak ada.",
+      "type": "spam",
+      "priority": "none",
+      "category": "promosi",
+      "expirationSeconds": 0,
+      "tags": [
+        "spam"
+      ],
+      "replyOptions": [
+        {
+          "text": "DAFTAR! Saya butuh liburan (dan terapi).",
+          "isCorrect": false,
+          "scoreModifier": -20
+        },
+        {
+          "text": "Transfer biaya pendaftaran sekarang!",
+          "isCorrect": false,
+          "scoreModifier": -25
+        }
+      ],
+      "taskTrigger": null
+    },
+    {
+      "id": "spam_blk_61",
+      "sender": "RoyalBet88 Casino Online",
+      "senderAddress": "vip@royalbet88-jackpot.win",
+      "department": null,
+      "subject": "Bonus Deposit 500%! Ubah Gaji UMR Jadi Miliarder dalam SEMALAM!",
+      "body": "Bosan jadi budak korporat? Coba keberuntungan Anda di RoyalBet88!\n\nDeposit Rp 100.000, bonus jadi Rp 600.000!\n\nSlot, poker, roulette — semua cara untuk kehilangan uang yang sudah sedikit!\n\nTestimoni: 'Saya deposit gaji pertama dan sekarang tinggal di rumah mertua.' - Pemain Setia\n\nGamble responsibly* (*kami tidak tahu arti kata ini).",
+      "type": "spam",
+      "priority": "none",
+      "category": "promosi",
+      "expirationSeconds": 0,
+      "tags": [
+        "spam"
+      ],
+      "replyOptions": [
+        {
+          "text": "Deposit pakai gaji bulan ini!",
+          "isCorrect": false,
+          "scoreModifier": -25
+        },
+        {
+          "text": "Kirim link deposit, saya all-in.",
+          "isCorrect": false,
+          "scoreModifier": -30
+        },
+        {
+          "text": "Ada promo khusus karyawan burnout?",
+          "isCorrect": false,
+          "scoreModifier": -15
+        }
+      ],
+      "taskTrigger": null
+    },
+    {
+      "id": "spam_blk_62",
+      "sender": "CyberShield Antivirus PRO",
+      "senderAddress": "alert@cybershield-scan-now.ru",
+      "department": null,
+      "subject": "PERINGATAN: Komputer Kantor Anda Terinfeksi 847 VIRUS!!!",
+      "body": "SCAN DARURAT mendeteksi:\n- 847 virus\n- 23 trojan\n- 4 worm\n- 1 existential crisis (bukan virus, tapi tetap bahaya)\n\nDownload CyberShield PRO sekarang! Hanya $29.99/bulan.\n\nAtau komputer Anda akan meledak dalam 10 menit. (Tidak benar, tapi dramatis.)\n\nBonus: Antivirus kami sendiri adalah malware!",
+      "type": "spam",
+      "priority": "none",
+      "category": "promosi",
+      "expirationSeconds": 0,
+      "tags": [
+        "spam",
+        "phishing"
+      ],
+      "replyOptions": [
+        {
+          "text": "Download sekarang, komputer kantor ini penting!",
+          "isCorrect": false,
+          "scoreModifier": -30
+        },
+        {
+          "text": "Ini nomor kartu untuk langganan.",
+          "isCorrect": false,
+          "scoreModifier": -35
+        },
+        {
+          "text": "Scan ulang biar lebih seram.",
+          "isCorrect": false,
+          "scoreModifier": -10
+        }
+      ],
+      "taskTrigger": null
+    },
+    {
+      "id": "spam_blk_63",
+      "sender": "FollowerBlast Social Media",
+      "senderAddress": "order@followerblast-murah.top",
+      "department": null,
+      "subject": "10.000 Followers Instagram Cuma Rp 50.000 — Bikin Bos Iri!",
+      "body": "LinkedIn followers, Instagram followers, Twitter followers — semuanya bisa dibeli!\n\nPaket Spesial Karyawan Insecure:\n- 10K followers IG: Rp 50.000\n- 5K connections LinkedIn: Rp 75.000\n- 1 validation dari bos: TIDAK TERSEDIA\n\nSemua akun bot dari negara yang tidak bisa Anda temukan di peta.\n\nLook successful, feel empty.",
+      "type": "spam",
+      "priority": "none",
+      "category": "promosi",
+      "expirationSeconds": 0,
+      "tags": [
+        "spam"
+      ],
+      "replyOptions": [
+        {
+          "text": "Beli paket LinkedIn biar terlihat penting!",
+          "isCorrect": false,
+          "scoreModifier": -15
+        },
+        {
+          "text": "Ada paket 'validation dari bos'? Berapa pun saya bayar.",
+          "isCorrect": false,
+          "scoreModifier": -10
+        }
+      ],
+      "taskTrigger": null
+    },
+    {
+      "id": "spam_blk_64",
+      "sender": "SurveyReward Global",
+      "senderAddress": "survey@gift-card-survey-free.click",
+      "department": null,
+      "subject": "Isi Survey 2 Menit, Dapat Gift Card Rp 1.000.000!",
+      "body": "Selamat! Anda terpilih untuk survey eksklusif tentang 'Kepuasan Kerja'.\n\nPertanyaan 1: Apakah Anda bahagia di tempat kerja? (Kami sudah tahu jawabannya.)\nPertanyaan 2: Berapa nomor rekening Anda?\nPertanyaan 3: Apa password email kantor Anda?\n\nSetelah selesai, gift card akan dikirim dalam 7-10 hari kerja*.\n*Hari kerja di PT Sleep Deprivation = tidak pernah.",
+      "type": "spam",
+      "priority": "none",
+      "category": "promosi",
+      "expirationSeconds": 0,
+      "tags": [
+        "spam",
+        "phishing"
+      ],
+      "replyOptions": [
+        {
+          "text": "Ini jawaban survey + password email saya.",
+          "isCorrect": false,
+          "scoreModifier": -35
+        },
+        {
+          "text": "Survey kepuasan kerja? Skor: -10/10.",
+          "isCorrect": false,
+          "scoreModifier": -10
+        },
+        {
+          "text": "Saya isi, mana gift card-nya?",
+          "isCorrect": false,
+          "scoreModifier": -15
+        }
+      ],
+      "taskTrigger": null
+    },
+    {
+      "id": "spam_blk_65",
+      "sender": "QuickDegree Online University",
+      "senderAddress": "admissions@quickdegree-university.biz",
+      "department": null,
+      "subject": "GELAR S2/S3 dalam 48 JAM — Tanpa Kuliah, Tanpa Skripsi!",
+      "body": "Capek kerja keras tapi nggak dihargai karena 'cuma' S1?\n\nQuickDegree University menawarkan:\n- S2 MBA: 24 jam (termasuk wisuda via Zoom)\n- S3 Doktor: 48 jam (disertasi auto-generate oleh ChatGPT)\n- Profesor Kehormatan: 1 jam (cukup transfer Rp 15.000.000)\n\nTerakreditasi oleh Badan Akreditasi yang Kami Buat Sendiri.\n\nIjazah dicetak di kertas HVS 70gsm. Frame not included.\n\nPasang di dinding kubikel Anda dan menangislah dengan bangga.",
+      "type": "spam",
+      "priority": "none",
+      "category": "promosi",
+      "expirationSeconds": 0,
+      "tags": [
+        "spam"
+      ],
+      "replyOptions": [
+        {
+          "text": "S3 48 jam? Daftar sekarang!",
+          "isCorrect": false,
+          "scoreModifier": -20
+        },
+        {
+          "text": "Ada gelar 'Profesor Lembur'?",
+          "isCorrect": false,
+          "scoreModifier": -10
+        },
+        {
+          "text": "Kirim brosur ke email bos biar dia tahu saya qualified.",
+          "isCorrect": false,
+          "scoreModifier": -15
+        }
+      ],
+      "taskTrigger": null
     }
   ]
 }

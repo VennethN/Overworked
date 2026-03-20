@@ -3,7 +3,7 @@
     <Style src="HUD.uss" />
     <ui:VisualElement name="hud-container" class="hud-bar">
         <ui:VisualElement class="hud-brand">
-            <ui:Label text="MAIL" class="hud-logo" />
+            <ui:Label text="JI-MAIL" class="hud-logo" />
         </ui:VisualElement>
         <ui:VisualElement class="hud-stats">
             <ui:VisualElement class="hud-stat-chip hud-stat-chip--score">
