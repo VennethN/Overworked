@@ -18,9 +18,6 @@ This feature adds a dedicated login screen to the game's startup flow, allowing 
 - **Dynamic Injection**: The dialogue system now scans for any lines where the speaker is "Kamu" (You) and automatically replaces it with the player's custom name.
 - **Token Replacement**: Introduced `{PlayerName}` token support in the dialogue body, allowing story characters to address the player by their chosen name.
 
-### 4. Git Repositories (.gitignore)
-- Added `ProjectSettings/Packages/` to the ignore list to keep user-specific plugin settings (like the Unity AI Assistant) out of version control.
-
 ## How to Test
 1. Load the `SampleScene.unity`.
 2. Press **Play**.
