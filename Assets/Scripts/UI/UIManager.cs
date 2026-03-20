@@ -35,6 +35,7 @@ namespace Overworked.UI
         private ModeSelectController _modeSelect;
 
         private VisualElement _uiRoot;
+        private VisualElement _docRoot;
         private bool _isLightMode = true;
 
         private float _timerUpdateAccumulator;
@@ -53,6 +54,7 @@ namespace Overworked.UI
         private void OnEnable()
         {
             var root = uiDocument.rootVisualElement;
+            _docRoot = root;
             _uiRoot = root.Q("root");
 
             _inboxSlot = root.Q("inbox-slot");
@@ -106,9 +108,9 @@ namespace Overworked.UI
             _detail.SetReplyCallback(OnReplyChosen);
             _hud = new HUDController(_hudSlot);
 
-            // Theme toggle
+            // Theme toggle — apply to document root so it overrides :root variables
             _hud.OnThemeToggleClicked += ToggleTheme;
-            _uiRoot?.EnableInClassList("light-mode", _isLightMode);
+            _docRoot?.EnableInClassList("light-mode", _isLightMode);
             _hud.UpdateThemeButtonLabel(_isLightMode);
 
             // Subscribe to events
@@ -407,7 +409,7 @@ namespace Overworked.UI
         public void ToggleTheme()
         {
             _isLightMode = !_isLightMode;
-            _uiRoot?.EnableInClassList("light-mode", _isLightMode);
+            _docRoot?.EnableInClassList("light-mode", _isLightMode);
             _hud?.UpdateThemeButtonLabel(_isLightMode);
         }
 
