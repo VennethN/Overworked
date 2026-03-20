@@ -101,6 +101,36 @@ namespace Overworked.UI
             nameInput.style.marginBottom = 32;
             container.Add(nameInput);
 
+            nameInput.schedule.Execute(() => {
+                var labelPart = nameInput.Q<Label>();
+                if (labelPart != null) {
+                    labelPart.style.color = new Color(0.72f, 0.76f, 0.81f, 1f);
+                    labelPart.style.unityTextAlign = TextAnchor.MiddleLeft;
+                    labelPart.style.minWidth = 60;
+                }
+                var inputPart = nameInput.Q("unity-text-input");
+                if (inputPart != null) {
+                    inputPart.style.backgroundColor = new Color(0.118f, 0.161f, 0.212f, 1f);
+                    inputPart.style.color = new Color(0.945f, 0.96f, 0.976f, 1f);
+                    inputPart.style.borderTopWidth = 1;
+                    inputPart.style.borderBottomWidth = 1;
+                    inputPart.style.borderLeftWidth = 1;
+                    inputPart.style.borderRightWidth = 1;
+                    inputPart.style.borderTopColor = new Color(0.376f, 0.51f, 0.965f, 0.5f);
+                    inputPart.style.borderBottomColor = new Color(0.376f, 0.51f, 0.965f, 0.5f);
+                    inputPart.style.borderLeftColor = new Color(0.376f, 0.51f, 0.965f, 0.5f);
+                    inputPart.style.borderRightColor = new Color(0.376f, 0.51f, 0.965f, 0.5f);
+                    inputPart.style.borderTopLeftRadius = 6;
+                    inputPart.style.borderTopRightRadius = 6;
+                    inputPart.style.borderBottomLeftRadius = 6;
+                    inputPart.style.borderBottomRightRadius = 6;
+                    inputPart.style.paddingTop = 6;
+                    inputPart.style.paddingBottom = 6;
+                    inputPart.style.paddingLeft = 10;
+                    inputPart.style.paddingRight = 10;
+                }
+            });
+
             var continueBtn = new Button(() => {
                 var s = SaveManager.Load();
                 s.playerName = string.IsNullOrWhiteSpace(nameInput.value) ? "Pegawai Baru" : nameInput.value;
