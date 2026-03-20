@@ -1,0 +1,19 @@
+{
+  "emails": [
+    {
+      "id": "story_d1_welcome",
+      "sender": "Pak Michael",
+      "senderAddress": "m.hartono@globodyne.com",
+      "department": "Management",
+      "subject": "Selamat Datang di Globodyne!",
+      "body": "Halo!\n\nSelamat datang di tim kami. Sebagai admin email, tugasmu adalah memastikan semua email diproses dengan benar.\n\nBalas email penting, kerjakan tugas yang diminta, dan hapus spam.\n\nJangan biarkan email penting expired ya!\n\nSalam,\nPak Michael",
+      "type": "info",
+      "category": "utama",
+      "priority": "low",
+      "expirationSeconds": 0,
+      "tags": ["story", "story_d1"],
+      "replyOptions": null,
+      "taskTrigger": null
+    }
+  ]
+}
