@@ -1,11 +1,11 @@
 .hud-bar {
     flex-direction: row;
     align-items: center;
-    padding: 10px 24px;
+    padding: 6px 16px;
     background-color: var(--color-hud-bg);
     border-bottom-width: 1px;
     border-bottom-color: var(--color-border-strong);
-    min-height: 56px;
+    min-height: 36px;
     justify-content: space-between;
     transition: background-color 350ms ease, border-color 350ms ease;
 }
@@ -13,11 +13,11 @@
 .hud-brand {
     flex-direction: row;
     align-items: center;
-    min-width: 180px;
+    min-width: 120px;
 }
 
 .hud-logo {
-    font-size: 22px;
+    font-size: 15px;
     color: var(--color-accent);
     -unity-font-style: bold;
     letter-spacing: -0.5px;
@@ -32,8 +32,8 @@
 .hud-stat-chip {
     flex-direction: row;
     align-items: center;
-    padding: 6px 14px;
-    margin: 0 4px;
+    padding: 4px 10px;
+    margin: 0 3px;
     background-color: var(--color-bg-raised);
     border-radius: var(--radius-md);
     border-width: 1px;
@@ -47,29 +47,29 @@
 }
 
 .hud-stat-value {
-    font-size: 16px;
+    font-size: 11px;
     color: var(--color-text-primary);
     -unity-font-style: bold;
-    margin-right: 8px;
+    margin-right: 6px;
     scale: 1 1;
     transition: color 350ms ease, scale 150ms ease-out;
 }
 
 .hud-stat-label {
-    font-size: 10px;
+    font-size: 7px;
     color: var(--color-text-muted);
-    letter-spacing: 1.5px;
+    letter-spacing: 1px;
     transition: color 350ms ease;
 }
 
 .hud-stat-chip--streak {
     background-color: transparent;
     border-width: 0;
-    padding: 4px 8px;
+    padding: 3px 6px;
 }
 
 .hud-streak-value {
-    font-size: 14px;
+    font-size: 10px;
     color: var(--color-warning);
     -unity-font-style: bold;
     transition: color 350ms ease;
@@ -78,7 +78,7 @@
 .hud-timer-group {
     align-items: center;
     justify-content: center;
-    padding: 6px 20px;
+    padding: 4px 14px;
     background-color: var(--color-bg-raised);
     border-radius: var(--radius-md);
     border-width: 1px;
@@ -87,10 +87,10 @@
 }
 
 .hud-timer {
-    font-size: 24px;
+    font-size: 16px;
     color: var(--color-text-primary);
     -unity-font-style: bold;
-    letter-spacing: 2px;
+    letter-spacing: 1px;
     scale: 1 1;
     transition: color 300ms ease, scale 200ms ease-out;
 }
@@ -107,19 +107,19 @@
     flex-direction: row;
     align-items: center;
     justify-content: flex-end;
-    min-width: 180px;
+    min-width: 120px;
 }
 
 .theme-toggle-btn {
-    padding: 6px 16px;
-    font-size: 12px;
+    padding: 4px 10px;
+    font-size: 9px;
     border-radius: var(--radius-md);
     border-width: 1px;
     border-color: var(--color-border-strong);
     background-color: var(--color-bg-raised);
     color: var(--color-text-secondary);
     cursor: link;
-    margin-left: 10px;
+    margin-left: 8px;
     letter-spacing: 0.5px;
     scale: 1 1;
     transition: background-color 150ms ease, border-color 150ms ease, color 150ms ease, scale 80ms ease-out;

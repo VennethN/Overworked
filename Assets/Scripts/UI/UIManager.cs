@@ -280,28 +280,28 @@ namespace Overworked.UI
 
             var container = new VisualElement();
             container.style.backgroundColor = new Color(0.086f, 0.13f, 0.24f, 1f);
-            container.style.borderTopLeftRadius = 12;
-            container.style.borderTopRightRadius = 12;
-            container.style.borderBottomLeftRadius = 12;
-            container.style.borderBottomRightRadius = 12;
-            container.style.paddingTop = 32;
-            container.style.paddingBottom = 32;
-            container.style.paddingLeft = 40;
-            container.style.paddingRight = 40;
+            container.style.borderTopLeftRadius = 8;
+            container.style.borderTopRightRadius = 8;
+            container.style.borderBottomLeftRadius = 8;
+            container.style.borderBottomRightRadius = 8;
+            container.style.paddingTop = 22;
+            container.style.paddingBottom = 22;
+            container.style.paddingLeft = 28;
+            container.style.paddingRight = 28;
             container.style.alignItems = Align.Center;
 
             var title = new Label("GAME OVER");
-            title.style.fontSize = 32;
+            title.style.fontSize = 22;
             title.style.color = new Color(0.91f, 0.27f, 0.38f, 1f);
             title.style.unityFontStyleAndWeight = FontStyle.Bold;
-            title.style.marginBottom = 20;
+            title.style.marginBottom = 14;
             container.Add(title);
 
             var finalScore = new Label($"Final Score: {score.totalScore}");
-            finalScore.style.fontSize = 24;
+            finalScore.style.fontSize = 16;
             finalScore.style.color = Color.white;
             finalScore.style.unityFontStyleAndWeight = FontStyle.Bold;
-            finalScore.style.marginBottom = 20;
+            finalScore.style.marginBottom = 14;
             container.Add(finalScore);
 
             AddStatLine(container, "Correct Replies", score.correctReplies.ToString());
@@ -315,14 +315,14 @@ namespace Overworked.UI
 
             var btnRow = new VisualElement();
             btnRow.style.flexDirection = FlexDirection.Row;
-            btnRow.style.marginTop = 24;
+            btnRow.style.marginTop = 16;
 
             var restartBtn = CreateOverlayButton("Main Lagi", new Color(0.91f, 0.27f, 0.38f, 1f),
                 () => GameManager.Instance?.StartArcade());
             btnRow.Add(restartBtn);
 
             var spacer = new VisualElement();
-            spacer.style.width = 12;
+            spacer.style.width = 8;
             btnRow.Add(spacer);
 
             var menuBtn = CreateOverlayButton("Menu", new Color(0.235f, 0.306f, 0.416f, 1f),
@@ -363,21 +363,21 @@ namespace Overworked.UI
         {
             var btn = new Button(() => onClick?.Invoke());
             btn.text = text;
-            btn.style.paddingTop = 10;
-            btn.style.paddingBottom = 10;
-            btn.style.paddingLeft = 32;
-            btn.style.paddingRight = 32;
-            btn.style.fontSize = 16;
+            btn.style.paddingTop = 7;
+            btn.style.paddingBottom = 7;
+            btn.style.paddingLeft = 22;
+            btn.style.paddingRight = 22;
+            btn.style.fontSize = 11;
             btn.style.backgroundColor = bgColor;
             btn.style.color = Color.white;
             btn.style.borderTopWidth = 0;
             btn.style.borderBottomWidth = 0;
             btn.style.borderLeftWidth = 0;
             btn.style.borderRightWidth = 0;
-            btn.style.borderTopLeftRadius = 6;
-            btn.style.borderTopRightRadius = 6;
-            btn.style.borderBottomLeftRadius = 6;
-            btn.style.borderBottomRightRadius = 6;
+            btn.style.borderTopLeftRadius = 4;
+            btn.style.borderTopRightRadius = 4;
+            btn.style.borderBottomLeftRadius = 4;
+            btn.style.borderBottomRightRadius = 4;
             return btn;
         }
 
@@ -386,16 +386,16 @@ namespace Overworked.UI
             var row = new VisualElement();
             row.style.flexDirection = FlexDirection.Row;
             row.style.justifyContent = Justify.SpaceBetween;
-            row.style.width = 300;
-            row.style.marginBottom = 4;
+            row.style.width = 210;
+            row.style.marginBottom = 3;
 
             var lbl = new Label(label);
-            lbl.style.fontSize = 14;
+            lbl.style.fontSize = 10;
             lbl.style.color = new Color(0.63f, 0.63f, 0.69f, 1f);
             row.Add(lbl);
 
             var val = new Label(value);
-            val.style.fontSize = 14;
+            val.style.fontSize = 10;
             val.style.color = Color.white;
             val.style.unityFontStyleAndWeight = FontStyle.Bold;
             row.Add(val);
@@ -443,7 +443,7 @@ namespace Overworked.UI
             }
 
             // Border width and alpha scale with stress
-            float borderWidth = Mathf.Lerp(0f, 8f, intensity);
+            float borderWidth = Mathf.Lerp(0f, 5f, intensity);
             float alpha = Mathf.Lerp(0f, 0.5f, intensity);
             var color = new Color(0.94f, 0.2f, 0.2f, alpha);
 

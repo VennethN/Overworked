@@ -65,7 +65,7 @@ namespace Overworked.UI
             _daySelectView.style.alignItems = Align.Center;
             _daySelectView.style.justifyContent = Justify.FlexStart;
             _daySelectView.style.flexGrow = 1;
-            _daySelectView.style.paddingTop = 60;
+            _daySelectView.style.paddingTop = 40;
             _daySelectView.style.display = DisplayStyle.None;
             BuildDaySelectView(_daySelectView);
             overlay.Add(_daySelectView);
@@ -79,17 +79,17 @@ namespace Overworked.UI
         private void BuildNameInputView(VisualElement container)
         {
             var title = new Label("OVERWORKED");
-            title.style.fontSize = 48;
+            title.style.fontSize = 32;
             title.style.color = new Color(0.945f, 0.96f, 0.976f, 1f);
             title.style.unityFontStyleAndWeight = FontStyle.Bold;
-            title.style.letterSpacing = 4;
-            title.style.marginBottom = 8;
+            title.style.letterSpacing = 3;
+            title.style.marginBottom = 6;
             container.Add(title);
 
             var subtitle = new Label("Profil Pegawai");
-            subtitle.style.fontSize = 16;
+            subtitle.style.fontSize = 13;
             subtitle.style.color = new Color(0.392f, 0.455f, 0.545f, 1f);
-            subtitle.style.marginBottom = 48;
+            subtitle.style.marginBottom = 32;
             container.Add(subtitle);
 
             var save = SaveManager.Load();
@@ -97,8 +97,8 @@ namespace Overworked.UI
             var nameInput = new TextField();
             nameInput.label = "Nama:";
             nameInput.value = string.IsNullOrEmpty(save.playerName) ? "Pegawai Baru" : save.playerName;
-            nameInput.style.width = 300;
-            nameInput.style.marginBottom = 32;
+            nameInput.style.width = 240;
+            nameInput.style.marginBottom = 24;
             container.Add(nameInput);
 
             nameInput.schedule.Execute(() => {
@@ -106,7 +106,7 @@ namespace Overworked.UI
                 if (labelPart != null) {
                     labelPart.style.color = new Color(0.72f, 0.76f, 0.81f, 1f);
                     labelPart.style.unityTextAlign = TextAnchor.MiddleLeft;
-                    labelPart.style.minWidth = 60;
+                    labelPart.style.minWidth = 50;
                 }
                 var inputPart = nameInput.Q("unity-text-input");
                 if (inputPart != null) {
@@ -120,14 +120,14 @@ namespace Overworked.UI
                     inputPart.style.borderBottomColor = new Color(0.376f, 0.51f, 0.965f, 0.5f);
                     inputPart.style.borderLeftColor = new Color(0.376f, 0.51f, 0.965f, 0.5f);
                     inputPart.style.borderRightColor = new Color(0.376f, 0.51f, 0.965f, 0.5f);
-                    inputPart.style.borderTopLeftRadius = 6;
-                    inputPart.style.borderTopRightRadius = 6;
-                    inputPart.style.borderBottomLeftRadius = 6;
-                    inputPart.style.borderBottomRightRadius = 6;
-                    inputPart.style.paddingTop = 6;
-                    inputPart.style.paddingBottom = 6;
-                    inputPart.style.paddingLeft = 10;
-                    inputPart.style.paddingRight = 10;
+                    inputPart.style.borderTopLeftRadius = 5;
+                    inputPart.style.borderTopRightRadius = 5;
+                    inputPart.style.borderBottomLeftRadius = 5;
+                    inputPart.style.borderBottomRightRadius = 5;
+                    inputPart.style.paddingTop = 5;
+                    inputPart.style.paddingBottom = 5;
+                    inputPart.style.paddingLeft = 8;
+                    inputPart.style.paddingRight = 8;
                 }
             });
 
@@ -140,21 +140,21 @@ namespace Overworked.UI
                 _mainView.style.display = DisplayStyle.Flex;
             });
             continueBtn.text = "Lanjut";
-            continueBtn.style.paddingTop = 12;
-            continueBtn.style.paddingBottom = 12;
-            continueBtn.style.paddingLeft = 32;
-            continueBtn.style.paddingRight = 32;
-            continueBtn.style.fontSize = 16;
+            continueBtn.style.paddingTop = 10;
+            continueBtn.style.paddingBottom = 10;
+            continueBtn.style.paddingLeft = 24;
+            continueBtn.style.paddingRight = 24;
+            continueBtn.style.fontSize = 14;
             continueBtn.style.backgroundColor = new Color(0.29f, 0.87f, 0.5f, 1f);
             continueBtn.style.color = Color.white;
             continueBtn.style.borderTopWidth = 0;
             continueBtn.style.borderBottomWidth = 0;
             continueBtn.style.borderLeftWidth = 0;
             continueBtn.style.borderRightWidth = 0;
-            continueBtn.style.borderTopLeftRadius = 6;
-            continueBtn.style.borderTopRightRadius = 6;
-            continueBtn.style.borderBottomLeftRadius = 6;
-            continueBtn.style.borderBottomRightRadius = 6;
+            continueBtn.style.borderTopLeftRadius = 5;
+            continueBtn.style.borderTopRightRadius = 5;
+            continueBtn.style.borderBottomLeftRadius = 5;
+            continueBtn.style.borderBottomRightRadius = 5;
 
             container.Add(continueBtn);
         }
@@ -163,17 +163,17 @@ namespace Overworked.UI
         {
             // Title
             var title = new Label("OVERWORKED");
-            title.style.fontSize = 48;
+            title.style.fontSize = 32;
             title.style.color = new Color(0.945f, 0.96f, 0.976f, 1f);
             title.style.unityFontStyleAndWeight = FontStyle.Bold;
-            title.style.letterSpacing = 4;
-            title.style.marginBottom = 8;
+            title.style.letterSpacing = 3;
+            title.style.marginBottom = 6;
             container.Add(title);
 
             var subtitle = new Label("Email Management Game");
-            subtitle.style.fontSize = 16;
+            subtitle.style.fontSize = 13;
             subtitle.style.color = new Color(0.392f, 0.455f, 0.545f, 1f);
-            subtitle.style.marginBottom = 48;
+            subtitle.style.marginBottom = 32;
             container.Add(subtitle);
 
             var save = SaveManager.Load();
@@ -193,7 +193,7 @@ namespace Overworked.UI
             row.Add(arcadeBtn);
 
             var spacer = new VisualElement();
-            spacer.style.width = 24;
+            spacer.style.width = 16;
             row.Add(spacer);
 
             var storyBtn = CreateModeCard(
@@ -211,9 +211,9 @@ namespace Overworked.UI
             if (save.arcadeHighScore > 0)
             {
                 var highScore = new Label($"Skor Tertinggi: {save.arcadeHighScore}");
-                highScore.style.fontSize = 14;
+                highScore.style.fontSize = 12;
                 highScore.style.color = new Color(0.392f, 0.455f, 0.545f, 1f);
-                highScore.style.marginTop = 32;
+                highScore.style.marginTop = 24;
                 container.Add(highScore);
             }
         }
@@ -221,17 +221,17 @@ namespace Overworked.UI
         private VisualElement CreateModeCard(string icon, string title, string desc, Color accent, Action onClick)
         {
             var card = new Button();
-            card.style.width = 220;
-            card.style.paddingTop = 32;
-            card.style.paddingBottom = 32;
-            card.style.paddingLeft = 24;
-            card.style.paddingRight = 24;
+            card.style.width = 160;
+            card.style.paddingTop = 24;
+            card.style.paddingBottom = 24;
+            card.style.paddingLeft = 16;
+            card.style.paddingRight = 16;
             card.style.alignItems = Align.Center;
             card.style.backgroundColor = new Color(0.118f, 0.161f, 0.212f, 1f);
-            card.style.borderTopLeftRadius = 12;
-            card.style.borderTopRightRadius = 12;
-            card.style.borderBottomLeftRadius = 12;
-            card.style.borderBottomRightRadius = 12;
+            card.style.borderTopLeftRadius = 10;
+            card.style.borderTopRightRadius = 10;
+            card.style.borderBottomLeftRadius = 10;
+            card.style.borderBottomRightRadius = 10;
             card.style.borderTopWidth = 2;
             card.style.borderTopColor = accent;
             card.style.borderBottomWidth = 0;
@@ -241,22 +241,22 @@ namespace Overworked.UI
 
             var iconLabel = new Label(icon);
             iconLabel.AddToClassList("sidebar-icon");
-            iconLabel.style.fontSize = 36;
+            iconLabel.style.fontSize = 26;
             iconLabel.style.color = accent;
-            iconLabel.style.marginBottom = 16;
+            iconLabel.style.marginBottom = 12;
             iconLabel.style.width = new StyleLength(StyleKeyword.Auto);
             card.Add(iconLabel);
 
             var titleLabel = new Label(title);
-            titleLabel.style.fontSize = 20;
+            titleLabel.style.fontSize = 16;
             titleLabel.style.color = new Color(0.945f, 0.96f, 0.976f, 1f);
             titleLabel.style.unityFontStyleAndWeight = FontStyle.Bold;
-            titleLabel.style.letterSpacing = 2;
-            titleLabel.style.marginBottom = 8;
+            titleLabel.style.letterSpacing = 1;
+            titleLabel.style.marginBottom = 6;
             card.Add(titleLabel);
 
             var descLabel = new Label(desc);
-            descLabel.style.fontSize = 13;
+            descLabel.style.fontSize = 11;
             descLabel.style.color = new Color(0.58f, 0.639f, 0.722f, 1f);
             descLabel.style.unityTextAlign = TextAnchor.MiddleCenter;
             card.Add(descLabel);
@@ -285,12 +285,12 @@ namespace Overworked.UI
             var header = new VisualElement();
             header.style.flexDirection = FlexDirection.Row;
             header.style.alignItems = Align.Center;
-            header.style.width = 500;
-            header.style.marginBottom = 32;
+            header.style.width = 400;
+            header.style.marginBottom = 24;
 
             var backBtn = new Button(() => ShowMain());
             backBtn.text = "\u2190  Kembali";
-            backBtn.style.fontSize = 14;
+            backBtn.style.fontSize = 13;
             backBtn.style.color = new Color(0.58f, 0.639f, 0.722f, 1f);
             backBtn.style.backgroundColor = Color.clear;
             backBtn.style.borderTopWidth = 0;
@@ -305,7 +305,7 @@ namespace Overworked.UI
             header.Add(spacer);
 
             var titleLabel = new Label("MODE CERITA");
-            titleLabel.style.fontSize = 20;
+            titleLabel.style.fontSize = 16;
             titleLabel.style.color = new Color(0.945f, 0.96f, 0.976f, 1f);
             titleLabel.style.unityFontStyleAndWeight = FontStyle.Bold;
             titleLabel.style.letterSpacing = 2;
@@ -317,7 +317,7 @@ namespace Overworked.UI
             if (_storyData?.days == null)
             {
                 var noData = new Label("Data cerita belum tersedia.");
-                noData.style.fontSize = 14;
+                noData.style.fontSize = 12;
                 noData.style.color = new Color(0.58f, 0.639f, 0.722f, 1f);
                 container.Add(noData);
                 return;
@@ -326,8 +326,8 @@ namespace Overworked.UI
             var save = SaveManager.Load();
 
             var scrollView = new ScrollView();
-            scrollView.style.width = 500;
-            scrollView.style.maxHeight = 450;
+            scrollView.style.width = 400;
+            scrollView.style.maxHeight = 360;
 
             foreach (var day in _storyData.days)
             {
@@ -348,15 +348,15 @@ namespace Overworked.UI
             row.text = "";
             row.style.flexDirection = FlexDirection.Row;
             row.style.alignItems = Align.Center;
-            row.style.paddingTop = 16;
-            row.style.paddingBottom = 16;
-            row.style.paddingLeft = 20;
-            row.style.paddingRight = 20;
-            row.style.marginBottom = 4;
-            row.style.borderTopLeftRadius = 8;
-            row.style.borderTopRightRadius = 8;
-            row.style.borderBottomLeftRadius = 8;
-            row.style.borderBottomRightRadius = 8;
+            row.style.paddingTop = 12;
+            row.style.paddingBottom = 12;
+            row.style.paddingLeft = 16;
+            row.style.paddingRight = 16;
+            row.style.marginBottom = 3;
+            row.style.borderTopLeftRadius = 6;
+            row.style.borderTopRightRadius = 6;
+            row.style.borderBottomLeftRadius = 6;
+            row.style.borderBottomRightRadius = 6;
             row.style.borderTopWidth = 0;
             row.style.borderBottomWidth = 0;
             row.style.borderLeftWidth = 0;
@@ -368,14 +368,14 @@ namespace Overworked.UI
 
             // Day number badge
             var dayBadge = new Label($"{day.dayNumber}");
-            dayBadge.style.fontSize = 16;
+            dayBadge.style.fontSize = 14;
             dayBadge.style.unityFontStyleAndWeight = FontStyle.Bold;
             dayBadge.style.color = passed
                 ? new Color(0.29f, 0.87f, 0.5f, 1f)
                 : new Color(0.945f, 0.96f, 0.976f, 1f);
-            dayBadge.style.width = 32;
+            dayBadge.style.width = 28;
             dayBadge.style.unityTextAlign = TextAnchor.MiddleCenter;
-            dayBadge.style.marginRight = 16;
+            dayBadge.style.marginRight = 12;
             row.Add(dayBadge);
 
             // Info column
@@ -383,13 +383,13 @@ namespace Overworked.UI
             info.style.flexGrow = 1;
 
             var titleLabel = new Label(day.title);
-            titleLabel.style.fontSize = 14;
+            titleLabel.style.fontSize = 13;
             titleLabel.style.color = new Color(0.945f, 0.96f, 0.976f, 1f);
             titleLabel.style.unityFontStyleAndWeight = FontStyle.Bold;
             info.Add(titleLabel);
 
             var goalLabel = new Label($"Target: {day.scoreGoal} skor  \u2022  {day.dayLengthSeconds}s");
-            goalLabel.style.fontSize = 12;
+            goalLabel.style.fontSize = 11;
             goalLabel.style.color = new Color(0.392f, 0.455f, 0.545f, 1f);
             goalLabel.style.marginTop = 2;
             info.Add(goalLabel);
@@ -401,7 +401,7 @@ namespace Overworked.UI
             {
                 var lockIcon = new Label("\ue897"); // Material Icons: lock
                 lockIcon.AddToClassList("sidebar-icon");
-                lockIcon.style.fontSize = 20;
+                lockIcon.style.fontSize = 16;
                 lockIcon.style.color = new Color(0.392f, 0.455f, 0.545f, 1f);
                 lockIcon.style.width = new StyleLength(StyleKeyword.Auto);
                 row.Add(lockIcon);
@@ -409,7 +409,7 @@ namespace Overworked.UI
             else if (bestScore > 0)
             {
                 var scoreLabel = new Label($"{bestScore}");
-                scoreLabel.style.fontSize = 14;
+                scoreLabel.style.fontSize = 13;
                 scoreLabel.style.unityFontStyleAndWeight = FontStyle.Bold;
                 scoreLabel.style.color = passed
                     ? new Color(0.29f, 0.87f, 0.5f, 1f)

@@ -96,7 +96,7 @@ namespace Overworked.UI
             label.style.position = Position.Absolute;
             label.style.left = position.x;
             label.style.top = position.y;
-            label.style.fontSize = 18;
+            label.style.fontSize = 13;
             label.style.color = color;
             label.style.unityFontStyleAndWeight = FontStyle.Bold;
             label.style.opacity = 1f;

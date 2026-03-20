@@ -42,21 +42,21 @@ namespace Overworked.UI
             container.style.alignItems = Align.Center;
             container.style.justifyContent = Justify.Center;
             container.style.flexGrow = 1;
-            container.style.paddingLeft = 80;
-            container.style.paddingRight = 80;
+            container.style.paddingLeft = 56;
+            container.style.paddingRight = 56;
 
             // Dialogue box
             var box = new VisualElement();
-            box.style.width = 600;
+            box.style.width = 420;
             box.style.backgroundColor = new Color(0.118f, 0.161f, 0.212f, 1f);
-            box.style.borderTopLeftRadius = 16;
-            box.style.borderTopRightRadius = 16;
-            box.style.borderBottomLeftRadius = 16;
-            box.style.borderBottomRightRadius = 16;
-            box.style.paddingTop = 32;
-            box.style.paddingBottom = 24;
-            box.style.paddingLeft = 36;
-            box.style.paddingRight = 36;
+            box.style.borderTopLeftRadius = 12;
+            box.style.borderTopRightRadius = 12;
+            box.style.borderBottomLeftRadius = 12;
+            box.style.borderBottomRightRadius = 12;
+            box.style.paddingTop = 22;
+            box.style.paddingBottom = 16;
+            box.style.paddingLeft = 24;
+            box.style.paddingRight = 24;
             box.style.borderTopWidth = 1;
             box.style.borderTopColor = new Color(0.376f, 0.51f, 0.965f, 0.3f);
             box.style.borderBottomWidth = 0;
@@ -67,22 +67,22 @@ namespace Overworked.UI
             var headerRow = new VisualElement();
             headerRow.style.flexDirection = FlexDirection.Row;
             headerRow.style.alignItems = Align.Center;
-            headerRow.style.marginBottom = 20;
+            headerRow.style.marginBottom = 14;
 
             _avatarCircle = new VisualElement();
-            _avatarCircle.style.width = 48;
-            _avatarCircle.style.height = 48;
-            _avatarCircle.style.borderTopLeftRadius = 24;
-            _avatarCircle.style.borderTopRightRadius = 24;
-            _avatarCircle.style.borderBottomLeftRadius = 24;
-            _avatarCircle.style.borderBottomRightRadius = 24;
+            _avatarCircle.style.width = 34;
+            _avatarCircle.style.height = 34;
+            _avatarCircle.style.borderTopLeftRadius = 17;
+            _avatarCircle.style.borderTopRightRadius = 17;
+            _avatarCircle.style.borderBottomLeftRadius = 17;
+            _avatarCircle.style.borderBottomRightRadius = 17;
             _avatarCircle.style.backgroundColor = new Color(0.376f, 0.51f, 0.965f, 0.2f);
             _avatarCircle.style.alignItems = Align.Center;
             _avatarCircle.style.justifyContent = Justify.Center;
-            _avatarCircle.style.marginRight = 16;
+            _avatarCircle.style.marginRight = 12;
 
             _avatarLabel = new Label();
-            _avatarLabel.style.fontSize = 20;
+            _avatarLabel.style.fontSize = 14;
             _avatarLabel.style.color = new Color(0.376f, 0.51f, 0.965f, 1f);
             _avatarLabel.style.unityFontStyleAndWeight = FontStyle.Bold;
             _avatarLabel.style.unityTextAlign = TextAnchor.MiddleCenter;
@@ -90,7 +90,7 @@ namespace Overworked.UI
             headerRow.Add(_avatarCircle);
 
             _speakerLabel = new Label();
-            _speakerLabel.style.fontSize = 18;
+            _speakerLabel.style.fontSize = 13;
             _speakerLabel.style.color = new Color(0.945f, 0.96f, 0.976f, 1f);
             _speakerLabel.style.unityFontStyleAndWeight = FontStyle.Bold;
             headerRow.Add(_speakerLabel);
@@ -99,10 +99,10 @@ namespace Overworked.UI
 
             // Body text
             _bodyLabel = new Label();
-            _bodyLabel.style.fontSize = 15;
+            _bodyLabel.style.fontSize = 11;
             _bodyLabel.style.color = new Color(0.722f, 0.757f, 0.808f, 1f);
             _bodyLabel.style.whiteSpace = WhiteSpace.Normal;
-            _bodyLabel.style.marginBottom = 28;
+            _bodyLabel.style.marginBottom = 20;
             box.Add(_bodyLabel);
 
             // Footer row: counter + continue button
@@ -112,27 +112,27 @@ namespace Overworked.UI
             footer.style.justifyContent = Justify.SpaceBetween;
 
             _counterLabel = new Label();
-            _counterLabel.style.fontSize = 12;
+            _counterLabel.style.fontSize = 9;
             _counterLabel.style.color = new Color(0.392f, 0.455f, 0.545f, 1f);
             footer.Add(_counterLabel);
 
             _continueBtn = new Button(() => Advance());
             _continueBtn.text = "Lanjut \u25B8";
-            _continueBtn.style.paddingTop = 10;
-            _continueBtn.style.paddingBottom = 10;
-            _continueBtn.style.paddingLeft = 28;
-            _continueBtn.style.paddingRight = 28;
-            _continueBtn.style.fontSize = 14;
+            _continueBtn.style.paddingTop = 7;
+            _continueBtn.style.paddingBottom = 7;
+            _continueBtn.style.paddingLeft = 20;
+            _continueBtn.style.paddingRight = 20;
+            _continueBtn.style.fontSize = 10;
             _continueBtn.style.backgroundColor = new Color(0.376f, 0.51f, 0.965f, 1f);
             _continueBtn.style.color = Color.white;
             _continueBtn.style.borderTopWidth = 0;
             _continueBtn.style.borderBottomWidth = 0;
             _continueBtn.style.borderLeftWidth = 0;
             _continueBtn.style.borderRightWidth = 0;
-            _continueBtn.style.borderTopLeftRadius = 8;
-            _continueBtn.style.borderTopRightRadius = 8;
-            _continueBtn.style.borderBottomLeftRadius = 8;
-            _continueBtn.style.borderBottomRightRadius = 8;
+            _continueBtn.style.borderTopLeftRadius = 6;
+            _continueBtn.style.borderTopRightRadius = 6;
+            _continueBtn.style.borderBottomLeftRadius = 6;
+            _continueBtn.style.borderBottomRightRadius = 6;
             footer.Add(_continueBtn);
 
             box.Add(footer);

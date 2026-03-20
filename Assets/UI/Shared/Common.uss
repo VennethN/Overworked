@@ -32,16 +32,16 @@
     --color-row-border-left: transparent;
     --color-shadow: rgba(0,0,0,0.5);
 
-    --font-size-xs: 10px;
-    --font-size-sm: 12px;
-    --font-size-md: 14px;
-    --font-size-lg: 16px;
-    --font-size-xl: 20px;
-    --font-size-title: 22px;
+    --font-size-xs: 7px;
+    --font-size-sm: 9px;
+    --font-size-md: 10px;
+    --font-size-lg: 12px;
+    --font-size-xl: 14px;
+    --font-size-title: 16px;
 
-    --radius-sm: 4px;
-    --radius-md: 8px;
-    --radius-lg: 16px;
+    --radius-sm: 3px;
+    --radius-md: 6px;
+    --radius-lg: 12px;
     --radius-pill: 100px;
 }
 
@@ -93,7 +93,7 @@
 /* ── Panel Slot Transitions ── */
 .panel-slot {
     opacity: 0;
-    translate: 0 8px;
+    translate: 0 6px;
     transition: opacity 180ms ease-out, translate 180ms ease-out;
 }
 
@@ -123,7 +123,7 @@
 /* ── Inline Reply Animation ── */
 .inline-reply-slot {
     opacity: 0;
-    translate: 0 8px;
+    translate: 0 6px;
     transition: opacity 200ms ease-out, translate 200ms ease-out;
 }
 
@@ -134,9 +134,9 @@
 
 /* ── Sidebar ── */
 .sidebar {
-    width: 200px;
+    width: 140px;
     flex-shrink: 0;
-    padding: 12px 10px;
+    padding: 8px 7px;
     background-color: var(--color-bg-surface);
     border-right-width: 1px;
     border-right-color: var(--color-border);
@@ -146,7 +146,7 @@
 .sidebar-item {
     flex-direction: row;
     align-items: center;
-    padding: 10px 18px;
+    padding: 7px 12px;
     margin-bottom: 2px;
     border-radius: var(--radius-md);
     border-width: 0;
@@ -160,9 +160,9 @@
 
 .sidebar-icon {
     -unity-font-definition: url('../../Fonts/MaterialIcons-Regular.ttf');
-    font-size: 20px;
-    width: 24px;
-    margin-right: 12px;
+    font-size: 14px;
+    width: 18px;
+    margin-right: 8px;
     -unity-text-align: middle-center;
     flex-shrink: 0;
 }
@@ -188,7 +188,7 @@
 }
 
 .sidebar-search {
-    margin: 0 6px 4px 6px;
+    margin: 0 4px 3px 4px;
 }
 
 .sidebar-search .unity-text-field__input {
@@ -198,7 +198,7 @@
     border-color: var(--color-border);
     color: var(--color-text-primary);
     font-size: var(--font-size-sm);
-    padding: 8px 12px;
+    padding: 6px 8px;
     transition: border-color 150ms ease, background-color 150ms ease;
 }
 
@@ -214,13 +214,13 @@
 .sidebar-divider {
     height: 1px;
     background-color: var(--color-border);
-    margin: 6px 12px 6px 12px;
+    margin: 4px 8px 4px 8px;
 }
 
 .sidebar-email-count {
     font-size: var(--font-size-xs);
     color: var(--color-text-muted);
-    padding: 8px 18px;
+    padding: 6px 12px;
     transition: color 350ms ease;
 }
 
@@ -253,7 +253,7 @@
 
 /* ── Juice: New Email Bounce ── */
 .email-item--new {
-    translate: 30px 0;
+    translate: 20px 0;
     opacity: 0;
 }
 
