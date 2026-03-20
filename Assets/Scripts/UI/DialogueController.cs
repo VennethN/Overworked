@@ -148,13 +148,18 @@ namespace Overworked.UI
             if (_lines == null || _currentIndex >= _lines.Length) return;
 
             var line = _lines[_currentIndex];
-            _speakerLabel.text = line.speaker;
-            _bodyLabel.text = line.text;
+
+            var save = Overworked.Core.SaveManager.Load();
+            string pName = string.IsNullOrEmpty(save.playerName) ? "Pegawai Baru" : save.playerName;
+            string speakerName = line.speaker == "Kamu" ? pName : line.speaker;
+
+            _speakerLabel.text = speakerName;
+            _bodyLabel.text = line.text.Replace("{PlayerName}", pName);
             _counterLabel.text = $"{_currentIndex + 1} / {_lines.Length}";
 
             // Avatar letter from speaker name
-            if (!string.IsNullOrEmpty(line.speaker))
-                _avatarLabel.text = line.speaker[0].ToString().ToUpper();
+            if (!string.IsNullOrEmpty(speakerName))
+                _avatarLabel.text = speakerName[0].ToString().ToUpper();
 
             // Different color for player
             bool isPlayer = line.avatar == "player";
