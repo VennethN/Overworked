@@ -35,7 +35,7 @@ namespace Overworked.UI
         private ModeSelectController _modeSelect;
 
         private VisualElement _uiRoot;
-        private bool _isLightMode;
+        private bool _isLightMode = true;
 
         private float _timerUpdateAccumulator;
         private const float TIMER_UPDATE_INTERVAL = 0.25f;
@@ -108,6 +108,7 @@ namespace Overworked.UI
 
             // Theme toggle
             _hud.OnThemeToggleClicked += ToggleTheme;
+            _uiRoot?.EnableInClassList("light-mode", _isLightMode);
             _hud.UpdateThemeButtonLabel(_isLightMode);
 
             // Subscribe to events

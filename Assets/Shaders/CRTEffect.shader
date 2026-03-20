@@ -14,6 +14,11 @@ Shader "Custom/CRTEffect"
         _StaticWidth ("Static Wave Width", Range(0.01, 0.3)) = 0.1
         _NoiseIntensity ("Noise Intensity", Range(0, 0.3)) = 0.05
         _StaticDisruption ("Static Disruption", Range(0, 1)) = 0.3
+        [HideInInspector] _ClickUV ("Click UV", Vector) = (0.5, 0.5, 0, 0)
+        [HideInInspector] _ClickTime ("Click Time", Float) = -10
+        _ClickRadius ("Click Glitch Radius", Range(0.02, 0.4)) = 0.15
+        _ClickStrength ("Click Glitch Strength", Range(0, 1)) = 0.6
+        _ClickDuration ("Click Glitch Duration", Range(0.1, 1.0)) = 0.35
         [HideInInspector] _UIRT ("UI Render Texture", 2D) = "black" {}
         [HideInInspector] _HasUIRT ("Has UI RT", Float) = 0
     }
@@ -55,6 +60,11 @@ Shader "Custom/CRTEffect"
             float _StaticWidth;
             float _NoiseIntensity;
             float _StaticDisruption;
+            float2 _ClickUV;
+            float _ClickTime;
+            float _ClickRadius;
+            float _ClickStrength;
+            float _ClickDuration;
             float _HasUIRT;
 
             // Hash function for noise
@@ -116,6 +126,31 @@ Shader "Custom/CRTEffect"
                 color += waveMask * noise * _NoiseIntensity * _StaticDisruption;
                 // Subtle global noise grain
                 color += noise * _NoiseIntensity * 0.2;
+
+                // Click glitch — localized distortion that fades out
+                float clickAge = _Time.y - _ClickTime;
+                if (clickAge < _ClickDuration && clickAge >= 0.0)
+                {
+                    float clickFade = 1.0 - clickAge / _ClickDuration;
+                    clickFade *= clickFade; // ease-out curve
+
+                    float dist = distance(uv, _ClickUV);
+                    // Expanding ring + inner fill
+                    float ring = smoothstep(_ClickRadius, _ClickRadius * 0.3, dist);
+                    float glitch = ring * clickFade * _ClickStrength;
+
+                    // Horizontal tear lines inside the glitch area
+                    float tearLine = Hash(floor(uv.y * 300.0) + floor(clickAge * 60.0)) * 2.0 - 1.0;
+                    color.r = SAMPLE_TEXTURE2D_X(_BlitTexture, sampler_LinearClamp, float2(uv.x + tearLine * glitch * 0.04, uv.y)).r;
+                    color.b = SAMPLE_TEXTURE2D_X(_BlitTexture, sampler_LinearClamp, float2(uv.x - tearLine * glitch * 0.04, uv.y)).b;
+
+                    // Noise burst
+                    float clickNoise = Hash(uv.x * 333.0 + uv.y * 5555.0 + clickAge * 100.0) * 2.0 - 1.0;
+                    color += glitch * clickNoise * 0.15;
+
+                    // Brief brightness flash
+                    color += glitch * 0.1 * clickFade;
+                }
 
                 // Scanlines
                 float screenY = uv.y * _ScreenParams.y;

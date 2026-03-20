@@ -1,0 +1,30 @@
+# OVERWORKED — Credits & Attributions
+
+## Fonts
+
+### VT323
+- **Author:** Peter Hull
+- **Source:** https://fonts.google.com/specimen/VT323
+- **License:** SIL Open Font License, Version 1.1 (OFL-1.1)
+- **Copyright:** Copyright 2011, The VT323 Project Authors (peter.hull@oikoi.com)
+
+### Inter
+- **Author:** Rasmus Andersson
+- **Source:** https://fonts.google.com/specimen/Inter
+- **License:** SIL Open Font License, Version 1.1 (OFL-1.1)
+- **Copyright:** Copyright 2020 The Inter Project Authors (https://github.com/rsms/inter)
+
+### Material Icons
+- **Author:** Google
+- **Source:** https://fonts.google.com/icons
+- **License:** Apache License, Version 2.0
+
+## Engine & Packages
+
+- **Unity 6** (6000.3.11f1) — https://unity.com
+- **Universal Render Pipeline (URP)** — Unity Technologies
+- **TextMesh Pro** — Unity Technologies (includes LiberationSans under SIL OFL)
+
+---
+
+*Developed by Sleep Deprivation Studio for BGDJam 2026.*

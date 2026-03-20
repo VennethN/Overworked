@@ -1,6 +1,6 @@
 /* ── Dark Mode (Default) — Midnight Slate ── */
 :root {
-    -unity-font-definition: url('../../Fonts/Inter-Regular.ttf');
+    -unity-font-definition: url('../../Fonts/VT323-Regular.ttf');
     --color-bg-app: #111827;
     --color-bg-surface: #1e293b;
     --color-bg-raised: #334155;
@@ -45,37 +45,37 @@
     --radius-pill: 100px;
 }
 
-/* ── Light Mode — Clean Slate ── */
+/* ── Light Mode — Gmail-inspired ── */
 .light-mode {
-    --color-bg-app: #f8fafc;
+    --color-bg-app: #f6f8fc;
     --color-bg-surface: #ffffff;
-    --color-bg-raised: #f1f5f9;
+    --color-bg-raised: #f2f6fc;
     --color-bg-row: #ffffff;
-    --color-bg-row-hover: #f1f5f9;
-    --color-bg-row-unread: #eff6ff;
-    --color-bg-input: #e2e8f0;
-    --color-accent: #2563eb;
-    --color-accent-hover: #1d4ed8;
-    --color-accent-dim: rgba(37,99,235,0.08);
-    --color-text-primary: #0f172a;
-    --color-text-secondary: #475569;
-    --color-text-muted: #94a3b8;
+    --color-bg-row-hover: #f2f6fc;
+    --color-bg-row-unread: #ffffff;
+    --color-bg-input: #edf2fc;
+    --color-accent: #1a73e8;
+    --color-accent-hover: #1765cc;
+    --color-accent-dim: rgba(26,115,232,0.08);
+    --color-text-primary: #202124;
+    --color-text-secondary: #5f6368;
+    --color-text-muted: #9aa0a6;
     --color-text-on-accent: #ffffff;
-    --color-success: #16a34a;
-    --color-warning: #d97706;
-    --color-danger: #dc2626;
-    --color-critical: #b91c1c;
-    --color-priority-low: #3b82f6;
-    --color-priority-medium: #d97706;
-    --color-priority-high: #dc2626;
-    --color-priority-critical: #b91c1c;
-    --color-spam: #9333ea;
-    --color-border: rgba(15,23,42,0.08);
-    --color-border-strong: rgba(15,23,42,0.15);
-    --color-body-bg: #f8fafc;
+    --color-success: #188038;
+    --color-warning: #f9ab00;
+    --color-danger: #d93025;
+    --color-critical: #c5221f;
+    --color-priority-low: #1a73e8;
+    --color-priority-medium: #f9ab00;
+    --color-priority-high: #d93025;
+    --color-priority-critical: #c5221f;
+    --color-spam: #a142f4;
+    --color-border: rgba(0,0,0,0.06);
+    --color-border-strong: rgba(0,0,0,0.12);
+    --color-body-bg: #ffffff;
     --color-hud-bg: #ffffff;
-    --color-overlay-bg: rgba(15,23,42,0.5);
-    --color-shadow: rgba(15,23,42,0.1);
+    --color-overlay-bg: rgba(32,33,36,0.5);
+    --color-shadow: rgba(0,0,0,0.08);
 }
 
 .full-screen {

@@ -1,97 +1,65 @@
+using System.Collections;
 using UnityEngine;
-using UnityEngine.UIElements;
+using UnityEngine.Rendering;
 
 /// <summary>
-/// Redirects UI Toolkit rendering to a RenderTexture so the CRT shader
-/// can composite and distort it together with the game world.
-/// Attach to the same GameObject as CRTController.
+/// Captures the full screen (game + UI) after rendering and applies the CRT shader on top.
+/// No PanelSettings.targetTexture needed — UI input works normally.
+///
+/// IMPORTANT: Remove the CRT Renderer Feature from your Renderer2D asset when using this.
+/// This script replaces the renderer feature approach entirely.
 /// </summary>
 public class CRTUIBridge : MonoBehaviour
 {
-    [Tooltip("The PanelSettings asset used by your UIDocument")]
-    public PanelSettings panelSettings;
-
-    [Tooltip("The CRT material (same one used by CRTRendererFeature)")]
+    [Tooltip("The CRT material (same one used by CRTController)")]
     public Material crtMaterial;
 
-    private RenderTexture _uiRT;
-    private int _lastWidth;
-    private int _lastHeight;
-
-    private static readonly int UIRTId = Shader.PropertyToID("_UIRT");
-    private static readonly int HasUIRTId = Shader.PropertyToID("_HasUIRT");
+    private RenderTexture _captureRT;
+    private static readonly int BlitTextureId = Shader.PropertyToID("_BlitTexture");
+    private static readonly int BlitScaleBiasId = Shader.PropertyToID("_BlitScaleBias");
 
     void OnEnable()
     {
-        CreateRT();
+        StartCoroutine(CRTLoop());
     }
 
     void OnDisable()
     {
-        ReleaseRT();
-    }
-
-    void Update()
-    {
-        // Recreate RT if screen resolution changes
-        if (Screen.width != _lastWidth || Screen.height != _lastHeight)
+        if (_captureRT != null)
         {
-            ReleaseRT();
-            CreateRT();
+            _captureRT.Release();
+            Destroy(_captureRT);
+            _captureRT = null;
         }
     }
 
-    private void CreateRT()
+    IEnumerator CRTLoop()
     {
-        if (panelSettings == null || crtMaterial == null)
-            return;
-
-        _lastWidth = Screen.width;
-        _lastHeight = Screen.height;
-
-        _uiRT = new RenderTexture(_lastWidth, _lastHeight, 0, RenderTextureFormat.ARGB32);
-        _uiRT.Create();
-
-        panelSettings.targetTexture = _uiRT;
-
-        // Map screen coordinates to panel coordinates so input still works.
-        // Screen space: (0,0) bottom-left, Y up.
-        // Panel space: (0,0) top-left, Y down.
-        panelSettings.SetScreenToPanelSpaceFunction(ScreenToPanel);
-
-        crtMaterial.SetTexture(UIRTId, _uiRT);
-        crtMaterial.SetFloat(HasUIRTId, 1f);
-    }
-
-    private Vector2 ScreenToPanel(Vector2 screenPos)
-    {
-        if (_uiRT == null)
-            return new Vector2(float.NaN, float.NaN);
-
-        float x = screenPos.x * _uiRT.width / Screen.width;
-        float y = (Screen.height - screenPos.y) * _uiRT.height / Screen.height;
-        return new Vector2(x, y);
-    }
-
-    private void ReleaseRT()
-    {
-        if (crtMaterial != null)
+        while (true)
         {
-            crtMaterial.SetTexture(UIRTId, null);
-            crtMaterial.SetFloat(HasUIRTId, 0f);
-        }
+            yield return new WaitForEndOfFrame();
 
-        if (panelSettings != null)
-        {
-            panelSettings.SetScreenToPanelSpaceFunction(null);
-            panelSettings.targetTexture = null;
-        }
+            if (crtMaterial == null) continue;
 
-        if (_uiRT != null)
-        {
-            _uiRT.Release();
-            Destroy(_uiRT);
-            _uiRT = null;
+            // Resize capture RT if screen resolution changed
+            if (_captureRT == null || _captureRT.width != Screen.width || _captureRT.height != Screen.height)
+            {
+                if (_captureRT != null) { _captureRT.Release(); Destroy(_captureRT); }
+                _captureRT = new RenderTexture(Screen.width, Screen.height, 0);
+            }
+
+            // Capture the full screen (game world + UI overlay) into RT
+            ScreenCapture.CaptureScreenshotIntoRenderTexture(_captureRT);
+
+            // Blit.hlsl's vertex shader needs _BlitScaleBias for UV mapping.
+            // Outside the render pipeline this isn't set, so we provide identity (scale 1, offset 0).
+            crtMaterial.SetVector(BlitScaleBiasId, new Vector4(1, 1, 0, 0));
+            crtMaterial.SetTexture(BlitTextureId, _captureRT);
+
+            // Reset render target to the screen backbuffer and draw
+            RenderTexture.active = null;
+            crtMaterial.SetPass(0);
+            Graphics.DrawProceduralNow(MeshTopology.Triangles, 3);
         }
     }
 }

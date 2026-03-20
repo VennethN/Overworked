@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 [ExecuteAlways]
 public class CRTController : MonoBehaviour
@@ -28,6 +29,11 @@ public class CRTController : MonoBehaviour
     [Range(0f, 0.3f)] public float noiseIntensity = 0.05f;
     [Range(0f, 1f)] public float staticDisruption = 0.3f;
 
+    [Header("Click Glitch")]
+    [Range(0.02f, 0.4f)] public float clickRadius = 0.15f;
+    [Range(0f, 1f)] public float clickStrength = 0.6f;
+    [Range(0.1f, 1f)] public float clickDuration = 0.35f;
+
     private static readonly int CurvatureId = Shader.PropertyToID("_Curvature");
     private static readonly int ScanlineIntensityId = Shader.PropertyToID("_ScanlineIntensity");
     private static readonly int ScanlineSpeedId = Shader.PropertyToID("_ScanlineSpeed");
@@ -40,11 +46,29 @@ public class CRTController : MonoBehaviour
     private static readonly int StaticWidthId = Shader.PropertyToID("_StaticWidth");
     private static readonly int NoiseIntensityId = Shader.PropertyToID("_NoiseIntensity");
     private static readonly int StaticDisruptionId = Shader.PropertyToID("_StaticDisruption");
+    private static readonly int ClickUVId = Shader.PropertyToID("_ClickUV");
+    private static readonly int ClickTimeId = Shader.PropertyToID("_ClickTime");
+    private static readonly int ClickRadiusId = Shader.PropertyToID("_ClickRadius");
+    private static readonly int ClickStrengthId = Shader.PropertyToID("_ClickStrength");
+    private static readonly int ClickDurationId = Shader.PropertyToID("_ClickDuration");
 
     void Update()
     {
         if (crtMaterial == null)
             return;
+
+        // Detect click and send UV position to shader
+        if (Application.isPlaying)
+        {
+            var mouse = Mouse.current;
+            if (mouse != null && mouse.leftButton.wasPressedThisFrame)
+            {
+                Vector2 screenPos = mouse.position.ReadValue();
+                Vector2 clickUV = new Vector2(screenPos.x / Screen.width, 1f - screenPos.y / Screen.height);
+                crtMaterial.SetVector(ClickUVId, clickUV);
+                crtMaterial.SetFloat(ClickTimeId, Time.time);
+            }
+        }
 
         crtMaterial.SetFloat(CurvatureId, curvature);
         crtMaterial.SetFloat(ScanlineIntensityId, scanlineIntensity);
@@ -58,5 +82,8 @@ public class CRTController : MonoBehaviour
         crtMaterial.SetFloat(StaticWidthId, staticWidth);
         crtMaterial.SetFloat(NoiseIntensityId, noiseIntensity);
         crtMaterial.SetFloat(StaticDisruptionId, staticDisruption);
+        crtMaterial.SetFloat(ClickRadiusId, clickRadius);
+        crtMaterial.SetFloat(ClickStrengthId, clickStrength);
+        crtMaterial.SetFloat(ClickDurationId, clickDuration);
     }
 }
