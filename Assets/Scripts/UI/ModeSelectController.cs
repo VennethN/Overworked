@@ -127,7 +127,6 @@ namespace Overworked.UI
             container.Add(row);
 
             // High score
-            var save = SaveManager.Load();
             if (save.arcadeHighScore > 0)
             {
                 var highScore = new Label($"Skor Tertinggi: {save.arcadeHighScore}");
