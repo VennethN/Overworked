@@ -8,6 +8,7 @@ namespace Overworked.Core
     [Serializable]
     public class SaveData
     {
+        public string playerName = "Pegawai Baru";
         public int lastCompletedDay;
         public int arcadeHighScore;
         public List<DaySaveEntry> dayScores = new();
@@ -52,7 +53,7 @@ namespace Overworked.Core
 
     public static class SaveManager
     {
-        private const byte SAVE_VERSION = 1;
+        private const byte SAVE_VERSION = 2;
         private static readonly string SavePath = Path.Combine(Application.persistentDataPath, "overworked.sav");
 
         private static SaveData _cached;
@@ -73,7 +74,7 @@ namespace Overworked.Core
                 using var reader = new BinaryReader(stream);
 
                 byte version = reader.ReadByte();
-                if (version != SAVE_VERSION)
+                if (version != 1 && version != 2)
                 {
                     Debug.LogWarning($"SaveManager: Unknown save version {version}, creating fresh save.");
                     _cached = new SaveData();
@@ -90,6 +91,11 @@ namespace Overworked.Core
                     int day = reader.ReadInt32();
                     int score = reader.ReadInt32();
                     data.dayScores.Add(new DaySaveEntry { dayNumber = day, bestScore = score });
+                }
+
+                if (version >= 2)
+                {
+                    data.playerName = reader.ReadString();
                 }
 
                 _cached = data;
@@ -122,6 +128,8 @@ namespace Overworked.Core
                     writer.Write(data.dayScores[i].dayNumber);
                     writer.Write(data.dayScores[i].bestScore);
                 }
+
+                writer.Write(data.playerName);
             }
             catch (Exception ex)
             {

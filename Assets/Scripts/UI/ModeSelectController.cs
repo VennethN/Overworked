@@ -13,6 +13,7 @@ namespace Overworked.UI
         private readonly Action _onArcade;
         private readonly Action<int> _onStoryDay;
 
+        private VisualElement _nameInputView;
         private VisualElement _mainView;
         private VisualElement _daySelectView;
         private StoryCollection _storyData;
@@ -42,11 +43,20 @@ namespace Overworked.UI
             overlay.AddToClassList("overlay");
             overlay.style.backgroundColor = new Color(0.067f, 0.094f, 0.153f, 1f);
 
+            // Name input view (shown initially)
+            _nameInputView = new VisualElement();
+            _nameInputView.style.alignItems = Align.Center;
+            _nameInputView.style.justifyContent = Justify.Center;
+            _nameInputView.style.flexGrow = 1;
+            BuildNameInputView(_nameInputView);
+            overlay.Add(_nameInputView);
+
             // Main view (mode selection)
             _mainView = new VisualElement();
             _mainView.style.alignItems = Align.Center;
             _mainView.style.justifyContent = Justify.Center;
             _mainView.style.flexGrow = 1;
+            _mainView.style.display = DisplayStyle.None;
             BuildMainView(_mainView);
             overlay.Add(_mainView);
 
@@ -66,6 +76,89 @@ namespace Overworked.UI
             overlay.schedule.Execute(() => overlay.AddToClassList("overlay--visible"));
         }
 
+        private void BuildNameInputView(VisualElement container)
+        {
+            var title = new Label("OVERWORKED");
+            title.style.fontSize = 48;
+            title.style.color = new Color(0.945f, 0.96f, 0.976f, 1f);
+            title.style.unityFontStyleAndWeight = FontStyle.Bold;
+            title.style.letterSpacing = 4;
+            title.style.marginBottom = 8;
+            container.Add(title);
+
+            var subtitle = new Label("Profil Pegawai");
+            subtitle.style.fontSize = 16;
+            subtitle.style.color = new Color(0.392f, 0.455f, 0.545f, 1f);
+            subtitle.style.marginBottom = 48;
+            container.Add(subtitle);
+
+            var save = SaveManager.Load();
+
+            var nameInput = new TextField();
+            nameInput.label = "Nama:";
+            nameInput.value = string.IsNullOrEmpty(save.playerName) ? "Pegawai Baru" : save.playerName;
+            nameInput.style.width = 300;
+            nameInput.style.marginBottom = 32;
+            container.Add(nameInput);
+
+            nameInput.schedule.Execute(() => {
+                var labelPart = nameInput.Q<Label>();
+                if (labelPart != null) {
+                    labelPart.style.color = new Color(0.72f, 0.76f, 0.81f, 1f);
+                    labelPart.style.unityTextAlign = TextAnchor.MiddleLeft;
+                    labelPart.style.minWidth = 60;
+                }
+                var inputPart = nameInput.Q("unity-text-input");
+                if (inputPart != null) {
+                    inputPart.style.backgroundColor = new Color(0.118f, 0.161f, 0.212f, 1f);
+                    inputPart.style.color = new Color(0.945f, 0.96f, 0.976f, 1f);
+                    inputPart.style.borderTopWidth = 1;
+                    inputPart.style.borderBottomWidth = 1;
+                    inputPart.style.borderLeftWidth = 1;
+                    inputPart.style.borderRightWidth = 1;
+                    inputPart.style.borderTopColor = new Color(0.376f, 0.51f, 0.965f, 0.5f);
+                    inputPart.style.borderBottomColor = new Color(0.376f, 0.51f, 0.965f, 0.5f);
+                    inputPart.style.borderLeftColor = new Color(0.376f, 0.51f, 0.965f, 0.5f);
+                    inputPart.style.borderRightColor = new Color(0.376f, 0.51f, 0.965f, 0.5f);
+                    inputPart.style.borderTopLeftRadius = 6;
+                    inputPart.style.borderTopRightRadius = 6;
+                    inputPart.style.borderBottomLeftRadius = 6;
+                    inputPart.style.borderBottomRightRadius = 6;
+                    inputPart.style.paddingTop = 6;
+                    inputPart.style.paddingBottom = 6;
+                    inputPart.style.paddingLeft = 10;
+                    inputPart.style.paddingRight = 10;
+                }
+            });
+
+            var continueBtn = new Button(() => {
+                var s = SaveManager.Load();
+                s.playerName = string.IsNullOrWhiteSpace(nameInput.value) ? "Pegawai Baru" : nameInput.value;
+                SaveManager.Save(s);
+
+                _nameInputView.style.display = DisplayStyle.None;
+                _mainView.style.display = DisplayStyle.Flex;
+            });
+            continueBtn.text = "Lanjut";
+            continueBtn.style.paddingTop = 12;
+            continueBtn.style.paddingBottom = 12;
+            continueBtn.style.paddingLeft = 32;
+            continueBtn.style.paddingRight = 32;
+            continueBtn.style.fontSize = 16;
+            continueBtn.style.backgroundColor = new Color(0.29f, 0.87f, 0.5f, 1f);
+            continueBtn.style.color = Color.white;
+            continueBtn.style.borderTopWidth = 0;
+            continueBtn.style.borderBottomWidth = 0;
+            continueBtn.style.borderLeftWidth = 0;
+            continueBtn.style.borderRightWidth = 0;
+            continueBtn.style.borderTopLeftRadius = 6;
+            continueBtn.style.borderTopRightRadius = 6;
+            continueBtn.style.borderBottomLeftRadius = 6;
+            continueBtn.style.borderBottomRightRadius = 6;
+
+            container.Add(continueBtn);
+        }
+
         private void BuildMainView(VisualElement container)
         {
             // Title
@@ -82,6 +175,8 @@ namespace Overworked.UI
             subtitle.style.color = new Color(0.392f, 0.455f, 0.545f, 1f);
             subtitle.style.marginBottom = 48;
             container.Add(subtitle);
+
+            var save = SaveManager.Load();
 
             // Mode buttons row
             var row = new VisualElement();
@@ -113,7 +208,6 @@ namespace Overworked.UI
             container.Add(row);
 
             // High score
-            var save = SaveManager.Load();
             if (save.arcadeHighScore > 0)
             {
                 var highScore = new Label($"Skor Tertinggi: {save.arcadeHighScore}");
@@ -180,6 +274,7 @@ namespace Overworked.UI
 
         private void ShowMain()
         {
+            _nameInputView.style.display = DisplayStyle.None;
             _mainView.style.display = DisplayStyle.Flex;
             _daySelectView.style.display = DisplayStyle.None;
         }
