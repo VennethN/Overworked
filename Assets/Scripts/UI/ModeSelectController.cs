@@ -80,8 +80,22 @@ namespace Overworked.UI
             var subtitle = new Label("Email Management Game");
             subtitle.style.fontSize = 16;
             subtitle.style.color = new Color(0.392f, 0.455f, 0.545f, 1f);
-            subtitle.style.marginBottom = 48;
+            subtitle.style.marginBottom = 32;
             container.Add(subtitle);
+
+            var save = SaveManager.Load();
+
+            var nameInput = new TextField();
+            nameInput.label = "Nama Pegawai:";
+            nameInput.value = string.IsNullOrEmpty(save.playerName) ? "Pegawai Baru" : save.playerName;
+            nameInput.style.width = 300;
+            nameInput.style.marginBottom = 48;
+            nameInput.RegisterValueChangedCallback(evt => {
+                var s = SaveManager.Load();
+                s.playerName = evt.newValue;
+                SaveManager.Save(s);
+            });
+            container.Add(nameInput);
 
             // Mode buttons row
             var row = new VisualElement();
