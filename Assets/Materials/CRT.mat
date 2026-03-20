@@ -8,7 +8,7 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: CRT
-  m_Shader: {fileID: 4800000, guid: e260cfa7296ee7642b167f1eb5be5023, type: 3}
+  m_Shader: {fileID: 4800000, guid: c50c95507b58f4c4883b23d66b17d0f3, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords: []
@@ -39,11 +39,33 @@ Material:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+    - _UIRT:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
+    - _Brightness: 1.49
+    - _ClickDuration: 0.276
+    - _ClickRadius: 0.082
+    - _ClickStrength: 0.6
+    - _ClickTime: 17.914803
+    - _Curvature: 0.33
     - _EnableExternalAlpha: 0
+    - _Flicker: 0.02
+    - _HasUIRT: 0
+    - _NoiseIntensity: 0.051
+    - _RGBOffset: 0.00054
+    - _ScanlineIntensity: 0.58
+    - _ScanlineSpeed: 3.54
+    - _StaticDisruption: 0.09
+    - _StaticIntensity: 0.019
+    - _StaticSpeed: 0.58
+    - _StaticWidth: 0.034
+    - _VignetteStrength: 0.8
     - _ZWrite: 0
     m_Colors:
+    - _ClickUV: {r: 0.21458334, g: 0.16944444, b: 0, a: 0}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _RendererColor: {r: 1, g: 1, b: 1, a: 1}
   m_BuildTextureStacks: []

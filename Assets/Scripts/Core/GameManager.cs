@@ -109,7 +109,7 @@ namespace Overworked.Core
 
             emailSpawner?.StartSpawning();
             uiManager?.HideGameOver();
-            uiManager?.ShowInbox();
+            uiManager?.ShowInbox(resetScroll: true);
 
             GameEvents.FireGameStarted();
         }

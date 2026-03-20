@@ -25,6 +25,7 @@
       ],
       "specialEmailJsonPath": "Data/Emails/emails_story_day1",
       "availableEmailPools": ["general"],
+      "spawnEmailTags": ["tier1"],
       "spawnEmailIds": null,
       "unlockedAfterDay": 0
     },
@@ -53,6 +54,7 @@
       ],
       "specialEmailJsonPath": "Data/Emails/emails_story_day2",
       "availableEmailPools": ["general", "spam"],
+      "spawnEmailTags": ["tier1"],
       "spawnEmailIds": null,
       "unlockedAfterDay": 1
     },
@@ -84,6 +86,7 @@
       ],
       "specialEmailJsonPath": "Data/Emails/emails_story_day3",
       "availableEmailPools": ["general", "hr", "spam"],
+      "spawnEmailTags": ["tier1", "tier2"],
       "spawnEmailIds": null,
       "unlockedAfterDay": 2
     },
@@ -116,6 +119,7 @@
       ],
       "specialEmailJsonPath": "Data/Emails/emails_story_day4",
       "availableEmailPools": ["general", "hr", "spam"],
+      "spawnEmailTags": ["tier1", "tier2"],
       "spawnEmailIds": null,
       "unlockedAfterDay": 3
     },
@@ -149,6 +153,7 @@
       ],
       "specialEmailJsonPath": "Data/Emails/emails_story_day5",
       "availableEmailPools": ["general", "hr", "spam"],
+      "spawnEmailTags": ["tier1", "tier2", "tier3"],
       "spawnEmailIds": null,
       "unlockedAfterDay": 4
     },
@@ -182,6 +187,7 @@
       ],
       "specialEmailJsonPath": "Data/Emails/emails_story_day6",
       "availableEmailPools": ["general", "hr", "spam"],
+      "spawnEmailTags": ["tier1", "tier2", "tier3"],
       "spawnEmailIds": null,
       "unlockedAfterDay": 5
     },
@@ -217,6 +223,7 @@
       ],
       "specialEmailJsonPath": "Data/Emails/emails_story_day7",
       "availableEmailPools": ["general", "hr", "spam"],
+      "spawnEmailTags": ["tier1", "tier2", "tier3"],
       "spawnEmailIds": null,
       "unlockedAfterDay": 6
     }

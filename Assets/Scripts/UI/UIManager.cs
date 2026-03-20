@@ -278,11 +278,12 @@ namespace Overworked.UI
             _hudSlot.style.display = DisplayStyle.Flex;
         }
 
-        public void ShowInbox()
+        public void ShowInbox(bool resetScroll = false)
         {
             _inboxSlot.style.display = DisplayStyle.Flex;
             _detailSlot.style.display = DisplayStyle.None;
-            _inbox?.ClearAll();
+            if (resetScroll)
+                _inbox?.ClearAll();
             RefreshInbox();
         }
 
@@ -826,21 +827,24 @@ namespace Overworked.UI
             if (_activeMinigame != null)
             {
                 _activeMinigame.OnCompleted -= OnMinigameCompleted;
-                // Delay cleanup so player can see the result
-                _minigameSlot.schedule.Execute(() =>
-                {
-                    _activeMinigame?.Cleanup();
-                    _activeMinigame = null;
-                    _minigameSlot.Clear();
-                    _minigameSlot.style.display = DisplayStyle.None;
+                _activeMinigame.Cleanup();
+                _activeMinigame = null;
+                _minigameSlot.Clear();
+                _minigameSlot.style.display = DisplayStyle.None;
 
-                    if (result.Success)
-                    {
-                        EmailManager.Instance?.CompleteTask(_minigameEmailInstanceId);
-                    }
-                    _minigameEmailInstanceId = null;
-                    ShowInbox();
-                }).ExecuteLater(1500);
+                if (result.Success)
+                    EmailManager.Instance?.CompleteTask(_minigameEmailInstanceId);
+
+                _minigameEmailInstanceId = null;
+                ShowInbox();
+
+                // Floating text feedback
+                string text = result.Success ? "BERHASIL" : "GAGAL";
+                Color color = result.Success
+                    ? new Color(0.29f, 0.87f, 0.5f, 1f)
+                    : new Color(0.97f, 0.27f, 0.27f, 1f);
+                UIEffects.FloatingText(_uiRoot, text, color,
+                    new Vector2(_uiRoot.resolvedStyle.width / 2f, _uiRoot.resolvedStyle.height / 2.5f));
             }
         }
 

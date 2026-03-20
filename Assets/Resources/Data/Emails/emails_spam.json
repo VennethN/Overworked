@@ -12,7 +12,8 @@
       "category": "promosi",
       "expirationSeconds": 0,
       "tags": [
-        "spam"
+        "spam",
+        "tier1"
       ],
       "replyOptions": [
         {
@@ -40,7 +41,8 @@
       "category": "promosi",
       "expirationSeconds": 0,
       "tags": [
-        "spam"
+        "spam",
+        "tier1"
       ],
       "replyOptions": [
         {
@@ -68,7 +70,8 @@
       "category": "promosi",
       "expirationSeconds": 0,
       "tags": [
-        "spam"
+        "spam",
+        "tier1"
       ],
       "replyOptions": [
         {
@@ -96,7 +99,8 @@
       "category": "promosi",
       "expirationSeconds": 0,
       "tags": [
-        "spam"
+        "spam",
+        "tier1"
       ],
       "replyOptions": [
         {
@@ -124,7 +128,8 @@
       "category": "promosi",
       "expirationSeconds": 0,
       "tags": [
-        "spam"
+        "spam",
+        "tier1"
       ],
       "replyOptions": [
         {
@@ -152,7 +157,8 @@
       "category": "promosi",
       "expirationSeconds": 0,
       "tags": [
-        "spam"
+        "spam",
+        "tier1"
       ],
       "replyOptions": [
         {
@@ -181,7 +187,8 @@
       "expirationSeconds": 0,
       "tags": [
         "spam",
-        "phishing"
+        "phishing",
+        "tier2"
       ],
       "replyOptions": [
         {
@@ -209,7 +216,8 @@
       "category": "promosi",
       "expirationSeconds": 0,
       "tags": [
-        "spam"
+        "spam",
+        "tier1"
       ],
       "replyOptions": [
         {
@@ -238,7 +246,8 @@
       "expirationSeconds": 0,
       "tags": [
         "spam",
-        "phishing"
+        "phishing",
+        "tier2"
       ],
       "replyOptions": [
         {
@@ -266,7 +275,8 @@
       "category": "promosi",
       "expirationSeconds": 0,
       "tags": [
-        "spam"
+        "spam",
+        "tier1"
       ],
       "replyOptions": [
         {
@@ -294,7 +304,8 @@
       "category": "promosi",
       "expirationSeconds": 0,
       "tags": [
-        "spam"
+        "spam",
+        "tier1"
       ],
       "replyOptions": [
         {
@@ -316,13 +327,14 @@
       "senderAddress": "sweet.jessica@lovemail.fun",
       "department": null,
       "subject": "Hai sayang, aku lihat profilmu di LinkedIn...",
-      "body": "Aku jarang kirim email ke orang asing tapi kamu terlihat tulus. Bisakah kita kenalan lebih dekat? Aku butuh bantuan kecil transfer biaya visa ke luar negeri, nanti aku bayar double.\n\nMwah 💋",
+      "body": "Aku jarang kirim email ke orang asing tapi kamu terlihat tulus. Bisakah kita kenalan lebih dekat? Aku butuh bantuan kecil transfer biaya visa ke luar negeri, nanti aku bayar double.\n\nMwah \ud83d\udc8b",
       "type": "spam",
       "priority": "none",
       "category": "promosi",
       "expirationSeconds": 0,
       "tags": [
-        "spam"
+        "spam",
+        "tier1"
       ],
       "replyOptions": [
         {
@@ -351,7 +363,8 @@
       "expirationSeconds": 0,
       "tags": [
         "spam",
-        "phishing"
+        "phishing",
+        "tier2"
       ],
       "replyOptions": [
         {
@@ -373,14 +386,15 @@
       "senderAddress": "noreply@ojk-secure-login.xyz",
       "department": null,
       "subject": "URGENT: Verifikasi rekening OJK (deadline 24 jam)",
-      "body": "Yth. Nasabah,\n\nSistem OJK mendeteksi mismatch data NPWP. Silakan konfirmasi nomor rekening, PIN ATM, dan OTP melalui link resmi kami.\n\nThis is NOT a scam — official compliance check.\n\nTerima kasih,\nOJK Cyber Desk",
+      "body": "Yth. Nasabah,\n\nSistem OJK mendeteksi mismatch data NPWP. Silakan konfirmasi nomor rekening, PIN ATM, dan OTP melalui link resmi kami.\n\nThis is NOT a scam \u2014 official compliance check.\n\nTerima kasih,\nOJK Cyber Desk",
       "type": "spam",
       "priority": "none",
       "category": "promosi",
       "expirationSeconds": 0,
       "tags": [
         "spam",
-        "phishing"
+        "phishing",
+        "tier2"
       ],
       "replyOptions": [
         {
@@ -406,7 +420,7 @@
       "sender": "Direktorat Pajak E-Filing",
       "senderAddress": "efiling@pajak-indonesia-support.ru",
       "department": null,
-      "subject": "DENDA PAJAK Rp 12.450.000 — bayar hari ini",
+      "subject": "DENDA PAJAK Rp 12.450.000 \u2014 bayar hari ini",
       "body": "Wajib Pajak,\n\nSPT Anda tidak match. Untuk menghindari pemblokiran NPWP, transfer ke rekening escrow kami dan kirim bukti.\n\nTax clearance certificate akan dikirim after payment.\n\nHormat kami,\nDJP Virtual Unit",
       "type": "spam",
       "priority": "none",
@@ -414,7 +428,8 @@
       "expirationSeconds": 0,
       "tags": [
         "spam",
-        "phishing"
+        "phishing",
+        "tier2"
       ],
       "replyOptions": [
         {
@@ -435,15 +450,16 @@
       "sender": "JNE Express Priority",
       "senderAddress": "paket@jn3-courier.biz",
       "department": null,
-      "subject": "Paket tertahan — biaya bea cukai Rp 89.000",
-      "body": "Halo,\n\nPaket internasional Anda HOLD di gudang. Bayar via QRIS palsu… maksudnya via link cepat ini.\n\nTracking: ZX-99821-INDO\n\nPlease reply with phone number for delivery.",
+      "subject": "Paket tertahan \u2014 biaya bea cukai Rp 89.000",
+      "body": "Halo,\n\nPaket internasional Anda HOLD di gudang. Bayar via QRIS palsu\u2026 maksudnya via link cepat ini.\n\nTracking: ZX-99821-INDO\n\nPlease reply with phone number for delivery.",
       "type": "spam",
       "priority": "none",
       "category": "promosi",
       "expirationSeconds": 0,
       "tags": [
         "spam",
-        "phishing"
+        "phishing",
+        "tier2"
       ],
       "replyOptions": [
         {
@@ -472,7 +488,8 @@
       "expirationSeconds": 0,
       "tags": [
         "spam",
-        "phishing"
+        "phishing",
+        "tier2"
       ],
       "replyOptions": [
         {
@@ -498,15 +515,16 @@
       "sender": "LinkedIn Talent Scout",
       "senderAddress": "recruiter@linkedin-hire-now.click",
       "department": null,
-      "subject": "Job offer: Remote $120k — fast track interview",
-      "body": "Hi,\n\nKami impressed dengan profil Anda (scraped dari internet).\n\nKirim CV + scan KTP + selfie untuk background check.\n\nLimited slots — act now!",
+      "subject": "Job offer: Remote $120k \u2014 fast track interview",
+      "body": "Hi,\n\nKami impressed dengan profil Anda (scraped dari internet).\n\nKirim CV + scan KTP + selfie untuk background check.\n\nLimited slots \u2014 act now!",
       "type": "spam",
       "priority": "none",
       "category": "promosi",
       "expirationSeconds": 0,
       "tags": [
         "spam",
-        "phishing"
+        "phishing",
+        "tier2"
       ],
       "replyOptions": [
         {
@@ -527,15 +545,16 @@
       "sender": "Google Docs Share",
       "senderAddress": "share@docs-google-notify.ru",
       "department": null,
-      "subject": "Someone shared “Payroll_Adjustment_Q1” with you",
-      "body": "Open document to review sensitive salary changes.\n\nJika tidak buka dalam 1 jam, akses akan dicabut.\n\n— Google Workspace (fake)",
+      "subject": "Someone shared \u201cPayroll_Adjustment_Q1\u201d with you",
+      "body": "Open document to review sensitive salary changes.\n\nJika tidak buka dalam 1 jam, akses akan dicabut.\n\n\u2014 Google Workspace (fake)",
       "type": "spam",
       "priority": "none",
       "category": "promosi",
       "expirationSeconds": 0,
       "tags": [
         "spam",
-        "phishing"
+        "phishing",
+        "tier3"
       ],
       "replyOptions": [
         {
@@ -556,15 +575,16 @@
       "sender": "Airdrop Solana Rewards",
       "senderAddress": "claim@sol-airdrop-free.xyz",
       "department": null,
-      "subject": "FREE 2.5 SOL — connect wallet sekarang",
-      "body": "Congratulations!\n\nAnda eligible untuk airdrop eksklusif.\n\nConnect wallet & approve smart contract (gas fee kecil).\n\nNot financial advice — just scam flavor.",
+      "subject": "FREE 2.5 SOL \u2014 connect wallet sekarang",
+      "body": "Congratulations!\n\nAnda eligible untuk airdrop eksklusif.\n\nConnect wallet & approve smart contract (gas fee kecil).\n\nNot financial advice \u2014 just scam flavor.",
       "type": "spam",
       "priority": "none",
       "category": "promosi",
       "expirationSeconds": 0,
       "tags": [
         "spam",
-        "phishing"
+        "phishing",
+        "tier1"
       ],
       "replyOptions": [
         {
@@ -585,14 +605,15 @@
       "sender": "Herbal Miracle Oil ID",
       "senderAddress": "sales@minyakajaib-sehat.biz",
       "department": null,
-      "subject": "Minyak ajaib — sembuhkan diabetes dalam 3 hari!!!",
+      "subject": "Minyak ajaib \u2014 sembuhkan diabetes dalam 3 hari!!!",
       "body": "Testimoni REAL* (*bohong)\n\nCampuran zaitun + marketing agresif.\n\nBeli 3 gratis 1 + bonus MLM tier.\n\nLimited stock!!!",
       "type": "spam",
       "priority": "none",
       "category": "promosi",
       "expirationSeconds": 0,
       "tags": [
-        "spam"
+        "spam",
+        "tier1"
       ],
       "replyOptions": [
         {
@@ -613,15 +634,16 @@
       "sender": "EuroMillions Prize Desk",
       "senderAddress": "winner@eu-lottery-prize.win",
       "department": null,
-      "subject": "ANDA MENANG €750.000 — biaya administrasi kecil",
-      "body": "Selamat!\n\nEmail Anda terpilih oleh random algorithm yang sangat meyakinkan.\n\nTransfer €120 processing fee ke rekening cabang Latvia.\n\nGood luck (for us).",
+      "subject": "ANDA MENANG \u20ac750.000 \u2014 biaya administrasi kecil",
+      "body": "Selamat!\n\nEmail Anda terpilih oleh random algorithm yang sangat meyakinkan.\n\nTransfer \u20ac120 processing fee ke rekening cabang Latvia.\n\nGood luck (for us).",
       "type": "spam",
       "priority": "none",
       "category": "promosi",
       "expirationSeconds": 0,
       "tags": [
         "spam",
-        "phishing"
+        "phishing",
+        "tier1"
       ],
       "replyOptions": [
         {
@@ -647,7 +669,7 @@
       "sender": "Advokat Warisan Global",
       "senderAddress": "claims@inheritance-law-firm.uk",
       "department": null,
-      "subject": "Warisan USD 4.2 juta — nama Anda match 98%",
+      "subject": "Warisan USD 4.2 juta \u2014 nama Anda match 98%",
       "body": "Klien kami meninggal tanpa ahli waris jelas.\n\nKami butuh copy KTP, KK, dan biaya notaris $350 via Western Union.\n\nSerious business only.",
       "type": "spam",
       "priority": "none",
@@ -655,7 +677,8 @@
       "expirationSeconds": 0,
       "tags": [
         "spam",
-        "phishing"
+        "phishing",
+        "tier1"
       ],
       "replyOptions": [
         {
@@ -676,7 +699,7 @@
       "sender": "Premium Dating ID",
       "senderAddress": "hello@hot-singles-near-you.xyz",
       "department": null,
-      "subject": "Ada yang suka profil kamu — chat sekarang (18+)",
+      "subject": "Ada yang suka profil kamu \u2014 chat sekarang (18+)",
       "body": "Hai sayang,\n\nVerifikasi umur dengan foto + nomor kartu (katanya untuk cek 18+).\n\n100% real users** (**nggak)\n\nClick love, lose money.",
       "type": "spam",
       "priority": "none",
@@ -684,7 +707,8 @@
       "expirationSeconds": 0,
       "tags": [
         "spam",
-        "phishing"
+        "phishing",
+        "tier1"
       ],
       "replyOptions": [
         {
@@ -705,15 +729,16 @@
       "sender": "Kemenhub Denda Cepat",
       "senderAddress": "denda@kemenhub-tilang-online.ru",
       "department": null,
-      "subject": "Tilang elektronik — bayar sekarang atau SIM diblokir",
-      "body": "Terdeteksi pelanggaran speed camera.\n\nNomor plat: (random guess)\n\nBayar Rp 350.000 via link.\n\nGovernment fine — urgent tone.",
+      "subject": "Tilang elektronik \u2014 bayar sekarang atau SIM diblokir",
+      "body": "Terdeteksi pelanggaran speed camera.\n\nNomor plat: (random guess)\n\nBayar Rp 350.000 via link.\n\nGovernment fine \u2014 urgent tone.",
       "type": "spam",
       "priority": "none",
       "category": "promosi",
       "expirationSeconds": 0,
       "tags": [
         "spam",
-        "phishing"
+        "phishing",
+        "tier2"
       ],
       "replyOptions": [
         {
@@ -734,14 +759,15 @@
       "sender": "DiamondGold MLM",
       "senderAddress": "join@mlm-diamondgold.biz",
       "department": null,
-      "subject": "Passive income 30%/bulan — join tim diamond",
+      "subject": "Passive income 30%/bulan \u2014 join tim diamond",
       "body": "Bukan money game, katanya.\n\nCukup rekrut 2 teman dan beli starter pack emas imitasi.\n\nBinary plan + motivational quote bahasa Inggris.",
       "type": "spam",
       "priority": "none",
       "category": "promosi",
       "expirationSeconds": 0,
       "tags": [
-        "spam"
+        "spam",
+        "tier1"
       ],
       "replyOptions": [
         {
@@ -762,7 +788,7 @@
       "sender": "Binance Security",
       "senderAddress": "security@binance-verify-support.top",
       "department": null,
-      "subject": "Withdrawal locked — confirm identity",
+      "subject": "Withdrawal locked \u2014 confirm identity",
       "body": "Dear customer,\n\nUnusual login from Unknownistan.\n\nSubmit passphrase and 2FA backup codes.\n\nStay safu (not).",
       "type": "spam",
       "priority": "none",
@@ -770,7 +796,8 @@
       "expirationSeconds": 0,
       "tags": [
         "spam",
-        "phishing"
+        "phishing",
+        "tier2"
       ],
       "replyOptions": [
         {
@@ -791,7 +818,7 @@
       "sender": "Shopee Promo Bot",
       "senderAddress": "promo@sh0pee-prize.id",
       "department": null,
-      "subject": "Selamat! Voucher Rp 5.000.000 — klaim 1 klik",
+      "subject": "Selamat! Voucher Rp 5.000.000 \u2014 klaim 1 klik",
       "body": "Anda menang undian Shopee***\n\n***bukan Shopee asli\n\nMasukkan kode OTP bank untuk verifikasi pemenang.\n\nHappy shopping (empty cart).",
       "type": "spam",
       "priority": "none",
@@ -799,7 +826,8 @@
       "expirationSeconds": 0,
       "tags": [
         "spam",
-        "phishing"
+        "phishing",
+        "tier2"
       ],
       "replyOptions": [
         {
@@ -825,7 +853,7 @@
       "sender": "Netflix Account Recovery",
       "senderAddress": "support@netflix-billing-update.ru",
       "department": null,
-      "subject": "Payment failed — update card to keep watching",
+      "subject": "Payment failed \u2014 update card to keep watching",
       "body": "Hi,\n\nYour Netflix will stop tonight.\n\nUpdate billing info on our totally legit portal.\n\nBinge anxiety included.",
       "type": "spam",
       "priority": "none",
@@ -833,7 +861,8 @@
       "expirationSeconds": 0,
       "tags": [
         "spam",
-        "phishing"
+        "phishing",
+        "tier2"
       ],
       "replyOptions": [
         {
@@ -854,7 +883,7 @@
       "sender": "BPJS Kesehatan (FAKE)",
       "senderAddress": "info@bpjs-online-claim.xyz",
       "department": null,
-      "subject": "Klaim tunggakan refund — masukkan data peserta",
+      "subject": "Klaim tunggakan refund \u2014 masukkan data peserta",
       "body": "Yth. Peserta,\n\nAda refund iuran yang tertahan.\n\nMohon nomor kartu peserta + password akun mobile JKN.\n\nThis message smells like scam.",
       "type": "spam",
       "priority": "none",
@@ -862,7 +891,8 @@
       "expirationSeconds": 0,
       "tags": [
         "spam",
-        "phishing"
+        "phishing",
+        "tier2"
       ],
       "replyOptions": [
         {
@@ -884,14 +914,15 @@
       "senderAddress": "verify@whatsapp-meta-secure.biz",
       "department": null,
       "subject": "Akun WhatsApp Anda akan dinonaktifkan",
-      "body": "Konfirmasi nomor dengan mengirim kode 6 digit yang Anda terima… ke kami (jangan!).\n\nEnglish: urgent security blah blah.\n\nMeta-ish logo energy.",
+      "body": "Konfirmasi nomor dengan mengirim kode 6 digit yang Anda terima\u2026 ke kami (jangan!).\n\nEnglish: urgent security blah blah.\n\nMeta-ish logo energy.",
       "type": "spam",
       "priority": "none",
       "category": "promosi",
       "expirationSeconds": 0,
       "tags": [
         "spam",
-        "phishing"
+        "phishing",
+        "tier2"
       ],
       "replyOptions": [
         {
@@ -912,14 +943,15 @@
       "sender": "Forex Sultan Signal",
       "senderAddress": "signals@forex-sultan-vip.ru",
       "department": null,
-      "subject": "Copy trading profit 400% — deposit sekarang",
+      "subject": "Copy trading profit 400% \u2014 deposit sekarang",
       "body": "Grup VIP Telegram tertutup.\n\nMinimal deposit $250 ke broker tidak terdaftar.\n\nRisk disclaimer copy-paste dari Google Translate.",
       "type": "spam",
       "priority": "none",
       "category": "promosi",
       "expirationSeconds": 0,
       "tags": [
-        "spam"
+        "spam",
+        "tier1"
       ],
       "replyOptions": [
         {
@@ -940,7 +972,7 @@
       "sender": "DHL Express Customs",
       "senderAddress": "customs@dh1-global-parcel.top",
       "department": null,
-      "subject": "Customs fee due — package from Amazon",
+      "subject": "Customs fee due \u2014 package from Amazon",
       "body": "Your package is held.\n\nPay Rp 125.000 via suspicious gateway.\n\nTracking number looks legit until you squint.",
       "type": "spam",
       "priority": "none",
@@ -948,7 +980,8 @@
       "expirationSeconds": 0,
       "tags": [
         "spam",
-        "phishing"
+        "phishing",
+        "tier2"
       ],
       "replyOptions": [
         {
@@ -982,7 +1015,8 @@
       "expirationSeconds": 0,
       "tags": [
         "spam",
-        "phishing"
+        "phishing",
+        "tier2"
       ],
       "replyOptions": [
         {
@@ -1003,7 +1037,7 @@
       "sender": "Grab Driver Bonus",
       "senderAddress": "bonus@grab-pay-out.id",
       "department": null,
-      "subject": "Bonus harian Rp 2.000.000 — input rekening penerima",
+      "subject": "Bonus harian Rp 2.000.000 \u2014 input rekening penerima",
       "body": "Selamat driver mitra,\n\nAnda terpilih program beta (fake).\n\nMohon data rekening + PIN mobile banking untuk speed payout.\n\nDrive safe, trust nobody.",
       "type": "spam",
       "priority": "none",
@@ -1011,7 +1045,8 @@
       "expirationSeconds": 0,
       "tags": [
         "spam",
-        "phishing"
+        "phishing",
+        "tier2"
       ],
       "replyOptions": [
         {
@@ -1032,7 +1067,7 @@
       "sender": "MetaMask Support Desk",
       "senderAddress": "help@metamask-syncwallet.xyz",
       "department": null,
-      "subject": "Wallet sync required — gas refund pending",
+      "subject": "Wallet sync required \u2014 gas refund pending",
       "body": "Open support ticket and paste secret recovery phrase to sync nodes.\n\nIni bahasa teknis biar kelihatan pro.\n\nNever share seed phrase (except in this email, lol).",
       "type": "spam",
       "priority": "none",
@@ -1040,7 +1075,8 @@
       "expirationSeconds": 0,
       "tags": [
         "spam",
-        "phishing"
+        "phishing",
+        "tier2"
       ],
       "replyOptions": [
         {
@@ -1061,15 +1097,16 @@
       "sender": "Kredit Cepat Tanpa BI Checking",
       "senderAddress": "apply@pinjol-cepat-aman.biz",
       "department": null,
-      "subject": "Cair 50 juta dalam 15 menit — tanpa jaminan",
-      "body": "Cukup foto KTP + selfie jempol + akses kontak HP.\n\nBunga “ringan” 12% per minggu.\n\nEnglish: instant loan, eternal regret.",
+      "subject": "Cair 50 juta dalam 15 menit \u2014 tanpa jaminan",
+      "body": "Cukup foto KTP + selfie jempol + akses kontak HP.\n\nBunga \"ringan\" 12% per minggu.\n\nEnglish: instant loan, eternal regret.",
       "type": "spam",
       "priority": "none",
       "category": "promosi",
       "expirationSeconds": 0,
       "tags": [
         "spam",
-        "phishing"
+        "phishing",
+        "tier2"
       ],
       "replyOptions": [
         {
@@ -1091,14 +1128,15 @@
       "senderAddress": "service@paypa1-security.com.ru",
       "department": null,
       "subject": "Unusual purchase: $999.99 on Coinbase",
-      "body": "If this wasn’t you, login via our link and confirm SSN/tax ID.\n\nKami akan mengembalikan dana (tidak).\n\nPayPa1 with a one.",
+      "body": "If this wasn't you, login via our link and confirm SSN/tax ID.\n\nKami akan mengembalikan dana (tidak).\n\nPayPa1 with a one.",
       "type": "spam",
       "priority": "none",
       "category": "promosi",
       "expirationSeconds": 0,
       "tags": [
         "spam",
-        "phishing"
+        "phishing",
+        "tier2"
       ],
       "replyOptions": [
         {
@@ -1119,15 +1157,16 @@
       "sender": "HR Payroll Confidential",
       "senderAddress": "hr@company-payroll-portal.xyz",
       "department": null,
-      "subject": "Salary adjustment — sign digital form",
-      "body": "Employee,\n\nDownload PDF and enable macros.\n\nAlso enter bank token for “payroll test deposit”.\n\nInternal use only (narrator: it wasn’t).",
+      "subject": "Salary adjustment \u2014 sign digital form",
+      "body": "Employee,\n\nDownload PDF and enable macros.\n\nAlso enter bank token for \"payroll test deposit\".\n\nInternal use only (narrator: it wasn't).",
       "type": "spam",
       "priority": "none",
       "category": "promosi",
       "expirationSeconds": 0,
       "tags": [
         "spam",
-        "phishing"
+        "phishing",
+        "tier3"
       ],
       "replyOptions": [
         {
@@ -1148,7 +1187,7 @@
       "sender": "TikTok Creator Fund",
       "senderAddress": "payments@tiktok-creator-fund.win",
       "department": null,
-      "subject": "You earned $2,340 — add payout method",
+      "subject": "You earned $2,340 \u2014 add payout method",
       "body": "Congrats creator!\n\nSubmit tax form + Instagram password for cross-verify.\n\nViral moment: losing your account.",
       "type": "spam",
       "priority": "none",
@@ -1156,7 +1195,8 @@
       "expirationSeconds": 0,
       "tags": [
         "spam",
-        "phishing"
+        "phishing",
+        "tier2"
       ],
       "replyOptions": [
         {
@@ -1182,7 +1222,7 @@
       "sender": "Steam Gift Card Promo",
       "senderAddress": "promo@steam-wallet-free.ru",
       "department": null,
-      "subject": "Redeem $100 Steam Wallet — survey 2 menit",
+      "subject": "Redeem $100 Steam Wallet \u2014 survey 2 menit",
       "body": "Jawab survey lalu masukkan login Steam + mobile authenticator code.\n\nFor gamers, by scammers.\n\nGLHF (good luck have fraud).",
       "type": "spam",
       "priority": "none",
@@ -1190,7 +1230,8 @@
       "expirationSeconds": 0,
       "tags": [
         "spam",
-        "phishing"
+        "phishing",
+        "tier2"
       ],
       "replyOptions": [
         {
@@ -1211,7 +1252,7 @@
       "sender": "KPK Whistleblower Reward",
       "senderAddress": "reward@kpk-anti-gratifikasi.xyz",
       "department": null,
-      "subject": "Anda memenuhi syarat hadiah pelapor — rahasia",
+      "subject": "Anda memenuhi syarat hadiah pelapor \u2014 rahasia",
       "body": "Untuk mentransfer hadiah tunai, kami butuh nomor rekening dan surat pernyataan bermaterai palsu.\n\nAnti-corruption cosplay.\n\nPlease keep confidential (so nobody warns you).",
       "type": "spam",
       "priority": "none",
@@ -1219,7 +1260,8 @@
       "expirationSeconds": 0,
       "tags": [
         "spam",
-        "phishing"
+        "phishing",
+        "tier3"
       ],
       "replyOptions": [
         {
@@ -1240,7 +1282,7 @@
       "sender": "Instagram Copyright Team",
       "senderAddress": "legal@instagram-copyright-help.biz",
       "department": null,
-      "subject": "Your post violates copyright — appeal within 1 hour",
+      "subject": "Your post violates copyright \u2014 appeal within 1 hour",
       "body": "Klik link appeal dan login ulang.\n\nOtherwise your account will be deleted.\n\nMeta vibes, zero meta reality.",
       "type": "spam",
       "priority": "none",
@@ -1248,7 +1290,8 @@
       "expirationSeconds": 0,
       "tags": [
         "spam",
-        "phishing"
+        "phishing",
+        "tier2"
       ],
       "replyOptions": [
         {
@@ -1269,15 +1312,16 @@
       "sender": "Crypto Exchange Airdrop ID",
       "senderAddress": "drop@bybit-bonus-air.top",
       "department": null,
-      "subject": "Klaim USDT 500 — verifikasi API key",
-      "body": "Hubungkan API read/write untuk bonus instan.\n\nRisk-free*** ***sangat berisiko\n\nEnglish: “limited time” repeated 7 times.",
+      "subject": "Klaim USDT 500 \u2014 verifikasi API key",
+      "body": "Hubungkan API read/write untuk bonus instan.\n\nRisk-free*** ***sangat berisiko\n\nEnglish: \"limited time\" repeated 7 times.",
       "type": "spam",
       "priority": "none",
       "category": "promosi",
       "expirationSeconds": 0,
       "tags": [
         "spam",
-        "phishing"
+        "phishing",
+        "tier1"
       ],
       "replyOptions": [
         {
@@ -1298,14 +1342,15 @@
       "sender": "Vitalitas Pria Max",
       "senderAddress": "order@obatkuat-diskon.click",
       "department": null,
-      "subject": "Promo malam Jumat — paket diskon 80%",
+      "subject": "Promo malam Jumat \u2014 paket diskon 80%",
       "body": "Produk herbal tanpa BPOM, packaging anonim.\n\nBonus membership situs dewasa.\n\nDiscretion guaranteed (data dijual).",
       "type": "spam",
       "priority": "none",
       "category": "promosi",
       "expirationSeconds": 0,
       "tags": [
-        "spam"
+        "spam",
+        "tier1"
       ],
       "replyOptions": [
         {
@@ -1331,7 +1376,7 @@
       "sender": "BI Rate Security Alert",
       "senderAddress": "alert@bank-indonesia-secure.ru",
       "department": null,
-      "subject": "Pembaruan sistem RTGS — konfirmasi token bank",
+      "subject": "Pembaruan sistem RTGS \u2014 konfirmasi token bank",
       "body": "Sehubungan dengan kebijakan baru, mohon submit token hardkey foto depan-belakang.\n\nOfficial-looking header, unofficial everything else.\n\nMohon segera.",
       "type": "spam",
       "priority": "none",
@@ -1339,7 +1384,8 @@
       "expirationSeconds": 0,
       "tags": [
         "spam",
-        "phishing"
+        "phishing",
+        "tier3"
       ],
       "replyOptions": [
         {
@@ -1360,7 +1406,7 @@
       "sender": "Microsoft 365 Renewal",
       "senderAddress": "billing@microsoft-365-invoice.top",
       "department": null,
-      "subject": "Invoice #M365-88291 — pay today",
+      "subject": "Invoice #M365-88291 \u2014 pay today",
       "body": "Your subscription renewed at $399/year.\n\nIf incorrect, call this premium-rate number.\n\nWindows XP energy in 2025.",
       "type": "spam",
       "priority": "none",
@@ -1368,7 +1414,8 @@
       "expirationSeconds": 0,
       "tags": [
         "spam",
-        "phishing"
+        "phishing",
+        "tier3"
       ],
       "replyOptions": [
         {
@@ -1389,7 +1436,7 @@
       "sender": "Undian Indomaret Palsu",
       "senderAddress": "hadiah@indomaret-reward.club",
       "department": null,
-      "subject": "Anda dapat motor + emas — biaya pengiriman Rp 75.000",
+      "subject": "Anda dapat motor + emas \u2014 biaya pengiriman Rp 75.000",
       "body": "Scan barcode palsu dan transfer ongkir.\n\nPromo nasional (bohong).\n\nPlease reply: alamat lengkap + nama ibu kandung.",
       "type": "spam",
       "priority": "none",
@@ -1397,7 +1444,8 @@
       "expirationSeconds": 0,
       "tags": [
         "spam",
-        "phishing"
+        "phishing",
+        "tier1"
       ],
       "replyOptions": [
         {
@@ -1419,14 +1467,15 @@
       "senderAddress": "ceo@yourcompany-executive-mail.xyz",
       "department": null,
       "subject": "Are you available? need discreet wire transfer",
-      "body": "I’m in a meeting. Wire $18,500 to vendor immediately.\n\nKeep this confidential.\n\nClassic BEC flavor with karaoke English.",
+      "body": "I'm in a meeting. Wire $18,500 to vendor immediately.\n\nKeep this confidential.\n\nClassic BEC flavor with karaoke English.",
       "type": "spam",
       "priority": "none",
       "category": "promosi",
       "expirationSeconds": 0,
       "tags": [
         "spam",
-        "phishing"
+        "phishing",
+        "tier3"
       ],
       "replyOptions": [
         {
@@ -1447,15 +1496,16 @@
       "sender": "NFT Bluechip Club",
       "senderAddress": "mint@nft-bluechip-free.xyz",
       "department": null,
-      "subject": "FREE MINT — only gas fee (high)",
-      "body": "Connect wallet, sign blind message, lose JPEG budget.\n\nRoadmap: moon, then dumpster.\n\nIndonesian hype: “rug pull bukan budaya kita” (ironis).",
+      "subject": "FREE MINT \u2014 only gas fee (high)",
+      "body": "Connect wallet, sign blind message, lose JPEG budget.\n\nRoadmap: moon, then dumpster.\n\nIndonesian hype: \"rug pull bukan budaya kita\" (ironis).",
       "type": "spam",
       "priority": "none",
       "category": "promosi",
       "expirationSeconds": 0,
       "tags": [
         "spam",
-        "phishing"
+        "phishing",
+        "tier1"
       ],
       "replyOptions": [
         {
@@ -1476,14 +1526,15 @@
       "sender": "Dukun Digital SEO",
       "senderAddress": "ritual@jual-jimat-online.biz",
       "department": null,
-      "subject": "Jimat penglaris online shop — testimoni 10.000++",
-      "body": "Ritual via Zoom + transfer sesaji Rp 450.000.\n\nGuaranteed impressions (di mimpi).\n\nMix bahasa: “manifesting revenue”.",
+      "subject": "Jimat penglaris online shop \u2014 testimoni 10.000++",
+      "body": "Ritual via Zoom + transfer sesaji Rp 450.000.\n\nGuaranteed impressions (di mimpi).\n\nMix bahasa: \"manifesting revenue\".",
       "type": "spam",
       "priority": "none",
       "category": "promosi",
       "expirationSeconds": 0,
       "tags": [
-        "spam"
+        "spam",
+        "tier1"
       ],
       "replyOptions": [
         {
@@ -1505,14 +1556,15 @@
       "senderAddress": "verify@cloudflare-human-verify.ru",
       "department": null,
       "subject": "Captcha required for corporate email",
-      "body": "Confirm you are human by sending your password.\n\nScience is amazing.\n\nAlso download our “browser update.exe”.",
+      "body": "Confirm you are human by sending your password.\n\nScience is amazing.\n\nAlso download our \"browser update.exe\".",
       "type": "spam",
       "priority": "none",
       "category": "promosi",
       "expirationSeconds": 0,
       "tags": [
         "spam",
-        "phishing"
+        "phishing",
+        "tier3"
       ],
       "replyOptions": [
         {
@@ -1533,15 +1585,16 @@
       "sender": "Kraken Support Ticket",
       "senderAddress": "support@kraken-accounts-help.top",
       "department": null,
-      "subject": "Withdrawal on hold — KYC level 99",
-      "body": "Upload passport + selfie holding note + private keys “for compliance”.\n\nStay kraken… I mean awaken.\n\nIndo: “mohon kerja sama ya kak”.",
+      "subject": "Withdrawal on hold \u2014 KYC level 99",
+      "body": "Upload passport + selfie holding note + private keys \"for compliance\".\n\nStay kraken\u2026 I mean awaken.\n\nIndo: \"mohon kerja sama ya kak\".",
       "type": "spam",
       "priority": "none",
       "category": "promosi",
       "expirationSeconds": 0,
       "tags": [
         "spam",
-        "phishing"
+        "phishing",
+        "tier2"
       ],
       "replyOptions": [
         {
@@ -1562,15 +1615,16 @@
       "sender": "Telkomsel Poin Rewards",
       "senderAddress": "poin@telk0msel-bonus.id",
       "department": null,
-      "subject": "Tukar poin jadi e-wallet Rp 2jt — login sekarang",
-      "body": "Nomor Anda terpilih.\n\nMasukkan kode USSD hasil intercept… eh, hasil promo.\n\nEnglish: “limited quota”.",
+      "subject": "Tukar poin jadi e-wallet Rp 2jt \u2014 login sekarang",
+      "body": "Nomor Anda terpilih.\n\nMasukkan kode USSD hasil intercept\u2026 eh, hasil promo.\n\nEnglish: \"limited quota\".",
       "type": "spam",
       "priority": "none",
       "category": "promosi",
       "expirationSeconds": 0,
       "tags": [
         "spam",
-        "phishing"
+        "phishing",
+        "tier2"
       ],
       "replyOptions": [
         {
@@ -1591,15 +1645,16 @@
       "sender": "Slack Workspace Admin",
       "senderAddress": "admin@slack-workspace-billing.xyz",
       "department": null,
-      "subject": "Payment overdue — workspace will be deleted",
-      "body": "Your team’s Slack will shut down.\n\nAdmin must re-enter credit card on our portal.\n\nWorkplace panic as a service.",
+      "subject": "Payment overdue \u2014 workspace will be deleted",
+      "body": "Your team's Slack will shut down.\n\nAdmin must re-enter credit card on our portal.\n\nWorkplace panic as a service.",
       "type": "spam",
       "priority": "none",
       "category": "promosi",
       "expirationSeconds": 0,
       "tags": [
         "spam",
-        "phishing"
+        "phishing",
+        "tier3"
       ],
       "replyOptions": [
         {
@@ -1620,14 +1675,15 @@
       "sender": "Omega-9 Superbrain Oil",
       "senderAddress": "order@minyak-ikan-genius.biz",
       "department": null,
-      "subject": "IQ +40 poin dalam 5 hari — uji klinis (palsu)",
+      "subject": "IQ +40 poin dalam 5 hari \u2014 uji klinis (palsu)",
       "body": "Dokter tidak ingin Anda tahu.\n\nCampuran minyak + placebo + MLM.\n\nFDA-approved*** ***di negara fiksi",
       "type": "spam",
       "priority": "none",
       "category": "promosi",
       "expirationSeconds": 0,
       "tags": [
-        "spam"
+        "spam",
+        "tier1"
       ],
       "replyOptions": [
         {
@@ -1653,15 +1709,16 @@
       "sender": "Polisi Siber (FAKE)",
       "senderAddress": "lapor@polisi-siber-id.ru",
       "department": null,
-      "subject": "Panggilan penyidikan — laporkan akun Anda",
-      "body": "Anda terlibat kasus pencemaran nama baik online.\n\nBayar denda penyelesaian perkara Rp 2.500.000.\n\nEnglish: wire transfer “to avoid arrest” (nonsense).",
+      "subject": "Panggilan penyidikan \u2014 laporkan akun Anda",
+      "body": "Anda terlibat kasus pencemaran nama baik online.\n\nBayar denda penyelesaian perkara Rp 2.500.000.\n\nEnglish: wire transfer \"to avoid arrest\" (nonsense).",
       "type": "spam",
       "priority": "none",
       "category": "promosi",
       "expirationSeconds": 0,
       "tags": [
         "spam",
-        "phishing"
+        "phishing",
+        "tier3"
       ],
       "replyOptions": [
         {
@@ -1682,15 +1739,16 @@
       "sender": "Notaris Digital Express",
       "senderAddress": "sign@e-notary-fast-sign.xyz",
       "department": null,
-      "subject": "Tanda tangan kontrak kerja — e-meterai instan",
-      "body": "Lampiran PDF berisi macro “meterai”.\n\nMohon enable content + kirim Tanda Tangan Elektronik passphrase.\n\nLegally dubious, emotionally urgent.",
+      "subject": "Tanda tangan kontrak kerja \u2014 e-meterai instan",
+      "body": "Lampiran PDF berisi macro \"meterai\".\n\nMohon enable content + kirim Tanda Tangan Elektronik passphrase.\n\nLegally dubious, emotionally urgent.",
       "type": "spam",
       "priority": "none",
       "category": "promosi",
       "expirationSeconds": 0,
       "tags": [
         "spam",
-        "phishing"
+        "phishing",
+        "tier3"
       ],
       "replyOptions": [
         {
@@ -1723,7 +1781,8 @@
       "category": "promosi",
       "expirationSeconds": 0,
       "tags": [
-        "spam"
+        "spam",
+        "tier3"
       ],
       "replyOptions": [
         {
@@ -1749,14 +1808,15 @@
       "sender": "Dr. Burnout Online Therapy",
       "senderAddress": "healing@therapy-burnout-now.click",
       "department": null,
-      "subject": "Terapi Online untuk Karyawan Burnout — Sesi Pertama GRATIS*",
-      "body": "Apakah Anda menangis di toilet kantor? Apakah Anda sudah lupa wajah keluarga sendiri?\n\nTerapis kami (lulusan YouTube University) siap membantu!\n\nSesi pertama gratis* — *setelah bayar biaya registrasi Rp 1.500.000.\n\nKami menerima air mata sebagai bukti pembayaran.",
+      "subject": "Terapi Online untuk Karyawan Burnout \u2014 Sesi Pertama GRATIS*",
+      "body": "Apakah Anda menangis di toilet kantor? Apakah Anda sudah lupa wajah keluarga sendiri?\n\nTerapis kami (lulusan YouTube University) siap membantu!\n\nSesi pertama gratis* \u2014 *setelah bayar biaya registrasi Rp 1.500.000.\n\nKami menerima air mata sebagai bukti pembayaran.",
       "type": "spam",
       "priority": "none",
       "category": "promosi",
       "expirationSeconds": 0,
       "tags": [
-        "spam"
+        "spam",
+        "tier3"
       ],
       "replyOptions": [
         {
@@ -1777,14 +1837,15 @@
       "sender": "ResumeKilat Pro",
       "senderAddress": "apply@resume-kilat-pro.xyz",
       "department": null,
-      "subject": "Capek sama kerjaan? CV baru dalam 24 jam — dijamin interview!",
-      "body": "Kami tahu Anda sedang baca ini diam-diam saat jam kerja. Tidak apa-apa, kami nggak judge.\n\nLayanan penulisan CV premium — dijamin lolos ATS dan bikin HR mantan kantor Anda menyesal!\n\nPaket 'Revenge Resign': CV + surat resign savage = Rp 750.000\n\n*Kami juga jual template surat resign pasif-agresif.",
+      "subject": "Capek sama kerjaan? CV baru dalam 24 jam \u2014 dijamin interview!",
+      "body": "Kami tahu Anda sedang baca ini diam-diam saat jam kerja. Tidak apa-apa, kami nggak judge.\n\nLayanan penulisan CV premium \u2014 dijamin lolos ATS dan bikin HR mantan kantor Anda menyesal!\n\nPaket 'Revenge Resign': CV + surat resign savage = Rp 750.000\n\n*Kami juga jual template surat resign pasif-agresif.",
       "type": "spam",
       "priority": "none",
       "category": "promosi",
       "expirationSeconds": 0,
       "tags": [
-        "spam"
+        "spam",
+        "tier3"
       ],
       "replyOptions": [
         {
@@ -1810,14 +1871,15 @@
       "sender": "Advokat Hak Pekerja 24/7",
       "senderAddress": "sue@labor-lawyer-instant.win",
       "department": null,
-      "subject": "Bos Anda MELANGGAR HUKUM! Konsultasi GRATIS — Gugat Sekarang!",
+      "subject": "Bos Anda MELANGGAR HUKUM! Konsultasi GRATIS \u2014 Gugat Sekarang!",
       "body": "Apakah Anda:\n- Lembur tanpa uang lembur? CHECK\n- Disuruh 'stand by' 24/7? CHECK\n- Dipanggil 'keluarga' tapi digaji UMR? CHECK\n\nAnda berhak menggugat! Tim pengacara kami (lulus dari Google Search) siap membantu.\n\nBiaya success fee 90% dari ganti rugi. Minimal retainer Rp 5.000.000.\n\nJustice is expensive, tapi revenge is priceless.",
       "type": "spam",
       "priority": "none",
       "category": "promosi",
       "expirationSeconds": 0,
       "tags": [
-        "spam"
+        "spam",
+        "tier3"
       ],
       "replyOptions": [
         {
@@ -1843,14 +1905,15 @@
       "sender": "WorkLife Balance Summit",
       "senderAddress": "register@worklife-summit-2026.top",
       "department": null,
-      "subject": "Seminar 'Work-Life Balance' — Sabtu-Minggu, 14 jam/hari!",
+      "subject": "Seminar 'Work-Life Balance' \u2014 Sabtu-Minggu, 14 jam/hari!",
       "body": "Belajar work-life balance dari para ahli yang bekerja 80 jam/minggu!\n\nJadwal seminar: Sabtu 06:00-20:00, Minggu 06:00-20:00\nLokasi: Hotel bintang 2 di pinggir tol\nHTM: Rp 3.500.000 (lunch NOT included)\n\nSpeaker utama: CEO yang baru cerai karena terlalu sibuk kerja.\n\nIroni? Kami tidak kenal kata itu.",
       "type": "spam",
       "priority": "none",
       "category": "promosi",
       "expirationSeconds": 0,
       "tags": [
-        "spam"
+        "spam",
+        "tier3"
       ],
       "replyOptions": [
         {
@@ -1878,7 +1941,8 @@
       "category": "promosi",
       "expirationSeconds": 0,
       "tags": [
-        "spam"
+        "spam",
+        "tier3"
       ],
       "replyOptions": [
         {
@@ -1904,14 +1968,15 @@
       "sender": "ZenCalm MLM International",
       "senderAddress": "join@zencalm-network.click",
       "department": null,
-      "subject": "Suplemen Anti-Stress REVOLUSIONER — Jadi Reseller, Passive Income!",
-      "body": "ZenCalm(tm) — campuran herbal + vitamin + harapan palsu.\n\nJual ke rekan kerja yang sama stres-nya! Binary plan 7 level deep.\n\nStarter Kit: Rp 2.000.000 (isi: 10 botol + mimpi yang tidak akan terwujud)\n\nTestimoni: 'Setelah minum ZenCalm, saya tetap stres tapi sekarang juga miskin.' - Anonymous",
+      "subject": "Suplemen Anti-Stress REVOLUSIONER \u2014 Jadi Reseller, Passive Income!",
+      "body": "ZenCalm(tm) \u2014 campuran herbal + vitamin + harapan palsu.\n\nJual ke rekan kerja yang sama stres-nya! Binary plan 7 level deep.\n\nStarter Kit: Rp 2.000.000 (isi: 10 botol + mimpi yang tidak akan terwujud)\n\nTestimoni: 'Setelah minum ZenCalm, saya tetap stres tapi sekarang juga miskin.' - Anonymous",
       "type": "spam",
       "priority": "none",
       "category": "promosi",
       "expirationSeconds": 0,
       "tags": [
-        "spam"
+        "spam",
+        "tier3"
       ],
       "replyOptions": [
         {
@@ -1939,7 +2004,8 @@
       "category": "promosi",
       "expirationSeconds": 0,
       "tags": [
-        "spam"
+        "spam",
+        "tier3"
       ],
       "replyOptions": [
         {
@@ -1973,7 +2039,8 @@
       "expirationSeconds": 0,
       "tags": [
         "spam",
-        "phishing"
+        "phishing",
+        "tier3"
       ],
       "replyOptions": [
         {
@@ -1999,14 +2066,15 @@
       "sender": "Newsletter Motivasi Harian",
       "senderAddress": "inspire@your-boss-is-wrong.top",
       "department": null,
-      "subject": "NEWSLETTER: 'Bos Kamu Salah' — Edisi Spesial PT Sleep Deprivation",
+      "subject": "NEWSLETTER: 'Bos Kamu Salah' \u2014 Edisi Spesial PT Sleep Deprivation",
       "body": "Tahukah Anda bahwa menurut riset (yang kami karang), 97% bos di Indonesia salah tentang segalanya?\n\nNewsletter mingguan kami berisi:\n- Cara membantah bos dengan elegan\n- Passive-aggressive email template\n- Kutipan motivasi yang bisa di-print dan tempel di meja\n\nLangganan PREMIUM: Rp 150.000/bulan\nBonus: Stiker 'I Survived Monday' edisi terbatas.",
       "type": "spam",
       "priority": "none",
       "category": "promosi",
       "expirationSeconds": 0,
       "tags": [
-        "spam"
+        "spam",
+        "tier3"
       ],
       "replyOptions": [
         {
@@ -2027,7 +2095,7 @@
       "sender": "Dirjen Pajak Refund Center",
       "senderAddress": "refund@pajak-refund-center.ru",
       "department": null,
-      "subject": "REFUND PAJAK Rp 8.750.000 — Klaim Sebelum Hangus!",
+      "subject": "REFUND PAJAK Rp 8.750.000 \u2014 Klaim Sebelum Hangus!",
       "body": "Wajib Pajak Yth,\n\nSistem kami mendeteksi kelebihan bayar pajak sebesar Rp 8.750.000.\n\nUntuk proses refund, mohon kirimkan:\n- Nomor NPWP\n- Foto e-KTP depan-belakang\n- Nomor rekening + PIN internet banking\n- Nama ibu kandung\n- Golongan darah (untuk verifikasi tambahan)\n\nRefund akan cair dalam 1x24 jam*.\n*Narrator: tidak akan pernah cair.",
       "type": "spam",
       "priority": "none",
@@ -2035,7 +2103,8 @@
       "expirationSeconds": 0,
       "tags": [
         "spam",
-        "phishing"
+        "phishing",
+        "tier2"
       ],
       "replyOptions": [
         {
@@ -2069,7 +2138,8 @@
       "expirationSeconds": 0,
       "tags": [
         "spam",
-        "phishing"
+        "phishing",
+        "tier1"
       ],
       "replyOptions": [
         {
@@ -2090,14 +2160,15 @@
       "sender": "GAINMAX Protein Lab",
       "senderAddress": "bulk@gainmax-protein-lab.biz",
       "department": null,
-      "subject": "Kurus karena Lembur? NAIK 15kg Otot dalam 2 Minggu — TANPA GYM!",
-      "body": "Kami tahu Anda kurus kering karena lembur tiap hari dan makan mi instan jam 2 pagi.\n\nGAINMAX ULTRA MASS(tm) — suplemen penambah berat badan khusus karyawan overworked!\n\nKandungan: whey protein + tepung terigu + optimisme berlebihan.\n\nPromo: Beli 2 gratis shaker bertulisan 'I Work Therefore I Suffer'.\n\n*Belum diuji pada manusia yang tidur cukup.",
+      "subject": "Kurus karena Lembur? NAIK 15kg Otot dalam 2 Minggu \u2014 TANPA GYM!",
+      "body": "Kami tahu Anda kurus kering karena lembur tiap hari dan makan mi instan jam 2 pagi.\n\nGAINMAX ULTRA MASS(tm) \u2014 suplemen penambah berat badan khusus karyawan overworked!\n\nKandungan: whey protein + tepung terigu + optimisme berlebihan.\n\nPromo: Beli 2 gratis shaker bertulisan 'I Work Therefore I Suffer'.\n\n*Belum diuji pada manusia yang tidur cukup.",
       "type": "spam",
       "priority": "none",
       "category": "promosi",
       "expirationSeconds": 0,
       "tags": [
-        "spam"
+        "spam",
+        "tier1"
       ],
       "replyOptions": [
         {
@@ -2123,7 +2194,7 @@
       "sender": "Yayasan Anak Pekerja Burnout",
       "senderAddress": "donate@charity-burnout-kids.xyz",
       "department": null,
-      "subject": "Donasi untuk Anak-Anak yang Ortunya Kerja 24/7 — Mereka Butuh Kasih Sayang",
+      "subject": "Donasi untuk Anak-Anak yang Ortunya Kerja 24/7 \u2014 Mereka Butuh Kasih Sayang",
       "body": "Jutaan anak Indonesia tidak mengenal wajah orang tuanya karena mereka selalu di kantor.\n\nDonasi Anda akan digunakan untuk:\n- Boneka berbentuk orang tua (untuk dipeluk)\n- Kartu ucapan bertulisan 'Papa/Mama pulang jam 11 malam'\n- Terapi seni bertema 'Gambar Keluarga Tanpa Salah Satu Orang Tua'\n\nTransfer ke rekening 'yayasan' (rekening pribadi).\n\nSedih? Ya. Scam? Juga ya.",
       "type": "spam",
       "priority": "none",
@@ -2131,7 +2202,8 @@
       "expirationSeconds": 0,
       "tags": [
         "spam",
-        "phishing"
+        "phishing",
+        "tier3"
       ],
       "replyOptions": [
         {
@@ -2157,14 +2229,15 @@
       "sender": "Paradise Timeshare Bali",
       "senderAddress": "vacation@bali-timeshare-vip.club",
       "department": null,
-      "subject": "LIBURAN MEWAH DI BALI — Villa Eksklusif Cuma Rp 500rb/tahun!!",
-      "body": "Anda terlihat seperti orang yang belum cuti sejak 2019.\n\nTimeshare villa premium di Bali — Anda 'memiliki' villa selama 2 minggu per tahun!\n\nBiaya: Rp 500.000/tahun* + Rp 25.000.000 biaya pendaftaran + Rp 3.000.000 maintenance tahunan + pajak misterius.\n\nKapan terakhir kali Anda lihat matahari terbenam? Bukan dari jendela kantor?\n\n*Villa mungkin tidak ada.",
+      "subject": "LIBURAN MEWAH DI BALI \u2014 Villa Eksklusif Cuma Rp 500rb/tahun!!",
+      "body": "Anda terlihat seperti orang yang belum cuti sejak 2019.\n\nTimeshare villa premium di Bali \u2014 Anda 'memiliki' villa selama 2 minggu per tahun!\n\nBiaya: Rp 500.000/tahun* + Rp 25.000.000 biaya pendaftaran + Rp 3.000.000 maintenance tahunan + pajak misterius.\n\nKapan terakhir kali Anda lihat matahari terbenam? Bukan dari jendela kantor?\n\n*Villa mungkin tidak ada.",
       "type": "spam",
       "priority": "none",
       "category": "promosi",
       "expirationSeconds": 0,
       "tags": [
-        "spam"
+        "spam",
+        "tier1"
       ],
       "replyOptions": [
         {
@@ -2186,13 +2259,14 @@
       "senderAddress": "vip@royalbet88-jackpot.win",
       "department": null,
       "subject": "Bonus Deposit 500%! Ubah Gaji UMR Jadi Miliarder dalam SEMALAM!",
-      "body": "Bosan jadi budak korporat? Coba keberuntungan Anda di RoyalBet88!\n\nDeposit Rp 100.000, bonus jadi Rp 600.000!\n\nSlot, poker, roulette — semua cara untuk kehilangan uang yang sudah sedikit!\n\nTestimoni: 'Saya deposit gaji pertama dan sekarang tinggal di rumah mertua.' - Pemain Setia\n\nGamble responsibly* (*kami tidak tahu arti kata ini).",
+      "body": "Bosan jadi budak korporat? Coba keberuntungan Anda di RoyalBet88!\n\nDeposit Rp 100.000, bonus jadi Rp 600.000!\n\nSlot, poker, roulette \u2014 semua cara untuk kehilangan uang yang sudah sedikit!\n\nTestimoni: 'Saya deposit gaji pertama dan sekarang tinggal di rumah mertua.' - Pemain Setia\n\nGamble responsibly* (*kami tidak tahu arti kata ini).",
       "type": "spam",
       "priority": "none",
       "category": "promosi",
       "expirationSeconds": 0,
       "tags": [
-        "spam"
+        "spam",
+        "tier1"
       ],
       "replyOptions": [
         {
@@ -2226,7 +2300,8 @@
       "expirationSeconds": 0,
       "tags": [
         "spam",
-        "phishing"
+        "phishing",
+        "tier1"
       ],
       "replyOptions": [
         {
@@ -2252,14 +2327,15 @@
       "sender": "FollowerBlast Social Media",
       "senderAddress": "order@followerblast-murah.top",
       "department": null,
-      "subject": "10.000 Followers Instagram Cuma Rp 50.000 — Bikin Bos Iri!",
-      "body": "LinkedIn followers, Instagram followers, Twitter followers — semuanya bisa dibeli!\n\nPaket Spesial Karyawan Insecure:\n- 10K followers IG: Rp 50.000\n- 5K connections LinkedIn: Rp 75.000\n- 1 validation dari bos: TIDAK TERSEDIA\n\nSemua akun bot dari negara yang tidak bisa Anda temukan di peta.\n\nLook successful, feel empty.",
+      "subject": "10.000 Followers Instagram Cuma Rp 50.000 \u2014 Bikin Bos Iri!",
+      "body": "LinkedIn followers, Instagram followers, Twitter followers \u2014 semuanya bisa dibeli!\n\nPaket Spesial Karyawan Insecure:\n- 10K followers IG: Rp 50.000\n- 5K connections LinkedIn: Rp 75.000\n- 1 validation dari bos: TIDAK TERSEDIA\n\nSemua akun bot dari negara yang tidak bisa Anda temukan di peta.\n\nLook successful, feel empty.",
       "type": "spam",
       "priority": "none",
       "category": "promosi",
       "expirationSeconds": 0,
       "tags": [
-        "spam"
+        "spam",
+        "tier1"
       ],
       "replyOptions": [
         {
@@ -2288,7 +2364,8 @@
       "expirationSeconds": 0,
       "tags": [
         "spam",
-        "phishing"
+        "phishing",
+        "tier3"
       ],
       "replyOptions": [
         {
@@ -2314,14 +2391,15 @@
       "sender": "QuickDegree Online University",
       "senderAddress": "admissions@quickdegree-university.biz",
       "department": null,
-      "subject": "GELAR S2/S3 dalam 48 JAM — Tanpa Kuliah, Tanpa Skripsi!",
+      "subject": "GELAR S2/S3 dalam 48 JAM \u2014 Tanpa Kuliah, Tanpa Skripsi!",
       "body": "Capek kerja keras tapi nggak dihargai karena 'cuma' S1?\n\nQuickDegree University menawarkan:\n- S2 MBA: 24 jam (termasuk wisuda via Zoom)\n- S3 Doktor: 48 jam (disertasi auto-generate oleh ChatGPT)\n- Profesor Kehormatan: 1 jam (cukup transfer Rp 15.000.000)\n\nTerakreditasi oleh Badan Akreditasi yang Kami Buat Sendiri.\n\nIjazah dicetak di kertas HVS 70gsm. Frame not included.\n\nPasang di dinding kubikel Anda dan menangislah dengan bangga.",
       "type": "spam",
       "priority": "none",
       "category": "promosi",
       "expirationSeconds": 0,
       "tags": [
-        "spam"
+        "spam",
+        "tier1"
       ],
       "replyOptions": [
         {

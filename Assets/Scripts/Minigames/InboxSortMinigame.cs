@@ -46,6 +46,8 @@ namespace Overworked.Minigames
         private float _elapsed;
         private bool _finished;
         private float _startTime;
+        private float _cooldownRemaining;
+        private const float WRONG_COOLDOWN = 0.8f;
 
         private Label _itemLabel;
         private Label _progressLabel;
@@ -67,16 +69,16 @@ namespace Overworked.Minigames
             switch (_difficulty)
             {
                 case "easy":
-                    itemCount = 4;
-                    _timeLimit = 20f;
+                    itemCount = 1;
+                    _timeLimit = 10f;
                     break;
                 case "hard":
-                    itemCount = 8;
-                    _timeLimit = 25f;
+                    itemCount = 2;
+                    _timeLimit = 12f;
                     break;
                 default:
-                    itemCount = 6;
-                    _timeLimit = 22f;
+                    itemCount = 3;
+                    _timeLimit = 13f;
                     break;
             }
 
@@ -129,7 +131,6 @@ namespace Overworked.Minigames
             _progressLabel.style.marginBottom = 12;
             card.Add(_progressLabel);
 
-            // Current item display
             _itemLabel = new Label("");
             _itemLabel.style.fontSize = 18;
             _itemLabel.style.color = Color.white;
@@ -148,7 +149,6 @@ namespace Overworked.Minigames
             _itemLabel.style.width = Length.Percent(100);
             card.Add(_itemLabel);
 
-            // Bin buttons
             _binsContainer = new VisualElement();
             _binsContainer.style.flexDirection = FlexDirection.Row;
             _binsContainer.style.flexWrap = Wrap.Wrap;
@@ -157,10 +157,10 @@ namespace Overworked.Minigames
 
             Color[] binColors =
             {
-                new Color(0.91f, 0.27f, 0.38f, 1f), // Utama - red
-                new Color(0.4f, 0.65f, 1f, 1f),      // Pekerjaan - blue
-                new Color(0.3f, 0.85f, 0.45f, 1f),   // Sosial - green
-                new Color(0.95f, 0.7f, 0.2f, 1f)     // Promosi - yellow
+                new Color(0.91f, 0.27f, 0.38f, 1f),
+                new Color(0.4f, 0.65f, 1f, 1f),
+                new Color(0.3f, 0.85f, 0.45f, 1f),
+                new Color(0.95f, 0.7f, 0.2f, 1f)
             };
 
             for (int i = 0; i < BinNames.Length; i++)
@@ -234,6 +234,7 @@ namespace Overworked.Minigames
             _finished = false;
             _currentIndex = 0;
             _correctCount = 0;
+            _cooldownRemaining = 0f;
             _startTime = Time.time;
             ShowCurrentItem();
         }
@@ -243,15 +244,25 @@ namespace Overworked.Minigames
             if (_finished) return;
 
             _elapsed += deltaTime;
+
+            if (_cooldownRemaining > 0f)
+            {
+                _cooldownRemaining -= deltaTime;
+                if (_cooldownRemaining <= 0f)
+                {
+                    _cooldownRemaining = 0f;
+                    _feedbackLabel.text = "";
+                    SetBinsEnabled(true);
+                }
+            }
+
             float remaining = _timeLimit - _elapsed;
 
             if (remaining <= 0f)
             {
                 _finished = true;
                 bool success = _correctCount >= _items.Count / 2;
-                _feedbackLabel.text = success
-                    ? $"Waktu habis! Benar: {_correctCount}/{_items.Count}"
-                    : "Waktu habis!";
+                _feedbackLabel.text = "Waktu habis!";
                 _feedbackLabel.style.color = new Color(0.91f, 0.27f, 0.38f, 1f);
                 _progressFill.style.width = Length.Percent(0);
                 _timerLabel.text = "Waktu: 0.0s";
@@ -278,7 +289,7 @@ namespace Overworked.Minigames
 
         private void OnBinClicked(string binName)
         {
-            if (_finished || _currentIndex >= _items.Count) return;
+            if (_finished || _currentIndex >= _items.Count || _cooldownRemaining > 0f) return;
 
             bool correct = _items[_currentIndex].CorrectBin == binName;
             if (correct)
@@ -289,8 +300,11 @@ namespace Overworked.Minigames
             }
             else
             {
-                _feedbackLabel.text = $"Salah! Yang benar: {_items[_currentIndex].CorrectBin}";
+                _feedbackLabel.text = $"Salah! ({_items[_currentIndex].CorrectBin}) Tunggu...";
                 _feedbackLabel.style.color = new Color(0.91f, 0.27f, 0.38f, 1f);
+                _cooldownRemaining = WRONG_COOLDOWN;
+                SetBinsEnabled(false);
+                return; // Don't advance on wrong answer — must wait for cooldown
             }
 
             _currentIndex++;
@@ -300,18 +314,24 @@ namespace Overworked.Minigames
                 _finished = true;
                 bool success = _correctCount > _items.Count / 2;
                 float completionTime = Time.time - _startTime;
-
-                _itemLabel.text = $"Selesai! Benar: {_correctCount}/{_items.Count}";
-                _feedbackLabel.text = success ? "Lulus!" : "Gagal!";
-                _feedbackLabel.style.color = success
-                    ? new Color(0.3f, 0.85f, 0.45f, 1f)
-                    : new Color(0.91f, 0.27f, 0.38f, 1f);
-
                 OnCompleted?.Invoke(new MinigameResult { Success = success, CompletionTime = completionTime });
             }
             else
             {
                 ShowCurrentItem();
+            }
+        }
+
+        private void SetBinsEnabled(bool enabled)
+        {
+            if (_binsContainer == null) return;
+            foreach (var child in _binsContainer.Children())
+            {
+                if (child is Button btn)
+                {
+                    btn.SetEnabled(enabled);
+                    btn.style.opacity = enabled ? 1f : 0.4f;
+                }
             }
         }
 

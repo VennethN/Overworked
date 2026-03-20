@@ -11,7 +11,7 @@
       "priority": "high",
       "category": "utama",
       "expirationSeconds": 45.0,
-      "tags": ["work", "urgent"],
+      "tags": ["work", "urgent", "tier2"],
       "replyOptions": null,
       "taskTrigger": {
         "taskId": "approve_budget",
@@ -41,7 +41,7 @@
       "priority": "high",
       "category": "utama",
       "expirationSeconds": 50.0,
-      "tags": ["work", "deadline"],
+      "tags": ["work", "deadline", "tier2"],
       "replyOptions": null,
       "taskTrigger": {
         "taskId": "file_report",
@@ -63,7 +63,7 @@
       "priority": "critical",
       "category": "utama",
       "expirationSeconds": 30.0,
-      "tags": ["it", "urgent", "critical"],
+      "tags": ["it", "urgent", "critical", "tier3"],
       "replyOptions": null,
       "taskTrigger": {
         "taskId": "approve_restart",
@@ -91,7 +91,7 @@
       "priority": "medium",
       "category": "pekerjaan",
       "expirationSeconds": 55.0,
-      "tags": ["work", "filing"],
+      "tags": ["work", "filing", "tier1"],
       "replyOptions": null,
       "taskTrigger": {
         "taskId": "approve_equipment",
@@ -113,7 +113,7 @@
       "priority": "high",
       "category": "pekerjaan",
       "expirationSeconds": 72.0,
-      "tags": ["finance", "deadline"],
+      "tags": ["finance", "deadline", "tier3"],
       "replyOptions": null,
       "taskTrigger": {
         "taskId": "complete_expense_report",
@@ -135,7 +135,7 @@
       "priority": "critical",
       "category": "utama",
       "expirationSeconds": 25.0,
-      "tags": ["it", "security", "urgent"],
+      "tags": ["it", "security", "urgent", "tier3"],
       "replyOptions": null,
       "taskTrigger": {
         "taskId": "verify_security_alert",
@@ -155,7 +155,7 @@
       "priority": "medium",
       "category": "pekerjaan",
       "expirationSeconds": 60.0,
-      "tags": ["scheduling"],
+      "tags": ["scheduling", "tier1"],
       "replyOptions": [
         { "text": "Oke, aku cover shift pagi besok.", "isCorrect": true, "scoreModifier": 10 },
         { "text": "Maaf, aku juga lembur malam ini.", "isCorrect": false, "scoreModifier": -5 },
@@ -174,7 +174,7 @@
       "priority": "medium",
       "category": "pekerjaan",
       "expirationSeconds": 55.0,
-      "tags": ["it", "security"],
+      "tags": ["it", "security", "tier1"],
       "replyOptions": [
         {
           "text": "Disetujui, reset password.",
@@ -198,7 +198,7 @@
       "priority": "high",
       "category": "pekerjaan",
       "expirationSeconds": 40.0,
-      "tags": ["work", "overtime", "urgent"],
+      "tags": ["work", "overtime", "urgent", "tier2"],
       "replyOptions": [
         { "text": "Baik, saya akan lembur.", "isCorrect": true, "scoreModifier": 8 },
         { "text": "Apakah ada kompensasi lembur?", "isCorrect": false, "scoreModifier": -15 },
@@ -217,7 +217,7 @@
       "priority": "medium",
       "category": "pekerjaan",
       "expirationSeconds": 50.0,
-      "tags": ["scheduling", "admin"],
+      "tags": ["scheduling", "admin", "tier1"],
       "replyOptions": [
         { "text": "Dipahami, saya pindah ke Ruang B.", "isCorrect": true, "scoreModifier": 10 },
         { "text": "Kenapa selalu meeting saya yang dipindah?", "isCorrect": false, "scoreModifier": -15 },
@@ -236,7 +236,7 @@
       "priority": "low",
       "category": "sosial",
       "expirationSeconds": 90.0,
-      "tags": ["social"],
+      "tags": ["social", "tier1"],
       "replyOptions": [
         { "text": "Oke, 5 menit aja.", "isCorrect": true, "scoreModifier": 5 },
         { "text": "Nggak, takut ketahuan Mahyu.", "isCorrect": true, "scoreModifier": 5 },
@@ -255,7 +255,7 @@
       "priority": "high",
       "category": "pekerjaan",
       "expirationSeconds": 65.0,
-      "tags": ["work", "contract"],
+      "tags": ["work", "contract", "tier2"],
       "replyOptions": null,
       "taskTrigger": {
         "taskId": "sign_vendor_contract",
@@ -275,7 +275,7 @@
       "priority": "low",
       "category": "pekerjaan",
       "expirationSeconds": 0,
-      "tags": ["it", "info"],
+      "tags": ["it", "info", "tier1"],
       "replyOptions": null,
       "taskTrigger": null
     },
@@ -290,7 +290,7 @@
       "priority": "low",
       "category": "sosial",
       "expirationSeconds": 0,
-      "tags": ["social", "info"],
+      "tags": ["social", "info", "tier1"],
       "replyOptions": null,
       "taskTrigger": null
     },
@@ -305,7 +305,7 @@
       "priority": "medium",
       "category": "pekerjaan",
       "expirationSeconds": 58.0,
-      "tags": ["work", "deadline"],
+      "tags": ["work", "deadline", "tier2"],
       "replyOptions": null,
       "taskTrigger": {
         "taskId": "file_report",
@@ -327,7 +327,7 @@
       "priority": "high",
       "category": "pekerjaan",
       "expirationSeconds": 48.0,
-      "tags": ["finance", "urgent"],
+      "tags": ["finance", "urgent", "tier2"],
       "replyOptions": null,
       "taskTrigger": {
         "taskId": "approve_budget",
@@ -349,7 +349,7 @@
       "priority": "medium",
       "category": "pekerjaan",
       "expirationSeconds": 55.0,
-      "tags": ["work", "filing"],
+      "tags": ["work", "filing", "tier2"],
       "replyOptions": null,
       "taskTrigger": {
         "taskId": "approve_equipment",
@@ -371,7 +371,7 @@
       "priority": "critical",
       "category": "utama",
       "expirationSeconds": 28.0,
-      "tags": ["it", "urgent", "critical"],
+      "tags": ["it", "urgent", "critical", "tier3"],
       "replyOptions": null,
       "taskTrigger": {
         "taskId": "approve_restart",
@@ -391,7 +391,7 @@
       "priority": "low",
       "category": "sosial",
       "expirationSeconds": 80.0,
-      "tags": ["social"],
+      "tags": ["social", "tier1"],
       "replyOptions": [
         { "text": "Iya... tapi kita harus bertahan.", "isCorrect": true, "scoreModifier": 5 },
         { "text": "Di mana-mana sama aja.", "isCorrect": true, "scoreModifier": 5 },
@@ -410,7 +410,7 @@
       "priority": "high",
       "category": "utama",
       "expirationSeconds": 45.0,
-      "tags": ["work", "deadline", "urgent"],
+      "tags": ["work", "deadline", "urgent", "tier3"],
       "replyOptions": null,
       "taskTrigger": {
         "taskId": "file_report",
@@ -432,7 +432,7 @@
       "priority": "low",
       "category": "pekerjaan",
       "expirationSeconds": 85.0,
-      "tags": ["admin"],
+      "tags": ["admin", "tier1"],
       "replyOptions": [
         { "text": "Disetujui. Sediakan dari stok cadangan.", "isCorrect": true, "scoreModifier": 5 },
         { "text": "Tolak. Suruh bawa sendiri dari rumah.", "isCorrect": false, "scoreModifier": -10 }
@@ -450,7 +450,7 @@
       "priority": "high",
       "category": "pekerjaan",
       "expirationSeconds": 60.0,
-      "tags": ["work", "contract"],
+      "tags": ["work", "contract", "tier2"],
       "replyOptions": null,
       "taskTrigger": {
         "taskId": "sign_vendor_contract",
@@ -470,7 +470,7 @@
       "priority": "low",
       "category": "sosial",
       "expirationSeconds": 0,
-      "tags": ["social", "info"],
+      "tags": ["social", "info", "tier1"],
       "replyOptions": null,
       "taskTrigger": null
     },
@@ -485,7 +485,7 @@
       "priority": "medium",
       "category": "pekerjaan",
       "expirationSeconds": 52.0,
-      "tags": ["it"],
+      "tags": ["it", "tier1"],
       "replyOptions": null,
       "taskTrigger": {
         "taskId": "approve_equipment",
@@ -505,7 +505,7 @@
       "priority": "medium",
       "category": "utama",
       "expirationSeconds": 0,
-      "tags": ["work", "info"],
+      "tags": ["work", "info", "tier2"],
       "replyOptions": null,
       "taskTrigger": null
     },
@@ -520,7 +520,7 @@
       "priority": "high",
       "category": "pekerjaan",
       "expirationSeconds": 55.0,
-      "tags": ["finance", "deadline"],
+      "tags": ["finance", "deadline", "tier3"],
       "replyOptions": null,
       "taskTrigger": {
         "taskId": "complete_expense_report",
@@ -542,7 +542,7 @@
       "priority": "low",
       "category": "sosial",
       "expirationSeconds": 85.0,
-      "tags": ["social"],
+      "tags": ["social", "tier1"],
       "replyOptions": [
         { "text": "Masih bertahan. Harus bertahan.", "isCorrect": true, "scoreModifier": 5 },
         { "text": "Memangnya separah itu ya di sini?", "isCorrect": true, "scoreModifier": 3 },
@@ -561,7 +561,7 @@
       "priority": "medium",
       "category": "pekerjaan",
       "expirationSeconds": 50.0,
-      "tags": ["work"],
+      "tags": ["work", "tier2"],
       "replyOptions": null,
       "taskTrigger": {
         "taskId": "file_report",
@@ -583,7 +583,7 @@
       "priority": "high",
       "category": "utama",
       "expirationSeconds": 30.0,
-      "tags": ["it", "security", "urgent"],
+      "tags": ["it", "security", "urgent", "tier2"],
       "replyOptions": null,
       "taskTrigger": {
         "taskId": "verify_security_alert",
@@ -604,7 +604,7 @@
       "priority": "high",
       "category": "pekerjaan",
       "expirationSeconds": 50.0,
-      "tags": ["finance", "urgent"],
+      "tags": ["finance", "urgent", "tier3"],
       "replyOptions": null,
       "taskTrigger": {
         "taskId": "approve_budget",
@@ -626,7 +626,7 @@
       "priority": "critical",
       "category": "utama",
       "expirationSeconds": 30.0,
-      "tags": ["it", "urgent", "critical"],
+      "tags": ["it", "urgent", "critical", "tier3"],
       "replyOptions": null,
       "taskTrigger": {
         "taskId": "approve_restart",
@@ -648,7 +648,7 @@
       "priority": "medium",
       "category": "pekerjaan",
       "expirationSeconds": 60.0,
-      "tags": ["work", "audit"],
+      "tags": ["work", "audit", "tier2"],
       "replyOptions": null,
       "taskTrigger": {
         "taskId": "complete_expense_report",
@@ -670,7 +670,7 @@
       "priority": "high",
       "category": "utama",
       "expirationSeconds": 40.0,
-      "tags": ["it", "security"],
+      "tags": ["it", "security", "tier3"],
       "replyOptions": null,
       "taskTrigger": {
         "taskId": "verify_security_alert",
@@ -692,7 +692,7 @@
       "priority": "high",
       "category": "pekerjaan",
       "expirationSeconds": 45.0,
-      "tags": ["it", "security"],
+      "tags": ["it", "security", "tier2"],
       "replyOptions": null,
       "taskTrigger": {
         "taskId": "approve_equipment",
@@ -712,7 +712,7 @@
       "priority": "medium",
       "category": "pekerjaan",
       "expirationSeconds": 55.0,
-      "tags": ["work", "deadline"],
+      "tags": ["work", "deadline", "tier3"],
       "replyOptions": null,
       "taskTrigger": {
         "taskId": "file_report",
@@ -734,7 +734,7 @@
       "priority": "medium",
       "category": "pekerjaan",
       "expirationSeconds": 55.0,
-      "tags": ["work", "admin"],
+      "tags": ["work", "admin", "tier2"],
       "replyOptions": null,
       "taskTrigger": {
         "taskId": "approve_equipment",
@@ -756,7 +756,7 @@
       "priority": "high",
       "category": "pekerjaan",
       "expirationSeconds": 65.0,
-      "tags": ["finance", "deadline"],
+      "tags": ["finance", "deadline", "tier3"],
       "replyOptions": null,
       "taskTrigger": {
         "taskId": "complete_expense_report",
@@ -778,7 +778,7 @@
       "priority": "medium",
       "category": "pekerjaan",
       "expirationSeconds": 50.0,
-      "tags": ["hr", "training"],
+      "tags": ["hr", "training", "tier2"],
       "replyOptions": null,
       "taskTrigger": {
         "taskId": "complete_training",
@@ -800,7 +800,7 @@
       "priority": "high",
       "category": "pekerjaan",
       "expirationSeconds": 40.0,
-      "tags": ["work", "contract", "urgent"],
+      "tags": ["work", "contract", "urgent", "tier2"],
       "replyOptions": null,
       "taskTrigger": {
         "taskId": "sign_vendor_contract",
@@ -820,7 +820,7 @@
       "priority": "low",
       "category": "sosial",
       "expirationSeconds": 80.0,
-      "tags": ["social"],
+      "tags": ["social", "tier1"],
       "replyOptions": [
         { "text": "Oke bro, gw cover. Take your time.", "isCorrect": true, "scoreModifier": 8 },
         { "text": "Sabar ya. Tapi gw juga kerjaan numpuk...", "isCorrect": false, "scoreModifier": -3 },
@@ -839,7 +839,7 @@
       "priority": "low",
       "category": "sosial",
       "expirationSeconds": 70.0,
-      "tags": ["social"],
+      "tags": ["social", "tier1"],
       "replyOptions": [
         { "text": "Waduh. Pura-pura nggak lihat aja deh.", "isCorrect": true, "scoreModifier": 5 },
         { "text": "Siapa orangnya? Jangan-jangan butuh bantuan.", "isCorrect": true, "scoreModifier": 7 },
@@ -858,7 +858,7 @@
       "priority": "low",
       "category": "sosial",
       "expirationSeconds": 90.0,
-      "tags": ["social"],
+      "tags": ["social", "tier1"],
       "replyOptions": [
         { "text": "Mau dong! Nanti gw ambil pas Mahyu nggak lihat.", "isCorrect": true, "scoreModifier": 5 },
         { "text": "Nggak deh, takut ketahuan.", "isCorrect": true, "scoreModifier": 3 },
@@ -877,7 +877,7 @@
       "priority": "low",
       "category": "sosial",
       "expirationSeconds": 75.0,
-      "tags": ["social"],
+      "tags": ["social", "tier1"],
       "replyOptions": [
         { "text": "Kasihan... tapi nggak heran sih.", "isCorrect": true, "scoreModifier": 5 },
         { "text": "2 hari? Itu masih mending. Ada yang cuma 4 jam.", "isCorrect": true, "scoreModifier": 5 },
@@ -896,7 +896,7 @@
       "priority": "medium",
       "category": "pekerjaan",
       "expirationSeconds": 60.0,
-      "tags": ["admin"],
+      "tags": ["admin", "tier1"],
       "replyOptions": [
         { "text": "Saya akan bantu cari. Cek lost and found.", "isCorrect": true, "scoreModifier": 8 },
         { "text": "Beli aja stapler baru, harganya cuma Rp 15rb.", "isCorrect": false, "scoreModifier": -5 },
@@ -915,7 +915,7 @@
       "priority": "low",
       "category": "sosial",
       "expirationSeconds": 65.0,
-      "tags": ["social"],
+      "tags": ["social", "tier1"],
       "replyOptions": [
         { "text": "Aku ikut. Tapi lewat email resmi aja biar sopan.", "isCorrect": true, "scoreModifier": 7 },
         { "text": "Bawa kipas sendiri aja. Di sini komplain nggak pernah digubris.", "isCorrect": true, "scoreModifier": 3 },
@@ -934,7 +934,7 @@
       "priority": "high",
       "category": "pekerjaan",
       "expirationSeconds": 45.0,
-      "tags": ["work", "overtime"],
+      "tags": ["work", "overtime", "tier3"],
       "replyOptions": [
         { "text": "Terima kasih atas undangannya. Saya akan hadir.", "isCorrect": true, "scoreModifier": 8 },
         { "text": "Apakah ini wajib? Karena ditulis \"undangan\".", "isCorrect": false, "scoreModifier": -12 },
@@ -953,7 +953,7 @@
       "priority": "high",
       "category": "utama",
       "expirationSeconds": 40.0,
-      "tags": ["work", "overtime", "urgent"],
+      "tags": ["work", "overtime", "urgent", "tier3"],
       "replyOptions": [
         { "text": "Baik, sedang saya kerjakan sekarang.", "isCorrect": true, "scoreModifier": 8 },
         { "text": "Maaf, saya lupa logout. Sebenarnya sudah pulang.", "isCorrect": false, "scoreModifier": -15 },
@@ -972,7 +972,7 @@
       "priority": "low",
       "category": "sosial",
       "expirationSeconds": 0,
-      "tags": ["social", "info"],
+      "tags": ["social", "info", "tier1"],
       "replyOptions": null,
       "taskTrigger": null
     },
@@ -987,7 +987,7 @@
       "priority": "low",
       "category": "pekerjaan",
       "expirationSeconds": 0,
-      "tags": ["it", "info"],
+      "tags": ["it", "info", "tier1"],
       "replyOptions": null,
       "taskTrigger": null
     },
@@ -1002,7 +1002,7 @@
       "priority": "low",
       "category": "pekerjaan",
       "expirationSeconds": 0,
-      "tags": ["info"],
+      "tags": ["info", "tier1"],
       "replyOptions": null,
       "taskTrigger": null
     },
@@ -1017,7 +1017,7 @@
       "priority": "low",
       "category": "pekerjaan",
       "expirationSeconds": 0,
-      "tags": ["hr", "info"],
+      "tags": ["hr", "info", "tier1"],
       "replyOptions": null,
       "taskTrigger": null
     },
@@ -1032,7 +1032,7 @@
       "priority": "none",
       "category": "sosial",
       "expirationSeconds": 0,
-      "tags": ["social", "info"],
+      "tags": ["social", "info", "tier1"],
       "replyOptions": null,
       "taskTrigger": null
     },
@@ -1047,7 +1047,7 @@
       "priority": "none",
       "category": "sosial",
       "expirationSeconds": 0,
-      "tags": ["info"],
+      "tags": ["info", "tier1"],
       "replyOptions": null,
       "taskTrigger": null
     },
@@ -1062,7 +1062,7 @@
       "priority": "low",
       "category": "pekerjaan",
       "expirationSeconds": 0,
-      "tags": ["info"],
+      "tags": ["info", "tier1"],
       "replyOptions": null,
       "taskTrigger": null
     },
@@ -1077,7 +1077,7 @@
       "priority": "low",
       "category": "pekerjaan",
       "expirationSeconds": 0,
-      "tags": ["info"],
+      "tags": ["info", "tier1"],
       "replyOptions": null,
       "taskTrigger": null
     },
@@ -1092,7 +1092,7 @@
       "priority": "none",
       "category": "sosial",
       "expirationSeconds": 0,
-      "tags": ["social", "info"],
+      "tags": ["social", "info", "tier1"],
       "replyOptions": null,
       "taskTrigger": null
     },
@@ -1107,7 +1107,7 @@
       "priority": "low",
       "category": "pekerjaan",
       "expirationSeconds": 0,
-      "tags": ["hr", "info"],
+      "tags": ["hr", "info", "tier1"],
       "replyOptions": null,
       "taskTrigger": null
     },
@@ -1122,7 +1122,7 @@
       "priority": "high",
       "category": "pekerjaan",
       "expirationSeconds": 55.0,
-      "tags": ["finance", "urgent"],
+      "tags": ["finance", "urgent", "tier3"],
       "replyOptions": null,
       "taskTrigger": {
         "taskId": "approve_budget",
@@ -1144,7 +1144,7 @@
       "priority": "high",
       "category": "utama",
       "expirationSeconds": 45.0,
-      "tags": ["work", "deadline", "urgent"],
+      "tags": ["work", "deadline", "urgent", "tier3"],
       "replyOptions": null,
       "taskTrigger": {
         "taskId": "file_report",
@@ -1166,7 +1166,7 @@
       "priority": "low",
       "category": "pekerjaan",
       "expirationSeconds": 0,
-      "tags": ["info"],
+      "tags": ["info", "tier1"],
       "replyOptions": null,
       "taskTrigger": null
     },
@@ -1182,7 +1182,7 @@
       "priority": "medium",
       "category": "pekerjaan",
       "expirationSeconds": 60.0,
-      "tags": ["it", "security"],
+      "tags": ["it", "security", "tier2"],
       "replyOptions": [
         { "text": "Dicatat.", "isCorrect": true, "scoreModifier": 3, "followUp": { "emailId": "gen_quiz_password", "delaySeconds": 25.0 } },
         { "text": "Bisa kirim ulang nanti?", "isCorrect": false, "scoreModifier": -5 }
@@ -1200,7 +1200,7 @@
       "priority": "medium",
       "category": "pekerjaan",
       "expirationSeconds": 55.0,
-      "tags": ["scheduling", "admin"],
+      "tags": ["scheduling", "admin", "tier2"],
       "replyOptions": [
         { "text": "Dipahami, Ruang C Lantai 5 jam 14:00.", "isCorrect": true, "scoreModifier": 3, "followUp": { "emailId": "gen_quiz_meeting", "delaySeconds": 30.0 } },
         { "text": "Oke.", "isCorrect": true, "scoreModifier": 1, "followUp": { "emailId": "gen_quiz_meeting", "delaySeconds": 30.0 } }
@@ -1218,7 +1218,7 @@
       "priority": "high",
       "category": "pekerjaan",
       "expirationSeconds": 50.0,
-      "tags": ["finance"],
+      "tags": ["finance", "tier3"],
       "replyOptions": [
         { "text": "Sudah dicatat. Tidak akan bocor.", "isCorrect": true, "scoreModifier": 5, "followUp": { "emailId": "gen_quiz_budget", "delaySeconds": 35.0 } },
         { "text": "Kenapa saya yang harus tahu angka ini?", "isCorrect": false, "scoreModifier": -5 }
@@ -1236,7 +1236,7 @@
       "priority": "medium",
       "category": "pekerjaan",
       "expirationSeconds": 55.0,
-      "tags": ["hr", "recruiting"],
+      "tags": ["hr", "recruiting", "tier2"],
       "replyOptions": [
         { "text": "Data diterima dan dicatat.", "isCorrect": true, "scoreModifier": 3, "followUp": { "emailId": "gen_quiz_employee", "delaySeconds": 25.0 } },
         { "text": "Nanti saja saya input.", "isCorrect": false, "scoreModifier": -5 }
@@ -1254,7 +1254,7 @@
       "priority": "low",
       "category": "pekerjaan",
       "expirationSeconds": 65.0,
-      "tags": ["admin"],
+      "tags": ["admin", "tier2"],
       "replyOptions": [
         { "text": "Dicatat: JNE-88291-XK.", "isCorrect": true, "scoreModifier": 3, "followUp": { "emailId": "gen_quiz_delivery", "delaySeconds": 30.0 } },
         { "text": "Oke.", "isCorrect": true, "scoreModifier": 1, "followUp": { "emailId": "gen_quiz_delivery", "delaySeconds": 30.0 } }
@@ -1272,7 +1272,7 @@
       "priority": "medium",
       "category": "pekerjaan",
       "expirationSeconds": 60.0,
-      "tags": ["hr", "policy"],
+      "tags": ["hr", "policy", "tier2"],
       "replyOptions": [
         { "text": "Dipahami. SE-034/HR/2026.", "isCorrect": true, "scoreModifier": 5, "followUp": { "emailId": "gen_quiz_policy", "delaySeconds": 30.0 } },
         { "text": "Saya baca nanti.", "isCorrect": false, "scoreModifier": -8 }
@@ -1290,7 +1290,7 @@
       "priority": "low",
       "category": "pekerjaan",
       "expirationSeconds": 65.0,
-      "tags": ["hr", "benefits"],
+      "tags": ["hr", "benefits", "tier2"],
       "replyOptions": [
         { "text": "Dicatat: Rp 3.200.000.", "isCorrect": true, "scoreModifier": 3, "followUp": { "emailId": "gen_quiz_insurance", "delaySeconds": 25.0 } },
         { "text": "Kenapa saya yang harus ingat?", "isCorrect": false, "scoreModifier": -5 }
@@ -1308,12 +1308,322 @@
       "priority": "medium",
       "category": "pekerjaan",
       "expirationSeconds": 55.0,
-      "tags": ["hr", "vacation"],
+      "tags": ["hr", "vacation", "tier3"],
       "replyOptions": [
         { "text": "Dicatat: 4 hari cuti tersisa.", "isCorrect": true, "scoreModifier": 3, "followUp": { "emailId": "gen_quiz_leave", "delaySeconds": 20.0 } },
         { "text": "Oke.", "isCorrect": true, "scoreModifier": 1, "followUp": { "emailId": "gen_quiz_leave", "delaySeconds": 20.0 } }
       ],
       "taskTrigger": null
+    },
+
+    {
+      "id": "gen_spot_invoice",
+      "sender": "Keuangan",
+      "senderAddress": "keuangan@sleepdep.co.id",
+      "department": "Keuangan",
+      "subject": "Verifikasi Data Invoice - Cari Kesalahan",
+      "body": "Ada laporan bahwa beberapa data invoice bulan ini mengandung kesalahan input.\n\nCocokkan data asli dengan data di sistem. Tandai yang salah.\n\nKalau salah satu lolos, kita bisa kena audit.",
+      "type": "task",
+      "priority": "medium",
+      "category": "pekerjaan",
+      "expirationSeconds": 55.0,
+      "tags": ["finance", "tier2"],
+      "replyOptions": null,
+      "taskTrigger": {
+        "taskId": "approve_budget",
+        "description": "Verifikasi data invoice dan cari kesalahan",
+        "autoCompleteOnOpen": false,
+        "timeoutSeconds": 40.0,
+        "minigameId": "spot_error",
+        "minigameDifficulty": "medium"
+      }
+    },
+    {
+      "id": "gen_spot_employee_data",
+      "sender": "Rina Hartati",
+      "senderAddress": "r.hartati@sleepdep.co.id",
+      "department": "HR",
+      "subject": "Cek Ulang Data Karyawan - Ada Typo",
+      "body": "Sistem HRIS menunjukkan beberapa data karyawan yang tidak cocok dengan dokumen asli.\n\nCari dan tandai data yang salah sebelum laporan dikirim ke Disnaker.\n\nIni urgent — Mahyu sudah tanya 2 kali.",
+      "type": "task",
+      "priority": "high",
+      "category": "utama",
+      "expirationSeconds": 45.0,
+      "tags": ["hr", "urgent", "tier3"],
+      "replyOptions": null,
+      "taskTrigger": {
+        "taskId": "file_report",
+        "description": "Cari kesalahan data karyawan di HRIS",
+        "autoCompleteOnOpen": false,
+        "timeoutSeconds": 35.0,
+        "minigameId": "spot_error",
+        "minigameDifficulty": "hard"
+      }
+    },
+    {
+      "id": "gen_approval_procurement",
+      "sender": "Admin",
+      "senderAddress": "admin@sleepdep.co.id",
+      "department": "Admin",
+      "subject": "Batch Approval Pengadaan - Cepat",
+      "body": "Ada tumpukan dokumen pengadaan yang butuh approval.\n\nIkuti aturan yang berlaku dan approve atau tolak masing-masing dokumen.\n\nJangan sampai salah — yang salah approve ditanggung kamu.",
+      "type": "task",
+      "priority": "medium",
+      "category": "pekerjaan",
+      "expirationSeconds": 50.0,
+      "tags": ["admin", "tier1"],
+      "replyOptions": null,
+      "taskTrigger": {
+        "taskId": "approve_budget",
+        "description": "Proses batch approval dokumen pengadaan",
+        "autoCompleteOnOpen": false,
+        "timeoutSeconds": 38.0,
+        "minigameId": "approval_rush",
+        "minigameDifficulty": "easy"
+      }
+    },
+    {
+      "id": "gen_approval_vendor",
+      "sender": "Legal",
+      "senderAddress": "legal@sleepdep.co.id",
+      "department": "Legal",
+      "subject": "Review & Approve Kontrak Vendor Batch",
+      "body": "Beberapa kontrak vendor perlu di-review sesuai aturan departemen.\n\nPerhatikan divisi pengaju dan setujui hanya yang sesuai kebijakan.\n\nKesalahan approval bisa berakibat hukum.",
+      "type": "task",
+      "priority": "high",
+      "category": "pekerjaan",
+      "expirationSeconds": 50.0,
+      "tags": ["work", "contract", "tier2"],
+      "replyOptions": null,
+      "taskTrigger": {
+        "taskId": "approve_budget",
+        "description": "Review dan approve kontrak vendor",
+        "autoCompleteOnOpen": false,
+        "timeoutSeconds": 35.0,
+        "minigameId": "approval_rush",
+        "minigameDifficulty": "medium"
+      }
+    },
+    {
+      "id": "gen_approval_expired",
+      "sender": "Keuangan",
+      "senderAddress": "keuangan@sleepdep.co.id",
+      "department": "Keuangan",
+      "subject": "URGENT: Audit Kontrak - Cek Expired & Budget",
+      "body": "Auditor minta semua kontrak aktif diverifikasi.\n\nTolak yang sudah expired atau melebihi batas budget. Sisanya approve.\n\nDeadline: SEKARANG.",
+      "type": "task",
+      "priority": "critical",
+      "category": "utama",
+      "expirationSeconds": 40.0,
+      "tags": ["finance", "urgent", "critical", "tier3"],
+      "replyOptions": null,
+      "taskTrigger": {
+        "taskId": "approve_budget",
+        "description": "Audit kontrak — cek expired dan budget",
+        "autoCompleteOnOpen": false,
+        "timeoutSeconds": 30.0,
+        "minigameId": "approval_rush",
+        "minigameDifficulty": "hard"
+      }
+    },
+    {
+      "id": "gen_spot_simple",
+      "sender": "Admin",
+      "senderAddress": "admin@sleepdep.co.id",
+      "department": "Admin",
+      "subject": "Cek Data Alamat Pengiriman",
+      "body": "Beberapa alamat pengiriman di sistem tidak cocok dengan data pelanggan.\n\nBantu cek dan tandai yang salah sebelum barang dikirim.",
+      "type": "task",
+      "priority": "low",
+      "category": "pekerjaan",
+      "expirationSeconds": 60.0,
+      "tags": ["admin", "tier1"],
+      "replyOptions": null,
+      "taskTrigger": {
+        "taskId": "approve_equipment",
+        "description": "Cek kecocokan data alamat pengiriman",
+        "autoCompleteOnOpen": false,
+        "timeoutSeconds": 42.0,
+        "minigameId": "spot_error",
+        "minigameDifficulty": "easy"
+      }
+    },
+
+    {
+      "id": "gen_spot_contract",
+      "sender": "Legal",
+      "senderAddress": "legal@sleepdep.co.id",
+      "department": "Legal",
+      "subject": "Cek Kontrak Vendor - Ada Typo Sebelum TTD",
+      "body": "Kontrak vendor senilai Rp 2,3 miliar siap ditandatangani. Tapi ada laporan ada typo di beberapa field.\n\nCocokkan data kontrak dengan dokumen asli. Kalau ada yang salah, tandai SEBELUM direksi tanda tangan.\n\nKalau lolos dan ternyata salah, kamu yang tanggung jawab secara hukum.\n\n— Legal Department",
+      "type": "task",
+      "priority": "high",
+      "category": "pekerjaan",
+      "expirationSeconds": 50.0,
+      "tags": ["work", "contract", "tier2"],
+      "replyOptions": null,
+      "taskTrigger": {
+        "taskId": "approve_budget",
+        "description": "Cek typo pada kontrak vendor sebelum ditandatangani",
+        "autoCompleteOnOpen": false,
+        "timeoutSeconds": 36.0,
+        "minigameId": "spot_error",
+        "minigameDifficulty": "medium"
+      }
+    },
+    {
+      "id": "gen_spot_payroll",
+      "sender": "Payroll",
+      "senderAddress": "payroll@sleepdep.co.id",
+      "department": "HR",
+      "subject": "URGENT: Verifikasi Data Payroll - Selisih Terdeteksi",
+      "body": "Sistem payroll mendeteksi selisih angka di beberapa entri gaji bulan ini. Kalau tidak diperbaiki sebelum proses transfer, karyawan bisa terima jumlah yang salah.\n\nDan kalau itu terjadi — yang disalahkan bukan sistem, tapi kamu.\n\nCari selisihnya. Sekarang.\n\n— Payroll",
+      "type": "task",
+      "priority": "critical",
+      "category": "utama",
+      "expirationSeconds": 42.0,
+      "tags": ["finance", "urgent", "tier3"],
+      "replyOptions": null,
+      "taskTrigger": {
+        "taskId": "complete_expense_report",
+        "description": "Verifikasi data payroll dan cari selisih angka",
+        "autoCompleteOnOpen": false,
+        "timeoutSeconds": 30.0,
+        "minigameId": "spot_error",
+        "minigameDifficulty": "hard"
+      }
+    },
+    {
+      "id": "gen_spot_shipping",
+      "sender": "Admin",
+      "senderAddress": "admin@sleepdep.co.id",
+      "department": "Admin",
+      "subject": "Cocokkan Nomor Resi Pengiriman",
+      "body": "Ada 12 paket masuk hari ini tapi nomor resi di sistem tidak cocok dengan label fisik.\n\nBantu cocokkan sebelum kurir pergi. Kalau salah terima, pengembaliannya ribet dan biayanya ditanggung departemen.\n\nYaitu kamu.",
+      "type": "task",
+      "priority": "low",
+      "category": "pekerjaan",
+      "expirationSeconds": 55.0,
+      "tags": ["admin", "tier1"],
+      "replyOptions": null,
+      "taskTrigger": {
+        "taskId": "approve_equipment",
+        "description": "Cocokkan nomor resi pengiriman dengan data sistem",
+        "autoCompleteOnOpen": false,
+        "timeoutSeconds": 40.0,
+        "minigameId": "spot_error",
+        "minigameDifficulty": "easy"
+      }
+    },
+    {
+      "id": "gen_approval_travel",
+      "sender": "Keuangan",
+      "senderAddress": "keuangan@sleepdep.co.id",
+      "department": "Keuangan",
+      "subject": "Batch Approval Klaim Perjalanan Dinas",
+      "body": "Tumpukan klaim perjalanan dinas menunggu approval. Masing-masing harus dicek divisi pengajunya.\n\nApprove hanya yang sesuai kebijakan divisi. Tolak sisanya — tanpa pengecualian.\n\nKalau ada yang komplain, arahkan ke Mahyu. Biar dia yang jelaskan.\n\n— Departemen Keuangan",
+      "type": "task",
+      "priority": "medium",
+      "category": "pekerjaan",
+      "expirationSeconds": 52.0,
+      "tags": ["finance", "tier2"],
+      "replyOptions": null,
+      "taskTrigger": {
+        "taskId": "approve_budget",
+        "description": "Approve atau tolak klaim perjalanan dinas berdasarkan divisi",
+        "autoCompleteOnOpen": false,
+        "timeoutSeconds": 36.0,
+        "minigameId": "approval_rush",
+        "minigameDifficulty": "medium"
+      }
+    },
+    {
+      "id": "gen_approval_overtime",
+      "sender": "Mahyu",
+      "senderAddress": "m.mahyu@sleepdep.co.id",
+      "department": "Supervisor",
+      "subject": "URGENT: Approval Lembur - Cek Kuota & Expired",
+      "body": "Klaim lembur menumpuk. Beberapa sudah expired, beberapa melebihi kuota bulanan.\n\nApprove yang valid. Tolak yang expired atau melebihi kuota. Jangan kasihan — ini soal budget.\n\nKalau budget lembur jebol, gajimu yang dipotong.\n\n— Mahyu",
+      "type": "task",
+      "priority": "high",
+      "category": "utama",
+      "expirationSeconds": 45.0,
+      "tags": ["work", "overtime", "urgent", "tier3"],
+      "replyOptions": null,
+      "taskTrigger": {
+        "taskId": "approve_budget",
+        "description": "Approve lembur — tolak jika expired atau melebihi kuota",
+        "autoCompleteOnOpen": false,
+        "timeoutSeconds": 30.0,
+        "minigameId": "approval_rush",
+        "minigameDifficulty": "hard"
+      }
+    },
+    {
+      "id": "gen_approval_supplies",
+      "sender": "Admin",
+      "senderAddress": "admin@sleepdep.co.id",
+      "department": "Admin",
+      "subject": "Approval Pengadaan ATK - Cek Budget",
+      "body": "Beberapa divisi mengajukan pengadaan alat tulis kantor. Budget ATK bulan ini terbatas.\n\nApprove yang di bawah budget. Tolak yang di atas.\n\nKalau ragu, tolak saja. Lebih aman.\n\n— Admin",
+      "type": "task",
+      "priority": "low",
+      "category": "pekerjaan",
+      "expirationSeconds": 58.0,
+      "tags": ["admin", "tier1"],
+      "replyOptions": null,
+      "taskTrigger": {
+        "taskId": "approve_equipment",
+        "description": "Approve pengadaan ATK — tolak di atas budget",
+        "autoCompleteOnOpen": false,
+        "timeoutSeconds": 40.0,
+        "minigameId": "approval_rush",
+        "minigameDifficulty": "easy"
+      }
+    },
+    {
+      "id": "gen_spot_attendance",
+      "sender": "Rina Hartati",
+      "senderAddress": "r.hartati@sleepdep.co.id",
+      "department": "HR",
+      "subject": "Cocokkan Data Absensi Karyawan",
+      "body": "Data absensi dari mesin fingerprint tidak cocok dengan catatan manual supervisor.\n\nCari mana yang salah dan tandai sebelum laporan bulanan dikirim ke manajemen.\n\nMahyu sudah tanya 3 kali soal ini. Jangan buat dia tanya ke-4 kalinya.\n\n— Rina Hartati, HR",
+      "type": "task",
+      "priority": "medium",
+      "category": "pekerjaan",
+      "expirationSeconds": 50.0,
+      "tags": ["hr", "tier2"],
+      "replyOptions": null,
+      "taskTrigger": {
+        "taskId": "file_report",
+        "description": "Cocokkan data absensi karyawan dari dua sumber",
+        "autoCompleteOnOpen": false,
+        "timeoutSeconds": 35.0,
+        "minigameId": "spot_error",
+        "minigameDifficulty": "medium"
+      }
+    },
+    {
+      "id": "gen_approval_leave",
+      "sender": "Rina Hartati",
+      "senderAddress": "r.hartati@sleepdep.co.id",
+      "department": "HR",
+      "subject": "Batch Approval Cuti - Hanya Karyawan Tertentu",
+      "body": "Ada tumpukan pengajuan cuti yang menunggu approval. Tapi tidak semua boleh disetujui.\n\nApprove hanya untuk karyawan yang memenuhi syarat sesuai daftar. Tolak sisanya — mau alasannya sebaik apapun.\n\nIni kebijakan, bukan perasaan.\n\n— Rina Hartati, HR",
+      "type": "task",
+      "priority": "medium",
+      "category": "pekerjaan",
+      "expirationSeconds": 52.0,
+      "tags": ["hr", "vacation", "tier2"],
+      "replyOptions": null,
+      "taskTrigger": {
+        "taskId": "approve_vacation",
+        "description": "Approve cuti — hanya untuk karyawan yang memenuhi syarat",
+        "autoCompleteOnOpen": false,
+        "timeoutSeconds": 35.0,
+        "minigameId": "approval_rush",
+        "minigameDifficulty": "medium"
+      }
     }
   ]
 }

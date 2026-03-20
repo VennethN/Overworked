@@ -21,6 +21,9 @@ namespace Overworked.Spawner
         // Active email pools for the current session
         private string[] _activePools;
 
+        // When set, only emails with at least one of these tags can spawn
+        private string[] _spawnTagFilter;
+
         // When set, interval/event spawns pick only from these ids (still filtered by rule type/tags)
         private string[] _spawnEmailIdWhitelist;
 
@@ -86,6 +89,14 @@ namespace Overworked.Spawner
         {
             _activePools = pools;
             Debug.Log($"EmailSpawner: Active pools set to [{string.Join(", ", pools)}]");
+        }
+
+        /// <summary>
+        /// Only spawn emails that have at least one of these tags. Null or empty = no restriction.
+        /// </summary>
+        public void SetSpawnEmailTagFilter(string[] tags)
+        {
+            _spawnTagFilter = (tags != null && tags.Length > 0) ? (string[])tags.Clone() : null;
         }
 
         /// <summary>
@@ -167,21 +178,39 @@ namespace Overworked.Spawner
         {
             if (EmailManager.Instance == null) return;
 
-            EmailDefinition def;
-            if (_spawnEmailIdWhitelist != null && _spawnEmailIdWhitelist.Length > 0)
+            // Retry loop: find an email matching rule filters AND day-level tier tags
+            for (int attempt = 0; attempt < 10; attempt++)
             {
-                def = EmailManager.Instance.Database.GetRandomFromIdList(
-                    _spawnEmailIdWhitelist, rule.emailPool, rule.emailTags);
-            }
-            else
-            {
-                def = EmailManager.Instance.Database.GetRandomFromPools(
-                    _activePools, rule.emailPool, rule.emailTags);
-            }
+                EmailDefinition def;
+                if (_spawnEmailIdWhitelist != null && _spawnEmailIdWhitelist.Length > 0)
+                {
+                    def = EmailManager.Instance.Database.GetRandomFromIdList(
+                        _spawnEmailIdWhitelist, rule.emailPool, rule.emailTags);
+                }
+                else
+                {
+                    def = EmailManager.Instance.Database.GetRandomFromPools(
+                        _activePools, rule.emailPool, rule.emailTags);
+                }
 
-            if (def == null) return; // No matching emails — silently skip
+                if (def == null) return;
 
-            EmailManager.Instance.ReceiveEmail(def);
+                // Day-level tag filter: email must have at least one of the allowed tier tags
+                if (_spawnTagFilter != null && _spawnTagFilter.Length > 0 && !HasAnyTag(def, _spawnTagFilter))
+                    continue;
+
+                EmailManager.Instance.ReceiveEmail(def);
+                return;
+            }
+        }
+
+        private static bool HasAnyTag(EmailDefinition def, string[] requiredTags)
+        {
+            if (def.tags == null) return false;
+            foreach (string required in requiredTags)
+                foreach (string tag in def.tags)
+                    if (tag == required) return true;
+            return false;
         }
     }
 }
