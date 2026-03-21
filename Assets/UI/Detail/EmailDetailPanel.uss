@@ -53,8 +53,14 @@
 }
 
 .toolbar-btn--delete:hover {
-    background-color: rgba(248,113,113,0.1);
-    border-color: rgba(248,113,113,0.2);
+    background-color: rgba(248,113,113,0.12);
+    border-color: rgba(248,113,113,0.25);
+    color: var(--color-danger);
+}
+
+.toolbar-btn--delete:active {
+    scale: 0.94 0.94;
+    background-color: rgba(248,113,113,0.2);
 }
 
 /* ── Header ── */
@@ -80,6 +86,9 @@
     font-size: 14px;
     color: var(--color-text-on-accent);
     -unity-font-style: bold;
+    -unity-text-align: middle-center;
+    width: 100%;
+    height: 100%;
 }
 
 .detail-header-text {
@@ -270,12 +279,13 @@
 /* ── Inline Reply ── */
 /* Base styles only — transition classes are in Common.uss */
 .inline-reply-slot {
-    margin: 6px 20px 12px 20px;
-    padding: 12px;
+    margin: 10px 20px 16px 20px;
+    padding: 14px;
     background-color: var(--color-body-bg);
     border-radius: var(--radius-md);
     border-width: 1px;
     border-color: var(--color-accent);
+    overflow: hidden;
 }
 
 .inline-reply-slot .reply-prompt {
@@ -287,8 +297,8 @@
 }
 
 .inline-reply-slot .reply-option-btn {
-    padding: 8px 12px;
-    margin-bottom: 6px;
+    padding: 10px 14px;
+    margin-bottom: 8px;
     background-color: var(--color-bg-surface);
     border-radius: var(--radius-md);
     border-width: 1px;
@@ -298,6 +308,7 @@
     -unity-text-align: middle-left;
     cursor: link;
     white-space: normal;
+    overflow: hidden;
     scale: 1 1;
     transition: background-color 120ms ease, border-color 120ms ease, color 120ms ease, scale 80ms ease-out;
 }

@@ -109,10 +109,45 @@ namespace Overworked.UI
 
             var nameInput = new TextField();
             nameInput.label = "Nama:";
-            nameInput.value = string.IsNullOrEmpty(save.playerName) ? "Pegawai Baru" : save.playerName;
+            nameInput.value = string.IsNullOrEmpty(save.playerName) ? "" : save.playerName;
             nameInput.style.width = 240;
             nameInput.style.marginBottom = 24;
             container.Add(nameInput);
+
+            // Placeholder text
+            var placeholder = new Label("Masukkan namamu...");
+            placeholder.style.position = Position.Absolute;
+            placeholder.style.left = 8;
+            placeholder.style.top = 5;
+            placeholder.style.fontSize = 13;
+            placeholder.style.color = new Color(0.45f, 0.5f, 0.58f, 0.7f);
+            placeholder.pickingMode = PickingMode.Ignore;
+
+            nameInput.schedule.Execute(() => {
+                var inputPart = nameInput.Q("unity-text-input");
+                if (inputPart != null)
+                {
+                    inputPart.style.overflow = Overflow.Visible;
+                    if (string.IsNullOrEmpty(nameInput.value))
+                        inputPart.Add(placeholder);
+                }
+            });
+
+            nameInput.RegisterValueChangedCallback(evt => {
+                if (string.IsNullOrEmpty(evt.newValue))
+                {
+                    var inputPart = nameInput.Q("unity-text-input");
+                    if (inputPart != null && placeholder.parent != inputPart)
+                        inputPart.Add(placeholder);
+                }
+                else
+                {
+                    placeholder.RemoveFromHierarchy();
+                }
+            });
+
+            // Auto-focus the text field so keyboard works immediately (handles WebGL canvas focus too)
+            WebGLTextFieldFix.FocusTextField(nameInput);
 
             nameInput.schedule.Execute(() => {
                 var labelPart = nameInput.Q<Label>();
@@ -145,6 +180,7 @@ namespace Overworked.UI
             });
 
             var continueBtn = new Button(() => {
+                WebGLTextFieldFix.StopKeepFocus(nameInput);
                 var s = SaveManager.Load();
                 s.playerName = string.IsNullOrWhiteSpace(nameInput.value) ? "Pegawai Baru" : nameInput.value;
                 SaveManager.Save(s);
@@ -158,7 +194,7 @@ namespace Overworked.UI
             continueBtn.style.paddingLeft = 24;
             continueBtn.style.paddingRight = 24;
             continueBtn.style.fontSize = 14;
-            continueBtn.style.backgroundColor = new Color(0.29f, 0.87f, 0.5f, 1f);
+            continueBtn.style.backgroundColor = new Color(0.15f, 0.65f, 0.35f, 1f);
             continueBtn.style.color = Color.white;
             continueBtn.style.borderTopWidth = 0;
             continueBtn.style.borderBottomWidth = 0;
@@ -174,11 +210,11 @@ namespace Overworked.UI
             var quitBtn = new Button(() => Application.Quit());
             quitBtn.text = "Keluar";
             quitBtn.style.marginTop = 16;
-            quitBtn.style.paddingTop = 8;
-            quitBtn.style.paddingBottom = 8;
-            quitBtn.style.paddingLeft = 20;
-            quitBtn.style.paddingRight = 20;
-            quitBtn.style.fontSize = 12;
+            quitBtn.style.paddingTop = 10;
+            quitBtn.style.paddingBottom = 10;
+            quitBtn.style.paddingLeft = 24;
+            quitBtn.style.paddingRight = 24;
+            quitBtn.style.fontSize = 14;
             quitBtn.style.backgroundColor = new Color(0.85f, 0.25f, 0.25f, 1f);
             quitBtn.style.color = Color.white;
             quitBtn.style.borderTopWidth = 0;
@@ -359,6 +395,16 @@ namespace Overworked.UI
         private void ShowDaySelect()
         {
             _mainView.style.display = DisplayStyle.None;
+            _daySelectView.style.display = DisplayStyle.Flex;
+        }
+
+        public void ShowDaySelectPublic()
+        {
+            _nameInputView.style.display = DisplayStyle.None;
+            _mainView.style.display = DisplayStyle.None;
+            _creditsView.style.display = DisplayStyle.None;
+            _daySelectView.Clear();
+            BuildDaySelectView(_daySelectView);
             _daySelectView.style.display = DisplayStyle.Flex;
         }
 
@@ -580,77 +626,16 @@ namespace Overworked.UI
                 container.Add(completeHint);
             }
 
-            // Reset story button
-            var resetRow = new VisualElement();
-            resetRow.style.flexDirection = FlexDirection.Row;
-            resetRow.style.justifyContent = Justify.Center;
-            resetRow.style.marginTop = 16;
-            resetRow.style.width = 400;
-
-            // Declare ref first so lambda can capture it
-            Button resetBtnRef = null;
-
-            var resetBtn = new Button();
-            resetBtnRef = resetBtn;
-            resetBtn.text = "Reset Cerita";
-            resetBtn.RegisterCallback<ClickEvent>(_ =>
+            // Reset story hint (button is now in Settings)
+            if (allComplete)
             {
-                // Replace button with confirmation UI
-                resetRow.Clear();
-                resetRow.style.flexDirection = FlexDirection.Column;
-                resetRow.style.alignItems = Align.Center;
-
-                var confirmLabel = new Label("Yakin reset semua progress cerita?");
-                confirmLabel.style.fontSize = 11;
-                confirmLabel.style.color = new Color(0.973f, 0.443f, 0.443f, 1f);
-                confirmLabel.style.marginBottom = 8;
-                resetRow.Add(confirmLabel);
-
-                var btnGroup = new VisualElement();
-                btnGroup.style.flexDirection = FlexDirection.Row;
-
-                var confirmBtn = new Button(() =>
-                {
-                    var s = SaveManager.Load();
-                    s.ResetStory();
-                    SaveManager.Save(s);
-                    _daySelectView.Clear();
-                    BuildDaySelectView(_daySelectView);
-                });
-                confirmBtn.text = "Ya, Reset";
-                StyleResetButton(confirmBtn, new Color(0.85f, 0.25f, 0.25f, 1f), Color.white);
-                confirmBtn.style.marginRight = 8;
-                btnGroup.Add(confirmBtn);
-
-                var cancelBtn = new Button(() =>
-                {
-                    resetRow.Clear();
-                    resetRow.style.flexDirection = FlexDirection.Row;
-                    resetRow.Add(resetBtnRef);
-                });
-                cancelBtn.text = "Batal";
-                StyleResetButton(cancelBtn, new Color(0.235f, 0.306f, 0.416f, 1f), new Color(0.58f, 0.639f, 0.722f, 1f));
-                btnGroup.Add(cancelBtn);
-
-                resetRow.Add(btnGroup);
-            });
-            resetBtn.style.paddingTop = 7;
-            resetBtn.style.paddingBottom = 7;
-            resetBtn.style.paddingLeft = 16;
-            resetBtn.style.paddingRight = 16;
-            resetBtn.style.fontSize = 11;
-            resetBtn.style.backgroundColor = new Color(0.85f, 0.25f, 0.25f, 1f);
-            resetBtn.style.color = Color.white;
-            resetBtn.style.borderTopWidth = 0;
-            resetBtn.style.borderBottomWidth = 0;
-            resetBtn.style.borderLeftWidth = 0;
-            resetBtn.style.borderRightWidth = 0;
-            resetBtn.style.borderTopLeftRadius = 5;
-            resetBtn.style.borderTopRightRadius = 5;
-            resetBtn.style.borderBottomLeftRadius = 5;
-            resetBtn.style.borderBottomRightRadius = 5;
-            resetRow.Add(resetBtn);
-            container.Add(resetRow);
+                var resetHint = new Label("Gunakan Settings untuk reset cerita.");
+                resetHint.style.fontSize = 10;
+                resetHint.style.color = new Color(0.392f, 0.455f, 0.545f, 1f);
+                resetHint.style.marginTop = 8;
+                resetHint.style.unityTextAlign = TextAnchor.MiddleCenter;
+                container.Add(resetHint);
+            }
 
             // Achievements section
             if (save.endingsUnlocked.Count > 0)

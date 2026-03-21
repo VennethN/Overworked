@@ -14,7 +14,7 @@ public class UIScaleController : MonoBehaviour
     public UIDocument uiDocument;
 
     [Header("Scale Settings")]
-    [Range(0.5f, 2f)] public float uiScale = 1f;
+    [Range(0.5f, 2f)] public float uiScale = 1.5f;
     public float scaleStep = 0.1f;
     public float minScale = 0.5f;
     public float maxScale = 2f;
@@ -37,7 +37,7 @@ public class UIScaleController : MonoBehaviour
 
     void OnEnable()
     {
-        uiScale = PlayerPrefs.GetFloat(PREFS_KEY, 1f);
+        uiScale = PlayerPrefs.GetFloat(PREFS_KEY, 1.4f);
         ApplyScale();
     }
 

@@ -78,6 +78,11 @@
     --color-shadow: rgba(0,0,0,0.5);
 }
 
+/* ── TextField cursor (caret) ── */
+.unity-base-text-field__input {
+    -unity-cursor-color: white;
+}
+
 .full-screen {
     flex-grow: 1;
     background-color: var(--color-bg-app);

@@ -182,7 +182,8 @@ namespace Overworked.Minigames
             _elapsed = 0f;
             _finished = false;
             _startTime = Time.time;
-            _inputField?.Focus();
+            // Focus with WebGL canvas handling
+            Overworked.UI.WebGLTextFieldFix.FocusTextField(_inputField);
         }
 
         public void Tick(float deltaTime)
@@ -232,6 +233,7 @@ namespace Overworked.Minigames
         public void Cleanup()
         {
             _finished = true;
+            Overworked.UI.WebGLTextFieldFix.StopKeepFocus(_inputField);
         }
     }
 }

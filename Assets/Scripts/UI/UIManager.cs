@@ -57,6 +57,8 @@ namespace Overworked.UI
 
         private void OnEnable()
         {
+            WebGLTextFieldFix.InitKeyboardCapture();
+
             var root = uiDocument.rootVisualElement;
             _docRoot = root;
             _uiRoot = root.Q("root");
@@ -382,6 +384,23 @@ namespace Overworked.UI
                 spacerBtn.style.width = 8;
                 btnRow.Add(spacerBtn);
             }
+            else
+            {
+                // Story mode: go to day selection instead of main menu
+                var daySelectBtn = CreateOverlayButton("Pilih Level", new Color(0.063f, 0.725f, 0.506f, 1f),
+                    () =>
+                    {
+                        HideGameOver();
+                        ShowModeSelect();
+                        // Navigate directly to day select
+                        _modeSelect?.ShowDaySelectPublic();
+                    });
+                btnRow.Add(daySelectBtn);
+
+                var spacerBtn = new VisualElement();
+                spacerBtn.style.width = 8;
+                btnRow.Add(spacerBtn);
+            }
 
             var menuBtn = CreateOverlayButton("Menu", new Color(0.235f, 0.306f, 0.416f, 1f),
                 () => GameManager.Instance?.ReturnToMenu());
@@ -616,6 +635,53 @@ namespace Overworked.UI
             }
             else
             {
+                // Reset Story button (menu-only)
+                var resetStoryBtn = CreateOverlayButton("Reset Cerita", new Color(0.85f, 0.25f, 0.25f, 1f), () => {});
+                resetStoryBtn.style.marginTop = 16;
+                resetStoryBtn.style.width = Length.Percent(100);
+
+                var resetConfirmRow = new VisualElement();
+                resetConfirmRow.style.display = DisplayStyle.None;
+                resetConfirmRow.style.alignItems = Align.Center;
+                resetConfirmRow.style.marginTop = 8;
+
+                resetStoryBtn.clicked += () =>
+                {
+                    resetStoryBtn.style.display = DisplayStyle.None;
+                    resetConfirmRow.style.display = DisplayStyle.Flex;
+                };
+
+                var confirmLabel = new Label("Yakin reset semua progress cerita?");
+                confirmLabel.style.fontSize = 11;
+                confirmLabel.style.color = new Color(0.973f, 0.443f, 0.443f, 1f);
+                confirmLabel.style.marginBottom = 8;
+                resetConfirmRow.Add(confirmLabel);
+
+                var btnGroup = new VisualElement();
+                btnGroup.style.flexDirection = FlexDirection.Row;
+
+                var yesBtn = CreateOverlayButton("Ya, Reset", new Color(0.85f, 0.25f, 0.25f, 1f), () =>
+                {
+                    var s = SaveManager.Load();
+                    s.ResetStory();
+                    SaveManager.Save(s);
+                    HideSettings();
+                    ShowModeSelect();
+                });
+                yesBtn.style.marginRight = 8;
+                btnGroup.Add(yesBtn);
+
+                var noBtn = CreateOverlayButton("Batal", new Color(0.235f, 0.306f, 0.416f, 1f), () =>
+                {
+                    resetConfirmRow.style.display = DisplayStyle.None;
+                    resetStoryBtn.style.display = DisplayStyle.Flex;
+                });
+                btnGroup.Add(noBtn);
+
+                resetConfirmRow.Add(btnGroup);
+                container.Add(resetStoryBtn);
+                container.Add(resetConfirmRow);
+
                 // Close button (menu-only)
                 var closeBtn = CreateOverlayButton("Close", new Color(0.376f, 0.647f, 0.98f, 1f), HideSettings);
                 closeBtn.style.marginTop = 8;
