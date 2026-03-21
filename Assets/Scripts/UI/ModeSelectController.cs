@@ -119,7 +119,9 @@ namespace Overworked.UI
             var placeholder = new Label("Masukkan namamu...");
             placeholder.style.position = Position.Absolute;
             placeholder.style.left = 8;
-            placeholder.style.top = 5;
+            placeholder.style.top = 0;
+            placeholder.style.bottom = 0;
+            placeholder.style.unityTextAlign = TextAnchor.MiddleLeft;
             placeholder.style.fontSize = 13;
             placeholder.style.color = new Color(0.45f, 0.5f, 0.58f, 0.7f);
             placeholder.pickingMode = PickingMode.Ignore;
