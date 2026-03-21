@@ -77,7 +77,7 @@ namespace Overworked.UI
             {
                 // Only re-focus if the field is still attached and visible
                 if (field.panel == null) return;
-                if (field.resolvedStyle.display == DisplayStyle.None) return;
+                if (!IsVisibleInHierarchy(field)) return;
                 if (!field.enabledInHierarchy) return;
 
                 WebGLFocusCanvas();
@@ -112,11 +112,21 @@ namespace Overworked.UI
             field.schedule.Execute(() =>
             {
                 if (field.panel == null) return;
-                if (field.resolvedStyle.display == DisplayStyle.None) return;
+                if (!IsVisibleInHierarchy(field)) return;
                 if (!field.enabledInHierarchy) return;
                 field.Focus();
             }).ExecuteLater(50);
         }
 #endif
+
+        private static bool IsVisibleInHierarchy(VisualElement element)
+        {
+            for (var e = element; e != null; e = e.parent)
+            {
+                if (e.resolvedStyle.display == DisplayStyle.None)
+                    return false;
+            }
+            return true;
+        }
     }
 }
