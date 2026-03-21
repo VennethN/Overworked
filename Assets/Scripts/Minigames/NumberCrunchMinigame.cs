@@ -17,6 +17,8 @@ namespace Overworked.Minigames
         private float _elapsed;
         private bool _finished;
         private float _startTime;
+        private float _cooldownRemaining;
+        private const float WRONG_COOLDOWN = 1.0f;
 
         private Label _problemLabel;
         private Label _progressLabel;
@@ -37,16 +39,16 @@ namespace Overworked.Minigames
             switch (_difficulty)
             {
                 case "easy":
-                    _totalProblems = 3;
-                    _timeLimit = 20f;
+                    _totalProblems = 1;
+                    _timeLimit = 10f;
                     break;
                 case "hard":
-                    _totalProblems = 6;
-                    _timeLimit = 25f;
+                    _totalProblems = 2;
+                    _timeLimit = 12f;
                     break;
                 default:
-                    _totalProblems = 4;
-                    _timeLimit = 22f;
+                    _totalProblems = 3;
+                    _timeLimit = 13f;
                     break;
             }
 
@@ -149,6 +151,7 @@ namespace Overworked.Minigames
             _elapsed = 0f;
             _finished = false;
             _currentProblem = 0;
+            _cooldownRemaining = 0f;
             _startTime = Time.time;
             GenerateProblem();
         }
@@ -158,6 +161,18 @@ namespace Overworked.Minigames
             if (_finished) return;
 
             _elapsed += deltaTime;
+
+            if (_cooldownRemaining > 0f)
+            {
+                _cooldownRemaining -= deltaTime;
+                if (_cooldownRemaining <= 0f)
+                {
+                    _cooldownRemaining = 0f;
+                    _feedbackLabel.text = "";
+                    SetChoicesEnabled(true);
+                }
+            }
+
             float remaining = _timeLimit - _elapsed;
 
             if (remaining <= 0f)
@@ -251,7 +266,6 @@ namespace Overworked.Minigames
                 }
                 else
                 {
-                    // Generate a wrong answer that's close but not equal
                     int offset = UnityEngine.Random.Range(1, 10) * (UnityEngine.Random.value > 0.5f ? 1 : -1);
                     value = _correctAnswer + offset;
                     if (value == _correctAnswer) value += 1;
@@ -282,7 +296,7 @@ namespace Overworked.Minigames
 
         private void OnChoiceClicked(int value)
         {
-            if (_finished) return;
+            if (_finished || _cooldownRemaining > 0f) return;
 
             if (value == _correctAnswer)
             {
@@ -291,8 +305,6 @@ namespace Overworked.Minigames
                 {
                     _finished = true;
                     float completionTime = Time.time - _startTime;
-                    _feedbackLabel.text = "Semua benar!";
-                    _feedbackLabel.style.color = new Color(0.3f, 0.85f, 0.45f, 1f);
                     OnCompleted?.Invoke(new MinigameResult { Success = true, CompletionTime = completionTime });
                 }
                 else
@@ -304,8 +316,23 @@ namespace Overworked.Minigames
             }
             else
             {
-                _feedbackLabel.text = "Salah! Coba lagi.";
+                _feedbackLabel.text = "Salah! Tunggu...";
                 _feedbackLabel.style.color = new Color(0.91f, 0.27f, 0.38f, 1f);
+                _cooldownRemaining = WRONG_COOLDOWN;
+                SetChoicesEnabled(false);
+            }
+        }
+
+        private void SetChoicesEnabled(bool enabled)
+        {
+            if (_choicesContainer == null) return;
+            foreach (var child in _choicesContainer.Children())
+            {
+                if (child is Button btn)
+                {
+                    btn.SetEnabled(enabled);
+                    btn.style.opacity = enabled ? 1f : 0.4f;
+                }
             }
         }
 

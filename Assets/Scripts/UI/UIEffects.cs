@@ -92,13 +92,23 @@ namespace Overworked.UI
         {
             if (parent == null) return;
 
+            // Use a full-screen overlay container so positioning works reliably
+            var container = new VisualElement();
+            container.pickingMode = PickingMode.Ignore;
+            container.style.position = Position.Absolute;
+            container.style.left = 0;
+            container.style.top = 0;
+            container.style.right = 0;
+            container.style.bottom = 0;
+            container.style.alignItems = Align.Center;
+            container.style.justifyContent = Justify.Center;
+
             var label = new Label(text);
-            label.style.position = Position.Absolute;
-            label.style.left = position.x;
-            label.style.top = position.y;
-            label.style.fontSize = 18;
+            label.pickingMode = PickingMode.Ignore;
+            label.style.fontSize = 36;
             label.style.color = color;
             label.style.unityFontStyleAndWeight = FontStyle.Bold;
+            label.style.unityTextAlign = TextAnchor.MiddleCenter;
             label.style.opacity = 1f;
             label.style.translate = new Translate(0, 0);
             label.style.transitionProperty = new List<StylePropertyName>
@@ -108,26 +118,28 @@ namespace Overworked.UI
             };
             label.style.transitionDuration = new List<TimeValue>
             {
-                new(600, TimeUnit.Millisecond),
-                new(600, TimeUnit.Millisecond)
+                new(900, TimeUnit.Millisecond),
+                new(900, TimeUnit.Millisecond)
             };
             label.style.transitionTimingFunction = new List<EasingFunction>
             {
                 new(EasingMode.EaseOut),
                 new(EasingMode.EaseOut)
             };
-            label.pickingMode = PickingMode.Ignore;
-            parent.Add(label);
 
-            // Trigger animation next frame
-            label.schedule.Execute(() =>
+            container.Add(label);
+            parent.Add(container);
+            container.BringToFront();
+
+            // Delay so initial state renders before transition starts
+            container.schedule.Execute(() =>
             {
                 label.style.opacity = 0f;
-                label.style.translate = new Translate(0, -40);
-            });
+                label.style.translate = new Translate(0, -60);
+            }).ExecuteLater(30);
 
             // Remove after animation
-            label.schedule.Execute(() => label.RemoveFromHierarchy()).ExecuteLater(650);
+            container.schedule.Execute(() => container.RemoveFromHierarchy()).ExecuteLater(1000);
         }
 
         // ── Slide In ──

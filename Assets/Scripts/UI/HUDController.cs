@@ -13,8 +13,10 @@ namespace Overworked.UI
         private readonly Label _dayTimer;
         private readonly Label _emailCount;
         private readonly Button _themeToggleBtn;
+        private readonly Button _settingsBtn;
 
         public event Action OnThemeToggleClicked;
+        public event Action OnSettingsClicked;
 
         public HUDController(VisualElement root)
         {
@@ -24,8 +26,10 @@ namespace Overworked.UI
             _dayTimer = root.Q<Label>("day-timer");
             _emailCount = root.Q<Label>("email-count");
             _themeToggleBtn = root.Q<Button>("theme-toggle-btn");
+            _settingsBtn = root.Q<Button>("settings-btn");
 
             _themeToggleBtn?.RegisterCallback<ClickEvent>(_ => OnThemeToggleClicked?.Invoke());
+            _settingsBtn?.RegisterCallback<ClickEvent>(_ => OnSettingsClicked?.Invoke());
         }
 
         public void UpdateThemeButtonLabel(bool isLightMode)

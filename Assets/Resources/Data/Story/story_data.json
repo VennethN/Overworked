@@ -2,143 +2,238 @@
   "days": [
     {
       "dayNumber": 1,
-      "title": "Hari Pertama Kerja",
+      "title": "Hari Pertama",
       "dayLengthSeconds": 180,
       "scoreGoal": 50,
       "difficulty": 0.2,
       "preDialogue": [
-        {
-          "speaker": "Pak Michael",
-          "avatar": "michael",
-          "text": "Selamat datang di Globodyne! Hari ini kamu mulai sebagai admin email baru."
-        },
-        {
-          "speaker": "Pak Michael",
-          "avatar": "michael",
-          "text": "Tugasnya simpel: balas email penting, kerjakan tugas, dan hapus spam. Mudah kan?"
-        },
-        {
-          "speaker": "Kamu",
-          "avatar": "player",
-          "text": "Siap, Pak!"
-        }
+        { "speaker": "Mahyu", "avatar": "mahyu", "text": "Kamu {PlayerName}? Duduk disini. Kita nggak punya waktu buat adaptasi." },
+        { "speaker": "Kamu", "avatar": "player", "text": "Saya belum—" },
+        { "speaker": "Mahyu", "avatar": "mahyu", "text": "Kerja. Sekarang." }
       ],
       "postDialogue": {
         "pass": [
-          {
-            "speaker": "Pak Michael",
-            "avatar": "michael",
-            "text": "Bagus! Hari pertama yang produktif. Besok kita lihat apakah kamu bisa handle lebih banyak."
-          }
+          { "speaker": "Mahyu", "avatar": "mahyu", "text": "Not bad juga kamu. Jangan senang dulu, besok lebih banyak." }
         ],
         "fail": [
-          {
-            "speaker": "Pak Michael",
-            "avatar": "michael",
-            "text": "Hmm, hasilnya kurang memuaskan. Coba lagi besok ya."
-          }
+          { "speaker": "Mahyu", "avatar": "mahyu", "text": "Basic aja nggak bisa? Besok harus lebih bagus." }
         ]
       },
       "spawnRulesOverride": null,
       "scriptedEmails": [
-        {
-          "emailId": "story_d1_welcome",
-          "triggerAtSeconds": 3.0
-        }
+        { "emailId": "story_d1_welcome", "triggerAtSeconds": 3.0 }
       ],
       "specialEmailJsonPath": "Data/Emails/emails_story_day1",
       "availableEmailPools": ["general"],
+      "spawnEmailTags": ["tier1"],
+      "spawnEmailIds": null,
       "unlockedAfterDay": 0
     },
     {
       "dayNumber": 2,
-      "title": "Spam Mulai Masuk",
+      "title": "Tempo Naik",
       "dayLengthSeconds": 210,
       "scoreGoal": 80,
       "difficulty": 0.35,
       "preDialogue": [
-        {
-          "speaker": "Pak Michael",
-          "avatar": "michael",
-          "text": "Hari ini kita mulai dapat banyak spam. Hati-hati, jangan sampai kamu balas spam!"
-        },
-        {
-          "speaker": "Pak Michael",
-          "avatar": "michael",
-          "text": "Hapus spam untuk bonus. Tapi kalau kamu balas, skormu turun."
-        },
-        {
-          "speaker": "Kamu",
-          "avatar": "player",
-          "text": "Oke, saya perhatikan baik-baik."
-        }
+        { "speaker": "Mahyu", "avatar": "mahyu", "text": "Hari ini targetnya naik. Jangan harap bisa santai seperti kemarin." },
+        { "speaker": "Mahyu", "avatar": "mahyu", "text": "Oh, dan mulai banyak email sampah masuk. Jangan sampai kamu malah balas yang itu." },
+        { "speaker": "Kamu", "avatar": "player", "text": "Baik..." }
       ],
       "postDialogue": {
         "pass": [
-          {
-            "speaker": "Pak Michael",
-            "avatar": "michael",
-            "text": "Hebat! Kamu berhasil membedakan email asli dan spam. Hari depan akan lebih menantang."
-          }
+          { "speaker": "Mahyu", "avatar": "mahyu", "text": "Lumayan. Tapi jangan pikir ini sudah cukup. Besok akan jauh lebih berat." }
         ],
         "fail": [
-          {
-            "speaker": "Pak Michael",
-            "avatar": "michael",
-            "text": "Terlalu banyak spam yang lolos. Perhatikan lebih teliti lagi."
-          }
+          { "speaker": "Mahyu", "avatar": "mahyu", "text": "Terlalu lambat. Kalau begini terus, kontrakmu akan jadi masalah." }
         ]
       },
       "spawnRulesOverride": null,
-      "scriptedEmails": [],
-      "specialEmailJsonPath": null,
+      "scriptedEmails": [
+        { "emailId": "story_d2_faster", "triggerAtSeconds": 5.0 },
+        { "emailId": "story_d2_lunch_thief", "triggerAtSeconds": 60.0 }
+      ],
+      "specialEmailJsonPath": "Data/Emails/emails_story_day2",
       "availableEmailPools": ["general", "spam"],
+      "spawnEmailTags": ["tier1"],
+      "spawnEmailIds": null,
       "unlockedAfterDay": 1
     },
     {
       "dayNumber": 3,
-      "title": "Deadline Ketat",
+      "title": "Jangan Keliatan Lemah",
       "dayLengthSeconds": 240,
       "scoreGoal": 120,
       "difficulty": 0.5,
       "preDialogue": [
-        {
-          "speaker": "Pak Michael",
-          "avatar": "michael",
-          "text": "Ada deadline besar hari ini. Email akan masuk lebih cepat dan batas waktunya lebih ketat."
-        },
-        {
-          "speaker": "Sandra Permata",
-          "avatar": "sandra",
-          "text": "Pak, email dari HR juga perlu diurus hari ini. Jangan sampai ada yang expired!"
-        },
-        {
-          "speaker": "Kamu",
-          "avatar": "player",
-          "text": "Baik, saya akan prioritaskan yang urgent."
-        }
+        { "speaker": "Dika", "avatar": "dika", "text": "Lo baru ya?" },
+        { "speaker": "Kamu", "avatar": "player", "text": "Iya..." },
+        { "speaker": "Dika", "avatar": "dika", "text": "Jangan keliatan lemah. Mereka... nggak suka itu." },
+        { "speaker": "Kamu", "avatar": "player", "text": "Kalau mau resign?" },
+        { "speaker": "Dika", "avatar": "dika", "text": "Coba aja." }
       ],
       "postDialogue": {
         "pass": [
-          {
-            "speaker": "Pak Michael",
-            "avatar": "michael",
-            "text": "Luar biasa! Kamu berhasil handle semua di bawah tekanan. Kamu mulai cocok di sini."
-          }
+          { "speaker": "Mahyu", "avatar": "mahyu", "text": "Hmm. Kamu masih di sini. Bagus. Besok kita lihat kamu masih bertahan atau tidak." }
         ],
         "fail": [
-          {
-            "speaker": "Pak Michael",
-            "avatar": "michael",
-            "text": "Banyak email yang expired. Coba lebih cepat lagi, prioritaskan yang penting."
-          }
+          { "speaker": "Mahyu", "avatar": "mahyu", "text": "Performa menurun. Aku sudah catat namamu di daftar evaluasi." }
         ]
       },
       "spawnRulesOverride": null,
-      "scriptedEmails": [],
-      "specialEmailJsonPath": null,
+      "scriptedEmails": [
+        { "emailId": "story_d3_dika_msg", "triggerAtSeconds": 10.0 },
+        { "emailId": "story_d3_replyall", "triggerAtSeconds": 60.0 },
+        { "emailId": "story_d3_hr_survey", "triggerAtSeconds": 90.0 },
+        { "emailId": "story_d3_replyall_mahyu", "triggerAtSeconds": 120.0 }
+      ],
+      "specialEmailJsonPath": "Data/Emails/emails_story_day3",
       "availableEmailPools": ["general", "hr", "spam"],
+      "spawnEmailTags": ["tier1", "tier2"],
+      "spawnEmailIds": null,
       "unlockedAfterDay": 2
+    },
+    {
+      "dayNumber": 4,
+      "title": "Pengawasan Aktif",
+      "dayLengthSeconds": 260,
+      "scoreGoal": 160,
+      "difficulty": 0.65,
+      "preDialogue": [
+        { "speaker": "Mahyu", "avatar": "mahyu", "text": "Mulai hari ini, sistem Employee Performance Monitor aktif." },
+        { "speaker": "Mahyu", "avatar": "mahyu", "text": "Semua yang kamu kerjakan — dan yang tidak kamu kerjakan — akan dicatat." },
+        { "speaker": "Kamu", "avatar": "player", "text": "..." },
+        { "speaker": "Mahyu", "avatar": "mahyu", "text": "Kenapa diam? Kerja." }
+      ],
+      "postDialogue": {
+        "pass": [
+          { "speaker": "Mahyu", "avatar": "mahyu", "text": "Sistem mencatat kamu 'memenuhi standar'. Tapi standar kami naik setiap hari." }
+        ],
+        "fail": [
+          { "speaker": "Mahyu", "avatar": "mahyu", "text": "Underperforming. Sistem sudah merekam semuanya. Kamu tahu konsekuensinya." }
+        ]
+      },
+      "spawnRulesOverride": null,
+      "scriptedEmails": [
+        { "emailId": "story_d4_monitor", "triggerAtSeconds": 3.0 },
+        { "emailId": "story_d4_peringatan", "triggerAtSeconds": 60.0 },
+        { "emailId": "story_d4_smell", "triggerAtSeconds": 90.0 },
+        { "emailId": "story_d4_hr_waiver", "triggerAtSeconds": 120.0 },
+        { "emailId": "story_d4_dika_intel", "triggerAtSeconds": 180.0, "requireFlag": "helped_dika_d3" }
+      ],
+      "specialEmailJsonPath": "Data/Emails/emails_story_day4",
+      "availableEmailPools": ["general", "hr", "spam"],
+      "spawnEmailTags": ["tier1", "tier2"],
+      "spawnEmailIds": null,
+      "unlockedAfterDay": 3
+    },
+    {
+      "dayNumber": 5,
+      "title": "Tidak Pernah Cukup",
+      "dayLengthSeconds": 280,
+      "scoreGoal": 200,
+      "difficulty": 0.75,
+      "preDialogue": [
+        { "speaker": "Mahyu", "avatar": "mahyu", "text": "Target naik lagi. Semua orang harus lebih produktif." },
+        { "speaker": "Mahyu", "avatar": "mahyu", "text": "Kalau ada yang tidak bisa mengikuti... kami punya solusi cepat." },
+        { "speaker": "Kamu", "avatar": "player", "text": "Solusi apa?" },
+        { "speaker": "Mahyu", "avatar": "mahyu", "text": "Penggantian. Sekarang kerja." }
+      ],
+      "postDialogue": {
+        "pass": [
+          { "speaker": "Mahyu", "avatar": "mahyu", "text": "Kamu masih hidup. Tapi jangan pikir besok akan lebih mudah." }
+        ],
+        "fail": [
+          { "speaker": "Mahyu", "avatar": "mahyu", "text": "Kamu lambat. Awas aja masih lambat, nanti aku ganti kamu." }
+        ]
+      },
+      "spawnRulesOverride": null,
+      "scriptedEmails": [
+        { "emailId": "story_d5_not_enough", "triggerAtSeconds": 30.0 },
+        { "emailId": "story_d5_printer", "triggerAtSeconds": 60.0 },
+        { "emailId": "story_d5_dika_ask", "triggerAtSeconds": 80.0, "requireFlag": "helped_dika_d3" },
+        { "emailId": "story_d5_coworker_burnout", "triggerAtSeconds": 80.0, "excludeFlag": "helped_dika_d3" },
+        { "emailId": "story_d5_threat", "triggerAtSeconds": 150.0 },
+        { "emailId": "story_d5_anonymous_tip", "triggerAtSeconds": 220.0 }
+      ],
+      "specialEmailJsonPath": "Data/Emails/emails_story_day5",
+      "availableEmailPools": ["general", "hr", "spam"],
+      "spawnEmailTags": ["tier1", "tier2", "tier3"],
+      "spawnEmailIds": null,
+      "unlockedAfterDay": 4
+    },
+    {
+      "dayNumber": 6,
+      "title": "Kontrak Mengikat",
+      "dayLengthSeconds": 290,
+      "scoreGoal": 230,
+      "difficulty": 0.85,
+      "preDialogue": [
+        { "speaker": "HR", "avatar": "hr", "text": "Halo {PlayerName}. Kami ingin mengingatkan tentang klausul kontrak kerja Anda." },
+        { "speaker": "HR", "avatar": "hr", "text": "\"Karyawan yang keluar sebelum masa kontrak selesai akan diberi evaluasi negatif kepada perusahaan mitra.\"" },
+        { "speaker": "Kamu", "avatar": "player", "text": "Jadi kalau saya resign..." },
+        { "speaker": "HR", "avatar": "hr", "text": "Tentu, kami tidak menahan siapapun. Tapi... industri ini kecil." }
+      ],
+      "postDialogue": {
+        "pass": [
+          { "speaker": "Mahyu", "avatar": "mahyu", "text": "Satu hari lagi. Tinggal satu hari. Kamu bisa bertahan... kan?" }
+        ],
+        "fail": [
+          { "speaker": "Mahyu", "avatar": "mahyu", "text": "Hampir gagal. Tinggal satu hari dan kamu hampir tidak lolos. Besok jangan sampai." }
+        ]
+      },
+      "spawnRulesOverride": null,
+      "scriptedEmails": [
+        { "emailId": "story_d6_contract", "triggerAtSeconds": 10.0 },
+        { "emailId": "story_d6_resign_offer", "triggerAtSeconds": 40.0, "requireFlag": "chose_resign_d5" },
+        { "emailId": "story_d6_dika_evidence", "triggerAtSeconds": 90.0, "requireFlag": "helped_dika_d5" },
+        { "emailId": "story_d6_farewell", "triggerAtSeconds": 120.0 },
+        { "emailId": "story_d6_secret_internal_report", "triggerAtSeconds": 150.0 },
+        { "emailId": "story_d6_farewell_hr", "triggerAtSeconds": 150.0 },
+        { "emailId": "story_d6_hr_final_push", "triggerAtSeconds": 200.0, "requireFlag": "refused_hr_waiver_d4" }
+      ],
+      "specialEmailJsonPath": "Data/Emails/emails_story_day6",
+      "availableEmailPools": ["general", "hr", "spam"],
+      "spawnEmailTags": ["tier1", "tier2", "tier3"],
+      "spawnEmailIds": null,
+      "unlockedAfterDay": 5
+    },
+    {
+      "dayNumber": 7,
+      "title": "Hari Terakhir",
+      "dayLengthSeconds": 300,
+      "scoreGoal": 260,
+      "difficulty": 1.0,
+      "preDialogue": [
+        { "speaker": "Mahyu", "avatar": "mahyu", "text": "Hari terakhir kontrakmu. Kamu pikir ini berarti santai?" },
+        { "speaker": "Mahyu", "avatar": "mahyu", "text": "Justru sebaliknya. Hari ini adalah ujian terakhir." },
+        { "speaker": "Mahyu", "avatar": "mahyu", "text": "Selesaikan semuanya. Atau kamu tahu apa yang terjadi." },
+        { "speaker": "Kamu", "avatar": "player", "text": "..." }
+      ],
+      "postDialogue": {
+        "pass": [
+          { "speaker": "Mahyu", "avatar": "mahyu", "text": "...Kontrakmu selesai. Kamu boleh pergi." },
+          { "speaker": "Kamu", "avatar": "player", "text": "Akhirnya..." }
+        ],
+        "fail": [
+          { "speaker": "Mahyu", "avatar": "mahyu", "text": "Hari terakhir dan kamu tetap mengecewakan. Evaluasimu akan... menarik." }
+        ]
+      },
+      "spawnRulesOverride": null,
+      "scriptedEmails": [
+        { "emailId": "story_d7_final_day", "triggerAtSeconds": 3.0 },
+        { "emailId": "story_d7_mahyu_final", "triggerAtSeconds": 30.0 },
+        { "emailId": "story_d7_it_confession", "triggerAtSeconds": 60.0 },
+        { "emailId": "story_d7_secret_blacklist", "triggerAtSeconds": 100.0 },
+        { "emailId": "story_d7_whistleblower_final", "triggerAtSeconds": 150.0, "requireFlag": "read_evidence_d6" },
+        { "emailId": "story_d7_secret_burnout", "triggerAtSeconds": 200.0 },
+        { "emailId": "story_d7_dika_goodbye", "triggerAtSeconds": 250.0, "requireFlag": "helped_dika_d5" }
+      ],
+      "specialEmailJsonPath": "Data/Emails/emails_story_day7",
+      "availableEmailPools": ["general", "hr", "spam"],
+      "spawnEmailTags": ["tier1", "tier2", "tier3"],
+      "spawnEmailIds": null,
+      "unlockedAfterDay": 6
     }
   ]
 }

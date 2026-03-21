@@ -165,6 +165,26 @@ namespace Overworked.UI
                 || body.Contains(_searchQuery);
         }
 
+        public void ScrollToTop()
+        {
+            if (_emailList != null)
+                _emailList.scrollOffset = Vector2.zero;
+        }
+
+        /// <summary>
+        /// Clear all tracked items and rebuild the filler.
+        /// Call this when starting a new day to ensure no stale references.
+        /// </summary>
+        public void ClearAll()
+        {
+            foreach (var kvp in _itemElements)
+                kvp.Value.RemoveFromHierarchy();
+            _itemElements.Clear();
+
+            if (_emailList != null)
+                _emailList.scrollOffset = Vector2.zero;
+        }
+
         public void Refresh(IReadOnlyList<EmailInstance> inbox)
         {
             _lastInbox = inbox;

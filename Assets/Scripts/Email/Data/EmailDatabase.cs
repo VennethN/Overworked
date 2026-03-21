@@ -79,7 +79,36 @@ namespace Overworked.Email
                     candidates.AddRange(list);
             }
 
-            // Filter by type if specified
+            ApplySpawnFilters(candidates, typeFilter, tagFilter);
+
+            if (candidates.Count == 0) return null;
+            return candidates[Random.Range(0, candidates.Count)];
+        }
+
+        /// <summary>
+        /// Random email from explicit ids (definitions must already be loaded). Applies the same rule filters as pool spawning.
+        /// </summary>
+        public EmailDefinition GetRandomFromIdList(string[] emailIds, string[] typeFilter, string[] tagFilter)
+        {
+            if (emailIds == null || emailIds.Length == 0) return null;
+
+            List<EmailDefinition> candidates = new();
+            foreach (string id in emailIds)
+            {
+                if (string.IsNullOrEmpty(id)) continue;
+                EmailDefinition def = GetById(id);
+                if (def != null)
+                    candidates.Add(def);
+            }
+
+            ApplySpawnFilters(candidates, typeFilter, tagFilter);
+
+            if (candidates.Count == 0) return null;
+            return candidates[Random.Range(0, candidates.Count)];
+        }
+
+        private static void ApplySpawnFilters(List<EmailDefinition> candidates, string[] typeFilter, string[] tagFilter)
+        {
             if (typeFilter != null && typeFilter.Length > 0)
             {
                 candidates.RemoveAll(def =>
@@ -100,7 +129,6 @@ namespace Overworked.Email
                 });
             }
 
-            // Filter by tags if specified (email must have at least one matching tag)
             if (tagFilter != null && tagFilter.Length > 0)
             {
                 candidates.RemoveAll(def =>
@@ -116,9 +144,6 @@ namespace Overworked.Email
                     return true;
                 });
             }
-
-            if (candidates.Count == 0) return null;
-            return candidates[Random.Range(0, candidates.Count)];
         }
 
         // Keep old method signature for backward compatibility with spawner

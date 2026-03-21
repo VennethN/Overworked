@@ -1,0 +1,173 @@
+{
+  "emails": [
+    {
+      "id": "story_d6_contract",
+      "sender": "HR Department",
+      "senderAddress": "hr@sleepdep.co.id",
+      "department": "HR",
+      "subject": "Pengingat: Klausul Kontrak Kerja Anda",
+      "body": "Kepada Karyawan {PlayerName},\n\nDengan ini kami ingatkan klausul penting dalam kontrak kerja Anda:\n\n\"Karyawan yang keluar sebelum masa kontrak selesai akan diberi evaluasi negatif kepada perusahaan mitra.\"\n\nKami berharap Anda memahami komitmen yang telah Anda sepakati saat menandatangani kontrak.\n\nSalam,\nHR Department\nPT Sleep Deprivation Studio",
+      "type": "info",
+      "category": "utama",
+      "priority": "critical",
+      "expirationSeconds": 0,
+      "tags": ["story", "story_d6", "contract"],
+      "replyOptions": null,
+      "taskTrigger": null,
+      "expiredFollowUp": null,
+      "setFlagOnRead": null
+    },
+    {
+      "id": "story_d6_resign_offer",
+      "sender": "Mahyu",
+      "senderAddress": "m.mahyu@sleepdep.co.id",
+      "department": "Supervisor",
+      "subject": "Soal Resign",
+      "body": "{PlayerName},\n\nAku dengar kamu mau resign?\n\nKalau memang benar, aku bisa urus prosesnya sekarang. Cepat dan mudah. Tidak perlu drama.\n\nTapi kalau kamu berubah pikiran... ya, aku juga tidak kaget. Semua orang akhirnya sadar mereka tidak punya pilihan lain.\n\nJadi gimana? Kamu serius atau cuma omong kosong?\n\n— Mahyu",
+      "type": "reply",
+      "category": "utama",
+      "priority": "high",
+      "expirationSeconds": 50,
+      "tags": ["story", "story_d6"],
+      "replyOptions": [
+        {
+          "text": "Ya, saya mengundurkan diri.",
+          "isCorrect": false,
+          "scoreModifier": -20,
+          "followUp": null,
+          "setFlag": "confirmed_resign_d6"
+        },
+        {
+          "text": "Tidak, saya berubah pikiran. Saya lanjut.",
+          "isCorrect": true,
+          "scoreModifier": 5,
+          "followUp": {
+            "emailId": "story_d6_mahyu_mock",
+            "delaySeconds": 8
+          },
+          "setFlag": null
+        }
+      ],
+      "taskTrigger": null,
+      "expiredFollowUp": null,
+      "setFlagOnRead": null
+    },
+    {
+      "id": "story_d6_mahyu_mock",
+      "sender": "Mahyu",
+      "senderAddress": "m.mahyu@sleepdep.co.id",
+      "department": "Supervisor",
+      "subject": "RE: Soal Resign",
+      "body": "{PlayerName},\n\nBagus. Kamu tahu kamu tidak punya pilihan lain.\n\nMereka semua bilang mau resign. Dan mereka semua kembali duduk di kursi mereka, mengetik email, menyelesaikan tugas. Karena di luar sana lebih menakutkan dari di sini.\n\nSetidaknya kamu cukup pintar untuk sadar itu.\n\nSekarang kerja. Targetmu belum selesai.\n\n— Mahyu",
+      "type": "info",
+      "category": "utama",
+      "priority": "high",
+      "expirationSeconds": 0,
+      "tags": ["story", "story_d6"],
+      "replyOptions": null,
+      "taskTrigger": null,
+      "expiredFollowUp": null,
+      "setFlagOnRead": null
+    },
+    {
+      "id": "story_d6_dika_evidence",
+      "sender": "Dika",
+      "senderAddress": "d.prasetyo@sleepdep.co.id",
+      "department": null,
+      "subject": "INI DIA - Jangan hapus",
+      "body": "Hei {PlayerName},\n\nGw udah analisis file personalia yang lo bantu akses kemarin. Dan hasilnya... lebih parah dari yang gw duga.\n\nIni data evaluasi karyawan internal yang dipalsukan:\n\n[EVALUASI ASLI vs EVALUASI YANG DIKIRIM KE MITRA]\n\n1. Budi Santoso\n   - Asli: \"Karyawan teladan, konsisten memenuhi target\"\n   - Dikirim: \"Tidak kooperatif, tidak disarankan untuk direkrut\"\n   - Alasan pemalsuan: Mengajukan keluhan lembur\n\n2. Rina Kartika\n   - Asli: \"Performa baik, sakit karena kelelahan kerja\"\n   - Dikirim: \"Performa buruk, sering mangkir\"\n   - Alasan pemalsuan: Meminta cuti sakit\n\n3. Fajar Ramadhan\n   - Asli: \"Rajin dan kompeten\"\n   - Dikirim: \"Insubordinasi\"\n   - Alasan pemalsuan: Menolak lembur 16 jam berturut-turut\n\n4. Sinta Maharani\n   - Asli: \"Karyawan berdedikasi\"\n   - Dikirim: \"Tidak profesional\"\n   - Alasan pemalsuan: Mengajukan keluhan ke Disnaker\n\n5. Ahmad Faisal\n   - Asli: \"Di atas rata-rata\"\n   - Dikirim: \"Tidak memenuhi standar minimum\"\n   - Alasan pemalsuan: Menolak tanda tangan waiver HR\n\nSemua pemalsuan disetujui langsung oleh Mahyu dan dikonfirmasi oleh Rina dari HR.\n\nIni bukti kunci. Simpan baik-baik. Nanti kita butuh ini.\n\n— D",
+      "type": "info",
+      "category": "utama",
+      "priority": "low",
+      "expirationSeconds": 0,
+      "tags": ["story", "story_d6", "dika", "secret"],
+      "replyOptions": null,
+      "taskTrigger": null,
+      "expiredFollowUp": null,
+      "setFlagOnRead": "dika_evidence_d6"
+    },
+    {
+      "id": "story_d6_secret_internal_report",
+      "sender": "???",
+      "senderAddress": "anonymous@protonmail.com",
+      "department": null,
+      "subject": "[RAHASIA] Internal Report - Jangan Hapus",
+      "body": "Ini dikirim secara anonim.\n\nFile terlampir adalah laporan internal PT Sleep Deprivation Studio. Data menunjukkan:\n\n- 87% karyawan bekerja >12 jam/hari tanpa kompensasi lembur\n- 14 keluhan resmi ditekan oleh manajemen dalam 6 bulan terakhir\n- Turnover rate 340% di atas rata-rata industri\n- Budget \"kesejahteraan karyawan\" Rp 0 selama 2 tahun terakhir\n- 3 kasus rawat inap akibat overwork tidak dilaporkan ke otoritas\n- Dana CSR dialihkan ke bonus manajemen senior\n\nSimpan bukti ini. Kamu mungkin membutuhkannya nanti.\n\nBesok akan ada lebih banyak.\n\n— Seseorang yang peduli",
+      "type": "info",
+      "category": "utama",
+      "priority": "low",
+      "expirationSeconds": 0,
+      "tags": ["story", "story_d6", "secret"],
+      "replyOptions": null,
+      "taskTrigger": null,
+      "expiredFollowUp": null,
+      "setFlagOnRead": "read_evidence_d6"
+    },
+    {
+      "id": "story_d6_hr_final_push",
+      "sender": "Rina Hartati",
+      "senderAddress": "r.hartati@sleepdep.co.id",
+      "department": "HR",
+      "subject": "Tindak Lanjut: Perjanjian Kerja Yang Belum Ditandatangani",
+      "body": "Kepada {PlayerName},\n\nCatatan kami menunjukkan Anda belum menandatangani Pembaruan Perjanjian Kerja yang kami kirimkan sebelumnya.\n\nKami ingin memberikan kesempatan terakhir. Dokumen ini bersifat standar dan tidak ada karyawan lain yang menolak.\n\nPerlu kami tekankan bahwa status \"non-kooperatif\" dalam file Anda akan berdampak signifikan pada evaluasi akhir kontrak Anda — termasuk referensi yang akan kami berikan ke perusahaan mitra.\n\nIni adalah permintaan terakhir kami.\n\nSalam,\nRina Hartati\nHR Department\nPT Sleep Deprivation Studio",
+      "type": "reply",
+      "category": "utama",
+      "priority": "high",
+      "expirationSeconds": 45,
+      "tags": ["story", "story_d6", "hr"],
+      "replyOptions": [
+        {
+          "text": "Baik, saya tanda tangani sekarang.",
+          "isCorrect": false,
+          "scoreModifier": -5,
+          "followUp": null,
+          "setFlag": "signed_hr_waiver_d4"
+        },
+        {
+          "text": "Jawaban saya tetap tidak.",
+          "isCorrect": true,
+          "scoreModifier": 5,
+          "followUp": null,
+          "setFlag": null
+        }
+      ],
+      "taskTrigger": null,
+      "expiredFollowUp": null,
+      "setFlagOnRead": null
+    },
+    {
+      "id": "story_d6_farewell",
+      "sender": "Ratna Sari",
+      "senderAddress": "r.sari@sleepdep.co.id",
+      "department": "Product",
+      "subject": "Selamat Tinggal, PT Sleep Deprivation Studio",
+      "body": "Kepada seluruh rekan kerja yang masih bertahan,\n\nIni email terakhir saya dari akun kantor. Saya resign. Efektif hari ini. Saya tahu konsekuensinya — blacklist, evaluasi negatif, penalti kontrak. Saya sudah tidak peduli lagi.\n\n2 tahun 4 bulan saya di sini. Dan dalam 2 tahun 4 bulan itu, saya sudah kehilangan banyak hal: 15 kg berat badan (bukan diet, tapi stres), hubungan dengan keluarga yang hampir hancur, dan kemampuan untuk tidur tanpa mimpi buruk tentang deadline.\n\nSaya mau kalian tahu beberapa hal yang mungkin belum kalian sadari:\n\n1. \"Program kesejahteraan karyawan\" yang di-post di LinkedIn itu tidak pernah ada. Budget-nya dipakai untuk renovasi ruangan direksi.\n\n2. Evaluasi kinerja kalian SUDAH ditulis SEBELUM periode evaluasi dimulai. Hasilnya sudah ditentukan. Yang bagus untuk yang patuh, yang buruk untuk yang berani bicara.\n\n3. Kontrak yang kalian tanda tangani — banyak pasal di dalamnya yang tidak memiliki dasar hukum. Tapi mereka tahu kalian terlalu takut atau terlalu capek untuk cek.\n\n4. Sistem \"Performance Monitor\" itu bukan untuk mengukur kinerja. Itu untuk mengintimidasi. Data-nya bahkan tidak akurat — saya tahu karena saya yang dulu bantu setup sistemnya.\n\nSaya menulis ini bukan untuk balas dendam. Saya menulis ini karena saya tidak bisa pergi dengan diam sambil tahu kalian semua masih terjebak.\n\nKalian pantas dapat lebih baik dari ini. Kita semua pantas.\n\nSemoga suatu hari nanti perusahaan ini berubah. Atau lebih baik lagi — tutup.\n\nSelamat tinggal.\n\n— Ratna Sari\nMantan Product Manager\nMantan karyawan \"teladan\" (sebelum saya mulai bertanya)\n\nP.S. Untuk Mahyu: terima kasih sudah mengajari saya bahwa kadang orang yang paling berkuasa adalah orang yang paling takut kehilangan kekuasaannya. Semoga kamu bisa tidur nyenyak malam ini.",
+      "type": "info",
+      "category": "sosial",
+      "priority": "medium",
+      "expirationSeconds": 0,
+      "tags": ["story", "story_d6", "side_story"],
+      "replyOptions": null,
+      "taskTrigger": null,
+      "expiredFollowUp": null,
+      "setFlagOnRead": null
+    },
+    {
+      "id": "story_d6_farewell_hr",
+      "sender": "HR Department",
+      "senderAddress": "hr@sleepdep.co.id",
+      "department": "HR",
+      "subject": "PEMBERITAHUAN RESMI: Mohon Abaikan Email Sebelumnya",
+      "body": "Kepada Seluruh Karyawan,\n\nMohon abaikan email yang baru saja dikirim oleh Ratna Sari (r.sari@sleepdep.co.id).\n\nKaryawan tersebut SUDAH TIDAK BERWENANG menggunakan email kantor. Akses-nya seharusnya sudah dinonaktifkan dan kami sedang menyelidiki bagaimana email tersebut bisa terkirim.\n\nPerlu kami tegaskan:\n\n1. Semua klaim dalam email tersebut adalah TIDAK BENAR dan merupakan pencemaran nama baik.\n2. Program kesejahteraan karyawan berjalan sesuai rencana.\n3. Sistem evaluasi kinerja bersifat objektif dan transparan.\n4. Seluruh klausul kontrak kerja memiliki dasar hukum yang kuat.\n\nKaryawan yang menyebarkan, memforward, atau mendiskusikan isi email tersebut akan menghadapi tindakan disipliner.\n\nTerima kasih atas pengertian Anda.\n\nSalam,\nHR Department\nPT Sleep Deprivation Studio",
+      "type": "info",
+      "category": "sosial",
+      "priority": "high",
+      "expirationSeconds": 0,
+      "tags": ["story", "story_d6", "side_story"],
+      "replyOptions": null,
+      "taskTrigger": null,
+      "expiredFollowUp": null,
+      "setFlagOnRead": null
+    }
+  ]
+}

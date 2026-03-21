@@ -1,0 +1,191 @@
+{
+  "emails": [
+    {
+      "id": "story_d7_final_day",
+      "sender": "SYSTEM",
+      "senderAddress": "system@sleepdep.co.id",
+      "department": "System",
+      "subject": "HARI TERAKHIR KONTRAK",
+      "body": "NOTICE\n\nHari ini adalah hari terakhir masa kontrak Anda di PT Sleep Deprivation Studio.\n\nSemua tugas yang tersisa HARUS diselesaikan sebelum waktu habis.\n\nTidak ada perpanjangan waktu. Tidak ada toleransi.\n\nSelamat bekerja.\n\n— Automated System\nPT Sleep Deprivation Studio",
+      "type": "info",
+      "category": "utama",
+      "priority": "critical",
+      "expirationSeconds": 0,
+      "tags": ["story", "story_d7", "system"],
+      "replyOptions": null,
+      "taskTrigger": null,
+      "expiredFollowUp": null,
+      "setFlagOnRead": null
+    },
+    {
+      "id": "story_d7_mahyu_final",
+      "sender": "Mahyu",
+      "senderAddress": "m.mahyu@sleepdep.co.id",
+      "department": "Supervisor",
+      "subject": "Hari Terakhir",
+      "body": "{PlayerName},\n\nJadi ini hari terakhirmu.\n\nAku ingin bilang sesuatu yang jujur untuk pertama — dan terakhir — kalinya.\n\nAku tidak peduli apakah kamu berhasil hari ini atau tidak. Kamu hanya salah satu dari ratusan nama yang lewat di mejaku. Besok akan ada orang baru duduk di kursimu. Seminggu lagi, tidak ada yang ingat namamu.\n\nBegitulah cara kerja di sini. Kamu bukan spesial. Kamu bukan yang pertama. Dan kamu pasti bukan yang terakhir.\n\nSelesaikan harimu. Atau jangan. Aku tidak peduli lagi.\n\n— Mahyu",
+      "type": "info",
+      "category": "utama",
+      "priority": "high",
+      "expirationSeconds": 0,
+      "tags": ["story", "story_d7"],
+      "replyOptions": null,
+      "taskTrigger": null,
+      "expiredFollowUp": null,
+      "setFlagOnRead": null
+    },
+    {
+      "id": "story_d7_secret_blacklist",
+      "sender": "???",
+      "senderAddress": "anonymous@protonmail.com",
+      "department": null,
+      "subject": "[RAHASIA] Blacklist Data Karyawan",
+      "body": "BOCORAN DOKUMEN INTERNAL\n\nDaftar nama karyawan yang pernah mencoba resign dari PT Sleep Deprivation Studio dan evaluasi negatif yang dikirimkan ke perusahaan mitra:\n\n- Budi S. — \"tidak kooperatif, tidak disarankan untuk direkrut\"\n- Rina K. — \"performa buruk, sering mangkir\" (kenyataan: sakit karena overwork)\n- Fajar R. — \"insubordinasi\" (kenyataan: menolak lembur 16 jam)\n- Sinta M. — \"tidak profesional\" (kenyataan: mengajukan keluhan ke Disnaker)\n- Ahmad F. — \"tidak memenuhi standar\" (kenyataan: menolak tanda tangan waiver)\n\nMereka semua gagal mendapat kerja baru selama berbulan-bulan. Beberapa masih menganggur sampai sekarang.\n\nKumpulkan semua bukti ini.\n\n— Whistleblower",
+      "type": "info",
+      "category": "utama",
+      "priority": "low",
+      "expirationSeconds": 0,
+      "tags": ["story", "story_d7", "secret"],
+      "replyOptions": null,
+      "taskTrigger": null,
+      "expiredFollowUp": null,
+      "setFlagOnRead": "read_blacklist_d7"
+    },
+    {
+      "id": "story_d7_whistleblower_final",
+      "sender": "???",
+      "senderAddress": "anonymous@protonmail.com",
+      "department": null,
+      "subject": "[URGENT] Saatnya Bertindak",
+      "body": "{PlayerName},\n\nKamu sudah punya semua buktinya. Laporan internal. Data blacklist. Evaluasi palsu.\n\nSekarang saatnya bertindak.\n\nAku sudah siapkan channel aman untuk mengirim semua bukti ini ke Disnaker, media, dan LSM perlindungan pekerja. Kamu hanya perlu menekan satu tombol.\n\nAku tahu ini menakutkan. Mereka akan marah. Mereka akan mencoba menghancurkanmu. Tapi bukti ini bisa menyelamatkan puluhan — mungkin ratusan — orang dari nasib yang sama.\n\nKamu punya kesempatan untuk melakukan sesuatu yang benar. Jangan sia-siakan.\n\nTekan tombol forward. Kirim semuanya.\n\n— Whistleblower",
+      "type": "task",
+      "category": "utama",
+      "priority": "critical",
+      "expirationSeconds": 50,
+      "tags": ["story", "story_d7", "secret"],
+      "replyOptions": null,
+      "taskTrigger": {
+        "taskId": "forward_evidence",
+        "description": "Kirim semua bukti ke pihak berwenang",
+        "autoCompleteOnOpen": false,
+        "timeoutSeconds": 45,
+        "followUp": {
+          "emailId": "story_d7_evidence_sent",
+          "delaySeconds": 5
+        }
+      },
+      "expiredFollowUp": null,
+      "setFlagOnRead": null
+    },
+    {
+      "id": "story_d7_evidence_sent",
+      "sender": "???",
+      "senderAddress": "anonymous@protonmail.com",
+      "department": null,
+      "subject": "Bukti Diterima",
+      "body": "{PlayerName},\n\nBukti sudah diterima. Semua data telah dikirim ke:\n- Dinas Ketenagakerjaan (Disnaker)\n- Komnas HAM\n- 3 media investigasi nasional\n- LSM Perlindungan Pekerja Indonesia\n\nProses hukum akan berjalan. PT Sleep Deprivation Studio tidak akan bisa lari dari ini.\n\nTerima kasih atas keberanianmu. Kamu sudah melakukan hal yang benar.\n\nNama-nama di daftar blacklist itu — Budi, Rina, Fajar, Sinta, Ahmad — mereka semua akan mendapat keadilan. Karena kamu.\n\nSelamat. Dan hati-hati di luar sana.\n\n— Whistleblower",
+      "type": "info",
+      "category": "utama",
+      "priority": "low",
+      "expirationSeconds": 0,
+      "tags": ["story", "story_d7", "secret"],
+      "replyOptions": null,
+      "taskTrigger": null,
+      "expiredFollowUp": null,
+      "setFlagOnRead": "forwarded_evidence_d7"
+    },
+    {
+      "id": "story_d7_secret_burnout",
+      "sender": "???",
+      "senderAddress": "anonymous@protonmail.com",
+      "department": null,
+      "subject": "[RAHASIA] Employee Burnout Report",
+      "body": "DOKUMEN TERKLASIFIKASI\n\nLaporan Kesehatan Mental Karyawan PT Sleep Deprivation Studio\n(TIDAK UNTUK DIPUBLIKASIKAN)\n\nTemuan:\n- 92% karyawan menunjukkan gejala burnout berat\n- 3 kasus rawat inap terkait stres kerja tahun ini\n- Psikolog perusahaan merekomendasikan pengurangan jam kerja — manajemen MENOLAK\n- Budget \"kesejahteraan karyawan\" dialihkan ke bonus direksi\n- 2 kasus percobaan bunuh diri TIDAK dilaporkan ke otoritas\n- Program \"kesehatan mental\" yang diiklankan ke publik TIDAK PERNAH diimplementasikan\n\nDokumen ini adalah bukti kunci. Gabungkan dengan data lainnya.\n\n— Whistleblower",
+      "type": "info",
+      "category": "utama",
+      "priority": "low",
+      "expirationSeconds": 0,
+      "tags": ["story", "story_d7", "secret"],
+      "replyOptions": null,
+      "taskTrigger": null,
+      "expiredFollowUp": null,
+      "setFlagOnRead": "read_burnout_d7"
+    },
+    {
+      "id": "story_d7_dika_goodbye",
+      "sender": "Dika",
+      "senderAddress": "d.prasetyo@sleepdep.co.id",
+      "department": null,
+      "subject": "Selamat tinggal",
+      "body": "Hei {PlayerName},\n\nIni hari terakhir lo ya. Gw nggak baik dalam hal perpisahan, tapi gw rasa lo perlu denger ini.\n\nDari semua orang yang pernah masuk ke perusahaan ini... lo satu-satunya yang mau dengerin gw. Yang mau bantu. Yang nggak langsung jadi robot mereka.\n\n2 tahun gw kerja di sini. 2 tahun gw kumpulin bukti sendirian. Nggak ada yang mau bantu. Sampai lo dateng.\n\nApapun yang terjadi setelah ini — apakah bukti itu sampai ke tangan yang benar, apakah mereka akhirnya kena — gw mau lo tahu bahwa lo udah lakuin hal yang bener.\n\nJaga diri lo di luar sana. Dunia nggak semuanya kayak PT SDS.\n\nTerima kasih, {PlayerName}. Serius.\n\n— Dika\n\nP.S. Kalau lo butuh referensi kerja yang JUJUR, hubungi gw. Bukan yang palsu kayak buatan mereka.",
+      "type": "info",
+      "category": "sosial",
+      "priority": "low",
+      "expirationSeconds": 0,
+      "tags": ["story", "story_d7", "dika"],
+      "replyOptions": null,
+      "taskTrigger": null,
+      "expiredFollowUp": null,
+      "setFlagOnRead": null
+    },
+    {
+      "id": "story_d7_it_confession",
+      "sender": "Wahyu Prakoso",
+      "senderAddress": "w.prakoso@sleepdep.co.id",
+      "department": "IT",
+      "subject": "TOLONG BANTU — Saya Melakukan Kesalahan Besar",
+      "body": "Hei {PlayerName},\n\nSaya Wahyu dari IT. Kita belum pernah ngobrol banyak tapi saya butuh bantuan sekarang. Saya panik.\n\nJadi ceritanya begini: tadi pagi saya lagi maintenance rutin server, dan saya... tidak sengaja menjalankan command DELETE di database yang salah. Yang saya hapus bukan database test. Yang saya hapus adalah DATABASE BACKUP UTAMA.\n\nDatabase yang isinya... daftar blacklist karyawan HR. Ya, file yang isinya semua evaluasi palsu, semua catatan \"non-kooperatif\", semua data yang mereka pakai untuk menghancurkan karir mantan karyawan.\n\nBackup-nya? Tidak ada. Karena database INI adalah backup-nya. Yang asli sudah di-migrate ke cloud bulan lalu dan akses cloud-nya cuma Mahyu yang punya.\n\nSaya belum lapor ke siapapun. Kalau Mahyu tahu, saya selesai. Bukan cuma dipecat — tahu sendiri apa yang mereka lakukan ke orang yang \"bermasalah\".\n\nApa yang harus saya lakukan??\n\n— Wahyu P.\nIT Department\n\nP.S. Tangan saya gemetar nulis email ini.",
+      "type": "reply",
+      "category": "sosial",
+      "priority": "high",
+      "expirationSeconds": 50,
+      "tags": ["story", "story_d7", "side_story"],
+      "replyOptions": [
+        {
+          "text": "Tenang, mungkin bisa di-recover.",
+          "isCorrect": true,
+          "scoreModifier": 5,
+          "followUp": null,
+          "setFlag": null
+        },
+        {
+          "text": "Bagus, data itu memang harusnya dihapus.",
+          "isCorrect": true,
+          "scoreModifier": 8,
+          "followUp": null,
+          "setFlag": null
+        },
+        {
+          "text": "Lapor ke Mahyu sekarang!",
+          "isCorrect": false,
+          "scoreModifier": -10,
+          "followUp": {
+            "emailId": "story_d7_it_fired",
+            "delaySeconds": 15
+          },
+          "setFlag": null
+        }
+      ],
+      "taskTrigger": null,
+      "expiredFollowUp": null,
+      "setFlagOnRead": null
+    },
+    {
+      "id": "story_d7_it_fired",
+      "sender": "Mahyu",
+      "senderAddress": "m.mahyu@sleepdep.co.id",
+      "department": "Supervisor",
+      "subject": "Wahyu Prakoso — Pemberhentian Efektif Hari Ini",
+      "body": "Kepada Departemen IT,\n\nDengan ini saya informasikan bahwa Wahyu Prakoso diberhentikan dari posisinya efektif SEKARANG JUGA.\n\nAlasan: Kelalaian berat yang mengakibatkan hilangnya data kritikal perusahaan. Tidak ada toleransi untuk ketidakmampuan di level ini.\n\nWahyu sudah diminta untuk mengemas barang-barangnya dan meninggalkan gedung dalam 30 menit. Akses badge, email, dan semua sistem sudah dinonaktifkan.\n\nEvaluasi negatifnya sudah saya kirimkan ke seluruh perusahaan mitra dalam jaringan kami. Dia tidak akan bekerja di industri ini lagi.\n\nDan untuk yang melaporkan insiden ini — terima kasih. Kepatuhan selalu dihargai. Tapi jangan pikir ini berarti kamu spesial.\n\nSemua orang bisa diganti. Termasuk kamu.\n\n— Mahyu\nSupervisor, PT Sleep Deprivation Studio",
+      "type": "info",
+      "category": "sosial",
+      "priority": "critical",
+      "expirationSeconds": 0,
+      "tags": ["story", "story_d7", "side_story"],
+      "replyOptions": null,
+      "taskTrigger": null,
+      "expiredFollowUp": null,
+      "setFlagOnRead": null
+    }
+  ]
+}

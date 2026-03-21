@@ -10,14 +10,14 @@
 .detail-toolbar {
     flex-direction: row;
     align-items: center;
-    padding: 10px 20px;
+    padding: 7px 14px;
     border-bottom-width: 1px;
     border-bottom-color: var(--color-border);
     transition: border-color 350ms ease;
 }
 
 .toolbar-btn {
-    padding: 8px 16px;
+    padding: 5px 10px;
     border-radius: var(--radius-md);
     border-width: 1px;
     border-color: transparent;
@@ -60,24 +60,24 @@
 /* ── Header ── */
 .detail-header {
     flex-direction: row;
-    padding: 24px 28px 18px 28px;
+    padding: 16px 20px 12px 20px;
     align-items: flex-start;
 }
 
 .detail-avatar {
-    width: 44px;
-    height: 44px;
+    width: 32px;
+    height: 32px;
     border-radius: var(--radius-md);
     background-color: var(--color-accent);
     align-items: center;
     justify-content: center;
-    margin-right: 18px;
+    margin-right: 12px;
     flex-shrink: 0;
     transition: background-color 350ms ease;
 }
 
 .avatar-letter {
-    font-size: 20px;
+    font-size: 14px;
     color: var(--color-text-on-accent);
     -unity-font-style: bold;
 }
@@ -89,14 +89,14 @@
 .detail-sender-row {
     flex-direction: row;
     align-items: center;
-    margin-bottom: 6px;
+    margin-bottom: 4px;
 }
 
 .detail-sender {
     font-size: var(--font-size-lg);
     color: var(--color-text-primary);
     -unity-font-style: bold;
-    margin-right: 10px;
+    margin-right: 8px;
     transition: color 350ms ease;
 }
 
@@ -109,6 +109,8 @@
 .detail-subject {
     font-size: var(--font-size-xl);
     color: var(--color-text-primary);
+    white-space: normal;
+    margin-top: 4px;
     transition: color 350ms ease;
 }
 
@@ -117,8 +119,8 @@
     flex-direction: row;
     align-items: center;
     justify-content: center;
-    margin: 0 28px;
-    padding: 8px 16px;
+    margin: 0 20px;
+    padding: 5px 10px;
     border-radius: var(--radius-md);
 }
 
@@ -150,21 +152,21 @@
 
 /* ── Expiry ── */
 .expiry-bar {
-    height: 4px;
-    margin: 0 28px;
+    height: 3px;
+    margin: 4px 20px;
 }
 
 .expiry-bar .unity-progress-bar__background {
     background-color: var(--color-border-strong);
     border-radius: 2px;
-    height: 4px;
+    height: 3px;
     overflow: hidden;
 }
 
 .expiry-bar .unity-progress-bar__progress {
     background-color: var(--color-warning);
     border-radius: 2px;
-    height: 4px;
+    height: 3px;
 }
 
 .expiry-bar .unity-progress-bar__title {
@@ -178,7 +180,7 @@
 
 /* Hide scrollbar track/buttons for a clean look */
 .detail-scroll .unity-scroller--vertical {
-    width: 6px;
+    width: 4px;
 }
 
 .detail-scroll .unity-scroller--vertical .unity-base-slider__tracker {
@@ -188,8 +190,8 @@
 
 .detail-scroll .unity-scroller--vertical .unity-base-slider__dragger {
     background-color: var(--color-text-muted);
-    border-radius: 3px;
-    width: 6px;
+    border-radius: 2px;
+    width: 4px;
     border-width: 0;
     opacity: 0.4;
 }
@@ -200,8 +202,8 @@
 
 /* ── Body ── */
 .detail-body-container {
-    padding: 24px 28px;
-    margin: 16px 28px 8px 28px;
+    padding: 16px 20px;
+    margin: 10px 20px 6px 20px;
     background-color: var(--color-body-bg);
     border-radius: var(--radius-md);
     border-width: 1px;
@@ -219,19 +221,19 @@
 /* ── Action Bar ── */
 .detail-action-bar {
     flex-direction: row;
-    padding: 14px 28px;
+    padding: 10px 20px;
     border-top-width: 1px;
     border-top-color: var(--color-border);
     transition: border-color 350ms ease;
 }
 
 .action-btn {
-    padding: 10px 28px;
+    padding: 7px 18px;
     border-radius: var(--radius-md);
     border-width: 1px;
     font-size: var(--font-size-md);
     cursor: link;
-    margin-right: 10px;
+    margin-right: 8px;
     -unity-font-style: bold;
     scale: 1 1;
     transition: background-color 150ms ease, border-color 150ms ease, color 150ms ease, scale 80ms ease-out;
@@ -268,8 +270,8 @@
 /* ── Inline Reply ── */
 /* Base styles only — transition classes are in Common.uss */
 .inline-reply-slot {
-    margin: 8px 28px 18px 28px;
-    padding: 18px;
+    margin: 6px 20px 12px 20px;
+    padding: 12px;
     background-color: var(--color-body-bg);
     border-radius: var(--radius-md);
     border-width: 1px;
@@ -280,13 +282,13 @@
     font-size: var(--font-size-sm);
     color: var(--color-accent);
     -unity-font-style: bold;
-    margin-bottom: 12px;
+    margin-bottom: 8px;
     letter-spacing: 0.5px;
 }
 
 .inline-reply-slot .reply-option-btn {
-    padding: 12px 18px;
-    margin-bottom: 8px;
+    padding: 8px 12px;
+    margin-bottom: 6px;
     background-color: var(--color-bg-surface);
     border-radius: var(--radius-md);
     border-width: 1px;

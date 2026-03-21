@@ -53,6 +53,10 @@ namespace Overworked.Core
 
             _timeRemaining -= Time.deltaTime;
 
+            // Switch ticking sound when near end
+            if (_timeRemaining <= 8f && _timeRemaining > 0f)
+                Audio.SFXManager.Instance?.StartNearTicking();
+
             if (_timeRemaining <= 0f)
             {
                 _timeRemaining = 0f;
@@ -66,10 +70,11 @@ namespace Overworked.Core
             _currentDayLength = dayLengthSeconds;
             emailSpawner?.ResetToDefaultRules();
             emailSpawner?.SetActivePools(new[] { "general", "hr", "spam" });
+            emailSpawner?.SetSpawnEmailIdWhitelist(null);
             StartGame();
         }
 
-        public void StartStoryDay(float dayLength, float difficulty, string spawnRulesOverride, string[] emailPools)
+        public void StartStoryDay(float dayLength, float difficulty, string spawnRulesOverride, string[] emailPools, string[] spawnEmailTags = null, string[] spawnEmailIds = null)
         {
             _mode = GameMode.Story;
             _currentDayLength = dayLength;
@@ -82,6 +87,9 @@ namespace Overworked.Core
             // Set active email pools for this day
             if (emailPools != null && emailPools.Length > 0)
                 emailSpawner?.SetActivePools(emailPools);
+
+            emailSpawner?.SetSpawnEmailTagFilter(spawnEmailTags);
+            emailSpawner?.SetSpawnEmailIdWhitelist(spawnEmailIds);
 
             var diff = emailSpawner?.GetComponent<DifficultyController>();
             if (diff != null)
@@ -105,8 +113,9 @@ namespace Overworked.Core
 
             emailSpawner?.StartSpawning();
             uiManager?.HideGameOver();
-            uiManager?.ShowInbox();
+            uiManager?.ShowInbox(resetScroll: true);
 
+            Audio.SFXManager.Instance?.StartTicking();
             GameEvents.FireGameStarted();
         }
 
@@ -115,6 +124,7 @@ namespace Overworked.Core
             if (_state != GameState.Playing) return;
             _state = GameState.Paused;
             Time.timeScale = 0f;
+            Audio.SFXManager.Instance?.StopTicking();
             GameEvents.FireGamePaused();
         }
 
@@ -123,12 +133,18 @@ namespace Overworked.Core
             if (_state != GameState.Paused) return;
             _state = GameState.Playing;
             Time.timeScale = 1f;
+            // Resume appropriate ticking
+            if (_timeRemaining <= 8f)
+                Audio.SFXManager.Instance?.StartNearTicking();
+            else
+                Audio.SFXManager.Instance?.StartTicking();
             GameEvents.FireGameResumed();
         }
 
         public void EndGame()
         {
             _state = GameState.GameOver;
+            Audio.SFXManager.Instance?.StopTicking();
             emailSpawner?.StopSpawning();
 
             ScoreData finalScore = ScoreManager.Instance != null
@@ -154,7 +170,9 @@ namespace Overworked.Core
         public void ReturnToMenu()
         {
             _state = GameState.Menu;
+            Audio.SFXManager.Instance?.StopTicking();
             emailSpawner?.StopSpawning();
+            emailSpawner?.SetSpawnEmailIdWhitelist(null);
             EmailManager.Instance?.ClearInbox();
             uiManager?.ShowModeSelect();
         }

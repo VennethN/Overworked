@@ -21,6 +21,11 @@ namespace Overworked.Email
             "Data/Emails/emails_responses"
         };
 
+        // Always loaded regardless of Inspector config — follow-up emails depend on this
+        private static readonly string[] RequiredPaths = {
+            "Data/Emails/emails_responses"
+        };
+
         private readonly List<EmailInstance> _inbox = new();
         private EmailDatabase _database;
         private EmailActionHandler _actionHandler;
@@ -43,6 +48,8 @@ namespace Overworked.Email
 
             _database = new EmailDatabase();
             _database.LoadFromResources(emailJsonPaths);
+            // Ensure required paths (like responses) are always loaded even if missing from Inspector
+            _database.LoadFromResources(RequiredPaths);
 
             _taskRegistry = new TaskRegistry();
             _actionHandler = new EmailActionHandler(_taskRegistry);
@@ -69,11 +76,6 @@ namespace Overworked.Email
 
         public void ReceiveEmail(EmailDefinition definition)
         {
-            if (_inbox.Count >= maxInboxSize)
-            {
-                Debug.LogWarning("EmailManager: Inbox full, cannot receive more emails.");
-                return;
-            }
 
             var instance = new EmailInstance(definition, Time.time);
             _inbox.Add(instance);
@@ -82,21 +84,30 @@ namespace Overworked.Email
 
         public void ScheduleFollowUp(FollowUp followUp)
         {
-            if (followUp == null || string.IsNullOrEmpty(followUp.emailId)) return;
+            if (followUp == null || string.IsNullOrEmpty(followUp.emailId))
+            {
+                Debug.Log($"[FollowUp Debug] ScheduleFollowUp called with null/empty followUp");
+                return;
+            }
+
+            Debug.Log($"[FollowUp Debug] Scheduling '{followUp.emailId}' in {followUp.delaySeconds}s");
 
             EmailDefinition def = _database.GetById(followUp.emailId);
             if (def == null)
             {
-                Debug.LogWarning($"EmailManager: Follow-up email '{followUp.emailId}' not found in database.");
+                Debug.LogWarning($"[FollowUp Debug] FAILED: email '{followUp.emailId}' not found in database! Check emails_responses.json");
                 return;
             }
 
+            Debug.Log($"[FollowUp Debug] Found in database, starting coroutine for '{followUp.emailId}'");
             StartCoroutine(DeliverFollowUpAfterDelay(def, followUp.delaySeconds));
         }
 
         private IEnumerator DeliverFollowUpAfterDelay(EmailDefinition definition, float delay)
         {
+            Debug.Log($"[FollowUp Debug] Waiting {delay}s to deliver '{definition.id}'...");
             yield return new WaitForSeconds(delay);
+            Debug.Log($"[FollowUp Debug] Delivering '{definition.id}' NOW");
             ReceiveEmail(definition);
         }
 
@@ -106,6 +117,10 @@ namespace Overworked.Email
             if (email == null) return;
 
             _actionHandler.HandleOpen(email);
+
+            // Buffer story flag on read (flushed to disk on day completion)
+            if (!string.IsNullOrEmpty(email.Definition.setFlagOnRead))
+                Core.SaveManager.AddPendingFlag(email.Definition.setFlagOnRead);
         }
 
         public ReplyResult ReplyToEmail(string instanceId, int replyIndex)
@@ -116,11 +131,17 @@ namespace Overworked.Email
 
             ReplyResult result = _actionHandler.HandleReply(email, replyIndex);
 
-            // Schedule follow-up if the chosen reply has one
+            // Process reply option: follow-up and story flag
             ReplyOption[] options = email.Definition.replyOptions;
             if (options != null && replyIndex >= 0 && replyIndex < options.Length)
             {
-                ScheduleFollowUp(options[replyIndex].followUp);
+                var chosen = options[replyIndex];
+                Debug.Log($"[FollowUp Debug] Reply on '{email.Definition.id}' idx={replyIndex} hasFollowUp={chosen.followUp != null} followUpId={(chosen.followUp != null ? chosen.followUp.emailId : "null")}");
+                ScheduleFollowUp(chosen.followUp);
+
+                // Buffer story flag (flushed to disk on day completion)
+                if (!string.IsNullOrEmpty(chosen.setFlag))
+                    Core.SaveManager.AddPendingFlag(chosen.setFlag);
             }
 
             return result;

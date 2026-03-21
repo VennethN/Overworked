@@ -1,0 +1,239 @@
+{
+  "emails": [
+    {
+      "id": "story_d5_not_enough",
+      "sender": "SYSTEM",
+      "senderAddress": "system@sleepdep.co.id",
+      "department": "System",
+      "subject": "Performance Report: NOT ENOUGH",
+      "body": "AUTOMATED EVALUATION\n\nKaryawan: {PlayerName}\nStatus: UNDERPERFORMING\n\nAnalisis 7 hari terakhir menunjukkan pola kerja yang tidak memenuhi standar minimum PT Sleep Deprivation Studio.\n\nMetrik kunci:\n- Kecepatan penyelesaian tugas: DI BAWAH TARGET\n- Akurasi: PERLU PENINGKATAN\n- Kepatuhan: DALAM EVALUASI\n\nTarget harian belum tercapai. Tingkatkan produktivitas atau tindakan disiplin akan diambil.\n\nPeringatan ini bersifat final.\n\n— Performance Monitor v2.1",
+      "type": "info",
+      "category": "utama",
+      "priority": "critical",
+      "expirationSeconds": 0,
+      "tags": ["story", "story_d5", "system"],
+      "replyOptions": null,
+      "taskTrigger": null,
+      "expiredFollowUp": null,
+      "setFlagOnRead": null
+    },
+    {
+      "id": "story_d5_dika_ask",
+      "sender": "Dika",
+      "senderAddress": "d.prasetyo@sleepdep.co.id",
+      "department": null,
+      "subject": "Butuh bantuan lo",
+      "body": "Hei {PlayerName},\n\nGw butuh bantuan lo. Serius.\n\nAda satu file personalia yang dikunci — evaluasi karyawan internal. Gw curiga isinya palsu. Evaluasi negatif yang sengaja dibuat untuk karyawan yang mau resign biar mereka nggak bisa kerja di tempat lain.\n\nMasalahnya, file-nya cuma bisa diakses dari workstation lo karena lo masih punya akses level baru (belum dicabut).\n\nGw tahu ini berisiko. Kalau ketahuan, kita berdua kena. Tapi kalau data ini benar... ini bukti kunci.\n\nGimana?\n\n— D",
+      "type": "reply",
+      "category": "utama",
+      "priority": "medium",
+      "expirationSeconds": 60,
+      "tags": ["story", "story_d5", "dika"],
+      "replyOptions": [
+        {
+          "text": "Oke, gw bantu lo.",
+          "isCorrect": true,
+          "scoreModifier": 5,
+          "followUp": {
+            "emailId": "story_d5_dika_thanks",
+            "delaySeconds": 10
+          },
+          "setFlag": "helped_dika_d5"
+        },
+        {
+          "text": "Ini terlalu berisiko. Gw nggak bisa.",
+          "isCorrect": true,
+          "scoreModifier": 3,
+          "followUp": null,
+          "setFlag": null
+        }
+      ],
+      "taskTrigger": null,
+      "expiredFollowUp": null,
+      "setFlagOnRead": null
+    },
+    {
+      "id": "story_d5_dika_thanks",
+      "sender": "Dika",
+      "senderAddress": "d.prasetyo@sleepdep.co.id",
+      "department": null,
+      "subject": "RE: Butuh bantuan lo",
+      "body": "{PlayerName},\n\nMakasih. Serius, makasih.\n\nGw udah download file-nya dari workstation lo. Lo nggak akan nyesel.\n\nGw bakal analisis datanya malam ini. Besok gw kirim hasilnya ke lo. Kalau isinya sesuai dugaan gw... ini bisa jadi senjata kita.\n\nHati-hati hari ini. Jangan keliatan mencurigakan.\n\n— D",
+      "type": "info",
+      "category": "utama",
+      "priority": "low",
+      "expirationSeconds": 0,
+      "tags": ["story", "story_d5", "dika"],
+      "replyOptions": null,
+      "taskTrigger": null,
+      "expiredFollowUp": null,
+      "setFlagOnRead": null
+    },
+    {
+      "id": "story_d5_coworker_burnout",
+      "sender": "Sinta M.",
+      "senderAddress": "s.maharani@sleepdep.co.id",
+      "department": null,
+      "subject": "lo masih kuat?",
+      "body": "hei {PlayerName}\n\nmaaf ganggu. gw sinta dari divisi sebelah.\n\ngw cuma mau tanya... lo masih kuat kerja di sini?\n\ngw udah 8 bulan. tangan gw gemetar tiap pagi sebelum buka laptop. gw nggak bisa tidur. gw makan cuma sekali sehari karena nggak ada waktu.\n\nminggu lalu gw pingsan di toilet. nggak ada yang nolong selama 2 jam. pas sadar, ada email dari mahyu nanya kenapa gw nggak selesaikan tugas.\n\ngw mau resign tapi... lo tahu sendiri kan. kontraknya.\n\nmaaf. gw cuma butuh ngomong ke seseorang.\n\n— sinta",
+      "type": "info",
+      "category": "sosial",
+      "priority": "low",
+      "expirationSeconds": 0,
+      "tags": ["story", "story_d5"],
+      "replyOptions": null,
+      "taskTrigger": null,
+      "expiredFollowUp": null,
+      "setFlagOnRead": null
+    },
+    {
+      "id": "story_d5_threat",
+      "sender": "Mahyu",
+      "senderAddress": "m.mahyu@sleepdep.co.id",
+      "department": "Supervisor",
+      "subject": "Awas",
+      "body": "{PlayerName},\n\nSistem mencatat performamu masih di bawah standar. Aku sudah bosan mengingatkan.\n\nKamu lambat. Kamu tidak efisien. Dan sejujurnya, aku mulai bertanya-tanya apakah kamu pantas ada di sini.\n\nAda puluhan orang yang antri untuk posisimu. Orang-orang yang lebih lapar, lebih patuh, dan tidak banyak alasan.\n\nKalau kamu anggap ini ancaman, terserah. Yang jelas, ini kenyataan.\n\nKerja lebih cepat. Sekarang.\n\n— Mahyu",
+      "type": "reply",
+      "category": "utama",
+      "priority": "critical",
+      "expirationSeconds": 45,
+      "tags": ["story", "story_d5"],
+      "replyOptions": [
+        {
+          "text": "Baik, saya akan kerja lebih keras.",
+          "isCorrect": true,
+          "scoreModifier": 5,
+          "followUp": null,
+          "setFlag": null
+        },
+        {
+          "text": "Mungkin saya memang harus resign.",
+          "isCorrect": false,
+          "scoreModifier": -10,
+          "followUp": {
+            "emailId": "story_d5_resign_warning",
+            "delaySeconds": 10
+          },
+          "setFlag": "chose_resign_d5"
+        }
+      ],
+      "taskTrigger": null,
+      "expiredFollowUp": null,
+      "setFlagOnRead": null
+    },
+    {
+      "id": "story_d5_resign_warning",
+      "sender": "SYSTEM",
+      "senderAddress": "system@sleepdep.co.id",
+      "department": "System",
+      "subject": "PERINGATAN: Pelanggaran Kontrak Terdeteksi",
+      "body": "AUTOMATED WARNING\n\nSistem mendeteksi indikasi pengunduran diri dari karyawan {PlayerName}.\n\nPerlu diketahui bahwa berdasarkan Pasal 12 Kontrak Kerja:\n\n1. Pengunduran diri sebelum masa kontrak berakhir dikenakan penalti sebesar 6 bulan gaji\n2. Evaluasi negatif akan dikirimkan ke seluruh perusahaan mitra dalam jaringan PT SDS\n3. Referensi kerja TIDAK akan diberikan\n4. Blacklist industri akan berlaku selama 24 bulan\n\nSilakan pertimbangkan kembali keputusan Anda.\n\n— Contract Enforcement System v1.3",
+      "type": "info",
+      "category": "utama",
+      "priority": "critical",
+      "expirationSeconds": 0,
+      "tags": ["story", "story_d5", "system"],
+      "replyOptions": null,
+      "taskTrigger": null,
+      "expiredFollowUp": null,
+      "setFlagOnRead": null
+    },
+    {
+      "id": "story_d5_anonymous_tip",
+      "sender": "???",
+      "senderAddress": "anonymous@protonmail.com",
+      "department": null,
+      "subject": "Hati-hati",
+      "body": "{PlayerName},\n\nKamu tidak kenal aku. Tapi aku tahu situasimu.\n\nJangan percaya semua yang perusahaan bilang soal kontrakmu. Banyak yang mereka tulis di sana tidak memiliki dasar hukum.\n\nAda orang-orang yang sedang mengumpulkan bukti. Kalau kamu menerima sesuatu yang mencurigakan — simpan. Jangan hapus. Jangan laporkan ke HR.\n\nMereka memantau.\n\nNanti kamu akan mengerti.\n\n— ???",
+      "type": "info",
+      "category": "utama",
+      "priority": "low",
+      "expirationSeconds": 0,
+      "tags": ["story", "story_d5", "secret"],
+      "replyOptions": null,
+      "taskTrigger": null,
+      "expiredFollowUp": null,
+      "setFlagOnRead": null
+    },
+    {
+      "id": "story_d5_printer",
+      "sender": "Andi Setiawan",
+      "senderAddress": "a.setiawan@sleepdep.co.id",
+      "department": "IT Support",
+      "subject": "URGENT: Printer Lantai 3 Jam Total — Butuh Approval Perbaikan",
+      "body": "Kepada Admin,\n\nPrinter utama lantai 3 (HP LaserJet Pro, asset tag #PRN-0042) mengalami paper jam yang cukup parah. Kertas nyangkut di TIGA tempat sekaligus — input tray, roller tengah, dan output tray. Saya belum pernah lihat yang separah ini dalam 5 tahun kerja di IT.\n\nSelain itu, display-nya menunjukkan error code \"PC LOAD LETTER\" yang sejujurnya saya juga nggak tahu artinya apa. Sudah saya Google tapi hasilnya cuma referensi film.\n\nSaya butuh approval untuk panggil teknisi eksternal karena ini di luar kemampuan kami. Estimasi biaya Rp 850.000 untuk service call + spare parts.\n\nMohon segera diproses karena sudah ada antrian 15 orang yang mau print. Beberapa sudah mulai agresif.\n\n— Andi Setiawan\nIT Support",
+      "type": "task",
+      "category": "sosial",
+      "priority": "high",
+      "expirationSeconds": 55,
+      "tags": ["story", "story_d5", "side_story"],
+      "replyOptions": null,
+      "taskTrigger": {
+        "taskId": "approve_equipment",
+        "description": "Approve perbaikan printer lantai 3",
+        "autoCompleteOnOpen": false,
+        "timeoutSeconds": 30,
+        "minigameId": "approval_rush",
+        "minigameDifficulty": "easy",
+        "followUp": {
+          "emailId": "story_d5_printer_fixed",
+          "delaySeconds": 20
+        }
+      },
+      "expiredFollowUp": null,
+      "setFlagOnRead": null
+    },
+    {
+      "id": "story_d5_printer_fixed",
+      "sender": "Andi Setiawan",
+      "senderAddress": "a.setiawan@sleepdep.co.id",
+      "department": "IT Support",
+      "subject": "RE: Printer Lantai 3 — Sudah Diperbaiki, TAPI...",
+      "body": "Update soal printer,\n\nKabar baik: printer sudah berfungsi normal. Teknisi berhasil keluarkan semua kertas yang nyangkut. Ternyata ada peniti, 2 paper clip, dan sebuah permen karet di dalam roller. Jangan tanya.\n\nKabar buruk: begitu printer hidup lagi, langsung keluar print queue yang tertunda. Dan... ada seseorang yang rupanya sudah mengirim 500 HALAMAN print job berisi... foto kucing.\n\n500 halaman. Semua kucing. Ada yang pakai topi. Ada yang di dalam roti. Ada yang lagi marah. Ada yang pakai kacamata hitam. Koleksi lengkap.\n\nPrint queue-nya masuk dari VPN jadi saya belum bisa trace siapa orangnya. Toner yang baru diganti minggu lalu sekarang sudah habis 40%.\n\nSaya butuh info kalau ada yang tahu siapa pelakunya.\n\n— Andi Setiawan\nIT Support\n\nP.S. Kucing yang pakai topinya lucu sih. Tapi tetap — 500 halaman itu kebanyakan.",
+      "type": "reply",
+      "category": "sosial",
+      "priority": "medium",
+      "expirationSeconds": 45,
+      "tags": ["story", "story_d5", "side_story"],
+      "replyOptions": [
+        {
+          "text": "Siapa yang nge-print???",
+          "isCorrect": true,
+          "scoreModifier": 3,
+          "followUp": {
+            "emailId": "story_d5_printer_confession",
+            "delaySeconds": 15
+          },
+          "setFlag": null
+        },
+        {
+          "text": "Bagus, kantor butuh hiburan.",
+          "isCorrect": false,
+          "scoreModifier": -5,
+          "followUp": null,
+          "setFlag": null
+        }
+      ],
+      "taskTrigger": null,
+      "expiredFollowUp": null,
+      "setFlagOnRead": null
+    },
+    {
+      "id": "story_d5_printer_confession",
+      "sender": "Anonymous",
+      "senderAddress": "noreply@sleepdep.co.id",
+      "department": null,
+      "subject": "Pengakuan Soal Printer (Tolong Jangan Marah)",
+      "body": "Kepada IT Support dan seluruh karyawan yang terdampak,\n\nSaya menulis ini secara anonim karena saya terlalu malu untuk mengakui secara langsung.\n\nYa, 500 halaman foto kucing itu dari saya. Saya minta maaf yang sebesar-besarnya.\n\nCeritanya begini: saya kerja dari rumah tadi malam, dan VPN kantor masih nyambung. Saya pikir saya lagi print di printer rumah saya. Jadi saya print foto-foto kucing saya (namanya Jingga) untuk album keluarga.\n\n...Tapi ternyata print job-nya masuk ke printer kantor. 500 halaman. Semua Jingga.\n\nSaya baru sadar pagi ini waktu printer kantor error dan IT bilang ada 500 halaman kucing. Saya langsung tahu itu Jingga.\n\nSaya bersedia ganti toner yang habis. Dan saya janji akan disconnect VPN sebelum print dari rumah.\n\nSekali lagi, maaf. Jingga juga minta maaf.\n\n— Karyawan yang Sangat Menyesal\n\nP.S. Kalau ada yang mau foto Jingga yang pakai kacamata hitam, boleh ambil di tray printer. Itu foto favorit saya.",
+      "type": "info",
+      "category": "sosial",
+      "priority": "low",
+      "expirationSeconds": 0,
+      "tags": ["story", "story_d5", "side_story"],
+      "replyOptions": null,
+      "taskTrigger": null,
+      "expiredFollowUp": null,
+      "setFlagOnRead": null
+    }
+  ]
+}

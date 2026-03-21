@@ -12,6 +12,8 @@ namespace Overworked.Minigames
             Register("typing_test", difficulty => new TypingTestMinigame(difficulty));
             Register("number_crunch", difficulty => new NumberCrunchMinigame(difficulty));
             Register("inbox_sort", difficulty => new InboxSortMinigame(difficulty));
+            Register("spot_error", difficulty => new SpotErrorMinigame(difficulty));
+            Register("approval_rush", difficulty => new ApprovalRushMinigame(difficulty));
         }
 
         public void Register(string minigameId, Func<string, IMinigame> factory)

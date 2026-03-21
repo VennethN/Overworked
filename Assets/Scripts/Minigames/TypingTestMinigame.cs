@@ -64,15 +64,15 @@ namespace Overworked.Minigames
             {
                 case "easy":
                     pool = PhrasesEasy;
-                    _timeLimit = 15f;
+                    _timeLimit = 14f;
                     break;
                 case "hard":
                     pool = PhrasesHard;
-                    _timeLimit = 20f;
+                    _timeLimit = 18f;
                     break;
                 default:
                     pool = PhrasesMedium;
-                    _timeLimit = 18f;
+                    _timeLimit = 16f;
                     break;
             }
             _targetPhrase = pool[UnityEngine.Random.Range(0, pool.Length)];

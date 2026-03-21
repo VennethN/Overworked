@@ -25,6 +25,8 @@ namespace Overworked.Email.Data
         public bool isCorrect;
         public int scoreModifier;
         public FollowUp followUp;
+        /// <summary>Flag set in SaveData when this reply is chosen.</summary>
+        public string setFlag;
     }
 
     [Serializable]
@@ -56,6 +58,8 @@ namespace Overworked.Email.Data
         public ReplyOption[] replyOptions;
         public TaskTrigger taskTrigger;
         public FollowUp expiredFollowUp;
+        /// <summary>Flag set in SaveData when this email is opened/read.</summary>
+        public string setFlagOnRead;
 
         [NonSerialized] public EmailType parsedType;
         [NonSerialized] public EmailPriority parsedPriority;

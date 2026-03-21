@@ -1,0 +1,118 @@
+{
+  "emails": [
+    {
+      "id": "story_d2_faster",
+      "sender": "Mahyu",
+      "senderAddress": "m.mahyu@sleepdep.co.id",
+      "department": "Supervisor",
+      "subject": "Lebih Cepat",
+      "body": "{PlayerName},\n\nHari ini targetnya naik. Kemarin kamu terlalu lambat untuk standar kami.\n\nDi sini tidak ada toleransi. Kamu pikir perusahaan bayar kamu untuk kerja setengah-setengah?\n\nKalau tidak bisa mengikuti tempo, kami akan evaluasi kontrakmu lebih awal. Dan percayalah — evaluasi dari kami tidak pernah bagus.\n\nJangan buang waktu.\n\n— Mahyu\nSupervisor, PT Sleep Deprivation Studio",
+      "type": "reply",
+      "category": "utama",
+      "priority": "high",
+      "expirationSeconds": 60,
+      "tags": ["story", "story_d2"],
+      "replyOptions": [
+        {
+          "text": "Saya akan lebih cepat, Pak.",
+          "isCorrect": true,
+          "scoreModifier": 5,
+          "followUp": null,
+          "setFlag": null
+        },
+        {
+          "text": "Ini sudah batas kemampuan saya.",
+          "isCorrect": false,
+          "scoreModifier": -5,
+          "followUp": {
+            "emailId": "story_d2_mahyu_angry",
+            "delaySeconds": 8
+          },
+          "setFlag": null
+        }
+      ],
+      "taskTrigger": null,
+      "expiredFollowUp": null,
+      "setFlagOnRead": null
+    },
+    {
+      "id": "story_d2_mahyu_angry",
+      "sender": "Mahyu",
+      "senderAddress": "m.mahyu@sleepdep.co.id",
+      "department": "Supervisor",
+      "subject": "RE: Lebih Cepat",
+      "body": "{PlayerName},\n\n\"Batas kemampuan\"? Kamu pikir aku peduli soal batasmu?\n\nDi perusahaan ini, batas kamu adalah batas yang KAMI tentukan. Bukan kamu.\n\nAku sudah catat responmu. Evaluasi berikutnya akan sangat menarik untukmu.\n\nJangan pernah bicara seperti itu lagi. Kerja.\n\n— Mahyu",
+      "type": "info",
+      "category": "utama",
+      "priority": "critical",
+      "expirationSeconds": 0,
+      "tags": ["story", "story_d2"],
+      "replyOptions": null,
+      "taskTrigger": null,
+      "expiredFollowUp": null,
+      "setFlagOnRead": null
+    },
+    {
+      "id": "story_d2_lunch_thief",
+      "sender": "Agus Wibowo",
+      "senderAddress": "a.wibowo@sleepdep.co.id",
+      "department": "Finance",
+      "subject": "SIAPA YANG AMBIL MAKAN SIANG SAYA???",
+      "body": "KEPADA SELURUH KARYAWAN,\n\nSaya mau tanya dengan SANGAT JELAS: SIAPA yang mengambil nasi padang saya dari kulkas lantai 3??\n\nItu rendang Ibu saya buat khusus pagi ini. Saya taruh di kulkas jam 8 pagi dengan label nama saya PLUS stiker kucing biar gampang dikenali. Sekarang jam 10 sudah raib.\n\nSaya tidak makan pagi karena sengaja nahan lapar buat makan siang itu. Sekarang perut saya bunyi kayak mesin printer lantai 2.\n\nKalau ada yang lihat atau tahu sesuatu, TOLONG kabari saya. Ini bukan cuma soal makanan — ini soal PRINSIP.\n\n— Agus W.\nFinance Dept.\n\nP.S. Yang ambil, semoga rendangnya terlalu pedas buat kamu.",
+      "type": "reply",
+      "category": "sosial",
+      "priority": "medium",
+      "expirationSeconds": 50,
+      "tags": ["story", "story_d2", "side_story"],
+      "replyOptions": [
+        {
+          "text": "Saya tidak tahu siapa yang ambil.",
+          "isCorrect": true,
+          "scoreModifier": 3,
+          "followUp": {
+            "emailId": "story_d2_lunch_caught",
+            "delaySeconds": 30
+          },
+          "setFlag": null
+        },
+        {
+          "text": "Mungkin Mahyu yang ambil?",
+          "isCorrect": false,
+          "scoreModifier": -10,
+          "followUp": null,
+          "setFlag": null
+        },
+        {
+          "text": "Cek CCTV aja.",
+          "isCorrect": true,
+          "scoreModifier": 5,
+          "followUp": {
+            "emailId": "story_d2_lunch_caught",
+            "delaySeconds": 30
+          },
+          "setFlag": null
+        }
+      ],
+      "taskTrigger": null,
+      "expiredFollowUp": null,
+      "setFlagOnRead": null
+    },
+    {
+      "id": "story_d2_lunch_caught",
+      "sender": "Agus Wibowo",
+      "senderAddress": "a.wibowo@sleepdep.co.id",
+      "department": "Finance",
+      "subject": "RE: SIAPA YANG AMBIL MAKAN SIANG SAYA??? — SUDAH KETEMU",
+      "body": "UPDATE untuk seluruh karyawan,\n\nMisteri nasi padang sudah TERPECAHKAN.\n\nTernyata Ibu Neni (cleaning service lantai 3) yang membuangnya karena katanya \"baunya mencurigakan\" dan dia pikir itu sudah expired. RENDANG IBU SAYA BARU DIMASAK PAGI INI, BU NENI.\n\nIbu Neni bilang: \"Mas, saya kira itu makanan dari minggu lalu. Baunya kuat sekali soalnya.\" YA BU ITU NAMANYA RENDANG. MEMANG BAUNYA KUAT. ITU ARTINYA ENAK.\n\nSaya sudah minta Ibu Neni untuk tidak menyentuh apapun di kulkas tanpa izin. Sekarang saya harus makan Indomie dari vending machine. Hari yang sangat menyedihkan.\n\nMaaf sudah bikin heboh. Tapi saya tetap sedih.\n\n— Agus W.\nFinance Dept.\n\nP.S. Besok saya bawa 2 porsi untuk jaga-jaga.",
+      "type": "info",
+      "category": "sosial",
+      "priority": "low",
+      "expirationSeconds": 0,
+      "tags": ["story", "story_d2", "side_story"],
+      "replyOptions": null,
+      "taskTrigger": null,
+      "expiredFollowUp": null,
+      "setFlagOnRead": null
+    }
+  ]
+}
