@@ -112,6 +112,7 @@ namespace Overworked.UI
             nameInput.value = string.IsNullOrEmpty(save.playerName) ? "" : save.playerName;
             nameInput.style.width = 240;
             nameInput.style.marginBottom = 24;
+            nameInput.style.alignItems = Align.Center;
             container.Add(nameInput);
 
             // Placeholder text
