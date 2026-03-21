@@ -58,6 +58,10 @@ namespace Overworked.Email
 
         private void Update()
         {
+            if (Core.GameManager.Instance == null ||
+                Core.GameManager.Instance.State != Core.GameState.Playing)
+                return;
+
             float dt = Time.deltaTime;
             for (int i = _inbox.Count - 1; i >= 0; i--)
             {
