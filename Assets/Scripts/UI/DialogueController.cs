@@ -34,10 +34,34 @@ namespace Overworked.UI
         {
             _root.Clear();
 
+            // --- Full-screen dark backdrop ---
             var overlay = new VisualElement();
             overlay.AddToClassList("overlay");
-            overlay.style.backgroundColor = new Color(0.043f, 0.059f, 0.094f, 0.95f);
+            overlay.style.backgroundColor = new Color(0.02f, 0.02f, 0.03f, 0.97f);
 
+            // --- Monitor bezel (outer housing) ---
+            var bezel = new VisualElement();
+            bezel.style.flexGrow = 1;
+            bezel.style.marginTop = 18;
+            bezel.style.marginBottom = 14;
+            bezel.style.marginLeft = 24;
+            bezel.style.marginRight = 24;
+            SetRadius(bezel, 10);
+            bezel.style.backgroundColor = new Color(0.055f, 0.058f, 0.065f, 1f);
+            SetBorder(bezel, 2, new Color(0.1f, 0.1f, 0.12f, 1f));
+
+            // --- Screen area (inside the bezel) ---
+            var screen = new VisualElement();
+            screen.style.flexGrow = 1;
+            screen.style.marginTop = 14;
+            screen.style.marginBottom = 8;
+            screen.style.marginLeft = 16;
+            screen.style.marginRight = 16;
+            SetRadius(screen, 4);
+            screen.style.backgroundColor = new Color(0.025f, 0.048f, 0.058f, 1f);
+            SetBorder(screen, 1, new Color(0.1f, 0.22f, 0.2f, 0.18f));
+
+            // --- Center container ---
             var container = new VisualElement();
             container.style.alignItems = Align.Center;
             container.style.justifyContent = Justify.Center;
@@ -45,23 +69,58 @@ namespace Overworked.UI
             container.style.paddingLeft = 56;
             container.style.paddingRight = 56;
 
-            // Dialogue box
+            // --- Dialogue window ---
             var box = new VisualElement();
             box.style.width = 420;
-            box.style.backgroundColor = new Color(0.118f, 0.161f, 0.212f, 1f);
-            box.style.borderTopLeftRadius = 12;
-            box.style.borderTopRightRadius = 12;
-            box.style.borderBottomLeftRadius = 12;
-            box.style.borderBottomRightRadius = 12;
-            box.style.paddingTop = 22;
-            box.style.paddingBottom = 16;
-            box.style.paddingLeft = 24;
-            box.style.paddingRight = 24;
-            box.style.borderTopWidth = 1;
-            box.style.borderTopColor = new Color(0.376f, 0.51f, 0.965f, 0.3f);
-            box.style.borderBottomWidth = 0;
-            box.style.borderLeftWidth = 0;
-            box.style.borderRightWidth = 0;
+            SetRadius(box, 6);
+            box.style.overflow = Overflow.Hidden;
+
+            // Title bar (terminal window style)
+            var titleBar = new VisualElement();
+            titleBar.style.backgroundColor = new Color(0.1f, 0.13f, 0.2f, 1f);
+            titleBar.style.paddingTop = 6;
+            titleBar.style.paddingBottom = 6;
+            titleBar.style.paddingLeft = 10;
+            titleBar.style.paddingRight = 10;
+            titleBar.style.flexDirection = FlexDirection.Row;
+            titleBar.style.alignItems = Align.Center;
+
+            // Window control dots
+            var dots = new VisualElement();
+            dots.style.flexDirection = FlexDirection.Row;
+            dots.style.marginRight = 8;
+            Color[] dotColors =
+            {
+                new Color(0.85f, 0.3f, 0.3f, 0.65f),
+                new Color(0.85f, 0.65f, 0.2f, 0.65f),
+                new Color(0.3f, 0.75f, 0.4f, 0.65f)
+            };
+            foreach (var c in dotColors)
+            {
+                var dot = new VisualElement();
+                dot.style.width = 7;
+                dot.style.height = 7;
+                SetRadius(dot, 4);
+                dot.style.backgroundColor = c;
+                dot.style.marginRight = 4;
+                dots.Add(dot);
+            }
+            titleBar.Add(dots);
+
+            var titleLabel = new Label("pesan-masuk");
+            titleLabel.style.fontSize = 8;
+            titleLabel.style.color = new Color(0.45f, 0.52f, 0.62f, 0.8f);
+            titleBar.Add(titleLabel);
+
+            box.Add(titleBar);
+
+            // Content panel
+            var content = new VisualElement();
+            content.style.backgroundColor = new Color(0.09f, 0.12f, 0.16f, 1f);
+            content.style.paddingTop = 22;
+            content.style.paddingBottom = 16;
+            content.style.paddingLeft = 24;
+            content.style.paddingRight = 24;
 
             // Avatar + speaker row
             var headerRow = new VisualElement();
@@ -72,10 +131,7 @@ namespace Overworked.UI
             _avatarCircle = new VisualElement();
             _avatarCircle.style.width = 34;
             _avatarCircle.style.height = 34;
-            _avatarCircle.style.borderTopLeftRadius = 17;
-            _avatarCircle.style.borderTopRightRadius = 17;
-            _avatarCircle.style.borderBottomLeftRadius = 17;
-            _avatarCircle.style.borderBottomRightRadius = 17;
+            SetRadius(_avatarCircle, 17);
             _avatarCircle.style.backgroundColor = new Color(0.376f, 0.51f, 0.965f, 0.2f);
             _avatarCircle.style.alignItems = Align.Center;
             _avatarCircle.style.justifyContent = Justify.Center;
@@ -95,7 +151,7 @@ namespace Overworked.UI
             _speakerLabel.style.unityFontStyleAndWeight = FontStyle.Bold;
             headerRow.Add(_speakerLabel);
 
-            box.Add(headerRow);
+            content.Add(headerRow);
 
             // Body text
             _bodyLabel = new Label();
@@ -103,7 +159,7 @@ namespace Overworked.UI
             _bodyLabel.style.color = new Color(0.722f, 0.757f, 0.808f, 1f);
             _bodyLabel.style.whiteSpace = WhiteSpace.Normal;
             _bodyLabel.style.marginBottom = 20;
-            box.Add(_bodyLabel);
+            content.Add(_bodyLabel);
 
             // Footer row: counter + continue button
             var footer = new VisualElement();
@@ -125,19 +181,55 @@ namespace Overworked.UI
             _continueBtn.style.fontSize = 10;
             _continueBtn.style.backgroundColor = new Color(0.376f, 0.51f, 0.965f, 1f);
             _continueBtn.style.color = Color.white;
-            _continueBtn.style.borderTopWidth = 0;
-            _continueBtn.style.borderBottomWidth = 0;
-            _continueBtn.style.borderLeftWidth = 0;
-            _continueBtn.style.borderRightWidth = 0;
-            _continueBtn.style.borderTopLeftRadius = 6;
-            _continueBtn.style.borderTopRightRadius = 6;
-            _continueBtn.style.borderBottomLeftRadius = 6;
-            _continueBtn.style.borderBottomRightRadius = 6;
+            SetBorder(_continueBtn, 0, Color.clear);
+            SetRadius(_continueBtn, 6);
             footer.Add(_continueBtn);
 
-            box.Add(footer);
+            content.Add(footer);
+            box.Add(content);
             container.Add(box);
-            overlay.Add(container);
+            screen.Add(container);
+
+            // --- Status bar at bottom of screen ---
+            var statusBar = new VisualElement();
+            statusBar.style.flexDirection = FlexDirection.Row;
+            statusBar.style.justifyContent = Justify.SpaceBetween;
+            statusBar.style.paddingLeft = 12;
+            statusBar.style.paddingRight = 12;
+            statusBar.style.paddingBottom = 6;
+            statusBar.style.paddingTop = 4;
+            SetBorder(statusBar, 0, Color.clear);
+            statusBar.style.borderTopWidth = 1;
+            statusBar.style.borderTopColor = new Color(0.1f, 0.18f, 0.16f, 0.12f);
+
+            var statusLeft = new Label("Terminal v2.1");
+            statusLeft.style.fontSize = 7;
+            statusLeft.style.color = new Color(0.2f, 0.32f, 0.28f, 0.45f);
+            statusBar.Add(statusLeft);
+
+            var statusRight = new Label("CONNECTED");
+            statusRight.style.fontSize = 7;
+            statusRight.style.color = new Color(0.18f, 0.45f, 0.3f, 0.45f);
+            statusBar.Add(statusRight);
+
+            screen.Add(statusBar);
+            bezel.Add(screen);
+
+            // --- Power LED on bezel ---
+            var ledRow = new VisualElement();
+            ledRow.style.alignItems = Align.Center;
+            ledRow.style.paddingBottom = 6;
+            ledRow.style.paddingTop = 2;
+
+            var led = new VisualElement();
+            led.style.width = 6;
+            led.style.height = 6;
+            SetRadius(led, 3);
+            led.style.backgroundColor = new Color(0.2f, 0.7f, 0.3f, 0.55f);
+            ledRow.Add(led);
+
+            bezel.Add(ledRow);
+            overlay.Add(bezel);
             _root.Add(overlay);
 
             overlay.schedule.Execute(() => overlay.AddToClassList("overlay--visible"));
@@ -185,6 +277,26 @@ namespace Overworked.UI
             {
                 ShowCurrentLine();
             }
+        }
+
+        private static void SetRadius(VisualElement el, float r)
+        {
+            el.style.borderTopLeftRadius = r;
+            el.style.borderTopRightRadius = r;
+            el.style.borderBottomLeftRadius = r;
+            el.style.borderBottomRightRadius = r;
+        }
+
+        private static void SetBorder(VisualElement el, float w, Color c)
+        {
+            el.style.borderTopWidth = w;
+            el.style.borderBottomWidth = w;
+            el.style.borderLeftWidth = w;
+            el.style.borderRightWidth = w;
+            el.style.borderTopColor = c;
+            el.style.borderBottomColor = c;
+            el.style.borderLeftColor = c;
+            el.style.borderRightColor = c;
         }
     }
 }

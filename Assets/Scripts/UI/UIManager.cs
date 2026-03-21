@@ -170,7 +170,8 @@ namespace Overworked.UI
             if (GameManager.Instance != null)
             {
                 _hud?.UpdateTimer(GameManager.Instance.TimeRemaining);
-                UpdateStressVignette(GameManager.Instance.TimeRemaining, GameManager.Instance.DayLength);
+                if (GameManager.Instance.State == GameState.Playing)
+                    UpdateStressVignette(GameManager.Instance.TimeRemaining, GameManager.Instance.DayLength);
             }
 
             _hud?.UpdateEmailCount(EmailManager.Instance.ActiveCount);
@@ -193,6 +194,9 @@ namespace Overworked.UI
             _mainContent.style.display = DisplayStyle.None;
             _hudSlot.style.display = DisplayStyle.None;
             HideGameOver();
+
+            // Reset stress vignette so it doesn't linger on the menu
+            UpdateStressVignette(1f, 1f);
 
             // Show mode select overlay
             _modeselectSlot.style.display = DisplayStyle.Flex;
@@ -458,6 +462,63 @@ namespace Overworked.UI
             return btn;
         }
 
+        private VisualElement CreateVolumeRow(string label, float initial, System.Action<float> onChange)
+        {
+            var wrapper = new VisualElement();
+            wrapper.style.alignItems = Align.Center;
+            wrapper.style.width = Length.Percent(100);
+            wrapper.style.marginBottom = 12;
+
+            var lbl = new Label(label);
+            lbl.style.fontSize = 11;
+            lbl.style.color = new Color(0.63f, 0.63f, 0.69f, 1f);
+            lbl.style.marginBottom = 8;
+            wrapper.Add(lbl);
+
+            var row = new VisualElement();
+            row.style.flexDirection = FlexDirection.Row;
+            row.style.alignItems = Align.Center;
+            row.style.justifyContent = Justify.Center;
+            row.style.width = Length.Percent(100);
+
+            float vol = initial;
+            var valueLabel = new Label($"{Mathf.RoundToInt(vol * 100)}%");
+            valueLabel.style.fontSize = 14;
+            valueLabel.style.color = Color.white;
+            valueLabel.style.unityFontStyleAndWeight = FontStyle.Bold;
+            valueLabel.style.width = 48;
+            valueLabel.style.unityTextAlign = TextAnchor.MiddleCenter;
+
+            var minusBtn = CreateOverlayButton("-", new Color(0.235f, 0.306f, 0.416f, 1f), () =>
+            {
+                vol = Mathf.Clamp01(vol - 0.1f);
+                valueLabel.text = $"{Mathf.RoundToInt(vol * 100)}%";
+                onChange?.Invoke(vol);
+            });
+            minusBtn.style.width = 36;
+            minusBtn.style.paddingLeft = 0;
+            minusBtn.style.paddingRight = 0;
+            minusBtn.style.fontSize = 14;
+
+            var plusBtn = CreateOverlayButton("+", new Color(0.235f, 0.306f, 0.416f, 1f), () =>
+            {
+                vol = Mathf.Clamp01(vol + 0.1f);
+                valueLabel.text = $"{Mathf.RoundToInt(vol * 100)}%";
+                onChange?.Invoke(vol);
+            });
+            plusBtn.style.width = 36;
+            plusBtn.style.paddingLeft = 0;
+            plusBtn.style.paddingRight = 0;
+            plusBtn.style.fontSize = 14;
+
+            row.Add(minusBtn);
+            row.Add(valueLabel);
+            row.Add(plusBtn);
+            wrapper.Add(row);
+
+            return wrapper;
+        }
+
         private void AddStatLine(VisualElement parent, string label, string value)
         {
             var row = new VisualElement();
@@ -615,6 +676,20 @@ namespace Overworked.UI
             hint.style.color = new Color(0.4f, 0.4f, 0.47f, 1f);
             hint.style.marginBottom = 12;
             container.Add(hint);
+
+            // --- Music Volume ---
+            var sfx = Audio.SFXManager.Instance;
+
+            container.Add(CreateVolumeRow("Music", sfx != null ? sfx.MusicVolume : 0.5f, v =>
+            {
+                sfx?.SetMusicVolume(v);
+            }));
+
+            // --- SFX Volume ---
+            container.Add(CreateVolumeRow("SFX", sfx != null ? sfx.SfxVolume : 0.5f, v =>
+            {
+                sfx?.SetSfxVolume(v);
+            }));
 
             // Resume / Quit buttons (only during gameplay)
             if (isPlaying)
