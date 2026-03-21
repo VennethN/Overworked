@@ -17,6 +17,7 @@ namespace Overworked.UI
         private VisualElement _nameInputView;
         private VisualElement _mainView;
         private VisualElement _daySelectView;
+        private VisualElement _creditsView;
         private StoryCollection _storyData;
 
         public ModeSelectController(VisualElement root, Action onArcade, Action<int> onStoryDay, Action onSettings = null)
@@ -71,6 +72,16 @@ namespace Overworked.UI
             _daySelectView.style.display = DisplayStyle.None;
             BuildDaySelectView(_daySelectView);
             overlay.Add(_daySelectView);
+
+            // Credits view (hidden initially)
+            _creditsView = new VisualElement();
+            _creditsView.style.alignItems = Align.Center;
+            _creditsView.style.justifyContent = Justify.FlexStart;
+            _creditsView.style.flexGrow = 1;
+            _creditsView.style.paddingTop = 40;
+            _creditsView.style.display = DisplayStyle.None;
+            BuildCreditsView(_creditsView);
+            overlay.Add(_creditsView);
 
             _root.Add(overlay);
 
@@ -266,6 +277,35 @@ namespace Overworked.UI
                 settingsBtn.style.borderBottomRightRadius = 5;
                 container.Add(settingsBtn);
             }
+
+            // Credits button
+            var creditsBtn = new Button(() =>
+            {
+                _mainView.style.display = DisplayStyle.None;
+                _creditsView.style.display = DisplayStyle.Flex;
+            });
+            creditsBtn.text = "Credits";
+            creditsBtn.style.marginTop = 8;
+            creditsBtn.style.paddingTop = 8;
+            creditsBtn.style.paddingBottom = 8;
+            creditsBtn.style.paddingLeft = 20;
+            creditsBtn.style.paddingRight = 20;
+            creditsBtn.style.fontSize = 12;
+            creditsBtn.style.backgroundColor = new Color(0.118f, 0.161f, 0.212f, 1f);
+            creditsBtn.style.color = new Color(0.58f, 0.639f, 0.722f, 1f);
+            creditsBtn.style.borderTopWidth = 1;
+            creditsBtn.style.borderBottomWidth = 1;
+            creditsBtn.style.borderLeftWidth = 1;
+            creditsBtn.style.borderRightWidth = 1;
+            creditsBtn.style.borderTopColor = new Color(0.235f, 0.306f, 0.416f, 1f);
+            creditsBtn.style.borderBottomColor = new Color(0.235f, 0.306f, 0.416f, 1f);
+            creditsBtn.style.borderLeftColor = new Color(0.235f, 0.306f, 0.416f, 1f);
+            creditsBtn.style.borderRightColor = new Color(0.235f, 0.306f, 0.416f, 1f);
+            creditsBtn.style.borderTopLeftRadius = 5;
+            creditsBtn.style.borderTopRightRadius = 5;
+            creditsBtn.style.borderBottomLeftRadius = 5;
+            creditsBtn.style.borderBottomRightRadius = 5;
+            container.Add(creditsBtn);
         }
 
         private VisualElement CreateModeCard(string icon, string title, string desc, Color accent, Action onClick)
@@ -327,6 +367,130 @@ namespace Overworked.UI
             _nameInputView.style.display = DisplayStyle.None;
             _mainView.style.display = DisplayStyle.Flex;
             _daySelectView.style.display = DisplayStyle.None;
+            _creditsView.style.display = DisplayStyle.None;
+        }
+
+        private void BuildCreditsView(VisualElement container)
+        {
+            // Header row
+            var header = new VisualElement();
+            header.style.flexDirection = FlexDirection.Row;
+            header.style.alignItems = Align.Center;
+            header.style.width = 450;
+            header.style.marginBottom = 24;
+
+            var backBtn = new Button(() => ShowMain());
+            backBtn.text = "\u2190  Kembali";
+            backBtn.style.fontSize = 13;
+            backBtn.style.color = new Color(0.58f, 0.639f, 0.722f, 1f);
+            backBtn.style.backgroundColor = Color.clear;
+            backBtn.style.borderTopWidth = 0;
+            backBtn.style.borderBottomWidth = 0;
+            backBtn.style.borderLeftWidth = 0;
+            backBtn.style.borderRightWidth = 0;
+            backBtn.style.paddingLeft = 0;
+            header.Add(backBtn);
+
+            var spacer = new VisualElement();
+            spacer.style.flexGrow = 1;
+            header.Add(spacer);
+
+            var titleLabel = new Label("CREDITS");
+            titleLabel.style.fontSize = 16;
+            titleLabel.style.color = new Color(0.945f, 0.96f, 0.976f, 1f);
+            titleLabel.style.unityFontStyleAndWeight = FontStyle.Bold;
+            titleLabel.style.letterSpacing = 2;
+            header.Add(titleLabel);
+
+            container.Add(header);
+
+            // Load credits content
+            string creditsText = "";
+            var asset = Resources.Load<TextAsset>("credits");
+            if (asset != null)
+                creditsText = asset.text;
+            else
+                creditsText = "Credits file not found.";
+
+            // Parse markdown into styled labels
+            var scrollView = new ScrollView();
+            scrollView.style.width = 450;
+            scrollView.style.maxHeight = 400;
+
+            var lines = creditsText.Split('\n');
+            foreach (var rawLine in lines)
+            {
+                var line = rawLine.TrimEnd('\r');
+                if (string.IsNullOrWhiteSpace(line))
+                {
+                    var sp = new VisualElement();
+                    sp.style.height = 8;
+                    scrollView.Add(sp);
+                    continue;
+                }
+
+                if (line.StartsWith("---"))
+                {
+                    var hr = new VisualElement();
+                    hr.style.height = 1;
+                    hr.style.backgroundColor = new Color(0.235f, 0.306f, 0.416f, 1f);
+                    hr.style.marginTop = 8;
+                    hr.style.marginBottom = 8;
+                    hr.style.width = Length.Percent(100);
+                    scrollView.Add(hr);
+                    continue;
+                }
+
+                var lbl = new Label();
+                lbl.style.whiteSpace = WhiteSpace.Normal;
+                lbl.style.width = Length.Percent(100);
+
+                if (line.StartsWith("# "))
+                {
+                    lbl.text = line.Substring(2).Trim();
+                    lbl.style.fontSize = 18;
+                    lbl.style.color = new Color(0.945f, 0.96f, 0.976f, 1f);
+                    lbl.style.unityFontStyleAndWeight = FontStyle.Bold;
+                    lbl.style.marginBottom = 8;
+                }
+                else if (line.StartsWith("## "))
+                {
+                    lbl.text = line.Substring(3).Trim();
+                    lbl.style.fontSize = 14;
+                    lbl.style.color = new Color(0.3f, 0.85f, 0.95f, 1f);
+                    lbl.style.unityFontStyleAndWeight = FontStyle.Bold;
+                    lbl.style.marginTop = 12;
+                    lbl.style.marginBottom = 4;
+                }
+                else if (line.StartsWith("### "))
+                {
+                    lbl.text = line.Substring(4).Trim();
+                    lbl.style.fontSize = 13;
+                    lbl.style.color = new Color(0.95f, 0.7f, 0.2f, 1f);
+                    lbl.style.unityFontStyleAndWeight = FontStyle.Bold;
+                    lbl.style.marginTop = 8;
+                    lbl.style.marginBottom = 2;
+                }
+                else if (line.StartsWith("- "))
+                {
+                    lbl.text = "\u2022  " + line.Substring(2).Trim().Replace("**", "");
+                    lbl.style.fontSize = 11;
+                    lbl.style.color = new Color(0.58f, 0.639f, 0.722f, 1f);
+                    lbl.style.marginLeft = 12;
+                    lbl.style.marginBottom = 2;
+                }
+                else
+                {
+                    lbl.text = line.Replace("*", "");
+                    lbl.style.fontSize = 11;
+                    lbl.style.color = new Color(0.58f, 0.639f, 0.722f, 1f);
+                    lbl.style.marginBottom = 2;
+                }
+
+                scrollView.Add(lbl);
+            }
+
+            container.Add(scrollView);
         }
 
         private void BuildDaySelectView(VisualElement container)

@@ -12,9 +12,12 @@ namespace Overworked.Audio
         [SerializeField] private AudioClip taskFailSound;
         [SerializeField] private AudioClip newEmailSound;
         [SerializeField] private AudioClip emailExpireSound;
+        [SerializeField] private AudioClip tickingRepeatSound;
+        [SerializeField] private AudioClip tickingNearSound;
         [Range(0f, 1f)] [SerializeField] private float volume = 0.5f;
 
         private AudioSource _source;
+        private AudioSource _tickSource;
 
         private void Awake()
         {
@@ -27,6 +30,10 @@ namespace Overworked.Audio
 
             _source = gameObject.AddComponent<AudioSource>();
             _source.playOnAwake = false;
+
+            _tickSource = gameObject.AddComponent<AudioSource>();
+            _tickSource.playOnAwake = false;
+            _tickSource.loop = true;
 
             // Load from Resources if not assigned in Inspector
             if (clickSound == null)
@@ -41,6 +48,10 @@ namespace Overworked.Audio
                 newEmailSound = Resources.Load<AudioClip>("Audio/new_email");
             if (emailExpireSound == null)
                 emailExpireSound = Resources.Load<AudioClip>("Audio/email_expire");
+            if (tickingRepeatSound == null)
+                tickingRepeatSound = Resources.Load<AudioClip>("Audio/ticking_repeat");
+            if (tickingNearSound == null)
+                tickingNearSound = Resources.Load<AudioClip>("Audio/ticking_near");
         }
 
         public void PlayClick()
@@ -77,6 +88,35 @@ namespace Overworked.Audio
         {
             if (emailExpireSound != null && _source != null)
                 _source.PlayOneShot(emailExpireSound, volume);
+        }
+
+        private bool _isNearTicking;
+
+        public void StartTicking()
+        {
+            if (_tickSource == null || tickingRepeatSound == null) return;
+            if (_tickSource.isPlaying && !_isNearTicking) return; // already playing repeat
+            _tickSource.clip = tickingRepeatSound;
+            _tickSource.volume = volume * 0.4f;
+            _tickSource.Play();
+            _isNearTicking = false;
+        }
+
+        public void StartNearTicking()
+        {
+            if (_tickSource == null || tickingNearSound == null) return;
+            if (_isNearTicking) return; // already playing near
+            _tickSource.clip = tickingNearSound;
+            _tickSource.volume = volume * 0.7f;
+            _tickSource.Play();
+            _isNearTicking = true;
+        }
+
+        public void StopTicking()
+        {
+            if (_tickSource != null && _tickSource.isPlaying)
+                _tickSource.Stop();
+            _isNearTicking = false;
         }
 
         public void SetVolume(float v)

@@ -175,7 +175,7 @@ namespace Overworked.Minigames
         private bool _finished;
         private float _startTime;
         private float _cooldownRemaining;
-        private const float WRONG_COOLDOWN = 1.0f;
+        private const float WRONG_COOLDOWN = 2.0f;
 
         private List<Document> _docs = new();
         private string _ruleText;
@@ -202,17 +202,17 @@ namespace Overworked.Minigames
             switch (_difficulty)
             {
                 case "easy":
-                    _totalDocs = 4;
+                    _totalDocs = 3;
                     _timeLimit = 20f;
                     GenerateEasyDocs(_totalDocs);
                     break;
                 case "hard":
-                    _totalDocs = 7;
+                    _totalDocs = 3;
                     _timeLimit = 25f;
                     GenerateHardDocs(_totalDocs);
                     break;
                 default:
-                    _totalDocs = 5;
+                    _totalDocs = 3;
                     _timeLimit = 22f;
                     GenerateMediumDocs(_totalDocs);
                     break;
