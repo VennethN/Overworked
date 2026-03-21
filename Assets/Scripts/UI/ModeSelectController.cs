@@ -345,6 +345,14 @@ namespace Overworked.UI
             creditsBtn.style.borderBottomLeftRadius = 5;
             creditsBtn.style.borderBottomRightRadius = 5;
             container.Add(creditsBtn);
+
+            // Scale hint
+            var scaleHint = new Label("Ctrl +/\u2212 untuk ubah ukuran tampilan");
+            scaleHint.style.fontSize = 10;
+            scaleHint.style.color = new Color(0.392f, 0.455f, 0.545f, 0.7f);
+            scaleHint.style.marginTop = 16;
+            scaleHint.style.unityTextAlign = TextAnchor.MiddleCenter;
+            container.Add(scaleHint);
         }
 
         private VisualElement CreateModeCard(string icon, string title, string desc, Color accent, Action onClick)
@@ -629,41 +637,127 @@ namespace Overworked.UI
                 container.Add(completeHint);
             }
 
-            // Reset story hint (button is now in Settings)
+            // Reset story button
             if (allComplete)
             {
-                var resetHint = new Label("Gunakan Settings untuk reset cerita.");
-                resetHint.style.fontSize = 10;
-                resetHint.style.color = new Color(0.392f, 0.455f, 0.545f, 1f);
-                resetHint.style.marginTop = 8;
-                resetHint.style.unityTextAlign = TextAnchor.MiddleCenter;
-                container.Add(resetHint);
+                var resetBtn = new Button();
+                resetBtn.text = "Reset Cerita";
+                resetBtn.style.marginTop = 12;
+                resetBtn.style.paddingTop = 8;
+                resetBtn.style.paddingBottom = 8;
+                resetBtn.style.paddingLeft = 24;
+                resetBtn.style.paddingRight = 24;
+                resetBtn.style.backgroundColor = new Color(0.85f, 0.25f, 0.25f, 1f);
+                resetBtn.style.color = Color.white;
+                resetBtn.style.fontSize = 12;
+                resetBtn.style.unityFontStyleAndWeight = FontStyle.Bold;
+                resetBtn.style.borderTopLeftRadius = 6;
+                resetBtn.style.borderTopRightRadius = 6;
+                resetBtn.style.borderBottomLeftRadius = 6;
+                resetBtn.style.borderBottomRightRadius = 6;
+                resetBtn.style.borderTopWidth = 0;
+                resetBtn.style.borderBottomWidth = 0;
+                resetBtn.style.borderLeftWidth = 0;
+                resetBtn.style.borderRightWidth = 0;
+
+                var confirmRow = new VisualElement();
+                confirmRow.style.display = DisplayStyle.None;
+                confirmRow.style.alignItems = Align.Center;
+                confirmRow.style.marginTop = 8;
+
+                resetBtn.clicked += () =>
+                {
+                    resetBtn.style.display = DisplayStyle.None;
+                    confirmRow.style.display = DisplayStyle.Flex;
+                };
+
+                var confirmLabel = new Label("Yakin reset semua progress cerita?");
+                confirmLabel.style.fontSize = 11;
+                confirmLabel.style.color = new Color(0.973f, 0.443f, 0.443f, 1f);
+                confirmLabel.style.marginBottom = 8;
+                confirmRow.Add(confirmLabel);
+
+                var btnGroup = new VisualElement();
+                btnGroup.style.flexDirection = FlexDirection.Row;
+                btnGroup.style.justifyContent = Justify.Center;
+
+                var yesBtn = new Button();
+                yesBtn.text = "Ya, Reset";
+                yesBtn.style.paddingTop = 6;
+                yesBtn.style.paddingBottom = 6;
+                yesBtn.style.paddingLeft = 16;
+                yesBtn.style.paddingRight = 16;
+                yesBtn.style.backgroundColor = new Color(0.85f, 0.25f, 0.25f, 1f);
+                yesBtn.style.color = Color.white;
+                yesBtn.style.fontSize = 11;
+                yesBtn.style.borderTopLeftRadius = 6;
+                yesBtn.style.borderTopRightRadius = 6;
+                yesBtn.style.borderBottomLeftRadius = 6;
+                yesBtn.style.borderBottomRightRadius = 6;
+                yesBtn.style.borderTopWidth = 0;
+                yesBtn.style.borderBottomWidth = 0;
+                yesBtn.style.borderLeftWidth = 0;
+                yesBtn.style.borderRightWidth = 0;
+                yesBtn.style.marginRight = 8;
+                yesBtn.clicked += () =>
+                {
+                    var s = SaveManager.Load();
+                    s.ResetStory();
+                    SaveManager.Save(s);
+                    ShowDaySelectPublic();
+                };
+                btnGroup.Add(yesBtn);
+
+                var noBtn = new Button();
+                noBtn.text = "Batal";
+                noBtn.style.paddingTop = 6;
+                noBtn.style.paddingBottom = 6;
+                noBtn.style.paddingLeft = 16;
+                noBtn.style.paddingRight = 16;
+                noBtn.style.backgroundColor = new Color(0.235f, 0.306f, 0.416f, 1f);
+                noBtn.style.color = Color.white;
+                noBtn.style.fontSize = 11;
+                noBtn.style.borderTopLeftRadius = 6;
+                noBtn.style.borderTopRightRadius = 6;
+                noBtn.style.borderBottomLeftRadius = 6;
+                noBtn.style.borderBottomRightRadius = 6;
+                noBtn.style.borderTopWidth = 0;
+                noBtn.style.borderBottomWidth = 0;
+                noBtn.style.borderLeftWidth = 0;
+                noBtn.style.borderRightWidth = 0;
+                noBtn.clicked += () =>
+                {
+                    confirmRow.style.display = DisplayStyle.None;
+                    resetBtn.style.display = DisplayStyle.Flex;
+                };
+                btnGroup.Add(noBtn);
+
+                confirmRow.Add(btnGroup);
+                container.Add(resetBtn);
+                container.Add(confirmRow);
             }
 
-            // Achievements section
-            if (save.endingsUnlocked.Count > 0)
-            {
-                var achieveTitle = new Label("ENDINGS");
-                achieveTitle.style.fontSize = 12;
-                achieveTitle.style.color = new Color(0.58f, 0.639f, 0.722f, 1f);
-                achieveTitle.style.marginTop = 20;
-                achieveTitle.style.marginBottom = 8;
-                achieveTitle.style.letterSpacing = 2;
-                container.Add(achieveTitle);
+            // Achievements section — always visible
+            var achieveTitle = new Label("ENDINGS");
+            achieveTitle.style.fontSize = 12;
+            achieveTitle.style.color = new Color(0.58f, 0.639f, 0.722f, 1f);
+            achieveTitle.style.marginTop = 20;
+            achieveTitle.style.marginBottom = 8;
+            achieveTitle.style.letterSpacing = 2;
+            container.Add(achieveTitle);
 
-                var achieveRow = new VisualElement();
-                achieveRow.style.flexDirection = FlexDirection.Row;
-                achieveRow.style.justifyContent = Justify.Center;
-                achieveRow.style.flexWrap = Wrap.Wrap;
-                achieveRow.style.width = 400;
+            var achieveRow = new VisualElement();
+            achieveRow.style.flexDirection = FlexDirection.Row;
+            achieveRow.style.justifyContent = Justify.Center;
+            achieveRow.style.flexWrap = Wrap.Wrap;
+            achieveRow.style.width = 400;
 
-                AddEndingBadge(achieveRow, save, "survive", "Bertahan", new Color(0.376f, 0.647f, 0.98f, 1f));
-                AddEndingBadge(achieveRow, save, "breakdown", "Breakdown", new Color(0.973f, 0.443f, 0.443f, 1f));
-                AddEndingBadge(achieveRow, save, "resign", "Resign", new Color(0.973f, 0.682f, 0.275f, 1f));
-                AddEndingBadge(achieveRow, save, "secret", "Kebenaran", new Color(0.29f, 0.87f, 0.5f, 1f));
+            AddEndingBadge(achieveRow, save, "survive", "Bertahan", new Color(0.376f, 0.647f, 0.98f, 1f));
+            AddEndingBadge(achieveRow, save, "breakdown", "Breakdown", new Color(0.973f, 0.443f, 0.443f, 1f));
+            AddEndingBadge(achieveRow, save, "resign", "Resign", new Color(0.973f, 0.682f, 0.275f, 1f));
+            AddEndingBadge(achieveRow, save, "secret", "Kebenaran", new Color(0.29f, 0.87f, 0.5f, 1f));
 
-                container.Add(achieveRow);
-            }
+            container.Add(achieveRow);
         }
 
         private VisualElement CreateDayRow(DayDefinition day, bool completed, bool isNext, int bestScore, bool passed)
@@ -822,6 +916,8 @@ namespace Overworked.UI
             text.style.color = unlocked ? color : new Color(0.3f, 0.35f, 0.4f, 1f);
             text.style.unityFontStyleAndWeight = FontStyle.Bold;
             badge.Add(text);
+
+            badge.tooltip = unlocked ? label : "???";
 
             parent.Add(badge);
         }
