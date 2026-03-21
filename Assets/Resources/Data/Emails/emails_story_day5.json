@@ -92,7 +92,7 @@
       "senderAddress": "m.mahyu@sleepdep.co.id",
       "department": "Supervisor",
       "subject": "Awas",
-      "body": "{PlayerName},\n\nSistem mencatat performamu masih di bawah standar. Aku sudah bosan mengingatkan.\n\nKamu lambat. Kamu tidak efisien. Dan sejujurnya, aku mulai bertanya-tanya apakah kamu pantas ada di sini.\n\nAda puluhan orang yang antri untuk posisimu. Orang-orang yang lebih lapar, lebih patuh, dan tidak banyak alasan.\n\nIni bukan ancaman. Ini fakta.\n\nKerja lebih cepat. Sekarang.\n\n— Mahyu",
+      "body": "{PlayerName},\n\nSistem mencatat performamu masih di bawah standar. Aku sudah bosan mengingatkan.\n\nKamu lambat. Kamu tidak efisien. Dan sejujurnya, aku mulai bertanya-tanya apakah kamu pantas ada di sini.\n\nAda puluhan orang yang antri untuk posisimu. Orang-orang yang lebih lapar, lebih patuh, dan tidak banyak alasan.\n\nKalau kamu anggap ini ancaman, terserah. Yang jelas, ini kenyataan.\n\nKerja lebih cepat. Sekarang.\n\n— Mahyu",
       "type": "reply",
       "category": "utama",
       "priority": "critical",
@@ -150,6 +150,86 @@
       "priority": "low",
       "expirationSeconds": 0,
       "tags": ["story", "story_d5", "secret"],
+      "replyOptions": null,
+      "taskTrigger": null,
+      "expiredFollowUp": null,
+      "setFlagOnRead": null
+    },
+    {
+      "id": "story_d5_printer",
+      "sender": "Andi Setiawan",
+      "senderAddress": "a.setiawan@sleepdep.co.id",
+      "department": "IT Support",
+      "subject": "URGENT: Printer Lantai 3 Jam Total — Butuh Approval Perbaikan",
+      "body": "Kepada Admin,\n\nPrinter utama lantai 3 (HP LaserJet Pro, asset tag #PRN-0042) mengalami paper jam yang cukup parah. Kertas nyangkut di TIGA tempat sekaligus — input tray, roller tengah, dan output tray. Saya belum pernah lihat yang separah ini dalam 5 tahun kerja di IT.\n\nSelain itu, display-nya menunjukkan error code \"PC LOAD LETTER\" yang sejujurnya saya juga nggak tahu artinya apa. Sudah saya Google tapi hasilnya cuma referensi film.\n\nSaya butuh approval untuk panggil teknisi eksternal karena ini di luar kemampuan kami. Estimasi biaya Rp 850.000 untuk service call + spare parts.\n\nMohon segera diproses karena sudah ada antrian 15 orang yang mau print. Beberapa sudah mulai agresif.\n\n— Andi Setiawan\nIT Support",
+      "type": "task",
+      "category": "sosial",
+      "priority": "high",
+      "expirationSeconds": 55,
+      "tags": ["story", "story_d5", "side_story"],
+      "replyOptions": null,
+      "taskTrigger": {
+        "taskId": "approve_equipment",
+        "description": "Approve perbaikan printer lantai 3",
+        "autoCompleteOnOpen": false,
+        "timeoutSeconds": 30,
+        "minigameId": "approval_rush",
+        "minigameDifficulty": "easy",
+        "followUp": {
+          "emailId": "story_d5_printer_fixed",
+          "delaySeconds": 20
+        }
+      },
+      "expiredFollowUp": null,
+      "setFlagOnRead": null
+    },
+    {
+      "id": "story_d5_printer_fixed",
+      "sender": "Andi Setiawan",
+      "senderAddress": "a.setiawan@sleepdep.co.id",
+      "department": "IT Support",
+      "subject": "RE: Printer Lantai 3 — Sudah Diperbaiki, TAPI...",
+      "body": "Update soal printer,\n\nKabar baik: printer sudah berfungsi normal. Teknisi berhasil keluarkan semua kertas yang nyangkut. Ternyata ada peniti, 2 paper clip, dan sebuah permen karet di dalam roller. Jangan tanya.\n\nKabar buruk: begitu printer hidup lagi, langsung keluar print queue yang tertunda. Dan... ada seseorang yang rupanya sudah mengirim 500 HALAMAN print job berisi... foto kucing.\n\n500 halaman. Semua kucing. Ada yang pakai topi. Ada yang di dalam roti. Ada yang lagi marah. Ada yang pakai kacamata hitam. Koleksi lengkap.\n\nPrint queue-nya masuk dari VPN jadi saya belum bisa trace siapa orangnya. Toner yang baru diganti minggu lalu sekarang sudah habis 40%.\n\nSaya butuh info kalau ada yang tahu siapa pelakunya.\n\n— Andi Setiawan\nIT Support\n\nP.S. Kucing yang pakai topinya lucu sih. Tapi tetap — 500 halaman itu kebanyakan.",
+      "type": "reply",
+      "category": "sosial",
+      "priority": "medium",
+      "expirationSeconds": 45,
+      "tags": ["story", "story_d5", "side_story"],
+      "replyOptions": [
+        {
+          "text": "Siapa yang nge-print???",
+          "isCorrect": true,
+          "scoreModifier": 3,
+          "followUp": {
+            "emailId": "story_d5_printer_confession",
+            "delaySeconds": 15
+          },
+          "setFlag": null
+        },
+        {
+          "text": "Bagus, kantor butuh hiburan.",
+          "isCorrect": false,
+          "scoreModifier": -5,
+          "followUp": null,
+          "setFlag": null
+        }
+      ],
+      "taskTrigger": null,
+      "expiredFollowUp": null,
+      "setFlagOnRead": null
+    },
+    {
+      "id": "story_d5_printer_confession",
+      "sender": "Anonymous",
+      "senderAddress": "noreply@sleepdep.co.id",
+      "department": null,
+      "subject": "Pengakuan Soal Printer (Tolong Jangan Marah)",
+      "body": "Kepada IT Support dan seluruh karyawan yang terdampak,\n\nSaya menulis ini secara anonim karena saya terlalu malu untuk mengakui secara langsung.\n\nYa, 500 halaman foto kucing itu dari saya. Saya minta maaf yang sebesar-besarnya.\n\nCeritanya begini: saya kerja dari rumah tadi malam, dan VPN kantor masih nyambung. Saya pikir saya lagi print di printer rumah saya. Jadi saya print foto-foto kucing saya (namanya Jingga) untuk album keluarga.\n\n...Tapi ternyata print job-nya masuk ke printer kantor. 500 halaman. Semua Jingga.\n\nSaya baru sadar pagi ini waktu printer kantor error dan IT bilang ada 500 halaman kucing. Saya langsung tahu itu Jingga.\n\nSaya bersedia ganti toner yang habis. Dan saya janji akan disconnect VPN sebelum print dari rumah.\n\nSekali lagi, maaf. Jingga juga minta maaf.\n\n— Karyawan yang Sangat Menyesal\n\nP.S. Kalau ada yang mau foto Jingga yang pakai kacamata hitam, boleh ambil di tray printer. Itu foto favorit saya.",
+      "type": "info",
+      "category": "sosial",
+      "priority": "low",
+      "expirationSeconds": 0,
+      "tags": ["story", "story_d5", "side_story"],
       "replyOptions": null,
       "taskTrigger": null,
       "expiredFollowUp": null,

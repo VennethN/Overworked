@@ -50,7 +50,8 @@
       },
       "spawnRulesOverride": null,
       "scriptedEmails": [
-        { "emailId": "story_d2_faster", "triggerAtSeconds": 5.0 }
+        { "emailId": "story_d2_faster", "triggerAtSeconds": 5.0 },
+        { "emailId": "story_d2_lunch_thief", "triggerAtSeconds": 60.0 }
       ],
       "specialEmailJsonPath": "Data/Emails/emails_story_day2",
       "availableEmailPools": ["general", "spam"],
@@ -82,7 +83,9 @@
       "spawnRulesOverride": null,
       "scriptedEmails": [
         { "emailId": "story_d3_dika_msg", "triggerAtSeconds": 10.0 },
-        { "emailId": "story_d3_hr_survey", "triggerAtSeconds": 90.0 }
+        { "emailId": "story_d3_replyall", "triggerAtSeconds": 60.0 },
+        { "emailId": "story_d3_hr_survey", "triggerAtSeconds": 90.0 },
+        { "emailId": "story_d3_replyall_mahyu", "triggerAtSeconds": 120.0 }
       ],
       "specialEmailJsonPath": "Data/Emails/emails_story_day3",
       "availableEmailPools": ["general", "hr", "spam"],
@@ -114,6 +117,7 @@
       "scriptedEmails": [
         { "emailId": "story_d4_monitor", "triggerAtSeconds": 3.0 },
         { "emailId": "story_d4_peringatan", "triggerAtSeconds": 60.0 },
+        { "emailId": "story_d4_smell", "triggerAtSeconds": 90.0 },
         { "emailId": "story_d4_hr_waiver", "triggerAtSeconds": 120.0 },
         { "emailId": "story_d4_dika_intel", "triggerAtSeconds": 180.0, "requireFlag": "helped_dika_d3" }
       ],
@@ -146,6 +150,7 @@
       "spawnRulesOverride": null,
       "scriptedEmails": [
         { "emailId": "story_d5_not_enough", "triggerAtSeconds": 30.0 },
+        { "emailId": "story_d5_printer", "triggerAtSeconds": 60.0 },
         { "emailId": "story_d5_dika_ask", "triggerAtSeconds": 80.0, "requireFlag": "helped_dika_d3" },
         { "emailId": "story_d5_coworker_burnout", "triggerAtSeconds": 80.0, "excludeFlag": "helped_dika_d3" },
         { "emailId": "story_d5_threat", "triggerAtSeconds": 150.0 },
@@ -182,7 +187,9 @@
         { "emailId": "story_d6_contract", "triggerAtSeconds": 10.0 },
         { "emailId": "story_d6_resign_offer", "triggerAtSeconds": 40.0, "requireFlag": "chose_resign_d5" },
         { "emailId": "story_d6_dika_evidence", "triggerAtSeconds": 90.0, "requireFlag": "helped_dika_d5" },
+        { "emailId": "story_d6_farewell", "triggerAtSeconds": 120.0 },
         { "emailId": "story_d6_secret_internal_report", "triggerAtSeconds": 150.0 },
+        { "emailId": "story_d6_farewell_hr", "triggerAtSeconds": 150.0 },
         { "emailId": "story_d6_hr_final_push", "triggerAtSeconds": 200.0, "requireFlag": "refused_hr_waiver_d4" }
       ],
       "specialEmailJsonPath": "Data/Emails/emails_story_day6",
@@ -216,6 +223,7 @@
       "scriptedEmails": [
         { "emailId": "story_d7_final_day", "triggerAtSeconds": 3.0 },
         { "emailId": "story_d7_mahyu_final", "triggerAtSeconds": 30.0 },
+        { "emailId": "story_d7_it_confession", "triggerAtSeconds": 60.0 },
         { "emailId": "story_d7_secret_blacklist", "triggerAtSeconds": 100.0 },
         { "emailId": "story_d7_whistleblower_final", "triggerAtSeconds": 150.0, "requireFlag": "read_evidence_d6" },
         { "emailId": "story_d7_secret_burnout", "triggerAtSeconds": 200.0 },

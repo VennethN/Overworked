@@ -27,6 +27,11 @@ namespace Overworked.Spawner
         // When set, interval/event spawns pick only from these ids (still filtered by rule type/tags)
         private string[] _spawnEmailIdWhitelist;
 
+        // Prevent the same email type from spawning too many times in a row
+        private string _lastSpawnedType;
+        private int _consecutiveTypeCount;
+        private const int MAX_CONSECUTIVE_SAME_TYPE = 4;
+
         // Default pools for arcade mode
         private static readonly string[] DefaultPools = { "general", "hr", "spam" };
 
@@ -119,6 +124,8 @@ namespace Overworked.Spawner
         {
             _isSpawning = true;
             _gameTime = 0f;
+            _lastSpawnedType = null;
+            _consecutiveTypeCount = 0;
 
             // Default to all pools if not explicitly set
             if (_activePools == null)
@@ -198,6 +205,20 @@ namespace Overworked.Spawner
                 // Day-level tag filter: email must have at least one of the allowed tier tags
                 if (_spawnTagFilter != null && _spawnTagFilter.Length > 0 && !HasAnyTag(def, _spawnTagFilter))
                     continue;
+
+                // Prevent too many consecutive emails of the same type
+                string defType = def.type ?? "info";
+                if (defType == _lastSpawnedType && _consecutiveTypeCount >= MAX_CONSECUTIVE_SAME_TYPE)
+                    continue;
+
+                // Track consecutive type
+                if (defType == _lastSpawnedType)
+                    _consecutiveTypeCount++;
+                else
+                {
+                    _lastSpawnedType = defType;
+                    _consecutiveTypeCount = 1;
+                }
 
                 EmailManager.Instance.ReceiveEmail(def);
                 return;

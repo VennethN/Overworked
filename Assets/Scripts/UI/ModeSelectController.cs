@@ -159,6 +159,26 @@ namespace Overworked.UI
             continueBtn.style.borderBottomRightRadius = 5;
 
             container.Add(continueBtn);
+
+            var quitBtn = new Button(() => Application.Quit());
+            quitBtn.text = "Keluar";
+            quitBtn.style.marginTop = 16;
+            quitBtn.style.paddingTop = 8;
+            quitBtn.style.paddingBottom = 8;
+            quitBtn.style.paddingLeft = 20;
+            quitBtn.style.paddingRight = 20;
+            quitBtn.style.fontSize = 12;
+            quitBtn.style.backgroundColor = new Color(0.85f, 0.25f, 0.25f, 1f);
+            quitBtn.style.color = Color.white;
+            quitBtn.style.borderTopWidth = 0;
+            quitBtn.style.borderBottomWidth = 0;
+            quitBtn.style.borderLeftWidth = 0;
+            quitBtn.style.borderRightWidth = 0;
+            quitBtn.style.borderTopLeftRadius = 5;
+            quitBtn.style.borderTopRightRadius = 5;
+            quitBtn.style.borderBottomLeftRadius = 5;
+            quitBtn.style.borderBottomRightRadius = 5;
+            container.Add(quitBtn);
         }
 
         private void BuildMainView(VisualElement container)
@@ -186,7 +206,7 @@ namespace Overworked.UI
             row.style.justifyContent = Justify.Center;
 
             var arcadeBtn = CreateModeCard(
-                "\ue003", // Material Icons: games
+                "\ue30f", // Material Icons: sports_esports (gamepad)
                 "ARCADE",
                 "Mode tanpa batas\nRaih skor tertinggi!",
                 new Color(0.376f, 0.51f, 0.965f, 1f),

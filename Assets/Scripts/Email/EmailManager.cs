@@ -76,11 +76,6 @@ namespace Overworked.Email
 
         public void ReceiveEmail(EmailDefinition definition)
         {
-            if (_inbox.Count >= maxInboxSize)
-            {
-                Debug.LogWarning("EmailManager: Inbox full, cannot receive more emails.");
-                return;
-            }
 
             var instance = new EmailInstance(definition, Time.time);
             _inbox.Add(instance);

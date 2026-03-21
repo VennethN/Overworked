@@ -137,6 +137,82 @@
       "taskTrigger": null,
       "expiredFollowUp": null,
       "setFlagOnRead": null
+    },
+    {
+      "id": "story_d3_replyall",
+      "sender": "Benny Kurniawan",
+      "senderAddress": "b.kurniawan@sleepdep.co.id",
+      "department": "Marketing",
+      "subject": "RE: ALL STAFF — Jadwal Meeting Q3 (JANGAN DIBACA INI SALAH KIRIM)",
+      "body": "hei sayang, nanti malam jadi kan dinner di tempat biasa? aku udah booking meja buat jam 7. btw aku beli baju baru buat nanti, yang warna pink yang kamu bilang lucu itu loh.\n\noh iya jangan lupa beliin makanan kucing ya, si Mochi udah ngambek dari kemarin soalnya snack-nya habis. kamu tahu sendiri kalau dia ngambek suka pipis di karpet.\n\nlove you sayang!! muach muach 😘😘😘\n\n— Benny\n\n\n... OH TIDAK. INI REPLY ALL. INI REPLY ALL KE 200 ORANG. TOLONG ABAIKAN EMAIL INI. SAYA BERMAKSUD KIRIM KE ISTRI SAYA. MAAF MAAF MAAF.",
+      "type": "reply",
+      "category": "sosial",
+      "priority": "medium",
+      "expirationSeconds": 45,
+      "tags": ["story", "story_d3", "side_story"],
+      "replyOptions": [
+        {
+          "text": "Pura-pura nggak lihat aja.",
+          "isCorrect": true,
+          "scoreModifier": 5,
+          "followUp": null,
+          "setFlag": null
+        },
+        {
+          "text": "Reply All: 'Tolong jangan Reply All'",
+          "isCorrect": false,
+          "scoreModifier": -15,
+          "followUp": {
+            "emailId": "story_d3_replyall_chaos",
+            "delaySeconds": 10
+          },
+          "setFlag": null
+        },
+        {
+          "text": "Forward ke Mahyu.",
+          "isCorrect": false,
+          "scoreModifier": -8,
+          "followUp": null,
+          "setFlag": null
+        }
+      ],
+      "taskTrigger": null,
+      "expiredFollowUp": null,
+      "setFlagOnRead": null
+    },
+    {
+      "id": "story_d3_replyall_chaos",
+      "sender": "Multiple Senders",
+      "senderAddress": "allstaff@sleepdep.co.id",
+      "department": null,
+      "subject": "RE: RE: RE: RE: ALL STAFF — Jadwal Meeting Q3",
+      "body": "--- Email chain dari 47 karyawan dalam 10 menit terakhir ---\n\nDari: Andi (IT): \"Tolong JANGAN Reply All untuk bilang jangan Reply All. Kalian cuma bikin makin parah.\"\n\nDari: Susi (Accounting): \"UNSUBSCRIBE\"\n\nDari: Roni (Legal): \"Ini bukan mailing list, Susi. Nggak bisa unsubscribe.\"\n\nDari: Susi (Accounting): \"UNSUBSCRIBE!!!\"\n\nDari: Dewi (HR): \"Rekan-rekan, mohon jangan Reply All.\"\n(Dewi mengirim ini via Reply All)\n\nDari: Andi (IT): \"DEWI KAMU JUGA REPLY ALL\"\n\nDari: Benny (Marketing): \"SAYA MINTA MAAF TOLONG BERHENTI\"\n\nDari: Unknown: \"Btw Benny, baju pinknya lucu nggak?\"\n\n--- 39 email lainnya tidak ditampilkan ---\n\nServer email sempat overload selama 3 menit akibat volume Reply All.",
+      "type": "info",
+      "category": "sosial",
+      "priority": "low",
+      "expirationSeconds": 0,
+      "tags": ["story", "story_d3", "side_story"],
+      "replyOptions": null,
+      "taskTrigger": null,
+      "expiredFollowUp": null,
+      "setFlagOnRead": null
+    },
+    {
+      "id": "story_d3_replyall_mahyu",
+      "sender": "Mahyu",
+      "senderAddress": "m.mahyu@sleepdep.co.id",
+      "department": "Supervisor",
+      "subject": "SOAL REPLY ALL TADI",
+      "body": "Kepada SELURUH karyawan yang terlibat dalam insiden Reply All barusan,\n\nAku baru saja menerima 200+ notifikasi email dalam 10 menit. Dua ratus. Lebih.\n\nServer email sempat DOWN karena kalian semua Reply All untuk bilang \"jangan Reply All.\" Ironi-nya tidak lucu.\n\nBenny Kurniawan — kita akan bicara nanti. Soal \"si Mochi\" dan \"baju pink\" bisa kamu jelaskan di ruangan saya.\n\nDan untuk yang lain — kalau aku lihat satu lagi Reply All hari ini, evaluasi bulanan kalian SEMUA akan aku percepat. Jangan test aku.\n\nKerja. Sekarang. Berhenti main email.\n\n— Mahyu\nSupervisor, PT Sleep Deprivation Studio",
+      "type": "info",
+      "category": "sosial",
+      "priority": "high",
+      "expirationSeconds": 0,
+      "tags": ["story", "story_d3", "side_story"],
+      "replyOptions": null,
+      "taskTrigger": null,
+      "expiredFollowUp": null,
+      "setFlagOnRead": null
     }
   ]
 }

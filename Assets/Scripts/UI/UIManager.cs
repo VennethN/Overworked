@@ -116,7 +116,7 @@ namespace Overworked.UI
             // Theme toggle — dark-mode class is added when NOT in light mode
             _hud.OnThemeToggleClicked += ToggleTheme;
             _hud.OnSettingsClicked += ToggleSettings;
-            _docRoot?.EnableInClassList("dark-mode", !_isLightMode);
+            ApplyThemeToAll(!_isLightMode);
             _hud.UpdateThemeButtonLabel(_isLightMode);
 
             // Subscribe to events
@@ -127,6 +127,15 @@ namespace Overworked.UI
             GameEvents.OnTaskCompleted += OnTaskCompletedJuice;
             GameEvents.OnTaskFailed += OnTaskFailedJuice;
             GameEvents.OnGameOver += OnGameOverHandler;
+
+            // Global click sounds — click for general, select for buttons
+            _docRoot.RegisterCallback<ClickEvent>(evt =>
+            {
+                if (evt.target is Button)
+                    Audio.SFXManager.Instance?.PlaySelect();
+                else
+                    Audio.SFXManager.Instance?.PlayClick();
+            }, TrickleDown.TrickleDown);
         }
 
         private void Update()
@@ -152,6 +161,14 @@ namespace Overworked.UI
             }
 
             _hud?.UpdateEmailCount(EmailManager.Instance.ActiveCount);
+
+            // Responsive: hide sidebar on narrow screens (mobile)
+            UpdateResponsiveLayout();
+
+            // Escape key toggles pause/settings
+            if (UnityEngine.InputSystem.Keyboard.current != null &&
+                UnityEngine.InputSystem.Keyboard.current.escapeKey.wasPressedThisFrame)
+                ToggleSettings();
         }
 
         public void ShowModeSelect()
@@ -436,8 +453,24 @@ namespace Overworked.UI
         public void ToggleTheme()
         {
             _isLightMode = !_isLightMode;
-            _docRoot?.EnableInClassList("dark-mode", !_isLightMode);
+            ApplyThemeToAll(!_isLightMode);
             _hud?.UpdateThemeButtonLabel(_isLightMode);
+        }
+
+        private void ApplyThemeToAll(bool dark)
+        {
+            // Apply to document root
+            _docRoot?.EnableInClassList("dark-mode", dark);
+
+            // Also apply to all template containers so their scoped :root styles get overridden
+            if (_docRoot != null)
+            {
+                _docRoot.Query(className: null).ForEach(el =>
+                {
+                    if (el is TemplateContainer)
+                        el.EnableInClassList("dark-mode", dark);
+                });
+            }
         }
 
         // --- Settings Panel ---
@@ -454,6 +487,12 @@ namespace Overworked.UI
 
         private void ShowSettings()
         {
+            bool isPlaying = GameManager.Instance != null && GameManager.Instance.State == GameState.Playing;
+
+            // Pause game if playing
+            if (isPlaying)
+                GameManager.Instance.PauseGame();
+
             _settingsOpen = true;
             _settingsSlot.Clear();
             _settingsSlot.style.display = DisplayStyle.Flex;
@@ -474,7 +513,7 @@ namespace Overworked.UI
             container.style.alignItems = Align.Center;
             container.style.width = 260;
 
-            var title = new Label("SETTINGS");
+            var title = new Label(isPlaying ? "PAUSED" : "SETTINGS");
             title.style.fontSize = 18;
             title.style.color = new Color(0.376f, 0.647f, 0.98f, 1f);
             title.style.unityFontStyleAndWeight = FontStyle.Bold;
@@ -564,10 +603,30 @@ namespace Overworked.UI
             resetHint.style.marginBottom = 12;
             container.Add(resetHint);
 
-            // Close button
-            var closeBtn = CreateOverlayButton("Close", new Color(0.376f, 0.647f, 0.98f, 1f), HideSettings);
-            closeBtn.style.marginTop = 8;
-            container.Add(closeBtn);
+            // Resume / Quit buttons (only during gameplay)
+            if (isPlaying)
+            {
+                var resumeBtn = CreateOverlayButton("Lanjut", new Color(0.29f, 0.87f, 0.5f, 1f), HideSettings);
+                resumeBtn.style.marginTop = 16;
+                resumeBtn.style.width = Length.Percent(100);
+                container.Add(resumeBtn);
+
+                var quitBtn = CreateOverlayButton("Keluar ke Menu", new Color(0.85f, 0.25f, 0.25f, 1f), () =>
+                {
+                    HideSettings();
+                    GameManager.Instance?.ReturnToMenu();
+                });
+                quitBtn.style.marginTop = 8;
+                quitBtn.style.width = Length.Percent(100);
+                container.Add(quitBtn);
+            }
+            else
+            {
+                // Close button (menu-only)
+                var closeBtn = CreateOverlayButton("Close", new Color(0.376f, 0.647f, 0.98f, 1f), HideSettings);
+                closeBtn.style.marginTop = 8;
+                container.Add(closeBtn);
+            }
 
             overlay.Add(container);
             overlay.style.alignItems = Align.Center;
@@ -580,6 +639,10 @@ namespace Overworked.UI
         private void HideSettings()
         {
             _settingsOpen = false;
+
+            // Resume game if it was paused
+            if (GameManager.Instance != null && GameManager.Instance.State == GameState.Paused)
+                GameManager.Instance.ResumeGame();
 
             // Clean up the callback
             if (uiScaleController != null)
@@ -616,6 +679,26 @@ namespace Overworked.UI
         }
 
         // --- Stress Vignette ---
+
+        // --- Responsive Layout ---
+        private bool _isMobileLayout;
+
+        private void UpdateResponsiveLayout()
+        {
+            bool narrow = Screen.width < 800;
+            if (narrow == _isMobileLayout) return;
+            _isMobileLayout = narrow;
+
+            // On mobile: stack HUD items to prevent overlap
+            var hudContainer = _hudSlot?.Q("hud-container");
+            if (hudContainer != null)
+            {
+                hudContainer.style.flexWrap = narrow ? Wrap.Wrap : Wrap.NoWrap;
+                hudContainer.style.justifyContent = narrow ? Justify.Center : Justify.SpaceBetween;
+                hudContainer.style.paddingTop = narrow ? 4 : 6;
+                hudContainer.style.paddingBottom = narrow ? 4 : 6;
+            }
+        }
 
         private void UpdateStressVignette(float timeRemaining, float dayLength)
         {
@@ -654,14 +737,38 @@ namespace Overworked.UI
         private void OnEmailReceivedJuice(EmailInstance _)
         {
             RefreshInbox();
+            Audio.SFXManager.Instance?.PlayNewEmail();
             UIEffects.Pop(_hudSlot);
+        }
+
+        private int _lastKnownScore;
+
+        private void ShowScoreDelta()
+        {
+            if (ScoreManager.Instance == null) return;
+            int current = ScoreManager.Instance.CurrentScore.totalScore;
+            int delta = current - _lastKnownScore;
+            _lastKnownScore = current;
+
+            if (delta == 0) return;
+
+            string text = delta > 0 ? $"+{delta}" : $"{delta}";
+            Color color = delta > 0
+                ? new Color(0.29f, 0.87f, 0.5f, 1f)
+                : new Color(0.97f, 0.44f, 0.44f, 1f);
+
+            UIEffects.FloatingText(_uiRoot, text, color,
+                new Vector2(_uiRoot.resolvedStyle.width / 2f, _uiRoot.resolvedStyle.height / 2f));
         }
 
         private void OnEmailExpiredJuice(EmailInstance _)
         {
             RefreshInbox();
+            RefreshHUD();
+            Audio.SFXManager.Instance?.PlayEmailExpire();
             UIEffects.Shake(_uiRoot, 4f, 4);
             UIEffects.VignetteFlash(_uiRoot, new Color(0.97f, 0.27f, 0.27f, 0.6f), 300);
+            ShowScoreDelta();
         }
 
         private void OnEmailRepliedJuice(EmailInstance _, ReplyResult result)
@@ -669,31 +776,34 @@ namespace Overworked.UI
             RefreshHUD();
             if (result.ScoreChange > 0)
             {
+                Audio.SFXManager.Instance?.PlaySuccess();
                 UIEffects.VignetteFlash(_uiRoot, new Color(0.29f, 0.87f, 0.5f, 0.4f), 250);
-                UIEffects.FloatingText(_uiRoot, $"+{result.ScoreChange}", new Color(0.29f, 0.87f, 0.5f, 1f),
-                    new Vector2(_uiRoot.resolvedStyle.width / 2f, _uiRoot.resolvedStyle.height / 2f));
             }
             else if (result.ScoreChange < 0)
             {
+                Audio.SFXManager.Instance?.PlayFail();
                 UIEffects.Shake(_uiRoot, 5f, 5);
                 UIEffects.VignetteFlash(_uiRoot, new Color(0.97f, 0.27f, 0.27f, 0.5f), 300);
-                UIEffects.FloatingText(_uiRoot, $"{result.ScoreChange}", new Color(0.97f, 0.44f, 0.44f, 1f),
-                    new Vector2(_uiRoot.resolvedStyle.width / 2f, _uiRoot.resolvedStyle.height / 2f));
             }
+            ShowScoreDelta();
         }
 
         private void OnTaskCompletedJuice(EmailInstance _)
         {
             RefreshHUD();
+            Audio.SFXManager.Instance?.PlaySuccess();
             UIEffects.VignetteFlash(_uiRoot, new Color(0.29f, 0.87f, 0.5f, 0.4f), 250);
             UIEffects.Pop(_hudSlot, 1.05f);
+            ShowScoreDelta();
         }
 
         private void OnTaskFailedJuice(EmailInstance _)
         {
             RefreshHUD();
+            Audio.SFXManager.Instance?.PlayFail();
             UIEffects.Shake(_uiRoot, 6f, 5);
             UIEffects.VignetteFlash(_uiRoot, new Color(0.97f, 0.27f, 0.27f, 0.6f), 400);
+            ShowScoreDelta();
         }
 
         private void OnGameOverHandler(ScoreData finalScore)

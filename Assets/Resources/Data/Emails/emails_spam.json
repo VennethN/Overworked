@@ -2419,6 +2419,979 @@
         }
       ],
       "taskTrigger": null
+    },
+    {
+      "id": "spam_extra_01",
+      "sender": "PT Sleep Deprivation Awards Committee",
+      "senderAddress": "awards@employee-gala-vip.biz",
+      "department": null,
+      "subject": "SELAMAT! Anda Nominasi 'Employee of the Year' - Bayar Tiket Gala Dinner!",
+      "body": "Dear Karyawan Teladan,\n\nAnda telah DINOMINASIKAN untuk penghargaan Employee of the Year oleh 'komite independen' (kami).\n\nUntuk menghadiri Gala Dinner eksklusif:\n- Tiket VIP: Rp 5.000.000/orang\n- Dress code: Jas yang Anda tidak mampu beli\n- Lokasi: Ballroom hotel bintang 5 (yang tidak pernah dipesan)\n\nPiala terbuat dari plastik berlapis emas palsu. Tapi pride-nya? Juga palsu.\n\nTransfer sebelum Jumat atau nominasi dibatalkan!",
+      "type": "spam",
+      "priority": "none",
+      "category": "promosi",
+      "expirationSeconds": 0,
+      "tags": [
+        "spam",
+        "tier1"
+      ],
+      "replyOptions": [
+        {
+          "text": "Saya bayar! Akhirnya diapresiasi!",
+          "isCorrect": false,
+          "scoreModifier": -20
+        },
+        {
+          "text": "Bisa bawa +1? Bos saya juga perlu lihat.",
+          "isCorrect": false,
+          "scoreModifier": -15
+        },
+        {
+          "text": "Kirim nomor rekening untuk transfer tiket.",
+          "isCorrect": false,
+          "scoreModifier": -25
+        }
+      ],
+      "taskTrigger": null
+    },
+    {
+      "id": "spam_extra_02",
+      "sender": "WellnessChain Global Network",
+      "senderAddress": "join@wellnesschain-mlm.click",
+      "department": null,
+      "subject": "Program Wellness Korporat REVOLUSIONER - Jadi Upline, Bukan Employee!",
+      "body": "Kenapa jadi karyawan kalau bisa jadi CEO of Your Own Wellness Empire?\n\nWellnessChain menggabungkan:\n- Essential oils yang 'menyembuhkan burnout'\n- Suplemen tidur (ironis, Anda tidak pernah tidur)\n- Binary MLM plan 12 level\n\nStarter Kit: Rp 3.500.000\nBonus: Rekrut 5 rekan kerja = naik pangkat jadi 'Diamond Wellness Ambassador'\n\nDisclaimer: Hubungan dengan rekan kerja akan hancur.",
+      "type": "spam",
+      "priority": "none",
+      "category": "promosi",
+      "expirationSeconds": 0,
+      "tags": [
+        "spam",
+        "tier1"
+      ],
+      "replyOptions": [
+        {
+          "text": "Saya mau jadi Diamond Ambassador!",
+          "isCorrect": false,
+          "scoreModifier": -20
+        },
+        {
+          "text": "Kirim starter kit ke meja kerja saya.",
+          "isCorrect": false,
+          "scoreModifier": -15
+        },
+        {
+          "text": "Berapa target rekrut untuk naik level?",
+          "isCorrect": false,
+          "scoreModifier": -10
+        }
+      ],
+      "taskTrigger": null
+    },
+    {
+      "id": "spam_extra_03",
+      "sender": "ErgoThrone Premium Chairs",
+      "senderAddress": "promo@ergothrone-free-chair.xyz",
+      "department": null,
+      "subject": "KURSI ERGONOMIS GRATIS!! (Cuma Bayar Ongkir Rp 2.000.000)",
+      "body": "Punggung sakit karena duduk 16 jam/hari di kursi plastik kantor?\n\nErgoThrone Premium Chair - senilai Rp 45.000.000 - GRATIS untuk Anda!*\n\n*Cuma bayar ongkir Rp 2.000.000 + asuransi Rp 750.000 + biaya handling Rp 500.000 + pajak misterius Rp 300.000.\n\nTotal 'gratis': Rp 3.550.000.\n\nKursi yang dikirim: bangku kayu dari pasar loak.\n\nTapi tetap lebih baik dari kursi kantor Anda sekarang, honestly.",
+      "type": "spam",
+      "priority": "none",
+      "category": "promosi",
+      "expirationSeconds": 0,
+      "tags": [
+        "spam",
+        "tier1"
+      ],
+      "replyOptions": [
+        {
+          "text": "GRATIS?! Transfer ongkir sekarang!",
+          "isCorrect": false,
+          "scoreModifier": -25
+        },
+        {
+          "text": "Ada warna yang match sama air mata saya?",
+          "isCorrect": false,
+          "scoreModifier": -10
+        }
+      ],
+      "taskTrigger": null
+    },
+    {
+      "id": "spam_extra_04",
+      "sender": "IT Department (Definitely Real)",
+      "senderAddress": "itsupport@company-helpdesk.ru",
+      "department": null,
+      "subject": "URGENT: System Upgrade - Kirim Semua Password Anda SEKARANG",
+      "body": "Kepada seluruh karyawan,\n\nKami dari IT Department (yang asli, percaya deh) sedang melakukan upgrade server.\n\nMohon balas email ini dengan:\n- Password email kantor\n- PIN ATM gaji\n- Password WiFi rumah (untuk 'testing VPN')\n- Password Netflix (untuk 'stress test bandwidth')\n- Nama panggilan waktu kecil (untuk 'security question')\n\nJangan tanya kenapa IT Department pakai domain .ru. Itu... server backup.\n\nTerima kasih,\nBob dari IT (bukan nama asli)",
+      "type": "spam",
+      "priority": "none",
+      "category": "promosi",
+      "expirationSeconds": 0,
+      "tags": [
+        "spam",
+        "phishing",
+        "tier2"
+      ],
+      "replyOptions": [
+        {
+          "text": "Ini semua password saya, Pak Bob!",
+          "isCorrect": false,
+          "scoreModifier": -40
+        },
+        {
+          "text": "Password Netflix boleh sharing kan?",
+          "isCorrect": false,
+          "scoreModifier": -20
+        },
+        {
+          "text": "Kirim form-nya, saya isi lengkap.",
+          "isCorrect": false,
+          "scoreModifier": -15
+        }
+      ],
+      "taskTrigger": null
+    },
+    {
+      "id": "spam_extra_05",
+      "sender": "GlobalSuccess Pyramid Solutions",
+      "senderAddress": "promo@globalsuccess-career.top",
+      "department": null,
+      "subject": "SELAMAT! Anda Telah DIPROMOSIKAN!! (ke Pyramid Scheme Kami)",
+      "body": "Capek nunggu promosi dari bos yang nggak pedulian?\n\nDi GlobalSuccess, SEMUA ORANG bisa jadi Vice President!\n\nCaranya:\n1. Bayar membership fee Rp 7.500.000\n2. Rekrut 3 orang di bawah Anda\n3. Mereka rekrut 3 orang lagi\n4. ??? \n5. Profit! (untuk kami)\n\nTitle yang tersedia: VP, SVP, Chief Happiness Officer, Grand Master Platinum Eagle.\n\nApakah ini pyramid scheme? Bentuknya segitiga, tapi kami sebut 'triangle of opportunity'.",
+      "type": "spam",
+      "priority": "none",
+      "category": "promosi",
+      "expirationSeconds": 0,
+      "tags": [
+        "spam",
+        "tier1"
+      ],
+      "replyOptions": [
+        {
+          "text": "Saya mau jadi Grand Master Platinum Eagle!",
+          "isCorrect": false,
+          "scoreModifier": -25
+        },
+        {
+          "text": "Transfer membership fee sekarang!",
+          "isCorrect": false,
+          "scoreModifier": -20
+        }
+      ],
+      "taskTrigger": null
+    },
+    {
+      "id": "spam_extra_06",
+      "sender": "ForexBot Infinity",
+      "senderAddress": "profit@forexbot-infinity.win",
+      "department": null,
+      "subject": "Robot Forex yang Bisa GANTIKAN GAJI Anda - Profit 24/7 Tanpa Kerja!",
+      "body": "Masih kerja 18 jam sehari untuk gaji UMR?\n\nForexBot Infinity trading otomatis sementara Anda lembur!\n\nHasil backtesting: +2.847% dalam 30 hari*\n*Backtesting pada data yang kami manipulasi.\n\nDeposit minimum: Rp 5.000.000 (setara 1 bulan makan siang di kantin kantor).\n\nRisiko: kehilangan semua uang Anda. Tapi toh Anda juga sudah kehilangan semua waktu Anda, jadi impas.",
+      "type": "spam",
+      "priority": "none",
+      "category": "promosi",
+      "expirationSeconds": 0,
+      "tags": [
+        "spam",
+        "tier1"
+      ],
+      "replyOptions": [
+        {
+          "text": "Deposit sekarang, gaji sudah masuk!",
+          "isCorrect": false,
+          "scoreModifier": -25
+        },
+        {
+          "text": "Kirim link deposit, saya mau resign besok.",
+          "isCorrect": false,
+          "scoreModifier": -20
+        },
+        {
+          "text": "Ada bot yang bisa kerjain kerjaan kantor juga?",
+          "isCorrect": false,
+          "scoreModifier": -10
+        }
+      ],
+      "taskTrigger": null
+    },
+    {
+      "id": "spam_extra_07",
+      "sender": "LinkedIn Premium Ultra Exclusive",
+      "senderAddress": "upgrade@linkedin-premium-deal.biz",
+      "department": null,
+      "subject": "LinkedIn Premium GRATIS 1 Tahun! Cuma Verifikasi Kartu Kredit!",
+      "body": "Hai Professional!\n\nKami lihat Anda sudah update LinkedIn status ke 'Open to Work' diam-diam jam 2 pagi.\n\nDapatkan LinkedIn Premium Ultra Exclusive GRATIS:\n- Lihat siapa yang view profil Anda (spoiler: tidak ada)\n- InMail unlimited ke recruiter yang tidak akan balas\n- Badge 'Premium' biar terlihat sukses\n\nCuma verifikasi kartu kredit untuk trial. Kami janji nggak charge*.\n*Kami bohong.\n\nFrom: linkedin-premium-deal.biz (definitely not LinkedIn)",
+      "type": "spam",
+      "priority": "none",
+      "category": "promosi",
+      "expirationSeconds": 0,
+      "tags": [
+        "spam",
+        "phishing",
+        "tier2"
+      ],
+      "replyOptions": [
+        {
+          "text": "Ini nomor kartu kredit saya untuk verifikasi!",
+          "isCorrect": false,
+          "scoreModifier": -35
+        },
+        {
+          "text": "Saya memang butuh terlihat sukses.",
+          "isCorrect": false,
+          "scoreModifier": -15
+        }
+      ],
+      "taskTrigger": null
+    },
+    {
+      "id": "spam_extra_08",
+      "sender": "Bos Anda (Bukan Beneran)",
+      "senderAddress": "boss@company-shared-docs.xyz",
+      "department": null,
+      "subject": "Saya Share Dokumen Penting - Buka SEKARANG - Ini Urgent!!!",
+      "body": "Hai,\n\nSaya (bos kamu, trust me) baru share dokumen tentang restrukturisasi departemen.\n\nBuka sekarang untuk lihat siapa yang akan di-layoff.\n\n(Spoiler: mungkin kamu kalau nggak buka link ini.)\n\nLogin dengan akun kantor di portal yang sangat mencurigakan ini.\n\nBest regards,\nBos Kamu (yang tidak pernah bilang 'best regards' seumur hidup)",
+      "type": "spam",
+      "priority": "none",
+      "category": "promosi",
+      "expirationSeconds": 0,
+      "tags": [
+        "spam",
+        "phishing",
+        "tier3"
+      ],
+      "replyOptions": [
+        {
+          "text": "Login sekarang, saya takut di-layoff!",
+          "isCorrect": false,
+          "scoreModifier": -35
+        },
+        {
+          "text": "Ini password akun kantor saya, Pak.",
+          "isCorrect": false,
+          "scoreModifier": -40
+        },
+        {
+          "text": "Kirim ulang link-nya, nggak bisa dibuka.",
+          "isCorrect": false,
+          "scoreModifier": -10
+        }
+      ],
+      "taskTrigger": null
+    },
+    {
+      "id": "spam_extra_09",
+      "sender": "CryptoMine Office Solutions",
+      "senderAddress": "mining@cryptomine-office.io",
+      "department": null,
+      "subject": "Mining Crypto Pakai Komputer Kantor - Passive Income Tanpa Ketahuan Bos!",
+      "body": "Kenapa komputer kantor cuma dipakai buat Excel dan nangis?\n\nInstall CryptoMine Office Edition dan hasilkan:\n- 0.001 BTC/hari per komputer\n- Tagihan listrik ditanggung perusahaan (mereka nggak akan notice)\n- GPU kantor bekerja keras supaya Anda tidak perlu\n\nDownload installer (totally not malware): cryptomine-office.exe\n\nSide effects: komputer jadi lambat, kipas bunyi jet engine, IT department panik.\n\nTapi passive income, bro!",
+      "type": "spam",
+      "priority": "none",
+      "category": "promosi",
+      "expirationSeconds": 0,
+      "tags": [
+        "spam",
+        "tier2"
+      ],
+      "replyOptions": [
+        {
+          "text": "Download! Komputer kantor nganggur juga.",
+          "isCorrect": false,
+          "scoreModifier": -30
+        },
+        {
+          "text": "Bisa install di semua komputer satu lantai?",
+          "isCorrect": false,
+          "scoreModifier": -25
+        }
+      ],
+      "taskTrigger": null
+    },
+    {
+      "id": "spam_extra_10",
+      "sender": "Serikat Pekerja Digital Indonesia",
+      "senderAddress": "gabung@serikat-pekerja-digital.ru",
+      "department": null,
+      "subject": "GABUNG Serikat Pekerja! Lawan Lembur Paksa! (Kirim Data Pribadi Dulu)",
+      "body": "Saudara/i Pekerja Tertindas,\n\nApakah Anda dipaksa lembur tanpa kompensasi? Apakah 'family gathering' kantor sebenarnya kerja dengan dresscode casual?\n\nSerikat Pekerja Digital Indonesia siap membela hak Anda!\n\nUntuk bergabung, kirimkan:\n- Scan KTP & KK\n- Slip gaji 6 bulan terakhir\n- Screenshot chat bos yang toxic\n- Password email kantor (untuk 'dokumentasi bukti')\n\nBiaya pendaftaran: Rp 850.000\n\nData Anda aman bersama kami*.\n*Data Anda akan dijual ke 17 pihak ketiga.",
+      "type": "spam",
+      "priority": "none",
+      "category": "promosi",
+      "expirationSeconds": 0,
+      "tags": [
+        "spam",
+        "phishing",
+        "tier2"
+      ],
+      "replyOptions": [
+        {
+          "text": "Ini semua data saya, LAWAN KAPITALISME!",
+          "isCorrect": false,
+          "scoreModifier": -35
+        },
+        {
+          "text": "Kirim formulir pendaftaran.",
+          "isCorrect": false,
+          "scoreModifier": -15
+        },
+        {
+          "text": "Saya lampirkan screenshot chat bos.",
+          "isCorrect": false,
+          "scoreModifier": -20
+        }
+      ],
+      "taskTrigger": null
+    },
+    {
+      "id": "spam_extra_11",
+      "sender": "BaliWork Retreat Paradise",
+      "senderAddress": "book@baliwork-retreat.fun",
+      "department": null,
+      "subject": "Work From BALI! Retreat 'Produktivitas' 2 Minggu - Cuma Rp 35 Juta!",
+      "body": "Bayangkan: coding di tepi pantai, meeting sambil sunset, burnout dengan pemandangan.\n\nBaliWork Retreat menawarkan:\n- Villa sharing (6 orang 1 kamar)\n- WiFi 'high speed' (2 Mbps on a good day)\n- Coworking space (meja lipat di pinggir kolam)\n- Free yoga pagi (jam 5, sebelum standup meeting jam 6)\n\nHarga: Rp 35.000.000 untuk 2 minggu\nTidak termasuk: makan, transport, asuransi, kebahagiaan.\n\nTestimoni: 'Saya tetap lembur, tapi sekarang dengan sunburn.' - Alumni 2025",
+      "type": "spam",
+      "priority": "none",
+      "category": "promosi",
+      "expirationSeconds": 0,
+      "tags": [
+        "spam",
+        "tier1"
+      ],
+      "replyOptions": [
+        {
+          "text": "BOOK SEKARANG! Burnout di Bali lebih aesthetic.",
+          "isCorrect": false,
+          "scoreModifier": -20
+        },
+        {
+          "text": "Ada paket untuk satu tim? Kami semua butuh kabur.",
+          "isCorrect": false,
+          "scoreModifier": -15
+        },
+        {
+          "text": "Transfer Rp 35 juta, kapan berangkat?",
+          "isCorrect": false,
+          "scoreModifier": -25
+        }
+      ],
+      "taskTrigger": null
+    },
+    {
+      "id": "spam_extra_12",
+      "sender": "AutoReply AI Assistant",
+      "senderAddress": "subscribe@autoreply-ai-pro.io",
+      "department": null,
+      "subject": "AI yang Balas Email Untuk Anda - Biar Anda Bisa Nangis Dalam Damai!",
+      "body": "Capek balas 200+ email per hari dengan 'Noted, terima kasih'?\n\nAutoReply AI PRO membalas semua email Anda secara otomatis!\n\nFitur unggulan:\n- Auto-reply 'Baik, akan saya follow up' (tanpa pernah follow up)\n- Auto-CC semua orang biar terlihat transparan\n- Auto-forward ke bos dengan tambahan 'FYI'\n- AI-generated excuse untuk deadline yang terlewat\n\nLangganan: $39.99/bulan\nBonus: Template 'Maaf baru balas, inbox penuh' dalam 15 bahasa.\n\nIroni level: menulis email tentang tool yang menulis email.",
+      "type": "spam",
+      "priority": "none",
+      "category": "promosi",
+      "expirationSeconds": 0,
+      "tags": [
+        "spam",
+        "tier2"
+      ],
+      "replyOptions": [
+        {
+          "text": "Subscribe! Inbox saya sudah 3.000 unread.",
+          "isCorrect": false,
+          "scoreModifier": -15
+        },
+        {
+          "text": "Ada fitur auto-attend meeting juga?",
+          "isCorrect": false,
+          "scoreModifier": -10
+        },
+        {
+          "text": "Kirim free trial ke email kantor.",
+          "isCorrect": false,
+          "scoreModifier": -20
+        }
+      ],
+      "taskTrigger": null
+    },
+    {
+      "id": "spam_extra_13",
+      "sender": "Kementerian Tenaga Kerja (PALSU)",
+      "senderAddress": "benefit@kemenaker-program.xyz",
+      "department": null,
+      "subject": "Tunjangan Karyawan Burnout Rp 12.000.000 - Program Pemerintah BARU!",
+      "body": "Warga Negara Yth,\n\nPemerintah telah meluncurkan Program Tunjangan Karyawan Burnout (PTKB) 2026.\n\nAnda berhak menerima Rp 12.000.000 jika:\n- Bekerja >12 jam/hari (✓ pasti)\n- Belum cuti >6 bulan (✓ pasti juga)\n- Menangis di toilet kantor minimal 2x/minggu (✓)\n\nUntuk klaim, kirimkan:\n- NIK + NPWP\n- Surat keterangan lembur dari HR (yang juga tidak pernah pulang)\n- Bukti transfer 'biaya administrasi' Rp 350.000\n\nProgram ini tidak ada di website resmi karena... 'masih soft launch'.",
+      "type": "spam",
+      "priority": "none",
+      "category": "promosi",
+      "expirationSeconds": 0,
+      "tags": [
+        "spam",
+        "phishing",
+        "tier2"
+      ],
+      "replyOptions": [
+        {
+          "text": "Saya qualify semua kriteria! Ini data saya!",
+          "isCorrect": false,
+          "scoreModifier": -30
+        },
+        {
+          "text": "Transfer biaya admin, saya butuh uangnya.",
+          "isCorrect": false,
+          "scoreModifier": -25
+        }
+      ],
+      "taskTrigger": null
+    },
+    {
+      "id": "spam_extra_14",
+      "sender": "StressBox Monthly",
+      "senderAddress": "order@stressbox-monthly.click",
+      "department": null,
+      "subject": "Subscription Box 'Stress Relief' - Unboxing Kekecewaan Setiap Bulan!",
+      "body": "Introducing StressBox Monthly!\n\nSetiap bulan Anda terima kotak berisi:\n- Bola stress berbentuk wajah bos Anda (custom order)\n- Teh chamomile sachet (1 biji, yang expired)\n- Stiker motivasi: 'Besok Pasti Lebih Baik' (narrator: tidak)\n- Kode diskon 5% untuk terapis online\n- Bubble wrap 10x10cm (untuk frustasi micro)\n\nHarga: Rp 450.000/bulan\nNilai sebenarnya: Rp 15.000\n\nSubscribe sekarang dan dapatkan bonus: tisu untuk menangis edisi premium.",
+      "type": "spam",
+      "priority": "none",
+      "category": "promosi",
+      "expirationSeconds": 0,
+      "tags": [
+        "spam",
+        "tier1"
+      ],
+      "replyOptions": [
+        {
+          "text": "Subscribe! Saya butuh bola stress berbentuk bos.",
+          "isCorrect": false,
+          "scoreModifier": -15
+        },
+        {
+          "text": "Ada paket kantor untuk satu departemen?",
+          "isCorrect": false,
+          "scoreModifier": -10
+        },
+        {
+          "text": "Kirim 12 bulan sekaligus, saya bayar di muka.",
+          "isCorrect": false,
+          "scoreModifier": -20
+        }
+      ],
+      "taskTrigger": null
+    },
+    {
+      "id": "spam_extra_15",
+      "sender": "OverworkMatch Dating",
+      "senderAddress": "match@overworkmatch-dating.fun",
+      "department": null,
+      "subject": "Dating App Khusus Orang yang Kerja 80 Jam/Minggu - Find Love at 3 AM!",
+      "body": "Terlalu sibuk untuk kencan? Semua match Anda juga!\n\nOverworkMatch - dating app untuk profesional yang:\n- Hanya free jam 11 malam - 1 pagi\n- Menganggap 'quality time' = reply chat sambil review PR\n- Ide date romantis = tidur\n\nFitur premium:\n- 'Lembur Together' - video call sambil kerja\n- 'Sleep Date' - literally tidur bareng via cam (non-romantic)\n- Auto-reschedule kencan karena deadline dadakan\n\nLangganan: Rp 199.000/bulan\nMatch rate: 2% (semua orang terlalu capek untuk swipe).",
+      "type": "spam",
+      "priority": "none",
+      "category": "promosi",
+      "expirationSeconds": 0,
+      "tags": [
+        "spam",
+        "tier1"
+      ],
+      "replyOptions": [
+        {
+          "text": "Download! Saya cuma free jam 2 pagi tapi worth it.",
+          "isCorrect": false,
+          "scoreModifier": -15
+        },
+        {
+          "text": "Ada fitur match berdasarkan jam lembur?",
+          "isCorrect": false,
+          "scoreModifier": -10
+        }
+      ],
+      "taskTrigger": null
+    },
+    {
+      "id": "spam_extra_16",
+      "sender": "TotallyRealNews Indonesia",
+      "senderAddress": "editor@totally-real-news.top",
+      "department": null,
+      "subject": "BREAKING: PT Sleep Deprivation Studio Dinobatkan 'Best Workplace 2026'!!",
+      "body": "JAKARTA (TotallyRealNews) - Dalam survei yang dilakukan oleh lembaga yang tidak ada, PT Sleep Deprivation Studio meraih penghargaan 'Best Workplace 2026'.\n\nKriteria penilaian:\n- Konsistensi lembur (skor: 10/10)\n- Kreativitas alasan tidak bayar lembur (skor: 11/10)\n- Kecepatan HR membalas 'noted' (skor: 0.5 detik)\n- Jumlah karyawan menangis di toilet (data classified)\n\nCEO berkomentar: 'Kami seperti keluarga. Keluarga yang toxic dan tidak bisa ditinggalkan karena kontrak kerja.'\n\nUntuk baca artikel lengkap, bayar premium subscription Rp 99.000/bulan.",
+      "type": "spam",
+      "priority": "none",
+      "category": "promosi",
+      "expirationSeconds": 0,
+      "tags": [
+        "spam",
+        "tier2"
+      ],
+      "replyOptions": [
+        {
+          "text": "Subscribe! Saya mau share ke LinkedIn.",
+          "isCorrect": false,
+          "scoreModifier": -15
+        },
+        {
+          "text": "Forward ke bos biar dia bangga (dan tetap nggak naikkan gaji).",
+          "isCorrect": false,
+          "scoreModifier": -10
+        }
+      ],
+      "taskTrigger": null
+    },
+    {
+      "id": "spam_extra_17",
+      "sender": "AromaZen Essential Oils MLM",
+      "senderAddress": "order@aromazen-oils-biz.click",
+      "department": null,
+      "subject": "Essential Oil 'Office Energy' - Diffuse di Meja Kerja, Produktivitas NAIK 300%!",
+      "body": "Perkenalkan AromaZen Office Collection:\n\n- 'Deadline Lavender': untuk tenang saat sprint review\n- 'Meeting Peppermint': biar nggak tidur di meeting jam 3 sore\n- 'Resign Rosemary': aroma keberanian yang tidak pernah Anda gunakan\n- 'Burnout Bergamot': baunya seperti harapan yang menguap\n\nPaket starter: Rp 1.800.000 (4 botol 10ml)\nJadi reseller: rekrut 3 teman = bonus Rp 50.000\n\nPenelitian ilmiah: tidak ada. Tapi aromanya enak. Mungkin.",
+      "type": "spam",
+      "priority": "none",
+      "category": "promosi",
+      "expirationSeconds": 0,
+      "tags": [
+        "spam",
+        "tier1"
+      ],
+      "replyOptions": [
+        {
+          "text": "Pesan paket lengkap! Resign Rosemary paling butuh.",
+          "isCorrect": false,
+          "scoreModifier": -15
+        },
+        {
+          "text": "Saya mau jadi reseller, rekrut satu kantor!",
+          "isCorrect": false,
+          "scoreModifier": -20
+        },
+        {
+          "text": "Ada oil untuk menghilangkan bos toxic?",
+          "isCorrect": false,
+          "scoreModifier": -10
+        }
+      ],
+      "taskTrigger": null
+    },
+    {
+      "id": "spam_extra_18",
+      "sender": "EliteRecruit Headhunters",
+      "senderAddress": "offer@eliterecruit-exclusive.xyz",
+      "department": null,
+      "subject": "Job Offer: Gaji $250K, 4 Hari Kerja, Villa di Singapura - Reply Sekarang!",
+      "body": "Dear Talent Luar Biasa,\n\nKlien kami (Fortune 500 company yang tidak bisa kami sebutkan karena tidak ada) mencari Anda!\n\nPaket kompensasi:\n- Base salary: $250,000/tahun\n- Signing bonus: $50,000\n- 4 hari kerja, Senin libur\n- Villa fully furnished di Singapura\n- Personal chef & driver\n\nQualification: punya email address (cukup itu)\n\nUntuk fast-track, kirim:\n- Scan KTP/Paspor\n- Slip gaji 3 bulan terakhir\n- Foto selfie memegang KTP\n- Biaya 'assessment' Rp 2.000.000\n\nToo good to be true? Absolutely.",
+      "type": "spam",
+      "priority": "none",
+      "category": "promosi",
+      "expirationSeconds": 0,
+      "tags": [
+        "spam",
+        "phishing",
+        "tier3"
+      ],
+      "replyOptions": [
+        {
+          "text": "INI MIMPI SAYA! Kirim semua dokumen!",
+          "isCorrect": false,
+          "scoreModifier": -35
+        },
+        {
+          "text": "Transfer assessment fee sekarang!",
+          "isCorrect": false,
+          "scoreModifier": -25
+        },
+        {
+          "text": "Kapan bisa mulai? Saya resign besok.",
+          "isCorrect": false,
+          "scoreModifier": -15
+        }
+      ],
+      "taskTrigger": null
+    },
+    {
+      "id": "spam_extra_19",
+      "sender": "SleepCoin Crypto",
+      "senderAddress": "invest@sleepcoin-token.win",
+      "department": null,
+      "subject": "Passive Income WHILE YOU SLEEP! (Tapi Anda Tidak Pernah Tidur LOL)",
+      "body": "Memperkenalkan SleepCoin ($SLEEP) - cryptocurrency untuk orang yang tidak pernah tidur!\n\nTokenomics:\n- Mining reward berdasarkan jam TIDAK tidur (Anda kaya raya)\n- Staking APY: 999% (angka random yang terdengar bagus)\n- Whitepaper: 2 halaman Comic Sans\n\nPresale price: $0.001\nProjected price 2027: $1,000 (sumber: mimpi kami)\n\nInvest gaji Anda di $SLEEP karena tidur sudah bukan opsi!\n\nNFA DYOR WAGMI (None of these mean anything here).",
+      "type": "spam",
+      "priority": "none",
+      "category": "promosi",
+      "expirationSeconds": 0,
+      "tags": [
+        "spam",
+        "tier2"
+      ],
+      "replyOptions": [
+        {
+          "text": "ALL IN! Kirim wallet address untuk presale!",
+          "isCorrect": false,
+          "scoreModifier": -25
+        },
+        {
+          "text": "Saya invest gaji bulan ini, WAGMI!",
+          "isCorrect": false,
+          "scoreModifier": -20
+        },
+        {
+          "text": "Ada airdrop untuk yang lembur >100 jam/bulan?",
+          "isCorrect": false,
+          "scoreModifier": -10
+        }
+      ],
+      "taskTrigger": null
+    },
+    {
+      "id": "spam_extra_20",
+      "sender": "CyberCert Academy Express",
+      "senderAddress": "enroll@cybercert-express.biz",
+      "department": null,
+      "subject": "Sertifikasi Cybersecurity dalam 2 JAM! Naik Gaji Instant!",
+      "body": "Bosan jadi karyawan biasa? Jadi 'Certified Cyber Security Professional' dalam 2 jam!\n\nProgram kami:\n- Video tutorial 45 menit (di-skip juga nggak apa-apa)\n- Ujian 30 soal (jawaban disediakan)\n- Sertifikat PDF (editable, bisa ganti nama)\n\nHarga: Rp 2.500.000\nNilai di pasar kerja: Rp 0\n\nSertifikat termasuk:\n- Logo yang mirip tapi bukan CompTIA\n- QR code yang mengarah ke rickroll\n- Hologram stiker dari toko alat tulis\n\nPasang di LinkedIn, nobody will check.",
+      "type": "spam",
+      "priority": "none",
+      "category": "promosi",
+      "expirationSeconds": 0,
+      "tags": [
+        "spam",
+        "tier2"
+      ],
+      "replyOptions": [
+        {
+          "text": "Daftar! Saya butuh sertifikat baru di LinkedIn.",
+          "isCorrect": false,
+          "scoreModifier": -20
+        },
+        {
+          "text": "Ada bundle sama sertifikat AWS palsu?",
+          "isCorrect": false,
+          "scoreModifier": -15
+        }
+      ],
+      "taskTrigger": null
+    },
+    {
+      "id": "spam_extra_21",
+      "sender": "OfficePet Emotional Support",
+      "senderAddress": "adopt@officepet-support.fun",
+      "department": null,
+      "subject": "Adopsi Hamster 'Emotional Support' untuk Meja Kantor - GRATIS!*",
+      "body": "Penelitian menunjukkan (tidak benar) bahwa memiliki hamster di meja kerja mengurangi stress 95%!\n\nAdopsi hamster emotional support GRATIS!*\n\n*Biaya yang tidak gratis:\n- Kandang mini premium: Rp 800.000\n- Makanan organik hamster: Rp 200.000/bulan\n- Asuransi hamster: Rp 150.000/bulan\n- Sertifikat 'Emotional Support Animal': Rp 500.000\n- Terapi untuk hamster yang juga stress di kantor Anda: Rp 300.000/sesi\n\nTotal 'gratis': Rp 1.950.000 bulan pertama.\n\nHamster yang dikirim mungkin adalah bola kapas dengan mata googly.",
+      "type": "spam",
+      "priority": "none",
+      "category": "promosi",
+      "expirationSeconds": 0,
+      "tags": [
+        "spam",
+        "tier1"
+      ],
+      "replyOptions": [
+        {
+          "text": "HAMSTER! Adopsi sekarang!",
+          "isCorrect": false,
+          "scoreModifier": -15
+        },
+        {
+          "text": "Ada opsi kucing emotional support?",
+          "isCorrect": false,
+          "scoreModifier": -10
+        },
+        {
+          "text": "Kirim 5 hamster untuk satu tim.",
+          "isCorrect": false,
+          "scoreModifier": -20
+        }
+      ],
+      "taskTrigger": null
+    },
+    {
+      "id": "spam_extra_22",
+      "sender": "SpeedType Keyboard Hack",
+      "senderAddress": "order@speedtype-keyboard.top",
+      "department": null,
+      "subject": "Keyboard AJAIB - Ketik 500 WPM! Selesaikan Kerjaan 10x Lebih Cepat!",
+      "body": "Masih pakai keyboard biasa? Pantas kerjaan nggak kelar-kelar.\n\nSpeedType Quantum Keyboard menggunakan teknologi 'predictive quantum typing':\n- AI prediksi apa yang mau Anda ketik\n- Auto-complete email dengan 'Noted, terima kasih'\n- Tombol khusus: 'BLAME SOMEONE ELSE' dan 'CC ALL'\n- Built-in speaker yang play lo-fi beats\n\nHarga: Rp 4.500.000\nYang dikirim: keyboard rusak dari e-waste.\n\nFree shipping!* (*ke alamat yang salah)",
+      "type": "spam",
+      "priority": "none",
+      "category": "promosi",
+      "expirationSeconds": 0,
+      "tags": [
+        "spam",
+        "tier2"
+      ],
+      "replyOptions": [
+        {
+          "text": "Pesan! Saya butuh tombol 'BLAME SOMEONE ELSE'.",
+          "isCorrect": false,
+          "scoreModifier": -15
+        },
+        {
+          "text": "Ada versi wireless biar bisa ketik sambil nangis di toilet?",
+          "isCorrect": false,
+          "scoreModifier": -10
+        }
+      ],
+      "taskTrigger": null
+    },
+    {
+      "id": "spam_extra_23",
+      "sender": "NapPod Solutions Inc.",
+      "senderAddress": "sales@nappod-office.io",
+      "department": null,
+      "subject": "Pod Tidur di Bawah Meja Kantor - Tidur 15 Menit = Segar 15 Jam!",
+      "body": "Inovasi terbaru untuk karyawan overworked!\n\nNapPod Mini - pod tidur portable yang muat di bawah meja kerja Anda.\n\nFitur:\n- Soundproof (bos nggak dengar Anda ngorok)\n- Built-in alarm yang terdengar seperti notifikasi Slack\n- Bantal memory foam berbentuk laptop\n- Selimut warna abu-abu corporate\n\nHarga early bird: Rp 8.000.000\nHarga normal: Rp 15.000.000\nNilai sebenarnya: Rp 200.000 (kardus dengan bantal travel)\n\nTestimoni: 'Bos kira saya sedang debugging di bawah meja.' - Engineer Anonim",
+      "type": "spam",
+      "priority": "none",
+      "category": "promosi",
+      "expirationSeconds": 0,
+      "tags": [
+        "spam",
+        "tier3"
+      ],
+      "replyOptions": [
+        {
+          "text": "Pre-order! Saya sudah 3 hari nggak tidur.",
+          "isCorrect": false,
+          "scoreModifier": -20
+        },
+        {
+          "text": "Ada versi 2 orang buat tidur sama rekan kerja?",
+          "isCorrect": false,
+          "scoreModifier": -10
+        },
+        {
+          "text": "Kirim invoice ke perusahaan sebagai 'office furniture'.",
+          "isCorrect": false,
+          "scoreModifier": -15
+        }
+      ],
+      "taskTrigger": null
+    },
+    {
+      "id": "spam_extra_24",
+      "sender": "QuitCoach Premium",
+      "senderAddress": "resign@quitcoach-premium.xyz",
+      "department": null,
+      "subject": "Resign dengan GAYA! Paket 'Dramatic Exit' Mulai Rp 5 Juta!",
+      "body": "Mau resign tapi nggak tahu caranya yang epic?\n\nQuitCoach Premium menawarkan paket resign profesional:\n\nPaket Bronze (Rp 5.000.000):\n- Surat resign yang sopan tapi menyindir\n- Coaching call 30 menit\n\nPaket Gold (Rp 15.000.000):\n- Surat resign viral-worthy\n- Video editor untuk rekam momen resign\n- Konsultan LinkedIn untuk update status 'funemployed'\n\nPaket Platinum (Rp 50.000.000):\n- Marching band di lobby kantor\n- Skywriting pesawat 'I QUIT'\n- Lawyer standby untuk counter-sue\n\nWarning: paket ini tidak termasuk pekerjaan baru.",
+      "type": "spam",
+      "priority": "none",
+      "category": "promosi",
+      "expirationSeconds": 0,
+      "tags": [
+        "spam",
+        "tier3"
+      ],
+      "replyOptions": [
+        {
+          "text": "Paket Platinum! Worth every rupiah!",
+          "isCorrect": false,
+          "scoreModifier": -25
+        },
+        {
+          "text": "Paket Bronze dulu, gaji cuma cukup segitu.",
+          "isCorrect": false,
+          "scoreModifier": -15
+        }
+      ],
+      "taskTrigger": null
+    },
+    {
+      "id": "spam_extra_25",
+      "sender": "BossBlocker VPN Pro",
+      "senderAddress": "download@bossblocker-vpn.ru",
+      "department": null,
+      "subject": "VPN yang Block Email Bos Setelah Jam 6 Sore - Hidup Tenang DIMULAI!",
+      "body": "Introducing BossBlocker VPN PRO!\n\nBukan VPN biasa - ini VPN yang MEMBLOKIR:\n- Email dari bos setelah jam 18:00\n- Notifikasi Slack weekend\n- 'Quick call' jam 10 malam\n- Calendar invite meeting jam 7 pagi\n\nFitur bonus:\n- Auto-reply: 'Maaf, sedang di luar jangkauan' (padahal nonton Netflix)\n- Fake 'poor connection' untuk meeting yang tidak penting\n- Simulated typing sound untuk Slack\n\nHarga: $14.99/bulan\nYang sebenarnya terjadi: install malware + harvest semua data browsing.\n\nPrivacy for you, data for us!",
+      "type": "spam",
+      "priority": "none",
+      "category": "promosi",
+      "expirationSeconds": 0,
+      "tags": [
+        "spam",
+        "phishing",
+        "tier3"
+      ],
+      "replyOptions": [
+        {
+          "text": "Download sekarang, bos saya email jam 11 malam!",
+          "isCorrect": false,
+          "scoreModifier": -30
+        },
+        {
+          "text": "Install di semua device saya.",
+          "isCorrect": false,
+          "scoreModifier": -25
+        },
+        {
+          "text": "Ada free trial? Saya coba dulu weekend ini.",
+          "isCorrect": false,
+          "scoreModifier": -10
+        }
+      ],
+      "taskTrigger": null
+    },
+    {
+      "id": "spam_extra_26",
+      "sender": "KorporatKaraoke Events",
+      "senderAddress": "book@korporat-karaoke.biz",
+      "department": null,
+      "subject": "Team Building: Karaoke Session + Terapi Teriak - DISKON 70% Hari Ini!",
+      "body": "Team building yang SEBENARNYA Anda butuhkan!\n\nKorporatKaraoke menawarkan:\n- Private room 3 jam\n- Song list khusus: 'I Will Survive', 'Take This Job and Shove It', 'Bohemian Rhapsody' (bagian screaming doang)\n- Bonus: ruang teriak soundproof 15 menit per orang\n- Snack: mie instan (authentic karyawan experience)\n\nHarga: Rp 750.000/orang (minimal 10 orang)\nDiskon 70%: Rp 225.000/orang*\n\n*Diskon tidak berlaku. Harga tetap Rp 750.000. Kami cuma clickbait.\n\nPembayaran: transfer ke rekening pribadi event organizer yang tidak terdaftar.",
+      "type": "spam",
+      "priority": "none",
+      "category": "promosi",
+      "expirationSeconds": 0,
+      "tags": [
+        "spam",
+        "tier1"
+      ],
+      "replyOptions": [
+        {
+          "text": "Book untuk tim saya! Kami butuh teriak.",
+          "isCorrect": false,
+          "scoreModifier": -15
+        },
+        {
+          "text": "Ada lagu 'My Boss is a Monster'?",
+          "isCorrect": false,
+          "scoreModifier": -10
+        }
+      ],
+      "taskTrigger": null
+    },
+    {
+      "id": "spam_extra_27",
+      "sender": "FakeHR Portal System",
+      "senderAddress": "payroll@hr-portal-update.ru",
+      "department": null,
+      "subject": "URGENT: Payroll System Error - Gaji Anda DOUBLE Bulan Ini (Verifikasi!)",
+      "body": "Dear Karyawan,\n\nSistem payroll kami error dan gaji Anda ter-double bulan ini.\n\nUntuk 'mengembalikan' kelebihan, login ke portal HR palsu kami dan masukkan:\n- Employee ID\n- Password email kantor\n- Nomor rekening bank\n- PIN mobile banking\n- Nama hewan peliharaan pertama (security question)\n\nJika tidak verifikasi dalam 24 jam, gaji bulan depan akan dipotong 200%.\n\nTerima kasih,\nHR Department (yang asli nggak pernah email secepat ini)",
+      "type": "spam",
+      "priority": "none",
+      "category": "promosi",
+      "expirationSeconds": 0,
+      "tags": [
+        "spam",
+        "phishing",
+        "tier3"
+      ],
+      "replyOptions": [
+        {
+          "text": "Gaji double?! Ini semua data saya!",
+          "isCorrect": false,
+          "scoreModifier": -40
+        },
+        {
+          "text": "Login ke portal sekarang, takut dipotong!",
+          "isCorrect": false,
+          "scoreModifier": -30
+        },
+        {
+          "text": "Kirim link portal HR-nya.",
+          "isCorrect": false,
+          "scoreModifier": -15
+        }
+      ],
+      "taskTrigger": null
+    },
+    {
+      "id": "spam_extra_28",
+      "sender": "MejaStanding Revolution",
+      "senderAddress": "order@standing-desk-free.top",
+      "department": null,
+      "subject": "Standing Desk GRATIS untuk 100 Karyawan Pertama! (Anda Terpilih!)",
+      "body": "Duduk 16 jam sehari membunuh Anda pelan-pelan (tapi lembur membunuh lebih cepat).\n\nMejaStanding Revolution memberikan standing desk GRATIS!*\n\n*Syarat & ketentuan:\n- Bayar 'biaya survey ergonomi': Rp 500.000\n- Bayar 'sertifikat postur': Rp 300.000\n- Ongkir: Rp 1.200.000\n- Asuransi meja: Rp 400.000\n- 'Tips' untuk installer: Rp 200.000\n\nYang dikirim: instruksi cara menumpuk buku di atas meja biasa.\n\nStanding desk: achieved (secara teknis).",
+      "type": "spam",
+      "priority": "none",
+      "category": "promosi",
+      "expirationSeconds": 0,
+      "tags": [
+        "spam",
+        "tier1"
+      ],
+      "replyOptions": [
+        {
+          "text": "GRATIS?! Transfer semua biayanya sekarang!",
+          "isCorrect": false,
+          "scoreModifier": -20
+        },
+        {
+          "text": "Saya sudah berdiri karena kursi kantor rusak.",
+          "isCorrect": false,
+          "scoreModifier": -5
+        },
+        {
+          "text": "Pesan 10 untuk satu lantai kantor.",
+          "isCorrect": false,
+          "scoreModifier": -25
+        }
+      ],
+      "taskTrigger": null
+    },
+    {
+      "id": "spam_extra_29",
+      "sender": "DeepFocus Nootropics Lab",
+      "senderAddress": "order@deepfocus-brain-pills.xyz",
+      "department": null,
+      "subject": "Pil Fokus 36 Jam Non-Stop - NZT dari Limitless Tapi untuk Karyawan!",
+      "body": "Perlu fokus untuk marathon meeting 12 jam?\n\nDeepFocus NZT-Corporate Edition:\n- Fokus tanpa henti selama 36 jam\n- Side effect: lupa nama sendiri, tapi ingat semua deadline\n- Kandungan: kafein, gula, placebo, dan harapan\n\nPaket:\n- Starter (30 pil): Rp 1.500.000\n- Pro (90 pil): Rp 3.500.000\n- 'Saya Sudah Menyerah' (365 pil): Rp 10.000.000\n\nBelum disetujui BPOM, FDA, WHO, atau siapa pun yang waras.\n\nTestimoni: 'Saya fokus 36 jam straight dan lupa bahwa saya punya keluarga.' - Senior Dev",
+      "type": "spam",
+      "priority": "none",
+      "category": "promosi",
+      "expirationSeconds": 0,
+      "tags": [
+        "spam",
+        "tier3"
+      ],
+      "replyOptions": [
+        {
+          "text": "Paket 365 pil! Saya memang sudah menyerah.",
+          "isCorrect": false,
+          "scoreModifier": -20
+        },
+        {
+          "text": "Ada yang lebih kuat? 36 jam kurang untuk sprint.",
+          "isCorrect": false,
+          "scoreModifier": -15
+        },
+        {
+          "text": "Kirim sampel gratis ke kantor.",
+          "isCorrect": false,
+          "scoreModifier": -10
+        }
+      ],
+      "taskTrigger": null
+    },
+    {
+      "id": "spam_extra_30",
+      "sender": "GhostEmployee Outsource Co.",
+      "senderAddress": "hire@ghost-employee.io",
+      "department": null,
+      "subject": "Hire 'Karyawan Hantu' untuk Kerjakan Semua Tugas Anda - Bos Nggak Akan Tahu!",
+      "body": "Terlalu banyak kerjaan? Hire ghost employee!\n\nGhostEmployee menyediakan freelancer yang:\n- Login pakai akun Anda\n- Attend meeting pakai foto profil Anda (deepfake included)\n- Balas email dengan gaya bahasa Anda (dilatih dari 500 email 'Noted')\n- Submit laporan yang 'cukup bagus untuk nggak dipecat'\n\nHarga: 40% dari gaji Anda/bulan\nRisiko: dipecat, blacklisted, existential crisis tentang nilai diri Anda\n\nTapi Anda bisa tidur. TIDUR. Ingat tidur?\n\nPayment: crypto only (untraceable, seperti kontribusi Anda di kantor).",
+      "type": "spam",
+      "priority": "none",
+      "category": "promosi",
+      "expirationSeconds": 0,
+      "tags": [
+        "spam",
+        "tier3"
+      ],
+      "replyOptions": [
+        {
+          "text": "Hire sekarang! Ini credential akun kantor saya.",
+          "isCorrect": false,
+          "scoreModifier": -40
+        },
+        {
+          "text": "40% gaji? Deal, saya butuh tidur.",
+          "isCorrect": false,
+          "scoreModifier": -20
+        },
+        {
+          "text": "Ada paket untuk ghost-replace seluruh tim?",
+          "isCorrect": false,
+          "scoreModifier": -15
+        }
+      ],
+      "taskTrigger": null
     }
   ]
 }

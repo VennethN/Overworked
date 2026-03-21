@@ -134,6 +134,40 @@
       "taskTrigger": null,
       "expiredFollowUp": null,
       "setFlagOnRead": null
+    },
+    {
+      "id": "story_d6_farewell",
+      "sender": "Ratna Sari",
+      "senderAddress": "r.sari@sleepdep.co.id",
+      "department": "Product",
+      "subject": "Selamat Tinggal, PT Sleep Deprivation Studio",
+      "body": "Kepada seluruh rekan kerja yang masih bertahan,\n\nIni email terakhir saya dari akun kantor. Saya resign. Efektif hari ini. Saya tahu konsekuensinya — blacklist, evaluasi negatif, penalti kontrak. Saya sudah tidak peduli lagi.\n\n2 tahun 4 bulan saya di sini. Dan dalam 2 tahun 4 bulan itu, saya sudah kehilangan banyak hal: 15 kg berat badan (bukan diet, tapi stres), hubungan dengan keluarga yang hampir hancur, dan kemampuan untuk tidur tanpa mimpi buruk tentang deadline.\n\nSaya mau kalian tahu beberapa hal yang mungkin belum kalian sadari:\n\n1. \"Program kesejahteraan karyawan\" yang di-post di LinkedIn itu tidak pernah ada. Budget-nya dipakai untuk renovasi ruangan direksi.\n\n2. Evaluasi kinerja kalian SUDAH ditulis SEBELUM periode evaluasi dimulai. Hasilnya sudah ditentukan. Yang bagus untuk yang patuh, yang buruk untuk yang berani bicara.\n\n3. Kontrak yang kalian tanda tangani — banyak pasal di dalamnya yang tidak memiliki dasar hukum. Tapi mereka tahu kalian terlalu takut atau terlalu capek untuk cek.\n\n4. Sistem \"Performance Monitor\" itu bukan untuk mengukur kinerja. Itu untuk mengintimidasi. Data-nya bahkan tidak akurat — saya tahu karena saya yang dulu bantu setup sistemnya.\n\nSaya menulis ini bukan untuk balas dendam. Saya menulis ini karena saya tidak bisa pergi dengan diam sambil tahu kalian semua masih terjebak.\n\nKalian pantas dapat lebih baik dari ini. Kita semua pantas.\n\nSemoga suatu hari nanti perusahaan ini berubah. Atau lebih baik lagi — tutup.\n\nSelamat tinggal.\n\n— Ratna Sari\nMantan Product Manager\nMantan karyawan \"teladan\" (sebelum saya mulai bertanya)\n\nP.S. Untuk Mahyu: terima kasih sudah mengajari saya bahwa kadang orang yang paling berkuasa adalah orang yang paling takut kehilangan kekuasaannya. Semoga kamu bisa tidur nyenyak malam ini.",
+      "type": "info",
+      "category": "sosial",
+      "priority": "medium",
+      "expirationSeconds": 0,
+      "tags": ["story", "story_d6", "side_story"],
+      "replyOptions": null,
+      "taskTrigger": null,
+      "expiredFollowUp": null,
+      "setFlagOnRead": null
+    },
+    {
+      "id": "story_d6_farewell_hr",
+      "sender": "HR Department",
+      "senderAddress": "hr@sleepdep.co.id",
+      "department": "HR",
+      "subject": "PEMBERITAHUAN RESMI: Mohon Abaikan Email Sebelumnya",
+      "body": "Kepada Seluruh Karyawan,\n\nMohon abaikan email yang baru saja dikirim oleh Ratna Sari (r.sari@sleepdep.co.id).\n\nKaryawan tersebut SUDAH TIDAK BERWENANG menggunakan email kantor. Akses-nya seharusnya sudah dinonaktifkan dan kami sedang menyelidiki bagaimana email tersebut bisa terkirim.\n\nPerlu kami tegaskan:\n\n1. Semua klaim dalam email tersebut adalah TIDAK BENAR dan merupakan pencemaran nama baik.\n2. Program kesejahteraan karyawan berjalan sesuai rencana.\n3. Sistem evaluasi kinerja bersifat objektif dan transparan.\n4. Seluruh klausul kontrak kerja memiliki dasar hukum yang kuat.\n\nKaryawan yang menyebarkan, memforward, atau mendiskusikan isi email tersebut akan menghadapi tindakan disipliner.\n\nTerima kasih atas pengertian Anda.\n\nSalam,\nHR Department\nPT Sleep Deprivation Studio",
+      "type": "info",
+      "category": "sosial",
+      "priority": "high",
+      "expirationSeconds": 0,
+      "tags": ["story", "story_d6", "side_story"],
+      "replyOptions": null,
+      "taskTrigger": null,
+      "expiredFollowUp": null,
+      "setFlagOnRead": null
     }
   ]
 }

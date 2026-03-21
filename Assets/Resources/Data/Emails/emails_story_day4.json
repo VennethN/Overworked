@@ -139,12 +139,74 @@
       "senderAddress": "d.prasetyo@sleepdep.co.id",
       "department": null,
       "subject": "Data yang gw bilang",
-      "body": "Hei {PlayerName},\n\nGw janji mau kasih info kan? Ini dia.\n\nGw berhasil akses log lembur 6 bulan terakhir sebelum dihapus dari server. Ini datanya:\n\n- Januari: 847 jam lembur tercatat, kenyataan 2.340 jam (selisih 1.493 jam)\n- Februari: 912 jam tercatat, kenyataan 2.187 jam (selisih 1.275 jam)\n- Maret: 756 jam tercatat, kenyataan 2.890 jam (selisih 2.134 jam)\n- April-Juni: data dihapus total, tapi gw punya screenshot sebelum dihapus\n\nKalau dihitung dengan UMR lembur, perusahaan \"menghemat\" lebih dari Rp 2 miliar dari lembur yang nggak dibayar. Per tahun.\n\nIni bukan kelalaian. Ini disengaja.\n\nSimpan email ini. Jangan forward ke siapapun dulu.\n\n— D",
+      "body": "Hei {PlayerName},\n\nGw janji mau kasih info kan? Ini dia.\n\nGw berhasil akses log lembur 6 bulan terakhir sebelum dihapus dari server. Ini datanya:\n\n- Januari: 847 jam lembur tercatat, kenyataan 2.340 jam (selisih 1.493 jam)\n- Februari: 912 jam tercatat, kenyataan 2.187 jam (selisih 1.275 jam)\n- Maret: 756 jam tercatat, kenyataan 2.890 jam (selisih 2.134 jam)\n- April-Juni: data dihapus total, tapi gw punya screenshot sebelum dihapus\n\nKalau dihitung dengan UMR lembur, perusahaan \"menghemat\" lebih dari Rp 2 miliar dari lembur yang nggak dibayar. Per tahun.\n\nJangan pikir ini cuma salah input. Mereka sengaja.\n\nSimpan email ini. Jangan forward ke siapapun dulu.\n\n— D",
       "type": "info",
       "category": "utama",
       "priority": "low",
       "expirationSeconds": 0,
       "tags": ["story", "story_d4", "dika"],
+      "replyOptions": null,
+      "taskTrigger": null,
+      "expiredFollowUp": null,
+      "setFlagOnRead": null
+    },
+    {
+      "id": "story_d4_smell",
+      "sender": "Lina Putri",
+      "senderAddress": "l.putri@sleepdep.co.id",
+      "department": "Operations",
+      "subject": "URGENT: Bau Misterius Lantai 2 — Tolong Bantu",
+      "body": "Kepada rekan-rekan,\n\nSaya mohon bantuan dengan sangat. Ada bau yang LUAR BIASA tidak sedap di area lantai 2, khususnya dekat ruang meeting Kenanga.\n\nBaunya sulit dijelaskan — campuran antara durian busuk, kaus kaki basah, dan mungkin... ikan? Saya sendiri tidak yakin. Yang saya tahu, 3 orang sudah pindah meja hari ini dan Pak Hendra dari Accounting sampai pakai masker scuba diving yang dia bawa dari rumah.\n\nBuilding management sudah saya hubungi tapi mereka bilang \"sedang investigasi\" (yang artinya mereka nggak mau naik ke lantai 2). AC sudah dinyalakan full tapi malah bikin baunya nyebar ke seluruh lantai.\n\nAda yang tahu sumber baunya? Atau punya saran? Saya hampir kehabisan pengharum ruangan — sudah semprot 3 kaleng hari ini.\n\n— Lina Putri\nOperations Dept.",
+      "type": "reply",
+      "category": "sosial",
+      "priority": "medium",
+      "expirationSeconds": 50,
+      "tags": ["story", "story_d4", "side_story"],
+      "replyOptions": [
+        {
+          "text": "Saya akan investigasi.",
+          "isCorrect": true,
+          "scoreModifier": 5,
+          "followUp": {
+            "emailId": "story_d4_smell_source",
+            "delaySeconds": 25
+          },
+          "setFlag": null
+        },
+        {
+          "text": "Bukan urusan saya.",
+          "isCorrect": true,
+          "scoreModifier": 3,
+          "followUp": null,
+          "setFlag": null
+        },
+        {
+          "text": "Lapor ke building management.",
+          "isCorrect": true,
+          "scoreModifier": 5,
+          "followUp": {
+            "emailId": "story_d4_smell_source",
+            "delaySeconds": 25
+          },
+          "setFlag": null
+        }
+      ],
+      "taskTrigger": null,
+      "expiredFollowUp": null,
+      "setFlagOnRead": null
+    },
+    {
+      "id": "story_d4_smell_source",
+      "sender": "Lina Putri",
+      "senderAddress": "l.putri@sleepdep.co.id",
+      "department": "Operations",
+      "subject": "RE: Bau Misterius Lantai 2 — SUMBER DITEMUKAN (WARNING: MENJIJIKKAN)",
+      "body": "UPDATE UNTUK SELURUH LANTAI 2,\n\nKami sudah menemukan sumber bau misterius tersebut. Mohon siapkan mental sebelum membaca.\n\nDi dalam laci meja Pak Gunawan (yang sudah pindah ke cabang Surabaya 3 MINGGU LALU), ditemukan: satu kotak nasi kuning lengkap dengan telur, ayam goreng, dan sambal. Dari TIGA MINGGU YANG LALU. Masih di dalam kotak makan dengan tutup rapat.\n\nKetika tim cleaning membuka tutupnya... saya tidak bisa menjelaskan apa yang terjadi. Yang saya bisa bilang: 2 orang langsung keluar ruangan, dan Ibu Neni (cleaning service) bilang ini pengalaman paling traumatis dalam 15 tahun karirnya.\n\nNasi kuningnya sudah berubah warna menjadi hijau-biru. Telurnya... saya nggak mau bahas. Ayamnya sudah tidak bisa diidentifikasi sebagai ayam lagi.\n\nLaci sudah dibersihkan dengan desinfektan industrial. Mohon buka jendela selama sisa hari ini.\n\nKepada Pak Gunawan di Surabaya: Pak, kotak makan Bapak yang ketinggalan sudah kami... urus.\n\n— Lina Putri\nOperations Dept.\n\nP.S. Mulai sekarang ada kebijakan baru: TIDAK ADA MAKANAN DI LACI MEJA.",
+      "type": "info",
+      "category": "sosial",
+      "priority": "low",
+      "expirationSeconds": 0,
+      "tags": ["story", "story_d4", "side_story"],
       "replyOptions": null,
       "taskTrigger": null,
       "expiredFollowUp": null,

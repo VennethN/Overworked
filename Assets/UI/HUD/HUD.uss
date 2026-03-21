@@ -7,6 +7,7 @@
     border-bottom-color: var(--color-border-strong);
     min-height: 36px;
     justify-content: space-between;
+    flex-wrap: wrap;
     transition: background-color 350ms ease, border-color 350ms ease;
 }
 

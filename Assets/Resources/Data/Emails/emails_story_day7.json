@@ -127,6 +127,65 @@
       "taskTrigger": null,
       "expiredFollowUp": null,
       "setFlagOnRead": null
+    },
+    {
+      "id": "story_d7_it_confession",
+      "sender": "Wahyu Prakoso",
+      "senderAddress": "w.prakoso@sleepdep.co.id",
+      "department": "IT",
+      "subject": "TOLONG BANTU — Saya Melakukan Kesalahan Besar",
+      "body": "Hei {PlayerName},\n\nSaya Wahyu dari IT. Kita belum pernah ngobrol banyak tapi saya butuh bantuan sekarang. Saya panik.\n\nJadi ceritanya begini: tadi pagi saya lagi maintenance rutin server, dan saya... tidak sengaja menjalankan command DELETE di database yang salah. Yang saya hapus bukan database test. Yang saya hapus adalah DATABASE BACKUP UTAMA.\n\nDatabase yang isinya... daftar blacklist karyawan HR. Ya, file yang isinya semua evaluasi palsu, semua catatan \"non-kooperatif\", semua data yang mereka pakai untuk menghancurkan karir mantan karyawan.\n\nBackup-nya? Tidak ada. Karena database INI adalah backup-nya. Yang asli sudah di-migrate ke cloud bulan lalu dan akses cloud-nya cuma Mahyu yang punya.\n\nSaya belum lapor ke siapapun. Kalau Mahyu tahu, saya selesai. Bukan cuma dipecat — tahu sendiri apa yang mereka lakukan ke orang yang \"bermasalah\".\n\nApa yang harus saya lakukan??\n\n— Wahyu P.\nIT Department\n\nP.S. Tangan saya gemetar nulis email ini.",
+      "type": "reply",
+      "category": "sosial",
+      "priority": "high",
+      "expirationSeconds": 50,
+      "tags": ["story", "story_d7", "side_story"],
+      "replyOptions": [
+        {
+          "text": "Tenang, mungkin bisa di-recover.",
+          "isCorrect": true,
+          "scoreModifier": 5,
+          "followUp": null,
+          "setFlag": null
+        },
+        {
+          "text": "Bagus, data itu memang harusnya dihapus.",
+          "isCorrect": true,
+          "scoreModifier": 8,
+          "followUp": null,
+          "setFlag": null
+        },
+        {
+          "text": "Lapor ke Mahyu sekarang!",
+          "isCorrect": false,
+          "scoreModifier": -10,
+          "followUp": {
+            "emailId": "story_d7_it_fired",
+            "delaySeconds": 15
+          },
+          "setFlag": null
+        }
+      ],
+      "taskTrigger": null,
+      "expiredFollowUp": null,
+      "setFlagOnRead": null
+    },
+    {
+      "id": "story_d7_it_fired",
+      "sender": "Mahyu",
+      "senderAddress": "m.mahyu@sleepdep.co.id",
+      "department": "Supervisor",
+      "subject": "Wahyu Prakoso — Pemberhentian Efektif Hari Ini",
+      "body": "Kepada Departemen IT,\n\nDengan ini saya informasikan bahwa Wahyu Prakoso diberhentikan dari posisinya efektif SEKARANG JUGA.\n\nAlasan: Kelalaian berat yang mengakibatkan hilangnya data kritikal perusahaan. Tidak ada toleransi untuk ketidakmampuan di level ini.\n\nWahyu sudah diminta untuk mengemas barang-barangnya dan meninggalkan gedung dalam 30 menit. Akses badge, email, dan semua sistem sudah dinonaktifkan.\n\nEvaluasi negatifnya sudah saya kirimkan ke seluruh perusahaan mitra dalam jaringan kami. Dia tidak akan bekerja di industri ini lagi.\n\nDan untuk yang melaporkan insiden ini — terima kasih. Kepatuhan selalu dihargai. Tapi jangan pikir ini berarti kamu spesial.\n\nSemua orang bisa diganti. Termasuk kamu.\n\n— Mahyu\nSupervisor, PT Sleep Deprivation Studio",
+      "type": "info",
+      "category": "sosial",
+      "priority": "critical",
+      "expirationSeconds": 0,
+      "tags": ["story", "story_d7", "side_story"],
+      "replyOptions": null,
+      "taskTrigger": null,
+      "expiredFollowUp": null,
+      "setFlagOnRead": null
     }
   ]
 }

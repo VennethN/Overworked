@@ -64,7 +64,11 @@ public class CRTController : MonoBehaviour
             if (mouse != null && mouse.leftButton.wasPressedThisFrame)
             {
                 Vector2 screenPos = mouse.position.ReadValue();
+#if UNITY_WEBGL && !UNITY_EDITOR
+                Vector2 clickUV = new Vector2(screenPos.x / Screen.width, screenPos.y / Screen.height);
+#else
                 Vector2 clickUV = new Vector2(screenPos.x / Screen.width, 1f - screenPos.y / Screen.height);
+#endif
                 crtMaterial.SetVector(ClickUVId, clickUV);
                 crtMaterial.SetFloat(ClickTimeId, Time.time);
             }

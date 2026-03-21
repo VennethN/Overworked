@@ -19,6 +19,14 @@
 - **Source:** https://fonts.google.com/icons
 - **License:** Apache License, Version 2.0
 
+## Audio
+
+### Click Sound Effect
+- **Tool:** jsfxr
+- **Source:** https://sfxr.me/
+- **License:** Public Domain / Unlicense
+- **Note:** Sound effect generated using jsfxr (JavaScript port of sfxr by DrPetter)
+
 ## Engine & Packages
 
 - **Unity 6** (6000.3.11f1) — https://unity.com
