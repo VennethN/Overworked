@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using Overworked.Actions;
 using Overworked.Core;
@@ -16,6 +17,9 @@ namespace Overworked.Scoring
 
         private ScoreData _score;
         private int _currentStreak;
+
+        /// <summary>Fired whenever the score changes. Param is the delta (positive or negative).</summary>
+        public event Action<int> OnScoreChanged;
 
         public ScoreData CurrentScore => _score;
         public int CurrentStreak => _currentStreak;
@@ -55,6 +59,14 @@ namespace Overworked.Scoring
             _currentStreak = 0;
         }
 
+        private void AddScore(int delta)
+        {
+            if (delta == 0) return;
+            _score.totalScore += delta;
+            Debug.Log($"[Score] AddScore({delta}) total={_score.totalScore} subscribers={OnScoreChanged?.GetInvocationList()?.Length ?? 0}");
+            OnScoreChanged?.Invoke(delta);
+        }
+
         private void HandleEmailReplied(EmailInstance email, ReplyResult result)
         {
             int points = Mathf.RoundToInt(result.ScoreChange * StreakMultiplier);
@@ -63,7 +75,7 @@ namespace Overworked.Scoring
             {
                 // Replying to spam is always bad
                 _score.spamReplied++;
-                _score.totalScore += result.ScoreChange; // No streak bonus for mistakes
+                AddScore(result.ScoreChange); // No streak bonus for mistakes
                 ResetStreak();
                 return;
             }
@@ -71,13 +83,13 @@ namespace Overworked.Scoring
             if (result.IsCorrect)
             {
                 _score.correctReplies++;
-                _score.totalScore += points;
+                AddScore(points);
                 IncrementStreak();
             }
             else
             {
                 _score.wrongReplies++;
-                _score.totalScore += result.ScoreChange; // No streak bonus for wrong answers
+                AddScore(result.ScoreChange); // No streak bonus for wrong answers
                 ResetStreak();
             }
         }
@@ -92,14 +104,14 @@ namespace Overworked.Scoring
                 // Score varies by task type but we use a default for now
             }
             int points = Mathf.RoundToInt(baseScore * StreakMultiplier);
-            _score.totalScore += points;
+            AddScore(points);
             IncrementStreak();
         }
 
         private void HandleTaskFailed(EmailInstance email)
         {
             _score.tasksFailed++;
-            _score.totalScore -= 10;
+            AddScore(-10);
             ResetStreak();
         }
 
@@ -116,7 +128,7 @@ namespace Overworked.Scoring
                 _ => 0
             };
 
-            _score.totalScore += penalty;
+            AddScore(penalty);
             ResetStreak();
         }
 
@@ -125,7 +137,7 @@ namespace Overworked.Scoring
             if (email.Definition.parsedType == EmailType.Spam)
             {
                 _score.spamDeleted++;
-                _score.totalScore += spamDeleteBonus;
+                AddScore(spamDeleteBonus);
                 IncrementStreak();
             }
             else if (email.IsCompleted || email.IsActedUpon || email.IsExpired
@@ -136,7 +148,7 @@ namespace Overworked.Scoring
             else
             {
                 // Deleting an active real email is a penalty
-                _score.totalScore -= 10;
+                AddScore(-10);
                 ResetStreak();
             }
         }

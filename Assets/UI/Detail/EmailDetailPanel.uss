@@ -109,6 +109,8 @@
 .detail-subject {
     font-size: var(--font-size-xl);
     color: var(--color-text-primary);
+    white-space: normal;
+    margin-top: 4px;
     transition: color 350ms ease;
 }
 
@@ -151,7 +153,7 @@
 /* ── Expiry ── */
 .expiry-bar {
     height: 3px;
-    margin: 0 20px;
+    margin: 4px 20px;
 }
 
 .expiry-bar .unity-progress-bar__background {

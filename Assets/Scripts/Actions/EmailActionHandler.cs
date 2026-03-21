@@ -42,8 +42,10 @@ namespace Overworked.Actions
 
         public void HandleDelete(EmailInstance email)
         {
-            email.IsActedUpon = true;
+            // Fire event BEFORE marking as acted upon, so ScoreManager
+            // can check if the email was already handled or still active
             GameEvents.FireEmailDeleted(email);
+            email.IsActedUpon = true;
         }
 
         public void HandleTaskComplete(EmailInstance email)

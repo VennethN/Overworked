@@ -14,51 +14,157 @@ namespace Overworked.Minigames
         {
             public string Description;
             public string Amount;
+            public long AmountValue;
             public bool ShouldApprove;
         }
 
-        // Rule: "Tolak dokumen di atas Rp 50 juta"
-        private static readonly Document[] EasyDocs =
+        private static readonly string[] ItemNames =
         {
-            new() { Description = "Pembelian ATK Kantor", Amount = "Rp 2.500.000", ShouldApprove = true },
-            new() { Description = "Sewa Gedung Tahunan", Amount = "Rp 120.000.000", ShouldApprove = false },
-            new() { Description = "Laptop Karyawan Baru", Amount = "Rp 15.000.000", ShouldApprove = true },
-            new() { Description = "Renovasi Lantai 3", Amount = "Rp 85.000.000", ShouldApprove = false },
-            new() { Description = "Langganan Software", Amount = "Rp 8.400.000", ShouldApprove = true },
-            new() { Description = "Mobil Operasional", Amount = "Rp 250.000.000", ShouldApprove = false },
-            new() { Description = "Training Karyawan", Amount = "Rp 12.000.000", ShouldApprove = true },
-            new() { Description = "Catering Meeting", Amount = "Rp 3.750.000", ShouldApprove = true },
+            "Pembelian ATK Kantor", "Sewa Gedung Tahunan", "Laptop Karyawan Baru",
+            "Renovasi Lantai 3", "Langganan Software", "Mobil Operasional",
+            "Training Karyawan", "Catering Meeting", "Server Rack Baru",
+            "Meja Kerja Ergonomis", "Audit Software", "Firewall License",
+            "Payroll System Update", "AC Ruang Meeting", "Cloud Backup",
+            "Monitor 4K", "Printer Laser", "Kursi Ergonomis",
+            "Lisensi Antivirus", "Domain Hosting", "UPS Backup",
+            "SSL Certificate", "Konsultan Pajak", "Maintenance AC",
+            "Sewa Printer", "Dekorasi Lobby", "Kontrak Vendor",
         };
 
-        // Rule: "Setujui hanya dari Divisi IT atau Finance"
-        private static readonly Document[] MediumDocs =
+        private static readonly string[] Divisions =
         {
-            new() { Description = "Server Rack Baru\nDivisi: IT", Amount = "Rp 45.000.000", ShouldApprove = true },
-            new() { Description = "Meja Kerja Ergonomis\nDivisi: HR", Amount = "Rp 18.000.000", ShouldApprove = false },
-            new() { Description = "Audit Software\nDivisi: Finance", Amount = "Rp 22.000.000", ShouldApprove = true },
-            new() { Description = "Banner Event\nDivisi: Marketing", Amount = "Rp 5.000.000", ShouldApprove = false },
-            new() { Description = "Firewall License\nDivisi: IT", Amount = "Rp 35.000.000", ShouldApprove = true },
-            new() { Description = "Pelatihan Sales\nDivisi: Sales", Amount = "Rp 15.000.000", ShouldApprove = false },
-            new() { Description = "Payroll System Update\nDivisi: Finance", Amount = "Rp 28.000.000", ShouldApprove = true },
-            new() { Description = "AC Ruang Meeting\nDivisi: GA", Amount = "Rp 12.000.000", ShouldApprove = false },
-            new() { Description = "Cloud Backup\nDivisi: IT", Amount = "Rp 18.500.000", ShouldApprove = true },
-            new() { Description = "Dekorasi Lobby\nDivisi: GA", Amount = "Rp 8.000.000", ShouldApprove = false },
+            "IT", "Finance", "HR", "Marketing", "Sales", "GA", "Legal", "Engineering"
         };
 
-        // Rule: "Tolak jika tanggal expired atau jumlah > Rp 30jt"
-        private static readonly Document[] HardDocs =
+        private static string FormatRupiah(long val)
         {
-            new() { Description = "Kontrak Vendor\nExp: 2026-12-31", Amount = "Rp 25.000.000", ShouldApprove = true },
-            new() { Description = "Sewa Printer\nExp: 2025-06-15", Amount = "Rp 8.000.000", ShouldApprove = false }, // expired
-            new() { Description = "Lisensi Antivirus\nExp: 2027-01-01", Amount = "Rp 42.000.000", ShouldApprove = false }, // too high
-            new() { Description = "Domain Hosting\nExp: 2026-09-30", Amount = "Rp 5.500.000", ShouldApprove = true },
-            new() { Description = "Asuransi Gedung\nExp: 2024-12-31", Amount = "Rp 18.000.000", ShouldApprove = false }, // expired
-            new() { Description = "UPS Backup\nExp: 2027-06-15", Amount = "Rp 28.000.000", ShouldApprove = true },
-            new() { Description = "Konsultan Pajak\nExp: 2026-08-20", Amount = "Rp 55.000.000", ShouldApprove = false }, // too high
-            new() { Description = "SSL Certificate\nExp: 2027-03-01", Amount = "Rp 3.200.000", ShouldApprove = true },
-            new() { Description = "Maintenance AC\nExp: 2025-01-31", Amount = "Rp 12.000.000", ShouldApprove = false }, // expired
-            new() { Description = "Monitor 4K\nExp: 2026-11-15", Amount = "Rp 15.000.000", ShouldApprove = true },
+            return $"Rp {val:N0}".Replace(",", ".");
+        }
+
+        private struct RuleConfig
+        {
+            public string Operator; // ">", ">=", "<", "<="
+            public long Threshold;
+            public string RuleText;
+        }
+
+        private static readonly RuleConfig[] EasyRules =
+        {
+            new() { Operator = ">", Threshold = 50_000_000, RuleText = "Tolak jika > Rp 50.000.000" },
+            new() { Operator = ">", Threshold = 30_000_000, RuleText = "Tolak jika > Rp 30.000.000" },
+            new() { Operator = ">=", Threshold = 25_000_000, RuleText = "Tolak jika >= Rp 25.000.000" },
+            new() { Operator = "<", Threshold = 10_000_000, RuleText = "Tolak jika < Rp 10.000.000" },
+            new() { Operator = "<=", Threshold = 15_000_000, RuleText = "Tolak jika <= Rp 15.000.000" },
+            new() { Operator = ">", Threshold = 75_000_000, RuleText = "Tolak jika > Rp 75.000.000" },
+            new() { Operator = ">=", Threshold = 40_000_000, RuleText = "Tolak jika >= Rp 40.000.000" },
         };
+
+        private static bool ShouldReject(string op, long amount, long threshold)
+        {
+            return op switch
+            {
+                ">" => amount > threshold,
+                ">=" => amount >= threshold,
+                "<" => amount < threshold,
+                "<=" => amount <= threshold,
+                _ => false
+            };
+        }
+
+        private void GenerateEasyDocs(int count)
+        {
+            var rule = EasyRules[UnityEngine.Random.Range(0, EasyRules.Length)];
+            _ruleText = $"ATURAN: {rule.RuleText}";
+            _docs.Clear();
+
+            for (int i = 0; i < count + 4; i++)
+            {
+                long val = UnityEngine.Random.Range(1, 200) * 500_000L;
+                bool reject = ShouldReject(rule.Operator, val, rule.Threshold);
+                _docs.Add(new Document
+                {
+                    Description = ItemNames[UnityEngine.Random.Range(0, ItemNames.Length)],
+                    Amount = FormatRupiah(val),
+                    AmountValue = val,
+                    ShouldApprove = !reject
+                });
+            }
+
+            // Shuffle and trim
+            for (int i = _docs.Count - 1; i > 0; i--)
+            {
+                int j = UnityEngine.Random.Range(0, i + 1);
+                (_docs[i], _docs[j]) = (_docs[j], _docs[i]);
+            }
+            while (_docs.Count > count) _docs.RemoveAt(_docs.Count - 1);
+        }
+
+        private void GenerateMediumDocs(int count)
+        {
+            // Pick 2 "approved" divisions randomly
+            var shuffledDiv = new List<string>(Divisions);
+            for (int i = shuffledDiv.Count - 1; i > 0; i--)
+            {
+                int j = UnityEngine.Random.Range(0, i + 1);
+                (shuffledDiv[i], shuffledDiv[j]) = (shuffledDiv[j], shuffledDiv[i]);
+            }
+            string div1 = shuffledDiv[0], div2 = shuffledDiv[1];
+            _ruleText = $"ATURAN: Setujui HANYA dari Divisi {div1} atau {div2}";
+            _docs.Clear();
+
+            for (int i = 0; i < count + 4; i++)
+            {
+                string div = Divisions[UnityEngine.Random.Range(0, Divisions.Length)];
+                long val = UnityEngine.Random.Range(1, 100) * 1_000_000L;
+                bool approved = (div == div1 || div == div2);
+                _docs.Add(new Document
+                {
+                    Description = $"{ItemNames[UnityEngine.Random.Range(0, ItemNames.Length)]}\nDivisi: {div}",
+                    Amount = FormatRupiah(val),
+                    AmountValue = val,
+                    ShouldApprove = approved
+                });
+            }
+
+            for (int i = _docs.Count - 1; i > 0; i--)
+            {
+                int j = UnityEngine.Random.Range(0, i + 1);
+                (_docs[i], _docs[j]) = (_docs[j], _docs[i]);
+            }
+            while (_docs.Count > count) _docs.RemoveAt(_docs.Count - 1);
+        }
+
+        private void GenerateHardDocs(int count)
+        {
+            var rule = EasyRules[UnityEngine.Random.Range(0, EasyRules.Length)];
+            _ruleText = $"ATURAN: Tolak jika expired (< 2026) ATAU {rule.RuleText.Replace("Tolak jika ", "")}";
+            _docs.Clear();
+
+            for (int i = 0; i < count + 4; i++)
+            {
+                long val = UnityEngine.Random.Range(1, 120) * 1_000_000L;
+                int year = UnityEngine.Random.Range(2024, 2028);
+                int month = UnityEngine.Random.Range(1, 13);
+                string expDate = $"{year}-{month:D2}-15";
+                bool expired = year < 2026;
+                bool overBudget = ShouldReject(rule.Operator, val, rule.Threshold);
+
+                _docs.Add(new Document
+                {
+                    Description = $"{ItemNames[UnityEngine.Random.Range(0, ItemNames.Length)]}\nExp: {expDate}",
+                    Amount = FormatRupiah(val),
+                    AmountValue = val,
+                    ShouldApprove = !expired && !overBudget
+                });
+            }
+
+            for (int i = _docs.Count - 1; i > 0; i--)
+            {
+                int j = UnityEngine.Random.Range(0, i + 1);
+                (_docs[i], _docs[j]) = (_docs[j], _docs[i]);
+            }
+            while (_docs.Count > count) _docs.RemoveAt(_docs.Count - 1);
+        }
 
         private readonly string _difficulty;
         private int _totalDocs;
@@ -93,38 +199,24 @@ namespace Overworked.Minigames
         {
             container.Clear();
 
-            Document[] pool;
             switch (_difficulty)
             {
                 case "easy":
                     _totalDocs = 4;
                     _timeLimit = 20f;
-                    pool = EasyDocs;
-                    _ruleText = "ATURAN: Tolak jika > Rp 50.000.000";
+                    GenerateEasyDocs(_totalDocs);
                     break;
                 case "hard":
                     _totalDocs = 7;
                     _timeLimit = 25f;
-                    pool = HardDocs;
-                    _ruleText = "ATURAN: Tolak jika tanggal expired (< 2026) ATAU > Rp 30.000.000";
+                    GenerateHardDocs(_totalDocs);
                     break;
                 default:
                     _totalDocs = 5;
                     _timeLimit = 22f;
-                    pool = MediumDocs;
-                    _ruleText = "ATURAN: Setujui HANYA dari Divisi IT atau Finance";
+                    GenerateMediumDocs(_totalDocs);
                     break;
             }
-
-            var shuffled = new List<Document>(pool);
-            for (int i = shuffled.Count - 1; i > 0; i--)
-            {
-                int j = UnityEngine.Random.Range(0, i + 1);
-                (shuffled[i], shuffled[j]) = (shuffled[j], shuffled[i]);
-            }
-            _docs.Clear();
-            for (int i = 0; i < Mathf.Min(_totalDocs, shuffled.Count); i++)
-                _docs.Add(shuffled[i]);
 
             var root = new VisualElement();
             root.style.flexGrow = 1;

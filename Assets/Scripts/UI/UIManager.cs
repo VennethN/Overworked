@@ -122,11 +122,12 @@ namespace Overworked.UI
             // Subscribe to events
             GameEvents.OnEmailReceived += OnEmailReceivedJuice;
             GameEvents.OnEmailExpired += OnEmailExpiredJuice;
-            GameEvents.OnEmailDeleted += _ => RefreshInbox();
+            GameEvents.OnEmailDeleted += _ => { RefreshInbox(); RefreshHUD(); };
             GameEvents.OnEmailReplied += OnEmailRepliedJuice;
             GameEvents.OnTaskCompleted += OnTaskCompletedJuice;
             GameEvents.OnTaskFailed += OnTaskFailedJuice;
             GameEvents.OnGameOver += OnGameOverHandler;
+
 
             // Global click sounds — click for general, select for buttons
             _docRoot.RegisterCallback<ClickEvent>(evt =>
@@ -138,9 +139,19 @@ namespace Overworked.UI
             }, TrickleDown.TrickleDown);
         }
 
+        private bool _scoreSubscribed;
+
         private void Update()
         {
             if (EmailManager.Instance == null) return;
+
+            // Late-subscribe to ScoreManager (may not exist during OnEnable)
+            if (!_scoreSubscribed && ScoreManager.Instance != null)
+            {
+                ScoreManager.Instance.OnScoreChanged += OnScoreChanged;
+                _scoreSubscribed = true;
+                Debug.Log("[ScoreUI] Subscribed to ScoreManager.OnScoreChanged");
+            }
 
             _timerUpdateAccumulator += Time.deltaTime;
             if (_timerUpdateAccumulator >= TIMER_UPDATE_INTERVAL)
@@ -586,23 +597,6 @@ namespace Overworked.UI
             hint.style.marginBottom = 12;
             container.Add(hint);
 
-            // Reset save button
-            var resetBtn = CreateOverlayButton("Reset Semua", new Color(0.85f, 0.25f, 0.25f, 1f), () =>
-            {
-                SaveManager.ResetSave();
-                HideSettings();
-                GameManager.Instance?.ReturnToMenu();
-            });
-            resetBtn.style.marginTop = 16;
-            container.Add(resetBtn);
-
-            var resetHint = new Label("Hapus SEMUA data (cerita, skor, achievement)");
-            resetHint.style.fontSize = 9;
-            resetHint.style.color = new Color(0.4f, 0.4f, 0.47f, 1f);
-            resetHint.style.marginTop = 4;
-            resetHint.style.marginBottom = 12;
-            container.Add(resetHint);
-
             // Resume / Quit buttons (only during gameplay)
             if (isPlaying)
             {
@@ -741,24 +735,18 @@ namespace Overworked.UI
             UIEffects.Pop(_hudSlot);
         }
 
-        private int _lastKnownScore;
-
-        private void ShowScoreDelta()
+        private void OnScoreChanged(int delta)
         {
-            if (ScoreManager.Instance == null) return;
-            int current = ScoreManager.Instance.CurrentScore.totalScore;
-            int delta = current - _lastKnownScore;
-            _lastKnownScore = current;
-
-            if (delta == 0) return;
+            Debug.Log($"[ScoreUI] OnScoreChanged fired! delta={delta} docRoot={_docRoot != null}");
 
             string text = delta > 0 ? $"+{delta}" : $"{delta}";
             Color color = delta > 0
                 ? new Color(0.29f, 0.87f, 0.5f, 1f)
                 : new Color(0.97f, 0.44f, 0.44f, 1f);
 
-            UIEffects.FloatingText(_uiRoot, text, color,
-                new Vector2(_uiRoot.resolvedStyle.width / 2f, _uiRoot.resolvedStyle.height / 2f));
+            float w = Screen.width;
+            float h = Screen.height;
+            UIEffects.FloatingText(_docRoot, text, color, new Vector2(w / 2f, h / 3f));
         }
 
         private void OnEmailExpiredJuice(EmailInstance _)
@@ -768,7 +756,6 @@ namespace Overworked.UI
             Audio.SFXManager.Instance?.PlayEmailExpire();
             UIEffects.Shake(_uiRoot, 4f, 4);
             UIEffects.VignetteFlash(_uiRoot, new Color(0.97f, 0.27f, 0.27f, 0.6f), 300);
-            ShowScoreDelta();
         }
 
         private void OnEmailRepliedJuice(EmailInstance _, ReplyResult result)
@@ -785,7 +772,6 @@ namespace Overworked.UI
                 UIEffects.Shake(_uiRoot, 5f, 5);
                 UIEffects.VignetteFlash(_uiRoot, new Color(0.97f, 0.27f, 0.27f, 0.5f), 300);
             }
-            ShowScoreDelta();
         }
 
         private void OnTaskCompletedJuice(EmailInstance _)
@@ -794,7 +780,6 @@ namespace Overworked.UI
             Audio.SFXManager.Instance?.PlaySuccess();
             UIEffects.VignetteFlash(_uiRoot, new Color(0.29f, 0.87f, 0.5f, 0.4f), 250);
             UIEffects.Pop(_hudSlot, 1.05f);
-            ShowScoreDelta();
         }
 
         private void OnTaskFailedJuice(EmailInstance _)
@@ -803,7 +788,6 @@ namespace Overworked.UI
             Audio.SFXManager.Instance?.PlayFail();
             UIEffects.Shake(_uiRoot, 6f, 5);
             UIEffects.VignetteFlash(_uiRoot, new Color(0.97f, 0.27f, 0.27f, 0.6f), 400);
-            ShowScoreDelta();
         }
 
         private void OnGameOverHandler(ScoreData finalScore)
@@ -947,14 +931,6 @@ namespace Overworked.UI
 
                 _minigameEmailInstanceId = null;
                 ShowInbox();
-
-                // Floating text feedback
-                string text = result.Success ? "BERHASIL" : "GAGAL";
-                Color color = result.Success
-                    ? new Color(0.29f, 0.87f, 0.5f, 1f)
-                    : new Color(0.97f, 0.27f, 0.27f, 1f);
-                UIEffects.FloatingText(_uiRoot, text, color,
-                    new Vector2(_uiRoot.resolvedStyle.width / 2f, _uiRoot.resolvedStyle.height / 2.5f));
             }
         }
 
