@@ -814,6 +814,9 @@ namespace Overworked.UI
             // Check for special ending on day 6 (resign) or day 7 (all others)
             if (_pendingDay.dayNumber == 6 && save.HasFlag("confirmed_resign_d6"))
             {
+                // Mark story as complete so day select shows "CERITA SELESAI"
+                save.lastCompletedDay = 7;
+                SaveManager.Save(save);
                 ShowEndingDialogue(EndingResolver.Resolve(save, _storyData), finalScore);
                 return;
             }

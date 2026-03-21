@@ -395,6 +395,27 @@ namespace Overworked.UI
 
             container.Add(scrollView);
 
+            // Story complete message if all days done
+            bool allComplete = save.lastCompletedDay >= 7;
+            if (allComplete)
+            {
+                var completeLabel = new Label("CERITA SELESAI");
+                completeLabel.style.fontSize = 16;
+                completeLabel.style.color = new Color(0.29f, 0.87f, 0.5f, 1f);
+                completeLabel.style.unityFontStyleAndWeight = FontStyle.Bold;
+                completeLabel.style.letterSpacing = 2;
+                completeLabel.style.marginTop = 16;
+                completeLabel.style.marginBottom = 4;
+                container.Add(completeLabel);
+
+                var completeHint = new Label("Reset cerita untuk memulai dari awal dengan pilihan berbeda.");
+                completeHint.style.fontSize = 10;
+                completeHint.style.color = new Color(0.392f, 0.455f, 0.545f, 1f);
+                completeHint.style.marginBottom = 8;
+                completeHint.style.unityTextAlign = TextAnchor.MiddleCenter;
+                container.Add(completeHint);
+            }
+
             // Reset story button
             var resetRow = new VisualElement();
             resetRow.style.flexDirection = FlexDirection.Row;

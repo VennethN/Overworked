@@ -803,6 +803,57 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1131466897
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1131466899}
+  - component: {fileID: 1131466898}
+  m_Layer: 0
+  m_Name: SFXManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1131466898
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1131466897}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 27cc76282ecfa40f4b2a1cc8eddeec12, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Overworked.Audio.SFXManager
+  clickSound: {fileID: 8300000, guid: e67e3ae1057ce43c0a2a13e9f364c267, type: 3}
+  selectSound: {fileID: 0}
+  taskSuccessSound: {fileID: 0}
+  taskFailSound: {fileID: 0}
+  newEmailSound: {fileID: 0}
+  emailExpireSound: {fileID: 0}
+  volume: 0.5
+--- !u!4 &1131466899
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1131466897}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 619.939, y: 475.99628, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1341008652
 GameObject:
   m_ObjectHideFlags: 0
@@ -965,3 +1016,4 @@ SceneRoots:
   - {fileID: 85161973}
   - {fileID: 449138548}
   - {fileID: 2038294387}
+  - {fileID: 1131466899}
