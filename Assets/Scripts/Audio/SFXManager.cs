@@ -14,6 +14,7 @@ namespace Overworked.Audio
         [SerializeField] private AudioClip emailExpireSound;
         [SerializeField] private AudioClip tickingRepeatSound;
         [SerializeField] private AudioClip tickingNearSound;
+        [SerializeField] private AudioClip menuMusicClip;
         [Range(0f, 1f)] [SerializeField] private float sfxVolume = 0.5f;
         [Range(0f, 1f)] [SerializeField] private float musicVolume = 0.5f;
 
@@ -22,6 +23,7 @@ namespace Overworked.Audio
 
         private AudioSource _source;
         private AudioSource _tickSource;
+        private AudioSource _musicSource;
 
         private void Awake()
         {
@@ -38,6 +40,10 @@ namespace Overworked.Audio
             _tickSource = gameObject.AddComponent<AudioSource>();
             _tickSource.playOnAwake = false;
             _tickSource.loop = true;
+
+            _musicSource = gameObject.AddComponent<AudioSource>();
+            _musicSource.playOnAwake = false;
+            _musicSource.loop = true;
 
             // Load saved volume preferences
             sfxVolume = PlayerPrefs.GetFloat("sfx_volume", 0.5f);
@@ -60,6 +66,8 @@ namespace Overworked.Audio
                 tickingRepeatSound = Resources.Load<AudioClip>("Audio/ticking_repeat");
             if (tickingNearSound == null)
                 tickingNearSound = Resources.Load<AudioClip>("Audio/ticking_near");
+            if (menuMusicClip == null)
+                menuMusicClip = Resources.Load<AudioClip>("Audio/menu_music");
         }
 
         public void PlayClick()
@@ -127,6 +135,21 @@ namespace Overworked.Audio
             _isNearTicking = false;
         }
 
+        public void PlayMenuMusic()
+        {
+            if (_musicSource == null || menuMusicClip == null) return;
+            if (_musicSource.isPlaying) return;
+            _musicSource.clip = menuMusicClip;
+            _musicSource.volume = musicVolume;
+            _musicSource.Play();
+        }
+
+        public void StopMenuMusic()
+        {
+            if (_musicSource != null && _musicSource.isPlaying)
+                _musicSource.Stop();
+        }
+
         public void SetSfxVolume(float v)
         {
             sfxVolume = Mathf.Clamp01(v);
@@ -141,6 +164,10 @@ namespace Overworked.Audio
             // Update live ticking volume
             if (_tickSource != null && _tickSource.isPlaying)
                 _tickSource.volume = musicVolume * (_isNearTicking ? 0.7f : 0.4f);
+
+            // Update live music volume
+            if (_musicSource != null && _musicSource.isPlaying)
+                _musicSource.volume = musicVolume;
         }
 
         private void OnDestroy()

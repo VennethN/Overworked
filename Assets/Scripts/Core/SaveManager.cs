@@ -198,6 +198,7 @@ namespace Overworked.Core
                 writer.Write(data.endingsUnlocked.Count);
                 for (int i = 0; i < data.endingsUnlocked.Count; i++)
                     writer.Write(data.endingsUnlocked[i]);
+
             }
             catch (Exception ex)
             {

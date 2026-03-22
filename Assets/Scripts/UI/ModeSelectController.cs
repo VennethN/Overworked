@@ -13,6 +13,7 @@ namespace Overworked.UI
         private readonly Action _onArcade;
         private readonly Action<int> _onStoryDay;
         private readonly Action _onSettings;
+        private readonly Action<string> _onEndingReplay;
 
         private VisualElement _nameInputView;
         private VisualElement _mainView;
@@ -21,12 +22,13 @@ namespace Overworked.UI
         private StoryCollection _storyData;
         private Texture2D _titleTexture;
 
-        public ModeSelectController(VisualElement root, Action onArcade, Action<int> onStoryDay, Action onSettings = null)
+        public ModeSelectController(VisualElement root, Action onArcade, Action<int> onStoryDay, Action onSettings = null, Action<string> onEndingReplay = null)
         {
             _root = root;
             _onArcade = onArcade;
             _onStoryDay = onStoryDay;
             _onSettings = onSettings;
+            _onEndingReplay = onEndingReplay;
 
             _titleTexture = Resources.Load<Texture2D>("Art/OverworkedText");
             LoadStoryData();
@@ -121,7 +123,7 @@ namespace Overworked.UI
         {
             container.Add(CreateTitleImage());
 
-            var subtitle = new Label("Profil Pegawai");
+            var subtitle = new Label("Email Management Game ");
             subtitle.style.fontSize = 13;
             subtitle.style.color = new Color(0.392f, 0.455f, 0.545f, 1f);
             subtitle.style.marginBottom = 32;
@@ -271,19 +273,6 @@ namespace Overworked.UI
             row.style.flexDirection = FlexDirection.Row;
             row.style.justifyContent = Justify.Center;
 
-            var arcadeBtn = CreateModeCard(
-                "\ue30f", // Material Icons: sports_esports (gamepad)
-                "ARCADE",
-                "Mode tanpa batas\nRaih skor tertinggi!",
-                new Color(0.376f, 0.51f, 0.965f, 1f),
-                () => _onArcade?.Invoke()
-            );
-            row.Add(arcadeBtn);
-
-            var spacer = new VisualElement();
-            spacer.style.width = 16;
-            row.Add(spacer);
-
             var storyBtn = CreateModeCard(
                 "\ue865", // Material Icons: menu_book
                 "CERITA",
@@ -292,6 +281,25 @@ namespace Overworked.UI
                 () => ShowDaySelect()
             );
             row.Add(storyBtn);
+
+            var spacer = new VisualElement();
+            spacer.style.width = 16;
+            row.Add(spacer);
+
+            var arcadeBtn = CreateModeCard(
+                "\ue30f", // Material Icons: sports_esports (gamepad)
+                "ARCADE",
+                "Mode tanpa batas\nRaih skor tertinggi!",
+                new Color(0.376f, 0.51f, 0.965f, 1f),
+                () => _onArcade?.Invoke()
+            );
+            arcadeBtn.style.width = 120;
+            arcadeBtn.style.paddingTop = 16;
+            arcadeBtn.style.paddingBottom = 16;
+            arcadeBtn.style.paddingLeft = 12;
+            arcadeBtn.style.paddingRight = 12;
+            arcadeBtn.style.opacity = 0.6f;
+            row.Add(arcadeBtn);
 
             container.Add(row);
 
@@ -305,12 +313,37 @@ namespace Overworked.UI
                 container.Add(highScore);
             }
 
+            // Tutorial button
+            var tutorialBtn = new Button(() => ShowTutorialModal());
+            tutorialBtn.text = "Tutorial";
+            tutorialBtn.style.marginTop = 20;
+            tutorialBtn.style.paddingTop = 8;
+            tutorialBtn.style.paddingBottom = 8;
+            tutorialBtn.style.paddingLeft = 20;
+            tutorialBtn.style.paddingRight = 20;
+            tutorialBtn.style.fontSize = 12;
+            tutorialBtn.style.backgroundColor = new Color(0.118f, 0.161f, 0.212f, 1f);
+            tutorialBtn.style.color = new Color(0.58f, 0.639f, 0.722f, 1f);
+            tutorialBtn.style.borderTopWidth = 1;
+            tutorialBtn.style.borderBottomWidth = 1;
+            tutorialBtn.style.borderLeftWidth = 1;
+            tutorialBtn.style.borderRightWidth = 1;
+            tutorialBtn.style.borderTopColor = new Color(0.235f, 0.306f, 0.416f, 1f);
+            tutorialBtn.style.borderBottomColor = new Color(0.235f, 0.306f, 0.416f, 1f);
+            tutorialBtn.style.borderLeftColor = new Color(0.235f, 0.306f, 0.416f, 1f);
+            tutorialBtn.style.borderRightColor = new Color(0.235f, 0.306f, 0.416f, 1f);
+            tutorialBtn.style.borderTopLeftRadius = 5;
+            tutorialBtn.style.borderTopRightRadius = 5;
+            tutorialBtn.style.borderBottomLeftRadius = 5;
+            tutorialBtn.style.borderBottomRightRadius = 5;
+            container.Add(tutorialBtn);
+
             // Settings button
             if (_onSettings != null)
             {
                 var settingsBtn = new Button(() => _onSettings.Invoke());
                 settingsBtn.text = "Settings";
-                settingsBtn.style.marginTop = 20;
+                settingsBtn.style.marginTop = 8;
                 settingsBtn.style.paddingTop = 8;
                 settingsBtn.style.paddingBottom = 8;
                 settingsBtn.style.paddingLeft = 20;
@@ -417,6 +450,69 @@ namespace Overworked.UI
             card.RegisterCallback<ClickEvent>(_ => onClick?.Invoke());
 
             return card;
+        }
+
+        private void ShowTutorialModal()
+        {
+            var overlay = new VisualElement();
+            overlay.style.position = Position.Absolute;
+            overlay.style.top = 0;
+            overlay.style.bottom = 0;
+            overlay.style.left = 0;
+            overlay.style.right = 0;
+            overlay.style.backgroundColor = new Color(0f, 0f, 0f, 0.7f);
+            overlay.style.alignItems = Align.Center;
+            overlay.style.justifyContent = Justify.Center;
+
+            var box = new VisualElement();
+            box.style.backgroundColor = new Color(0.09f, 0.12f, 0.16f, 1f);
+            box.style.borderTopLeftRadius = 8;
+            box.style.borderTopRightRadius = 8;
+            box.style.borderBottomLeftRadius = 8;
+            box.style.borderBottomRightRadius = 8;
+            box.style.paddingTop = 28;
+            box.style.paddingBottom = 22;
+            box.style.paddingLeft = 32;
+            box.style.paddingRight = 32;
+            box.style.alignItems = Align.Center;
+            box.style.borderTopWidth = 1;
+            box.style.borderBottomWidth = 1;
+            box.style.borderLeftWidth = 1;
+            box.style.borderRightWidth = 1;
+            box.style.borderTopColor = new Color(0.235f, 0.306f, 0.416f, 0.5f);
+            box.style.borderBottomColor = new Color(0.235f, 0.306f, 0.416f, 0.5f);
+            box.style.borderLeftColor = new Color(0.235f, 0.306f, 0.416f, 0.5f);
+            box.style.borderRightColor = new Color(0.235f, 0.306f, 0.416f, 0.5f);
+
+            var msg = new Label("Tidak ada orientasi, tidak ada pelatihan,\nkamu langsung kerja.");
+            msg.style.fontSize = 12;
+            msg.style.color = new Color(0.722f, 0.757f, 0.808f, 1f);
+            msg.style.whiteSpace = WhiteSpace.Normal;
+            msg.style.unityTextAlign = TextAnchor.MiddleCenter;
+            msg.style.marginBottom = 20;
+            box.Add(msg);
+
+            var okBtn = new Button(() => overlay.RemoveFromHierarchy());
+            okBtn.text = "OK";
+            okBtn.style.paddingTop = 7;
+            okBtn.style.paddingBottom = 7;
+            okBtn.style.paddingLeft = 24;
+            okBtn.style.paddingRight = 24;
+            okBtn.style.fontSize = 11;
+            okBtn.style.backgroundColor = new Color(0.376f, 0.51f, 0.965f, 1f);
+            okBtn.style.color = Color.white;
+            okBtn.style.borderTopWidth = 0;
+            okBtn.style.borderBottomWidth = 0;
+            okBtn.style.borderLeftWidth = 0;
+            okBtn.style.borderRightWidth = 0;
+            okBtn.style.borderTopLeftRadius = 5;
+            okBtn.style.borderTopRightRadius = 5;
+            okBtn.style.borderBottomLeftRadius = 5;
+            okBtn.style.borderBottomRightRadius = 5;
+            box.Add(okBtn);
+
+            overlay.Add(box);
+            _root.Add(overlay);
         }
 
         private void ShowDaySelect()
@@ -934,6 +1030,11 @@ namespace Overworked.UI
             badge.Add(text);
 
             badge.tooltip = unlocked ? label : "???";
+
+            if (unlocked && _onEndingReplay != null)
+            {
+                badge.RegisterCallback<ClickEvent>(evt => _onEndingReplay.Invoke(endingId));
+            }
 
             parent.Add(badge);
         }

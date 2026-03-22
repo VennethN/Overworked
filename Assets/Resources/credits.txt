@@ -35,6 +35,10 @@
 - **Source:** https://pixabay.com/sound-effects/film-special-effects-slow-cinematic-clock-ticking-357979/
 - **License:** Pixabay Content License (free for commercial use, no attribution required)
 
+### Menu Music (Techno)
+- **Source:** Fesliyan Studios — https://www.fesliyanstudios.com
+- **License:** Royalty Free (free for personal and commercial use with attribution)
+
 ## Engine & Packages
 
 - **Unity 6** (6000.3.11f1) — https://unity.com

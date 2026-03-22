@@ -37,7 +37,8 @@ public class UIScaleController : MonoBehaviour
 
     void OnEnable()
     {
-        uiScale = PlayerPrefs.GetFloat(PREFS_KEY, 1.4f);
+        float defaultScale = Application.isMobilePlatform ? 1f : 1.2f;
+        uiScale = PlayerPrefs.GetFloat(PREFS_KEY, defaultScale);
         ApplyScale();
     }
 

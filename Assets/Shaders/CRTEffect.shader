@@ -66,6 +66,7 @@ Shader "Custom/CRTEffect"
             float _ClickStrength;
             float _ClickDuration;
             float _HasUIRT;
+            float _UnscaledTime;
 
             // Hash function for noise
             float Hash(float n)
@@ -90,14 +91,14 @@ Shader "Custom/CRTEffect"
                     return half4(0, 0, 0, 1);
 
                 // Static wave band — a bright horizontal band that scrolls down the screen
-                float wavePos = frac(_Time.y * _StaticSpeed * 0.1);
+                float wavePos = frac(_UnscaledTime * _StaticSpeed * 0.1);
                 float distToWave = abs(uv.y - wavePos);
                 // Wrap around (wave loops seamlessly)
                 distToWave = min(distToWave, 1.0 - distToWave);
                 float waveMask = smoothstep(_StaticWidth, 0.0, distToWave);
 
                 // Offset UVs horizontally inside the wave band (jitter/tear effect)
-                float waveJitter = Hash(floor(uv.y * 200.0) + floor(_Time.y * 30.0)) * 2.0 - 1.0;
+                float waveJitter = Hash(floor(uv.y * 200.0) + floor(_UnscaledTime * 30.0)) * 2.0 - 1.0;
                 uv.x += waveMask * waveJitter * _StaticIntensity * _StaticDisruption;
                 uv.x = clamp(uv.x, 0.0, 1.0);
 
@@ -122,13 +123,13 @@ Shader "Custom/CRTEffect"
                 color = lerp(color, half3(1, 1, 1), waveMask * _StaticDisruption * 0.4);
 
                 // Static noise grain inside the wave band, scaled by disruption
-                float noise = Hash(uv.x * 100.0 + uv.y * 7777.0 + _Time.y * 50.0) * 2.0 - 1.0;
+                float noise = Hash(uv.x * 100.0 + uv.y * 7777.0 + _UnscaledTime * 50.0) * 2.0 - 1.0;
                 color += waveMask * noise * _NoiseIntensity * _StaticDisruption;
                 // Subtle global noise grain
                 color += noise * _NoiseIntensity * 0.2;
 
                 // Click glitch — localized distortion that fades out
-                float clickAge = _Time.y - _ClickTime;
+                float clickAge = _UnscaledTime - _ClickTime;
                 if (clickAge < _ClickDuration && clickAge >= 0.0)
                 {
                     float clickFade = 1.0 - clickAge / _ClickDuration;
@@ -154,7 +155,7 @@ Shader "Custom/CRTEffect"
 
                 // Scanlines
                 float screenY = uv.y * _ScreenParams.y;
-                float scanline = sin((screenY + _Time.y * _ScanlineSpeed * 100.0) * PI) * 0.5 + 0.5;
+                float scanline = sin((screenY + _UnscaledTime * _ScanlineSpeed * 100.0) * PI) * 0.5 + 0.5;
                 color *= lerp(1.0, scanline, _ScanlineIntensity);
 
                 // Vignette (darker edges)
@@ -164,7 +165,7 @@ Shader "Custom/CRTEffect"
                 color *= vig;
 
                 // Subtle flicker
-                float flicker = 1.0 - _Flicker * sin(_Time.y * 13.7);
+                float flicker = 1.0 - _Flicker * sin(_UnscaledTime * 13.7);
                 color *= flicker;
 
                 // Brightness

@@ -51,6 +51,7 @@ public class CRTController : MonoBehaviour
     private static readonly int ClickRadiusId = Shader.PropertyToID("_ClickRadius");
     private static readonly int ClickStrengthId = Shader.PropertyToID("_ClickStrength");
     private static readonly int ClickDurationId = Shader.PropertyToID("_ClickDuration");
+    private static readonly int UnscaledTimeId = Shader.PropertyToID("_UnscaledTime");
 
     void Update()
     {
@@ -70,7 +71,7 @@ public class CRTController : MonoBehaviour
                 Vector2 clickUV = new Vector2(screenPos.x / Screen.width, 1f - screenPos.y / Screen.height);
 #endif
                 crtMaterial.SetVector(ClickUVId, clickUV);
-                crtMaterial.SetFloat(ClickTimeId, Time.time);
+                crtMaterial.SetFloat(ClickTimeId, Time.unscaledTime);
             }
         }
 
@@ -89,5 +90,6 @@ public class CRTController : MonoBehaviour
         crtMaterial.SetFloat(ClickRadiusId, clickRadius);
         crtMaterial.SetFloat(ClickStrengthId, clickStrength);
         crtMaterial.SetFloat(ClickDurationId, clickDuration);
+        crtMaterial.SetFloat(UnscaledTimeId, Time.unscaledTime);
     }
 }

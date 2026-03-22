@@ -48,9 +48,6 @@ namespace Overworked.UI
         private IMinigame _activeMinigame;
         private string _minigameEmailInstanceId;
 
-        // Stress vignette overlay
-        private VisualElement _stressVignette;
-
         // Story data loaded once for day selection + StoryManager
         private StoryCollection _storyData;
         public StoryCollection StoryData => _storyData;
@@ -74,25 +71,6 @@ namespace Overworked.UI
             _settingsSlot = root.Q("settings-slot");
             _sidebar = root.Q("sidebar");
             _mainContent = root.Q("main-content");
-
-            // Create persistent stress vignette overlay
-            _stressVignette = new VisualElement();
-            _stressVignette.name = "stress-vignette";
-            _stressVignette.pickingMode = PickingMode.Ignore;
-            _stressVignette.style.position = Position.Absolute;
-            _stressVignette.style.left = 0;
-            _stressVignette.style.top = 0;
-            _stressVignette.style.right = 0;
-            _stressVignette.style.bottom = 0;
-            _stressVignette.style.borderTopWidth = 0;
-            _stressVignette.style.borderBottomWidth = 0;
-            _stressVignette.style.borderLeftWidth = 0;
-            _stressVignette.style.borderRightWidth = 0;
-            _stressVignette.style.borderTopColor = new Color(0.94f, 0.2f, 0.2f, 0f);
-            _stressVignette.style.borderBottomColor = new Color(0.94f, 0.2f, 0.2f, 0f);
-            _stressVignette.style.borderLeftColor = new Color(0.94f, 0.2f, 0.2f, 0f);
-            _stressVignette.style.borderRightColor = new Color(0.94f, 0.2f, 0.2f, 0f);
-            _uiRoot.Add(_stressVignette);
 
             // Load story data
             var storyAsset = Resources.Load<TextAsset>("Data/Story/story_data");
@@ -134,7 +112,9 @@ namespace Overworked.UI
             // Global click sounds — click for general, select for buttons
             _docRoot.RegisterCallback<ClickEvent>(evt =>
             {
-                if (evt.target is Button)
+                var target = evt.target as VisualElement;
+                bool isButton = target is Button || target?.GetFirstAncestorOfType<Button>() != null;
+                if (isButton)
                     Audio.SFXManager.Instance?.PlaySelect();
                 else
                     Audio.SFXManager.Instance?.PlayClick();
@@ -170,8 +150,6 @@ namespace Overworked.UI
             if (GameManager.Instance != null)
             {
                 _hud?.UpdateTimer(GameManager.Instance.TimeRemaining);
-                if (GameManager.Instance.State == GameState.Playing)
-                    UpdateStressVignette(GameManager.Instance.TimeRemaining, GameManager.Instance.DayLength);
             }
 
             _hud?.UpdateEmailCount(EmailManager.Instance.ActiveCount);
@@ -195,12 +173,9 @@ namespace Overworked.UI
             _hudSlot.style.display = DisplayStyle.None;
             HideGameOver();
 
-            // Reset stress vignette so it doesn't linger on the menu
-            UpdateStressVignette(1f, 1f);
-
             // Show mode select overlay
             _modeselectSlot.style.display = DisplayStyle.Flex;
-            _modeSelect = new ModeSelectController(_modeselectSlot, OnArcadeSelected, OnStoryDaySelected, ShowSettings);
+            _modeSelect = new ModeSelectController(_modeselectSlot, OnArcadeSelected, OnStoryDaySelected, ShowSettings, OnEndingReplay);
         }
 
         public void HideModeSelect()
@@ -211,6 +186,21 @@ namespace Overworked.UI
             // Show game UI
             _mainContent.style.display = DisplayStyle.Flex;
             _hudSlot.style.display = DisplayStyle.Flex;
+        }
+
+        private void OnEndingReplay(string endingType)
+        {
+            DialogueLine[] epilogue = EndingResolver.GetEpilogueDialogue(endingType);
+
+            // Hide mode select, show dialogue
+            _modeselectSlot.style.display = DisplayStyle.None;
+            _dialogueSlot.style.display = DisplayStyle.Flex;
+            new DialogueController(_dialogueSlot, epilogue, () =>
+            {
+                _dialogueSlot.Clear();
+                _dialogueSlot.style.display = DisplayStyle.None;
+                _modeselectSlot.style.display = DisplayStyle.Flex;
+            });
         }
 
         private void OnArcadeSelected()
@@ -299,6 +289,8 @@ namespace Overworked.UI
             _mainContent.style.display = DisplayStyle.None;
             _hudSlot.style.display = DisplayStyle.None;
 
+            Audio.SFXManager.Instance?.StopMenuMusic();
+
             _dialogueSlot.style.display = DisplayStyle.Flex;
             new DialogueController(_dialogueSlot, lines, onComplete);
         }
@@ -336,89 +328,206 @@ namespace Overworked.UI
             _gameoverSlot.Clear();
             _gameoverSlot.style.display = DisplayStyle.Flex;
 
+            bool isStory = GameManager.Instance?.CurrentMode == GameMode.Story;
+            bool passed = isStory && _pendingDay != null
+                ? score.totalScore >= _pendingDay.scoreGoal
+                : score.wrongReplies <= score.correctReplies && score.totalScore > 0;
+            string titleText = isStory ? "HARI SELESAI" : "WAKTU HABIS";
+
             var overlay = new VisualElement();
             overlay.AddToClassList("overlay");
+            overlay.style.backgroundColor = new Color(0.02f, 0.02f, 0.03f, 0.97f);
+            overlay.style.alignItems = Align.Center;
+            overlay.style.justifyContent = Justify.Center;
 
-            var container = new VisualElement();
-            container.style.backgroundColor = new Color(0.086f, 0.13f, 0.24f, 1f);
-            container.style.borderTopLeftRadius = 8;
-            container.style.borderTopRightRadius = 8;
-            container.style.borderBottomLeftRadius = 8;
-            container.style.borderBottomRightRadius = 8;
-            container.style.paddingTop = 22;
-            container.style.paddingBottom = 22;
-            container.style.paddingLeft = 28;
-            container.style.paddingRight = 28;
-            container.style.alignItems = Align.Center;
+            // --- Console box ---
+            var box = new VisualElement();
+            box.style.width = 360;
+            SetRad(box, 6);
+            box.style.overflow = Overflow.Hidden;
 
-            var title = new Label("GAME OVER");
-            title.style.fontSize = 22;
-            title.style.color = new Color(0.91f, 0.27f, 0.38f, 1f);
+            // Title bar (terminal chrome)
+            var titleBar = new VisualElement();
+            titleBar.style.backgroundColor = new Color(0.1f, 0.13f, 0.2f, 1f);
+            titleBar.style.paddingTop = 6;
+            titleBar.style.paddingBottom = 6;
+            titleBar.style.paddingLeft = 10;
+            titleBar.style.paddingRight = 10;
+            titleBar.style.flexDirection = FlexDirection.Row;
+            titleBar.style.alignItems = Align.Center;
+
+            // Window dots
+            var dots = new VisualElement();
+            dots.style.flexDirection = FlexDirection.Row;
+            dots.style.marginRight = 8;
+            Color[] dotColors =
+            {
+                new Color(0.85f, 0.3f, 0.3f, 0.65f),
+                new Color(0.85f, 0.65f, 0.2f, 0.65f),
+                new Color(0.3f, 0.75f, 0.4f, 0.65f)
+            };
+            foreach (var c in dotColors)
+            {
+                var dot = new VisualElement();
+                dot.style.width = 7;
+                dot.style.height = 7;
+                SetRad(dot, 4);
+                dot.style.backgroundColor = c;
+                dot.style.marginRight = 4;
+                dots.Add(dot);
+            }
+            titleBar.Add(dots);
+
+            var titleBarLabel = new Label("laporan-harian");
+            titleBarLabel.style.fontSize = 8;
+            titleBarLabel.style.color = new Color(0.45f, 0.52f, 0.62f, 0.8f);
+            titleBar.Add(titleBarLabel);
+
+            box.Add(titleBar);
+
+            // Content panel
+            var content = new VisualElement();
+            content.style.backgroundColor = new Color(0.09f, 0.12f, 0.16f, 1f);
+            content.style.paddingTop = 22;
+            content.style.paddingBottom = 18;
+            content.style.paddingLeft = 24;
+            content.style.paddingRight = 24;
+            content.style.alignItems = Align.Center;
+
+            // Title
+            var title = new Label(titleText);
+            title.style.fontSize = 18;
+            title.style.color = new Color(0.945f, 0.96f, 0.976f, 1f);
             title.style.unityFontStyleAndWeight = FontStyle.Bold;
-            title.style.marginBottom = 14;
-            container.Add(title);
+            title.style.letterSpacing = 2;
+            title.style.marginBottom = 6;
+            content.Add(title);
 
-            var finalScore = new Label($"Final Score: {score.totalScore}");
-            finalScore.style.fontSize = 16;
-            finalScore.style.color = Color.white;
-            finalScore.style.unityFontStyleAndWeight = FontStyle.Bold;
-            finalScore.style.marginBottom = 14;
-            container.Add(finalScore);
+            // Performance status
+            var perfColor = passed
+                ? new Color(0.063f, 0.725f, 0.506f, 1f)
+                : new Color(0.91f, 0.27f, 0.38f, 1f);
+            var perfLabel = new Label(passed ? "PERFORMA: BAIK" : "PERFORMA: BURUK");
+            perfLabel.style.fontSize = 12;
+            perfLabel.style.color = perfColor;
+            perfLabel.style.unityFontStyleAndWeight = FontStyle.Bold;
+            perfLabel.style.letterSpacing = 1;
+            perfLabel.style.marginBottom = 4;
+            content.Add(perfLabel);
 
-            AddStatLine(container, "Correct Replies", score.correctReplies.ToString());
-            AddStatLine(container, "Wrong Replies", score.wrongReplies.ToString());
-            AddStatLine(container, "Tasks Completed", score.tasksCompleted.ToString());
-            AddStatLine(container, "Tasks Failed", score.tasksFailed.ToString());
-            AddStatLine(container, "Emails Expired", score.emailsExpired.ToString());
-            AddStatLine(container, "Spam Deleted", score.spamDeleted.ToString());
-            AddStatLine(container, "Spam Replied To", score.spamReplied.ToString());
-            AddStatLine(container, "Highest Streak", score.highestStreak.ToString());
+            if (isStory && _pendingDay != null)
+            {
+                var goalLabel = new Label($"Skor Target: {_pendingDay.scoreGoal}");
+                goalLabel.style.fontSize = 9;
+                goalLabel.style.color = new Color(0.392f, 0.455f, 0.545f, 1f);
+                goalLabel.style.marginBottom = 12;
+                content.Add(goalLabel);
+            }
+            else
+            {
+                content.Add(new VisualElement { style = { height = 8 } });
+            }
 
+            // Score
+            var finalScoreLabel = new Label($"Skor: {score.totalScore}");
+            finalScoreLabel.style.fontSize = 16;
+            finalScoreLabel.style.color = Color.white;
+            finalScoreLabel.style.unityFontStyleAndWeight = FontStyle.Bold;
+            finalScoreLabel.style.marginBottom = 14;
+            content.Add(finalScoreLabel);
+
+            // Divider
+            var divider = new VisualElement();
+            divider.style.height = 1;
+            divider.style.width = Length.Percent(100);
+            divider.style.backgroundColor = new Color(0.2f, 0.25f, 0.32f, 0.5f);
+            divider.style.marginBottom = 12;
+            content.Add(divider);
+
+            // Stats
+            AddStatLine(content, "Correct Replies", score.correctReplies.ToString());
+            AddStatLine(content, "Wrong Replies", score.wrongReplies.ToString());
+            AddStatLine(content, "Tasks Completed", score.tasksCompleted.ToString());
+            AddStatLine(content, "Tasks Failed", score.tasksFailed.ToString());
+            AddStatLine(content, "Emails Expired", score.emailsExpired.ToString());
+            AddStatLine(content, "Spam Deleted", score.spamDeleted.ToString());
+            AddStatLine(content, "Spam Replied To", score.spamReplied.ToString());
+            AddStatLine(content, "Highest Streak", score.highestStreak.ToString());
+
+            // Buttons
             var btnRow = new VisualElement();
             btnRow.style.flexDirection = FlexDirection.Row;
             btnRow.style.marginTop = 16;
 
-            if (GameManager.Instance?.CurrentMode != GameMode.Story)
+            if (!isStory)
             {
-                var restartBtn = CreateOverlayButton("Main Lagi", new Color(0.91f, 0.27f, 0.38f, 1f),
+                var restartBtn = CreateOverlayButton("Main Lagi", new Color(0.376f, 0.51f, 0.965f, 1f),
                     () => GameManager.Instance?.StartArcade());
                 btnRow.Add(restartBtn);
 
-                var spacerBtn = new VisualElement();
-                spacerBtn.style.width = 8;
-                btnRow.Add(spacerBtn);
+                var spacer = new VisualElement();
+                spacer.style.width = 8;
+                btnRow.Add(spacer);
             }
             else
             {
-                // Story mode: go to day selection instead of main menu
                 var daySelectBtn = CreateOverlayButton("Pilih Level", new Color(0.063f, 0.725f, 0.506f, 1f),
                     () =>
                     {
                         HideGameOver();
+                        Audio.SFXManager.Instance?.PlayMenuMusic();
                         ShowModeSelect();
-                        // Navigate directly to day select
                         _modeSelect?.ShowDaySelectPublic();
                     });
                 btnRow.Add(daySelectBtn);
 
-                var spacerBtn = new VisualElement();
-                spacerBtn.style.width = 8;
-                btnRow.Add(spacerBtn);
+                var spacer = new VisualElement();
+                spacer.style.width = 8;
+                btnRow.Add(spacer);
             }
 
             var menuBtn = CreateOverlayButton("Menu", new Color(0.235f, 0.306f, 0.416f, 1f),
                 () => GameManager.Instance?.ReturnToMenu());
             btnRow.Add(menuBtn);
 
-            container.Add(btnRow);
+            content.Add(btnRow);
+            box.Add(content);
 
-            overlay.Add(container);
-            overlay.style.alignItems = Align.Center;
-            overlay.style.justifyContent = Justify.Center;
+            // Status bar
+            var statusBar = new VisualElement();
+            statusBar.style.backgroundColor = new Color(0.09f, 0.12f, 0.16f, 1f);
+            statusBar.style.flexDirection = FlexDirection.Row;
+            statusBar.style.justifyContent = Justify.SpaceBetween;
+            statusBar.style.paddingLeft = 12;
+            statusBar.style.paddingRight = 12;
+            statusBar.style.paddingBottom = 6;
+            statusBar.style.paddingTop = 4;
+            statusBar.style.borderTopWidth = 1;
+            statusBar.style.borderTopColor = new Color(0.1f, 0.18f, 0.16f, 0.12f);
+
+            var statusLeft = new Label(isStory && _pendingDay != null ? $"Hari {_pendingDay.dayNumber}" : "Arcade");
+            statusLeft.style.fontSize = 7;
+            statusLeft.style.color = new Color(0.2f, 0.32f, 0.28f, 0.45f);
+            statusBar.Add(statusLeft);
+
+            var statusRight = new Label("SELESAI");
+            statusRight.style.fontSize = 7;
+            statusRight.style.color = new Color(0.18f, 0.45f, 0.3f, 0.45f);
+            statusBar.Add(statusRight);
+
+            box.Add(statusBar);
+            overlay.Add(box);
             _gameoverSlot.Add(overlay);
 
-            // Fade in the overlay
             overlay.schedule.Execute(() => overlay.AddToClassList("overlay--visible"));
+        }
+
+        private static void SetRad(VisualElement el, float r)
+        {
+            el.style.borderTopLeftRadius = r;
+            el.style.borderTopRightRadius = r;
+            el.style.borderBottomLeftRadius = r;
+            el.style.borderBottomRightRadius = r;
         }
 
         public void HideGameOver()
@@ -813,8 +922,6 @@ namespace Overworked.UI
                 _hud?.UpdateScore(ScoreManager.Instance.CurrentScore, ScoreManager.Instance.CurrentStreak);
         }
 
-        // --- Stress Vignette ---
-
         // --- Responsive Layout ---
         private bool _isMobileLayout;
 
@@ -833,38 +940,6 @@ namespace Overworked.UI
                 hudContainer.style.paddingTop = narrow ? 4 : 6;
                 hudContainer.style.paddingBottom = narrow ? 4 : 6;
             }
-        }
-
-        private void UpdateStressVignette(float timeRemaining, float dayLength)
-        {
-            if (_stressVignette == null || dayLength <= 0f) return;
-
-            float ratio = timeRemaining / dayLength;
-            // Start showing at 30% time remaining, max intensity at 0%
-            float intensity = Mathf.Clamp01(1f - ratio / 0.3f);
-
-            if (intensity <= 0f)
-            {
-                _stressVignette.style.borderTopWidth = 0;
-                _stressVignette.style.borderBottomWidth = 0;
-                _stressVignette.style.borderLeftWidth = 0;
-                _stressVignette.style.borderRightWidth = 0;
-                return;
-            }
-
-            // Border width and alpha scale with stress
-            float borderWidth = Mathf.Lerp(0f, 5f, intensity);
-            float alpha = Mathf.Lerp(0f, 0.5f, intensity);
-            var color = new Color(0.94f, 0.2f, 0.2f, alpha);
-
-            _stressVignette.style.borderTopWidth = borderWidth;
-            _stressVignette.style.borderBottomWidth = borderWidth;
-            _stressVignette.style.borderLeftWidth = borderWidth;
-            _stressVignette.style.borderRightWidth = borderWidth;
-            _stressVignette.style.borderTopColor = color;
-            _stressVignette.style.borderBottomColor = color;
-            _stressVignette.style.borderLeftColor = color;
-            _stressVignette.style.borderRightColor = color;
         }
 
         // --- Juice Effects ---
@@ -1007,8 +1082,102 @@ namespace Overworked.UI
             ShowDialogue(epilogue, () =>
             {
                 HideDialogue();
-                ShowGameOver(finalScore);
+                ShowEndingObtained(endingType, () => ShowGameOver(finalScore));
             });
+        }
+
+        private void ShowEndingObtained(string endingType, System.Action onDismiss)
+        {
+            string label;
+            Color color;
+            switch (endingType)
+            {
+                case EndingResolver.ENDING_SURVIVE:
+                    label = "Bertahan"; color = new Color(0.376f, 0.647f, 0.98f, 1f); break;
+                case EndingResolver.ENDING_BREAKDOWN:
+                    label = "Breakdown"; color = new Color(0.973f, 0.443f, 0.443f, 1f); break;
+                case EndingResolver.ENDING_RESIGN:
+                    label = "Resign"; color = new Color(0.973f, 0.682f, 0.275f, 1f); break;
+                case EndingResolver.ENDING_SECRET:
+                    label = "Kebenaran"; color = new Color(0.29f, 0.87f, 0.5f, 1f); break;
+                default:
+                    label = endingType; color = Color.white; break;
+            }
+
+            _gameoverSlot.Clear();
+            _gameoverSlot.style.display = DisplayStyle.Flex;
+
+            var overlay = new VisualElement();
+            overlay.AddToClassList("overlay");
+            overlay.style.backgroundColor = new Color(0.02f, 0.02f, 0.03f, 0.97f);
+            overlay.style.alignItems = Align.Center;
+            overlay.style.justifyContent = Justify.Center;
+
+            var container = new VisualElement();
+            container.style.alignItems = Align.Center;
+
+            // "ENDING OBTAINED" header
+            var header = new Label("ENDING OBTAINED");
+            header.style.fontSize = 12;
+            header.style.color = new Color(0.392f, 0.455f, 0.545f, 1f);
+            header.style.letterSpacing = 3;
+            header.style.marginBottom = 16;
+            container.Add(header);
+
+            // Ending plaque
+            var plaque = new VisualElement();
+            plaque.style.backgroundColor = new Color(color.r, color.g, color.b, 0.12f);
+            plaque.style.borderTopWidth = 2;
+            plaque.style.borderBottomWidth = 2;
+            plaque.style.borderLeftWidth = 2;
+            plaque.style.borderRightWidth = 2;
+            plaque.style.borderTopColor = color;
+            plaque.style.borderBottomColor = color;
+            plaque.style.borderLeftColor = color;
+            plaque.style.borderRightColor = color;
+            SetRad(plaque, 8);
+            plaque.style.paddingTop = 24;
+            plaque.style.paddingBottom = 24;
+            plaque.style.paddingLeft = 48;
+            plaque.style.paddingRight = 48;
+            plaque.style.alignItems = Align.Center;
+
+            var endingLabel = new Label(label);
+            endingLabel.style.fontSize = 24;
+            endingLabel.style.color = color;
+            endingLabel.style.unityFontStyleAndWeight = FontStyle.Bold;
+            endingLabel.style.letterSpacing = 2;
+            plaque.Add(endingLabel);
+
+            container.Add(plaque);
+
+            // Continue button
+            var continueBtn = new Button(() =>
+            {
+                _gameoverSlot.Clear();
+                _gameoverSlot.style.display = DisplayStyle.None;
+                onDismiss?.Invoke();
+            });
+            continueBtn.text = "Lanjut \u25B8";
+            continueBtn.style.marginTop = 24;
+            continueBtn.style.paddingTop = 8;
+            continueBtn.style.paddingBottom = 8;
+            continueBtn.style.paddingLeft = 24;
+            continueBtn.style.paddingRight = 24;
+            continueBtn.style.fontSize = 11;
+            continueBtn.style.backgroundColor = new Color(0.376f, 0.51f, 0.965f, 1f);
+            continueBtn.style.color = Color.white;
+            continueBtn.style.borderTopWidth = 0;
+            continueBtn.style.borderBottomWidth = 0;
+            continueBtn.style.borderLeftWidth = 0;
+            continueBtn.style.borderRightWidth = 0;
+            SetRad(continueBtn, 6);
+            container.Add(continueBtn);
+
+            overlay.Add(container);
+            _gameoverSlot.Add(overlay);
+
+            overlay.schedule.Execute(() => overlay.AddToClassList("overlay--visible"));
         }
 
         // --- Callbacks ---

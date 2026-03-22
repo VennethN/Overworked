@@ -35,9 +35,10 @@ public class CRTUIBridge : MonoBehaviour
 
     IEnumerator CRTLoop()
     {
+        var waitEOF = new WaitForEndOfFrame();
         while (true)
         {
-            yield return new WaitForEndOfFrame();
+            yield return waitEOF;
 
             if (crtMaterial == null) continue;
 

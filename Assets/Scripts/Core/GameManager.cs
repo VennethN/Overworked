@@ -45,6 +45,7 @@ namespace Overworked.Core
         private void Start()
         {
             uiManager?.ShowModeSelect();
+            Audio.SFXManager.Instance?.PlayMenuMusic();
         }
 
         private void Update()
@@ -115,6 +116,7 @@ namespace Overworked.Core
             uiManager?.HideGameOver();
             uiManager?.ShowInbox(resetScroll: true);
 
+            Audio.SFXManager.Instance?.StopMenuMusic();
             Audio.SFXManager.Instance?.StartTicking();
             GameEvents.FireGameStarted();
         }
@@ -171,6 +173,7 @@ namespace Overworked.Core
         {
             _state = GameState.Menu;
             Audio.SFXManager.Instance?.StopTicking();
+            Audio.SFXManager.Instance?.PlayMenuMusic();
             emailSpawner?.StopSpawning();
             emailSpawner?.SetSpawnEmailIdWhitelist(null);
             EmailManager.Instance?.ClearInbox();
