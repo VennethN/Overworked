@@ -19,6 +19,7 @@ namespace Overworked.UI
         private VisualElement _daySelectView;
         private VisualElement _creditsView;
         private StoryCollection _storyData;
+        private Texture2D _titleTexture;
 
         public ModeSelectController(VisualElement root, Action onArcade, Action<int> onStoryDay, Action onSettings = null)
         {
@@ -27,6 +28,7 @@ namespace Overworked.UI
             _onStoryDay = onStoryDay;
             _onSettings = onSettings;
 
+            _titleTexture = Resources.Load<Texture2D>("Art/OverworkedText");
             LoadStoryData();
             BuildUI();
         }
@@ -89,15 +91,35 @@ namespace Overworked.UI
             overlay.schedule.Execute(() => overlay.AddToClassList("overlay--visible"));
         }
 
+        private VisualElement CreateTitleImage()
+        {
+            var img = new VisualElement();
+            if (_titleTexture != null)
+            {
+                img.style.backgroundImage = new StyleBackground(_titleTexture);
+                // 2172x328 aspect ratio ≈ 6.62:1
+                img.style.width = 320;
+                img.style.height = 48;
+                img.style.backgroundSize = new BackgroundSize(BackgroundSizeType.Contain);
+            }
+            else
+            {
+                // Fallback to text if image fails to load
+                var label = new Label("OVERWORKED");
+                label.style.fontSize = 32;
+                label.style.color = new Color(0.945f, 0.96f, 0.976f, 1f);
+                label.style.unityFontStyleAndWeight = FontStyle.Bold;
+                label.style.letterSpacing = 3;
+                img.Add(label);
+            }
+            img.style.marginTop = 16;
+            img.style.marginBottom = 6;
+            return img;
+        }
+
         private void BuildNameInputView(VisualElement container)
         {
-            var title = new Label("OVERWORKED");
-            title.style.fontSize = 32;
-            title.style.color = new Color(0.945f, 0.96f, 0.976f, 1f);
-            title.style.unityFontStyleAndWeight = FontStyle.Bold;
-            title.style.letterSpacing = 3;
-            title.style.marginBottom = 6;
-            container.Add(title);
+            container.Add(CreateTitleImage());
 
             var subtitle = new Label("Profil Pegawai");
             subtitle.style.fontSize = 13;
@@ -234,13 +256,7 @@ namespace Overworked.UI
         private void BuildMainView(VisualElement container)
         {
             // Title
-            var title = new Label("OVERWORKED");
-            title.style.fontSize = 32;
-            title.style.color = new Color(0.945f, 0.96f, 0.976f, 1f);
-            title.style.unityFontStyleAndWeight = FontStyle.Bold;
-            title.style.letterSpacing = 3;
-            title.style.marginBottom = 6;
-            container.Add(title);
+            container.Add(CreateTitleImage());
 
             var subtitle = new Label("Email Management Game");
             subtitle.style.fontSize = 13;
